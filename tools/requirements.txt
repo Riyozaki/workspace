@@ -1,0 +1,37 @@
+# Python toolchain for document generation.
+# Installed into .venv by tools/setup.sh.
+# Every one of these is a pure-python or manylinux wheel on PyPI — the sandbox
+# has no apt access, so nothing here may require a system package manager.
+# Versions are the ones verified working in this environment.
+
+# --- OOXML read/write ---
+openpyxl==3.1.5           # xlsx read/write with formulas & formatting
+python-docx==1.2.0        # docx object model (reading / surgical edits)
+
+# --- formula evaluation (our replacement for LibreOffice recalc) ---
+formulas==1.3.4           # pure-python Excel formula engine
+schedula==1.6.15          # formulas dependency, pinned for reproducibility
+
+# --- PDF ---
+pypdf==6.16.1             # merge/split/rotate/encrypt/metadata
+pypdfium2==5.13.0         # rasterise PDF -> PNG for visual QA (no poppler needed)
+pdfplumber==0.11.10       # text + table extraction with layout
+reportlab==5.0.0          # programmatic PDF drawing
+
+# --- conversion / rendering ---
+pypandoc-binary==1.17     # bundles the pandoc binary (no apt needed)
+typst==0.15.0             # bundled typst compiler -> print-quality PDF
+markitdown==0.1.7         # quick text view of xlsx/pptx/docx
+
+# --- XML / validation ---
+lxml==6.1.1               # XSD validation
+defusedxml==0.7.1         # safe OOXML parsing (never round-trip via ElementTree)
+
+# --- charts & images ---
+matplotlib==3.11.1        # charts OOXML cannot express natively
+pillow==12.3.0            # image handling
+fonttools==4.63.0         # font inspection (cyrillic coverage checks)
+
+# --- misc ---
+brotli==1.2.0             # inflate the bundled chromium payloads
+mammoth==1.12.1           # docx -> clean semantic HTML

@@ -1,0 +1,105 @@
+/* preview.css — shared stylesheet for the HTML->PDF preview pipeline.
+   Deliberately plain: this exists so QA renders look like a document rather
+   than an unstyled browser dump. It is NOT the house style for deliverables. */
+
+@page { size: A4; margin: 18mm; }
+
+:root {
+  --ink: #1f2933;
+  --muted: #667085;
+  --rule: #d5d9e0;
+  --accent: #1e3a5f;
+  --warn-bg: #fff4e5;
+  --warn-ink: #7a4a00;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 11pt;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Inter", sans-serif;
+  color: var(--accent);
+  line-height: 1.25;
+  margin: 1.4em 0 0.5em;
+  page-break-after: avoid;
+}
+h1 { font-size: 20pt; font-weight: 700; }
+h2 { font-size: 15pt; font-weight: 700; }
+h3 { font-size: 12.5pt; font-weight: 600; }
+h1:first-child, h2:first-child { margin-top: 0; }
+
+p { margin: 0 0 0.7em; orphans: 2; widows: 2; }
+ul, ol { margin: 0 0 0.8em 1.2em; padding: 0; }
+li { margin: 0.2em 0; }
+
+a { color: var(--accent); text-decoration: none; }
+code, pre {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 9.5pt;
+}
+pre {
+  background: #f6f8fa;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 8px 10px;
+  overflow-x: auto;
+  page-break-inside: avoid;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.8em 0 1.2em;
+  font-size: 10pt;
+  page-break-inside: avoid;
+}
+th, td {
+  border: 1px solid var(--rule);
+  padding: 5px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #eef2f6; font-weight: 600; }
+tbody tr:nth-child(even) { background: #fafbfc; }
+
+/* xlsx grid preview: keep the spreadsheet feel */
+table.grid { font-size: 9pt; table-layout: auto; }
+table.grid thead th { background: #e4e9f0; text-align: center; font-weight: 600; }
+table.grid tbody tr:nth-child(even) { background: transparent; }
+
+img { max-width: 100%; height: auto; }
+figure { margin: 1em 0; page-break-inside: avoid; }
+figcaption { font-size: 9pt; color: var(--muted); margin-top: 4px; }
+
+blockquote {
+  margin: 1em 0;
+  padding: 0.2em 0 0.2em 12px;
+  border-left: 3px solid var(--rule);
+  color: var(--muted);
+}
+
+hr { border: none; border-top: 1px solid var(--rule); margin: 1.5em 0; }
+
+.muted { color: var(--muted); font-weight: 400; font-size: 0.8em; }
+.warn {
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  border: 1px solid #f0c98a;
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-size: 10pt;
+}
+
+/* row-number gutter in the xlsx preview */
+table.grid th.rowhdr {
+  background: #e4e9f0;
+  text-align: center;
+  font-weight: 600;
+  color: var(--muted);
+  width: 34px;
+}

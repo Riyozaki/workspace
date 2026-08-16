@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Node
+tools/node_modules/
+node_modules/
+
+# Build scratch
+.workdir/
+*.tmp
+
+# OS
+.DS_Store
+
+# Generated font binaries (rebuild with: python tools/install_fonts.py)
+assets/fonts/*.ttf
