@@ -7,7 +7,9 @@ description: "Work with PDF files: create print-quality PDFs, merge, split, rota
 
 ## Creating
 
-Three routes, in order of preference.
+Three routes, in order of preference. **For justified Russian text, or any
+print-final document nobody needs to edit, prefer Typst** — see
+*Typesetting a PDF instead of converting one* below.
 
 ### 1. HTML → Chromium (default for anything with a layout)
 
@@ -121,3 +123,44 @@ Uses pypdfium2 — no poppler required. This is how you *look* at a PDF.
 `validate.py` warns when a PDF has no extractable text (image-only: bad for search, copy-paste, and accessibility) and greps the text layer for placeholders.
 
 Checklist: page count is what you intended · no content in the margins · page numbers correct and starting where they should · fonts embedded (they are, if it came from Chromium or Typst) · text is selectable · filename names the topic.
+
+## Typesetting a PDF instead of converting one
+
+For a print-final document — ГОСТ report, contract, anything justified in
+Russian — do not build a `.docx` and convert it. Convertors inherit whatever
+the intermediate format guessed. **Typst** (`import typst`, installed) is a real
+typesetting engine and is the better route when nobody needs to edit the result:
+
+```python
+typst.compile("doc.typ", output="doc.pdf",
+              root=".", font_paths=["assets/fonts"],
+              ignore_system_fonts=True)   # reproducible: only bundled fonts
+```
+
+Why it beats HTML→PDF and DOCX→PDF for Russian text:
+
+- **Real hyphenation.** `#set text(lang: "ru", hyphenate: true)` applies actual
+  ru patterns at compile time. Justified Cyrillic without it is a wall of
+  whitespace rivers; with it, measured inter-word spacing variance drops to
+  ~0.4 pt.
+- **Knuth-Plass line breaking** optimises the whole paragraph, not line by line.
+- **The output is final.** A `.docx` only *asks* Word to hyphenate; the reader's
+  Word decides. What you measure in the PDF is what every recipient sees.
+- **Exact geometry:** `#set page(margin: (left: 30mm, ...))` lands on 30.0 mm.
+
+Traps worth knowing:
+
+- `leading` is the gap *between* line boxes, not the baseline pitch. Word's
+  «полуторный» for 14 pt ≈ 24.1 pt baseline-to-baseline → `leading: 1.09em`.
+  Measure the PDF, never eyeball it.
+- **Never justify narrow table cells.** `#show table: set par(justify: false)`
+  plus `set text(hyphenate: false)`, or headings break as «Промыш-ленный».
+- **Turn hyphenation off in signature blocks** — a split surname («Со-колов»)
+  is a defect, not typography.
+- Font fallback is a list: `font: ("Tinos", "DejaVu Sans")`. Tinos has no
+  U+2610/U+2612, so checkbox glyphs need the fallback.
+- `first-line-indent: (amount: 1.25cm, all: true)` — without `all` the first
+  paragraph after a heading is not indented.
+
+`showcase/whitepaper.typ` is the worked ГОСТ reference; it and
+`showcase/build_whitepaper.js` carry the same report through both routes.

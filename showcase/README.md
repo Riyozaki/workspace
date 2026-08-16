@@ -1,8 +1,8 @@
 # Showcase
 
-Four documents that push the toolchain as far as it goes. They are a single
+Five documents that push the toolchain as far as it goes. They are a single
 coherent case — an investment programme for an energy-storage network — told
-in the four formats, with **the same numbers in all of them**.
+in five formats, with **the same numbers in all of them**.
 
 ```bash
 .venv/bin/python showcase/build_all.py            # build + validate
@@ -10,7 +10,7 @@ in the four formats, with **the same numbers in all of them**.
 .venv/bin/python showcase/build_all.py --clean    # rebuild from scratch
 ```
 
-The four documents live in `showcase/out/` and are **committed**, so they can be
+The documents live in `showcase/out/` and are **committed**, so they can be
 opened and reviewed without running anything. Rebuilding overwrites them; the
 QA preview folders (`showcase/out/qa-*/`) are gitignored. Exit code is non-zero
 if any generator fails or any validation reports FAIL, so it is CI-safe.
@@ -21,6 +21,19 @@ if any generator fails or any validation reports FAIL, so it is CI-safe.
 | `Финансовая_модель_накопители.xlsx` | `build_workbook.py` | Six sheets of live formulas, scenario switch, conditional formatting, native charts |
 | `Совет_директоров_накопители.pptx` | `build_deck.js` | Seven 16:9 slides, master layout, native editable charts, autoshape diagrams, speaker notes |
 | `Резюме_программы_одна_страница.pdf` | `build_onepager.py` | Exact mm-grid A4 leave-behind drawn directly with reportlab |
+| `Модернизация_сети_накопителей.pdf` | `build_whitepaper_pdf.py` (`whitepaper.typ`) | The same ГОСТ report as the .docx, **typeset** rather than converted: Typst does the line breaking with real ru hyphenation, so the justified text is final |
+
+### Two routes for the same report
+
+The whitepaper is built twice on purpose. Pick by what the recipient does with it:
+
+- **`.docx`** — they must edit, comment or accept tracked changes. Line breaking
+  belongs to Word: the file asks for hyphenation and justification, and the
+  reader's Word decides the result.
+- **`.pdf`** — they only read, print or archive. Typst breaks the lines at
+  compile time (measured inter-word spacing variance ≈ 0.4 pt), so what is
+  verified here is exactly what every recipient sees. No fields to refresh, no
+  font substitution, no «обновить поле» on the contents page.
 
 `make_charts.py` produces the two matplotlib images (`waterfall.png`,
 `tornado.png`) that OOXML has no native chart type for. Everything else that

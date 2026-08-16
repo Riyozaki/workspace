@@ -597,6 +597,54 @@ def test_checkbox_glyphs(tmp: Path) -> None:
     assert "w14:checkbox" not in doc, "empty CheckBox SDT still present — renders blank in Word"
 
 
+@check("typst PDF matches ГОСТ geometry and hyphenates")
+def test_typst_pdf(tmp: Path) -> None:
+    """
+    The PDF route typesets the report instead of converting it, so unlike the
+    .docx its line breaking is final — that is exactly why it is worth
+    measuring. Page size, margins and real hyphenation are all checkable here.
+    """
+    pdf_path = REPO / "showcase" / "out" / "Модернизация_сети_накопителей.pdf"
+    if not pdf_path.is_file():
+        raise SkipTest("showcase not built — run showcase/build_all.py")
+
+    import pdfplumber
+
+    with pdfplumber.open(pdf_path) as pdf:
+        pages = pdf.pages
+        assert len(pages) >= 7, f"only {len(pages)} pages — content is missing"
+
+        def mm(v: float) -> float:
+            return v / 72 * 25.4
+
+        # Body pages are A4 portrait; the appendix is A4 landscape.
+        portrait = [p for p in pages if p.width < p.height]
+        landscape = [p for p in pages if p.width > p.height]
+        assert portrait, "no portrait pages"
+        assert landscape, "appendix should be landscape"
+        for p in portrait:
+            assert abs(mm(p.width) - 210) < 1 and abs(mm(p.height) - 297) < 1, "not A4"
+
+        # ГОСТ left margin is 30 mm — measured off the actual glyphs.
+        body = portrait[2]
+        left = min(mm(c["x0"]) for c in body.chars)
+        assert abs(left - 30) < 1.5, f"left margin {left:.1f} mm, expected 30"
+
+        text = "\n".join((p.extract_text() or "") for p in pages)
+
+    # Soft hyphens are the proof that justification is not stretching spaces.
+    hyphens = text.count("\u00ad")
+    assert hyphens >= 10, f"only {hyphens} hyphenation breaks — ru patterns not applied"
+
+    # Тable/figure captions and the appendix must survive typesetting.
+    for needle in ("СОДЕРЖАНИЕ", "Таблица 1", "Рисунок 1", "Приложение А", "5 310"):
+        assert needle in text, f"missing from PDF: {needle!r}"
+
+    # A surname split across lines is a signature-block bug, not typography.
+    for bad in ("Со\u00ad", "До\u00ad"):
+        assert bad not in text, "signature block is hyphenating a surname"
+
+
 @check("setup --check passes")
 def test_setup_check(tmp: Path) -> None:
     proc = run(["bash", REPO / "tools" / "setup.sh", "--check"])

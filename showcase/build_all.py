@@ -34,6 +34,10 @@ STEPS = [
      "Совет_директоров_накопители.pptx"),
     ("one-pager (pdf)", [PY, "showcase/build_onepager.py"],
      "Резюме_программы_одна_страница.pdf"),
+    # Same report as the .docx above, typeset instead of converted: Typst does
+    # the line breaking here, so the justified Russian text is final.
+    ("whitepaper (typst pdf)", [PY, "showcase/build_whitepaper_pdf.py"],
+     "Модернизация_сети_накопителей.pdf"),
 ]
 
 GREEN, RED, DIM, RESET = "\033[32m", "\033[31m", "\033[2m", "\033[0m"
