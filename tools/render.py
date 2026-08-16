@@ -64,11 +64,12 @@ def _run_node(script: str, *args: str) -> None:
 
 
 def html_to_pdf(html_path: Path, pdf_path: Path, landscape: bool = False,
-                page_size: str = "A4", margin: str = "18mm") -> Path:
+                page_size: str = "A4", margin: str = "18mm",
+                prefer_css_page: bool = False) -> Path:
     script = """
     const { launch } = require('./tools/js/chromium.js');
     // `node -e` puts the first user argument at argv[1], not argv[2].
-    const [htmlPath, pdfPath, landscape, format, margin] = process.argv.slice(1);
+    const [htmlPath, pdfPath, landscape, format, margin, preferCss] = process.argv.slice(1);
     (async () => {
       const browser = await launch();
       try {
@@ -80,7 +81,12 @@ def html_to_pdf(html_path: Path, pdf_path: Path, landscape: bool = False,
           landscape: landscape === 'true',
           margin: { top: margin, bottom: margin, left: margin, right: margin },
         };
-        if (format.includes('x')) {
+        if (preferCss === 'true') {
+          // The document supplied its own @page size and margins; overriding
+          // them here is what made every preview look like generic A4.
+          opts.preferCSSPageSize = true;
+          opts.margin = { top: '0', bottom: '0', left: '0', right: '0' };
+        } else if (format.includes('x')) {
           const [w, h] = format.split('x');
           opts.width = w; opts.height = h;
           opts.margin = { top: '0', bottom: '0', left: '0', right: '0' };
@@ -90,7 +96,8 @@ def html_to_pdf(html_path: Path, pdf_path: Path, landscape: bool = False,
     })().catch(e => { console.error(e.message); process.exit(1); });
     """
     _run_node(script, str(html_path.resolve()), str(pdf_path.resolve()),
-              "true" if landscape else "false", page_size, margin)
+              "true" if landscape else "false", page_size, margin,
+              "true" if prefer_css_page else "false")
     return pdf_path
 
 
@@ -146,9 +153,98 @@ def from_markdown(src: Path, work: Path) -> tuple[Path, dict]:
     return page, {}
 
 
+def _docx_page_setup(src: Path) -> dict:
+    """
+    Read real page geometry and typography out of the .docx.
+
+    The preview used to impose preview.css (A4, 18 mm, Inter) on every
+    document regardless of what the file said. That made it useless for
+    reviewing layout: a report with ГОСТ 30/10/20/20 mm margins in Times 14 pt
+    previewed as something else entirely, so margin and font defects were
+    invisible here and only showed up in Word.
+    """
+    import zipfile
+
+    dxa = 1440.0  # twips per inch
+    setup = {
+        "width_in": 8.27, "height_in": 11.69,
+        "top_in": 0.79, "right_in": 0.79, "bottom_in": 0.79, "left_in": 0.79,
+        "font": None, "size_pt": None, "line": None,
+        "first_line_in": None, "hyphenate": False,
+    }
+    try:
+        with zipfile.ZipFile(src) as z:
+            names = z.namelist()
+            if "word/document.xml" not in names:
+                return setup
+            doc = z.read("word/document.xml").decode("utf-8", "replace")
+            sect = re.search(r"<w:sectPr.*?</w:sectPr>", doc, re.S)
+            if sect:
+                size = re.search(r"<w:pgSz([^/]*)/>", sect.group(0))
+                if size:
+                    attrs = dict(re.findall(r'w:(\w+)="(\d+)"', size.group(1)))
+                    if "w" in attrs and "h" in attrs:
+                        setup["width_in"] = int(attrs["w"]) / dxa
+                        setup["height_in"] = int(attrs["h"]) / dxa
+                mar = re.search(r"<w:pgMar([^/]*)/>", sect.group(0))
+                if mar:
+                    attrs = dict(re.findall(r'w:(\w+)="(-?\d+)"', mar.group(1)))
+                    for side in ("top", "right", "bottom", "left"):
+                        if side in attrs:
+                            setup[f"{side}_in"] = abs(int(attrs[side])) / dxa
+
+            if "word/settings.xml" in names:
+                st = z.read("word/settings.xml").decode("utf-8", "replace")
+                setup["hyphenate"] = bool(re.search(r"<w:autoHyphenation", st))
+
+            if "word/styles.xml" in names:
+                styles = z.read("word/styles.xml").decode("utf-8", "replace")
+                normal = re.search(
+                    r'<w:style [^>]*w:styleId="Normal".*?</w:style>', styles, re.S
+                )
+                default = re.search(r"<w:docDefaults>.*?</w:docDefaults>", styles, re.S)
+                for block in (normal, default):
+                    if not block:
+                        continue
+                    text = block.group(0)
+                    if setup["font"] is None:
+                        font = re.search(r'w:ascii="([^"]+)"', text)
+                        if font:
+                            setup["font"] = font.group(1)
+                    if setup["size_pt"] is None:
+                        size = re.search(r'<w:sz w:val="(\d+)"', text)
+                        if size:
+                            setup["size_pt"] = int(size.group(1)) / 2
+                    if setup["line"] is None:
+                        line = re.search(r'w:line="(\d+)"', text)
+                        if line:
+                            setup["line"] = int(line.group(1)) / 240
+
+            # Body indent and font are most reliably sampled from the document
+            # itself: docx-js writes them per paragraph, not into Normal.
+            first = re.search(r'w:firstLine="(\d+)"', doc)
+            if first:
+                setup["first_line_in"] = int(first.group(1)) / dxa
+            if setup["font"] is None:
+                font = re.search(r'w:ascii="([^"]+)"', doc)
+                if font:
+                    setup["font"] = font.group(1)
+            if setup["size_pt"] is None:
+                size = re.search(r'<w:sz w:val="(\d+)"', doc)
+                if size:
+                    setup["size_pt"] = int(size.group(1)) / 2
+            if setup["line"] is None:
+                line = re.search(r'w:line="(\d+)"', doc)
+                if line:
+                    setup["line"] = int(line.group(1)) / 240
+    except Exception:
+        pass
+    return setup
+
+
 def from_docx(src: Path, work: Path) -> tuple[Path, dict]:
     """
-    docx -> HTML via pandoc.
+    docx -> HTML via pandoc, laid out with the document's OWN page setup.
 
     Note --standalone: a paragraph in Word's `Title` style becomes pandoc
     document metadata, which is emitted in a <header> block that only exists in
@@ -165,9 +261,79 @@ def from_docx(src: Path, work: Path) -> tuple[Path, dict]:
     )
     match = re.search(r"<body[^>]*>(.*)</body>", full, re.S)
     body = match.group(1) if match else full
+
+    ps = _docx_page_setup(src)
+    font = ps["font"] or "PT Serif"
+    size_pt = ps["size_pt"] or 11
+    line = ps["line"] or 1.4
+    indent = ps["first_line_in"]
+    # Word hyphenates justified text; a browser will not unless told to, and
+    # without it Russian justified text opens rivers of white space.
+    hyphens = "auto" if ps["hyphenate"] else "manual"
+
+    css = f"""
+@page {{
+  size: {ps['width_in']:.3f}in {ps['height_in']:.3f}in;
+  margin: {ps['top_in']:.3f}in {ps['right_in']:.3f}in {ps['bottom_in']:.3f}in {ps['left_in']:.3f}in;
+}}
+html {{ -webkit-print-color-adjust: exact; }}
+body {{
+  font-family: "{font}", "PT Serif", serif;
+  font-size: {size_pt}pt;
+  line-height: {line:.2f};
+  color: #000;
+  text-align: justify;
+  hyphens: {hyphens};
+  -webkit-hyphens: {hyphens};
+  margin: 0;
+}}
+p {{ margin: 0; {f'text-indent: {indent:.3f}in;' if indent else ''} }}
+h1, h2, h3, h4 {{
+  font-family: "{font}", "PT Serif", serif;
+  font-size: {size_pt}pt;
+  font-weight: bold;
+  color: #000;
+  text-align: left;
+  {f'text-indent: {indent:.3f}in;' if indent else ''}
+  margin: {line * 0.75:.2f}em 0 {line * 0.5:.2f}em;
+  page-break-after: avoid;
+}}
+table {{
+  border-collapse: collapse;
+  width: 100%;
+  font-size: {max(size_pt - 2, 8)}pt;
+  margin: 0.4em 0;
+  page-break-inside: avoid;
+}}
+th, td {{ border: 1px solid #000; padding: 3pt 5pt; text-align: left; }}
+th {{ background: #f2f2f2; font-weight: bold; text-align: center; }}
+img {{ max-width: 100%; }}
+figure {{ margin: 0.6em 0; text-align: center; page-break-inside: avoid; }}
+figcaption {{ font-size: {max(size_pt - 2, 8)}pt; text-align: center; }}
+ol, ul {{ margin: 0; padding-left: {(indent or 0.35) + 0.25:.3f}in; }}
+li {{ text-align: justify; padding-left: 0; }}
+li::marker {{ font-family: "{font}", serif; }}
+a {{ color: #0563C1; }}
+"""
     page = work / "input.html"
-    page.write_text(_wrap_html(body, src.stem), encoding="utf-8")
-    return page, {}
+    # base_css=False: preview.css would re-impose A4/18mm/Inter over the real
+    # geometry we just recovered.
+    page.write_text(
+        _wrap_html(body, src.stem, extra_css=css, base_css=False),
+        encoding="utf-8",
+    )
+    return page, {
+        # css_page: the @page rule above already carries size AND margins, so
+        # page.pdf() must not impose its own — see the A4 note in _wrap_html.
+        "css_page": True,
+        "page_in": f"{ps['width_in']:.2f}x{ps['height_in']:.2f}",
+        "margins_mm": (
+            f"{ps['left_in'] * 25.4:.0f}/{ps['right_in'] * 25.4:.0f}/"
+            f"{ps['top_in'] * 25.4:.0f}/{ps['bottom_in'] * 25.4:.0f}"
+        ),
+        "font": f"{font} {size_pt}pt",
+        "hyphenation": ps["hyphenate"],
+    }
 
 
 def from_xlsx(src: Path, work: Path) -> tuple[Path, dict]:
@@ -486,6 +652,8 @@ def main() -> int:
                 page, pdf_path,
                 landscape=bool(meta.get("landscape")),
                 page_size=meta.get("page_size", "A4"),
+                margin="0" if meta.get("css_page") else "18mm",
+                prefer_css_page=bool(meta.get("css_page")),
             )
         else:
             _fail(f"unsupported format: {suffix}")

@@ -55,6 +55,24 @@ explains every unusual choice below.
 | Tesseract | OCR of scanned PDFs | **nothing** — say so rather than returning empty text |
 | Cyrillic-capable UI fonts | any Russian document | merged TTFs via `tools/install_fonts.py` |
 
+## The preview must show the document, not a generic page
+
+Without LibreOffice, `tools/render.py` converts a document to HTML and prints
+it with Chromium. The trap: it used to apply `assets/preview.css` — A4, 18 mm
+margins, Inter — to *every* file, and passed `format: 'A4'` to `page.pdf()`.
+Both silently overrode whatever the document itself specified, so the preview
+looked plausible while the real file was wrong. Margin, font-size, leading and
+whitespace defects were invisible until the `.docx` was opened in Word.
+
+`from_docx()` now reads the actual geometry out of the file — `w:pgSz`,
+`w:pgMar`, `w:autoHyphenation`, and the font, size, `w:line` and `w:firstLine`
+from `styles.xml` — builds an `@page` rule from it, and sets `hyphens: auto`
+to match Word's line breaking. `page.pdf()` is then told
+`preferCSSPageSize: true` with zero margins so it cannot override that rule.
+
+**A preview you cannot trust is worse than no preview.** If a rendered page
+disagrees with what Word shows, fix the renderer before touching the document.
+
 ## The three problems worth knowing about
 
 ### 1. Chromium will not start on its own

@@ -519,6 +519,84 @@ def test_gost_layout(tmp: Path) -> None:
         assert pair == {11906, 16838}, f"section {i}: not A4 ({pair})"
 
 
+@check("justified Russian text has hyphenation")
+def test_hyphenation(tmp: Path) -> None:
+    """
+    Justification without automatic hyphenation is what produced the rivers of
+    whitespace the document was rejected for. In Russian the two settings are a
+    pair: never ship one without the other.
+    """
+    doc_path = REPO / "showcase" / "out" / "Модернизация_сети_накопителей.docx"
+    if not doc_path.is_file():
+        raise SkipTest("showcase not built — run showcase/build_all.py")
+
+    import re
+
+    with zipfile.ZipFile(doc_path) as z:
+        settings = z.read("word/settings.xml").decode()
+        doc = z.read("word/document.xml").decode()
+
+    assert re.search(r'<w:autoHyphenation[^>]*/>', settings), (
+        "autoHyphenation missing — justified Russian text will show whitespace rivers"
+    )
+    justified = len(re.findall(r'<w:jc w:val="both"/>', doc))
+    assert justified >= 25, f"only {justified} justified paragraphs — body lost its ГОСТ alignment"
+
+
+@check("list numbers sit on the ГОСТ indent")
+def test_list_indents(tmp: Path) -> None:
+    """
+    The number belongs on the 1.25 cm red line with its text a normal gap
+    after it. A hanging indent equal to the full indent threw the text far to
+    the right, which is what made the lists look broken in Word.
+    """
+    doc_path = REPO / "showcase" / "out" / "Модернизация_сети_накопителей.docx"
+    if not doc_path.is_file():
+        raise SkipTest("showcase not built — run showcase/build_all.py")
+
+    import re
+
+    with zipfile.ZipFile(doc_path) as z:
+        numbering = z.read("word/numbering.xml").decode()
+
+    indent = round(12.5 * 1440 / 25.4)  # 709 dxa = 1,25 см
+    seen = 0
+    for lvl in re.findall(r"<w:lvl .*?</w:lvl>", numbering, re.S):
+        text = re.search(r'<w:lvlText w:val="([^"]*)"', lvl)
+        ind = re.search(r"<w:ind([^/]*)/>", lvl)
+        if not (text and ind) or text.group(1) not in ("%1)", "—"):
+            continue
+        attrs = {k: int(v) for k, v in re.findall(r'w:(\w+)="(\d+)"', ind.group(1))}
+        marker = attrs.get("left", 0) - attrs.get("hanging", 0)
+        assert marker == indent, (
+            f"list marker {text.group(1)!r} starts at {marker} dxa, expected {indent}"
+        )
+        gap = attrs.get("hanging", 0)
+        assert 0 < gap <= 400, f"marker-to-text gap {gap} dxa is too wide"
+        seen += 1
+    assert seen, "no ГОСТ list levels found in numbering.xml"
+
+
+@check("checkboxes render a real glyph")
+def test_checkbox_glyphs(tmp: Path) -> None:
+    """
+    docx v9's CheckBox() emits an <w:sdt> with no run inside, so Word draws
+    nothing at all. Literal ☒/☐ runs in a symbol font are what actually show up.
+    """
+    doc_path = REPO / "showcase" / "out" / "Модернизация_сети_накопителей.docx"
+    if not doc_path.is_file():
+        raise SkipTest("showcase not built — run showcase/build_all.py")
+
+    import re
+
+    with zipfile.ZipFile(doc_path) as z:
+        doc = z.read("word/document.xml").decode()
+
+    glyphs = re.findall(r"[\u2610\u2612]", doc)
+    assert len(glyphs) >= 4, f"expected 4 checkbox glyphs, found {len(glyphs)}"
+    assert "w14:checkbox" not in doc, "empty CheckBox SDT still present — renders blank in Word"
+
+
 @check("setup --check passes")
 def test_setup_check(tmp: Path) -> None:
     proc = run(["bash", REPO / "tools" / "setup.sh", "--check"])

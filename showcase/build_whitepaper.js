@@ -34,7 +34,7 @@ const {
   FootnoteReferenceRun, CommentRangeStart, CommentRangeEnd, CommentReference,
   InsertedTextRun, DeletedTextRun, Bookmark, InternalHyperlink, ExternalHyperlink,
   Math: OMath, MathRun, MathFraction, MathSum, MathSuperScript, MathRadical,
-  TabStopType, NumberFormat, HeightRule, CheckBox,
+  TabStopType, NumberFormat, HeightRule,
 } = require('docx');
 const { fixDocx } = require('../tools/js/docx_fix.js');
 const fs = require('fs');
@@ -71,6 +71,15 @@ const SERIF = 'Tinos';
 
 /** Body run: Times-compatible, 14 pt, black. */
 const t = (text, o = {}) => new TextRun({ text, font: SERIF, size: BODY_PT, color: INK, ...o });
+
+// docx CheckBox() renders an empty SDT in Word — use literal glyphs instead.
+// Tinos lacks U+2610/U+2612, so these runs carry their own symbol font.
+const checkbox = (checked) => new TextRun({
+  text: checked ? '\u2612' : '\u2610',
+  font: { ascii: 'Segoe UI Symbol', hAnsi: 'Segoe UI Symbol', cs: 'Segoe UI Symbol' },
+  size: BODY_PT,
+  color: INK,
+});
 
 /** Body paragraph: justified, first-line indent, 1.5 spacing, no extra gaps. */
 const body = (text, o = {}) => new Paragraph({
@@ -383,8 +392,12 @@ const doc = new Document({
   title: 'Аналитический отчёт о целесообразности модернизации сети накопителей энергии',
   description: 'Оценка инвестиционной программы на 2026–2030 годы',
   // Word only refreshes field results (TOC, PAGE) when told to. Without this
-  // the contents page opens blank — exactly the defect reported.
+  // the contents page opens blank.
   features: { updateFields: true },
+  // Justified Russian text without hyphenation tears holes between words:
+  // «Совет   директоров   рассматривает». ГОСТ requires выравнивание по
+  // ширине, so hyphenation is not optional, it is the other half of it.
+  hyphenation: { autoHyphenation: true, hyphenationZone: 357 },
   footnotes: {
     1: { children: [new Paragraph({ children: [new TextRun({ text: 'Прогноз построен на консенсусе трёх независимых отраслевых обзоров за II квартал 2026 года.', font: SERIF, size: NOTE_PT })] })] },
     2: { children: [new Paragraph({ children: [new TextRun({ text: 'Среднегодовой темп роста (CAGR) рассчитан по формуле сложного процента.', font: SERIF, size: NOTE_PT })] })] },
@@ -406,18 +419,33 @@ const doc = new Document({
   },
   numbering: {
     config: [
+      // ГОСТ: перечисление начинается с абзацного отступа 1,25 см, текст
+      // выравнивается по ширине как и основной. hanging = INDENT ставит номер
+      // ровно на красную строку, а текст — на левое поле, без второй ступени.
       {
         reference: 'gost-list',
         levels: [
           {
             level: 0, format: LevelFormat.DECIMAL, text: '%1)',
             alignment: AlignmentType.LEFT,
-            style: { paragraph: { indent: { left: INDENT + 400, hanging: 400 } } },
+            style: {
+              paragraph: {
+                indent: { left: INDENT + 360, hanging: 360 },
+                alignment: AlignmentType.JUSTIFIED,
+                spacing: { line: LINE, before: 0, after: 0 },
+              },
+            },
           },
           {
             level: 1, format: LevelFormat.LOWER_LETTER, text: '%2)',
             alignment: AlignmentType.LEFT,
-            style: { paragraph: { indent: { left: INDENT + 800, hanging: 400 } } },
+            style: {
+              paragraph: {
+                indent: { left: INDENT + 720, hanging: 360 },
+                alignment: AlignmentType.JUSTIFIED,
+                spacing: { line: LINE, before: 0, after: 0 },
+              },
+            },
           },
         ],
       },
@@ -426,7 +454,13 @@ const doc = new Document({
         levels: [{
           level: 0, format: LevelFormat.BULLET, text: '—',
           alignment: AlignmentType.LEFT,
-          style: { paragraph: { indent: { left: INDENT + 400, hanging: 400 } } },
+          style: {
+            paragraph: {
+              indent: { left: INDENT + 360, hanging: 360 },
+              alignment: AlignmentType.JUSTIFIED,
+              spacing: { line: LINE, before: 0, after: 0 },
+            },
+          },
         }],
       },
     ],
@@ -556,16 +590,19 @@ const doc = new Document({
         }),
         new Paragraph({
           numbering: { reference: 'gost-list', level: 0 },
+          alignment: AlignmentType.JUSTIFIED,
           spacing: { line: LINE },
           children: [t('программа экономически обоснована: NPV базового сценария составляет 83 млн рублей при ставке дисконтирования 12,1 %;')],
         }),
         new Paragraph({
           numbering: { reference: 'gost-list', level: 0 },
+          alignment: AlignmentType.JUSTIFIED,
           spacing: { line: LINE },
           children: [t('внутренняя норма доходности равна 13,6 %, что превышает стоимость капитала на 1,5 процентных пункта;')],
         }),
         new Paragraph({
           numbering: { reference: 'gost-list', level: 0 },
+          alignment: AlignmentType.JUSTIFIED,
           spacing: { line: LINE },
           children: [
             new CommentRangeStart(2),
@@ -576,6 +613,7 @@ const doc = new Document({
         }),
         new Paragraph({
           numbering: { reference: 'gost-list', level: 0 },
+          alignment: AlignmentType.JUSTIFIED,
           spacing: { line: LINE },
           children: [t('запас прочности невелик: отклонение темпа роста выручки или валовой маржи на 10 % уводит чистую приведённую стоимость в отрицательную область.')],
         }),
@@ -657,20 +695,20 @@ const doc = new Document({
         }),
         body('Состояние подготовительных мероприятий на дату составления отчёта:'),
         new Paragraph({
-          spacing: { line: LINE }, indent: { left: INDENT },
-          children: [new CheckBox({ checked: true }), t('  финансовая модель прошла независимую проверку;')],
+          spacing: { line: LINE }, indent: { firstLine: INDENT },
+          children: [checkbox(true), t('  финансовая модель прошла независимую проверку;')],
         }),
         new Paragraph({
-          spacing: { line: LINE }, indent: { left: INDENT },
-          children: [new CheckBox({ checked: true }), t('  технический аудит площадок завершён;')],
+          spacing: { line: LINE }, indent: { firstLine: INDENT },
+          children: [checkbox(true), t('  технический аудит площадок завершён;')],
         }),
         new Paragraph({
-          spacing: { line: LINE }, indent: { left: INDENT },
-          children: [new CheckBox({ checked: false }), t('  рамочный договор с поставщиком не подписан;')],
+          spacing: { line: LINE }, indent: { firstLine: INDENT },
+          children: [checkbox(false), t('  рамочный договор с поставщиком не подписан;')],
         }),
         new Paragraph({
-          spacing: { line: LINE }, indent: { left: INDENT },
-          children: [new CheckBox({ checked: false }), t('  решение кредитного комитета банка не получено.')],
+          spacing: { line: LINE }, indent: { firstLine: INDENT },
+          children: [checkbox(false), t('  решение кредитного комитета банка не получено.')],
         }),
 
         // ------------------------------------------------ 4 ЗАКЛЮЧЕНИЕ

@@ -85,6 +85,13 @@ inserts the missing style and adds the `outlineLvl` that docx-js also omits.
 - **Tables need widths in two places:** `columnWidths: [...]` on the `Table` *and* `width: { size, type: WidthType.DXA }` on every `TableCell`. Column widths must sum to the table width. `WidthType.PERCENTAGE` renders wrong in Google Docs.
 - **Shading:** `ShadingType.CLEAR` with a `fill`. `ShadingType.SOLID` renders as a black block.
 - **Lists:** use a `numbering` config. A literal `•` in the text gives you a bullet glyph with no indent behaviour, and doubles up if the style also bullets.
+- **List indents are `left` *minus* `hanging`.** The marker starts at
+  `left - hanging` and the text at `left`. Setting `hanging` equal to the full
+  paragraph indent parks the marker on the margin and throws the text a whole
+  1.25 cm away. For ГОСТ: `{ left: 1069, hanging: 360 }` puts the number on the
+  red line with a normal gap. **Alignment does not inherit from `numbering`** —
+  a numbered paragraph still needs its own `alignment: JUSTIFIED`, or it goes
+  left-aligned while the body around it stays justified.
 - **`\n` does nothing.** One `Paragraph` per line, always.
 - **`PageBreak` lives inside a `Paragraph`**, not beside one.
 - **`ImageRun` needs `type`** (`'png'`, `'jpg'`, …) or it throws.
@@ -100,6 +107,25 @@ inserts the missing style and adds the `outlineLvl` that docx-js also omits.
 - **`HeadingLevel.TITLE` becomes document *metadata* to pandoc**, not a heading.
   It renders correctly in Word, and `render.py` handles it, but a naive
   fragment conversion drops that line entirely.
+- **`CheckBox()` renders as nothing in Word.** docx v9 emits an `<w:sdt>` whose
+  `sdtContent` contains no run, so the box is invisible. Use a literal `☒`/`☐`
+  `TextRun` with an explicit symbol font (`Segoe UI Symbol`); most serif text
+  fonts, Tinos included, have no U+2610/U+2612.
+
+### Justification in Russian requires hyphenation
+
+`AlignmentType.JUSTIFIED` without automatic hyphenation stretches inter-word
+spaces into visible rivers of whitespace — Russian words are long, and this is
+the single most common reason a ГОСТ document is rejected on sight. They are a
+pair; never enable one alone:
+
+```js
+new Document({
+  hyphenation: { autoHyphenation: true, hyphenationZone: 357 },  // ≈6,3 мм
+  features: { updateFields: true },
+  ...
+})
+```
 
 ### Cyrillic
 
