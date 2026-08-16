@@ -6,7 +6,7 @@ deliverables — built to work in a sandbox with no apt, no LibreOffice, and no
 
 ```bash
 bash tools/setup.sh                      # install (idempotent, ~40s)
-.venv/bin/python tests/test_toolchain.py # 17 regression tests
+.venv/bin/python tests/test_toolchain.py # 19 regression tests
 ```
 
 ## Quick start
@@ -38,6 +38,7 @@ tools/          the toolchain
   install_fonts.py  build Cyrillic-capable TTFs
   js/chromium.js    headless browser that actually launches here
   js/docx_fix.js    repair docx-js output
+  js/pptx_fix.js    repair pptxgenjs chart axes
 examples/       worked examples, all verified in CI-style tests
 showcase/       four documents pushing the toolchain to its limits
 tests/          regression tests for every bug found during development
@@ -68,16 +69,18 @@ Full details, including everything the network blocks, in
 ## How far it goes
 
 [`showcase/`](showcase/README.md) builds four documents telling one case in four
-formats, with the same numbers in each. The Word file carries footnotes,
-threaded comments, tracked changes, OMML equations, a full-bleed cover and a
-landscape section; the workbook is six sheets of live formulas; the deck uses
+formats, with the same numbers in each. The Word report is formatted to
+ГОСТ Р 7.0.97-2016 and still carries footnotes, comments, tracked changes and
+OMML equations; the workbook is six sheets of live formulas; the deck uses
 native editable charts; the PDF is drawn to an exact millimetre grid.
 
-Building it surfaced three real toolchain bugs — fonts that silently lacked the
-ruble sign, `recalc.py` caching `#NAME?` over valid `SUBTOTAL` formulas, and
-`render.py` drawing every ellipse as a rectangle. All three are fixed and now
-have tests. That is the argument for building something demanding: the
-regression suite only covers what you have already tried to do.
+Building it surfaced five real toolchain bugs — fonts silently missing the ruble
+sign, `recalc.py` caching `#NAME?` over valid `SUBTOTAL` formulas, `render.py`
+drawing every ellipse as a rectangle, pptxgenjs referencing a chart axis it
+never defines (PowerPoint showed the slide blank), and a TOC that never
+refreshed because `updateFields` was unset. All five are fixed and covered by
+tests. Two of them were invisible in every preview and only appeared in the
+real Office app — which is the argument for building something demanding.
 
 ## Which skills, and why
 

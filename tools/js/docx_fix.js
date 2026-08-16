@@ -196,7 +196,7 @@ async function fixDocx(input, output = null) {
   return { changed, output: target };
 }
 
-module.exports = { fixDocx, patchStyles };
+module.exports = { fixDocx, patchStyles, readZip, writeZip };
 
 if (require.main === module) {
   const [, , input, output] = process.argv;

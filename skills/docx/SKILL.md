@@ -153,3 +153,42 @@ Checklist:
 5. Tables fit the page width; nothing runs into the margin.
 6. Every image renders (a missing image is a blank gap, not an error).
 7. Filename names the topic in the user's language — `Квартальный_отчёт.docx`, never `output.docx`. Do not leave `v1`/`final`/`draft2` variants in the output directory.
+
+
+## Word never refreshes fields by itself
+
+A `TableOfContents` is a *field instruction*, not text. Word computes it when
+the document asks to update fields on open — otherwise the contents page is
+blank, and so is every `PAGE`/`NUMPAGES` reference. Always set:
+
+```js
+new Document({ features: { updateFields: true }, /* ... */ })
+```
+
+Nothing in `validate.py` or the QA preview will tell you: pandoc renders the
+heading structure regardless, so the defect only appears in Word.
+
+## ГОСТ Р 7.0.97-2016 for official Russian documents
+
+If the document is official (отчёт, записка, приказ), the standard *is* the
+design spec — do not invent a layout:
+
+| | |
+|---|---|
+| поля | левое 30 мм, правое 10 мм, верхнее/нижнее 20 мм |
+| шрифт | Times New Roman 14 пт — use **Tinos**, metric-compatible and redistributable |
+| интервал | полуторный (`line: 360`) |
+| абзацный отступ | 1,25 см (`firstLine: 709`) |
+| выравнивание | по ширине |
+| нумерация | сквозная, арабская, снизу по центру, на титуле не печатается |
+| заголовки | с абзацного отступа, полужирные, без точки в конце, `keepNext` |
+| таблицы | «Таблица N — Название» **над** таблицей, слева |
+| рисунки | «Рисунок N — Название» **под** рисунком, по центру |
+| формулы | по центру, номер `(N)` у правого поля через правый таб-стоп |
+| приложения | отдельный раздел, «Приложение А» и «(справочное)» по центру |
+
+The title page is typographic, not decorative: организация сверху, гриф
+УТВЕРЖДАЮ, наименование документа прописными, город и год внизу. A background
+image on a ГОСТ cover is simply wrong.
+
+`showcase/build_whitepaper.js` is the worked reference.

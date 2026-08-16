@@ -38,6 +38,10 @@ FAMILIES = {
     "Inter": ("@fontsource/inter", "inter"),
     "PT Serif": ("@fontsource/pt-serif", "pt-serif"),
     "JetBrains Mono": ("@fontsource/jetbrains-mono", "jetbrains-mono"),
+    # Tinos is metric-compatible with Times New Roman, which ГОСТ Р 7.0.97-2016
+    # documents are expected to use. Times itself cannot be redistributed, and
+    # is not on npm; Tinos substitutes for it line-for-line.
+    "Tinos": ("@fontsource/tinos", "tinos"),
 }
 WEIGHTS = ["400", "700"]
 # latin-ext is not optional: the ruble sign ₽ (U+20BD) lives there, not in

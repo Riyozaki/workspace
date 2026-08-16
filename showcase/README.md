@@ -30,8 +30,13 @@ if any generator fails or any validation reports FAIL, so it is CI-safe.
 
 **Word** (`docx` npm + `tools/js/docx_fix.js`)
 
-- Cover image anchored to the page, behind text, no wrapping — a real
-  full-bleed background rather than an inline picture
+- Formatted to ГОСТ Р 7.0.97-2016 throughout: поля 30/10/20/20 мм, Tinos 14 пт
+  (метрически совместим с Times New Roman), полуторный интервал, абзацный
+  отступ 1,25 см, выравнивание по ширине
+- Typographic title page with гриф УТВЕРЖДАЮ — no decorative background, which
+  a ГОСТ cover does not have
+- `features: { updateFields: true }` so the TOC and page fields actually fill
+  in when Word opens the file
 - Four sections: cover (no numbering) → front matter (roman) → body (arabic,
   restarted) → landscape appendix, each with its own header and footer
 - Field-based `TableOfContents`, `PAGE`/`NUMPAGES` fields ("с. 3 из 9")
@@ -102,3 +107,11 @@ Three real defects, all fixed in the toolchain and covered by tests:
    now left uncached and reported as `left_to_excel`.
 3. **`render.py` drew every ellipse as a rectangle.** Risk bubbles and timeline
    dots looked square in QA previews, which is exactly what a reviewer judges.
+4. **pptxgenjs emitted a dangling series axis.** Every 2-D chart referenced axis
+   `2094734556`, which the library only defines for 3-D charts. PowerPoint
+   showed the slide blank or offered to repair the file, while LibreOffice and
+   the preview rendered it fine. Fixed by `tools/js/pptx_fix.js`, now mandatory
+   after every pptxgenjs write.
+5. **The TOC opened empty in Word.** `TableOfContents` is a field instruction;
+   without `features: { updateFields: true }` Word never computes it. Invisible
+   in every preview, because pandoc reads the heading structure directly.

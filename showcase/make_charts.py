@@ -29,8 +29,10 @@ plt.rcParams.update({
 
 def waterfall() -> Path:
     """EBITDA bridge — the classic 'why did the number move' chart."""
+    # Anchored to the workbook: EBITDA 2025 = 975, EBITDA 2026 = 1168 (see
+    # Прогноз P&L!B9). The bridge must reconcile, not merely look plausible.
     labels = ["EBITDA\n2025", "Объём", "Цена", "Себест.", "Опер.\nрасходы", "EBITDA\n2026"]
-    deltas = [412, 118, 74, -52, -31, None]
+    deltas = [975, 161, 96, -41, -23, None]
     fig, ax = plt.subplots(figsize=(9, 4.4))
 
     running = 0.0
@@ -57,11 +59,11 @@ def waterfall() -> Path:
     ax.set_xticks(range(len(labels)))
     ax.set_xticklabels(labels)
     ax.set_ylabel("млн ₽")
-    ax.set_title("Мостик EBITDA: с 2025 на 2026 год", fontsize=13, fontweight="bold",
+    ax.set_title("Факторное разложение изменения EBITDA", fontsize=13, fontweight="bold",
                  color=NAVY, pad=14, loc="left")
     ax.yaxis.grid(True, color=RULE, lw=0.8)
     ax.set_axisbelow(True)
-    ax.set_ylim(0, 620)
+    ax.set_ylim(0, 1400)
     fig.tight_layout()
     out = HERE / "assets" / "waterfall.png"
     fig.savefig(out, dpi=200)

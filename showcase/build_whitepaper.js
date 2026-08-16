@@ -1,16 +1,26 @@
 #!/usr/bin/env node
 /**
- * Showcase 1 of 4 — the hardest Word document this toolchain can produce.
+ * Showcase 1 of 4 — a Word report formatted to ГОСТ Р 7.0.97-2016.
  *
- * Everything here is a real OOXML feature, not a picture of one:
- *   - full-bleed cover image behind floating text (absolute positioning)
- *   - field-based TOC, page numbers, "Page X of Y", section restarts
- *   - portrait -> landscape -> portrait section flow
- *   - real footnotes, real threaded comments, real tracked changes
- *   - OMML equations (fraction, summation, radical, superscript)
- *   - vertically merged table cells, repeated header rows, zebra shading
- *   - internal bookmarks + cross-references, external hyperlinks
- *   - multilevel numbering, checkboxes, captioned figures
+ * The previous draft of this file was designed "freely" and it showed: wide
+ * uneven margins, a cover that relied on a background image, and a table of
+ * contents that opened empty. A serious Russian document is not a design
+ * exercise — it has a standard, and the standard is the specification.
+ *
+ * Applied here:
+ *   поля            левое 30 мм, правое 10 мм, верхнее и нижнее 20 мм
+ *   шрифт           Tinos 14 пт (метрически совместим с Times New Roman)
+ *   интервал        полуторный, абзацный отступ 1,25 см, выравнивание по ширине
+ *   заголовки       с абзацного отступа, без точки в конце, не переносятся
+ *   нумерация       сквозная, арабская, снизу по центру, на титуле не печатается
+ *   таблицы         «Таблица N — Название» над таблицей, по левому краю
+ *   рисунки         «Рисунок N — Название» под рисунком, по центру
+ *   формулы         по центру, номер в круглых скобках у правого поля
+ *   приложение      отдельный раздел, заголовок по центру
+ *
+ * Everything the toolchain can do is still exercised — footnotes, comments,
+ * tracked changes, OMML, merged cells, landscape appendix — but inside the
+ * standard rather than instead of it.
  *
  * Run from the repository root:
  *   node showcase/build_whitepaper.js
@@ -20,13 +30,11 @@ const {
   Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType,
   Table, TableRow, TableCell, WidthType, ShadingType, BorderStyle,
   Header, Footer, PageNumber, TableOfContents, PageBreak, LevelFormat,
-  ImageRun, TextWrappingType, HorizontalPositionRelativeFrom,
-  VerticalPositionRelativeFrom, HorizontalPositionAlign, VerticalPositionAlign,
-  SectionType, PageOrientation, VerticalMergeType, VerticalAlign,
+  ImageRun, SectionType, PageOrientation, VerticalMergeType, VerticalAlign,
   FootnoteReferenceRun, CommentRangeStart, CommentRangeEnd, CommentReference,
   InsertedTextRun, DeletedTextRun, Bookmark, InternalHyperlink, ExternalHyperlink,
   Math: OMath, MathRun, MathFraction, MathSum, MathSuperScript, MathRadical,
-  CheckBox, TabStopType, LeaderType, NumberFormat, HeightRule,
+  TabStopType, NumberFormat, HeightRule, CheckBox,
 } = require('docx');
 const { fixDocx } = require('../tools/js/docx_fix.js');
 const fs = require('fs');
@@ -35,34 +43,107 @@ const path = require('path');
 const HERE = __dirname;
 const ASSETS = path.join(HERE, 'assets');
 
-// ---------------------------------------------------------------- palette
-const INK = '1F2933';
-const NAVY = '1E2761';
-const ACCENT = '4A6FA5';
-const CORAL = 'B85042';
-const MUTED = '667085';
-const RULE = 'D5D9E0';
-const ZEBRA = 'F4F6FA';
+// ------------------------------------------------------------ ГОСТ metrics
+const MM = 1440 / 25.4;              // twips per millimetre
+const PAGE = { width: Math.round(210 * MM), height: Math.round(297 * MM) };
+const MARGIN = {
+  top: Math.round(20 * MM),          // 1134
+  right: Math.round(10 * MM),        // 567
+  bottom: Math.round(20 * MM),       // 1134
+  left: Math.round(30 * MM),         // 1701
+};
+const CONTENT_W = PAGE.width - MARGIN.left - MARGIN.right;   // 9638
+const INDENT = Math.round(12.5 * MM);                        // 709 = 1,25 см
+const LINE = 360;                                            // 1,5 интервала
+const BODY_PT = 28;                                          // 14 пт (half-points)
+const SMALL_PT = 24;                                         // 12 пт для таблиц
+const NOTE_PT = 20;                                          // 10 пт для сносок
 
-// A4 portrait in DXA (1440 per inch).
-const PAGE = { width: 11906, height: 16838 };
-const MARGIN = 1134; // 20 mm
-const CONTENT_W = PAGE.width - MARGIN * 2;
-// Landscape section swaps the axes; margins stay the same.
-const LAND_CONTENT_W = PAGE.height - MARGIN * 2;
+// Colour is used sparingly: ГОСТ expects black body text. Accents appear only
+// in table headers and rules, where the standard is silent.
+const INK = '000000';
+const NAVY = '1F3864';
+const MUTED = '595959';
+const RULE = 'BFBFBF';
+const ZEBRA = 'F2F2F2';
 
-const serif = (t, o = {}) => new TextRun({ text: t, font: 'PT Serif', size: 22, color: INK, ...o });
-const sans = (t, o = {}) => new TextRun({ text: t, font: 'Inter', size: 20, color: INK, ...o });
+const SERIF = 'Tinos';
 
-const body = (t, o = {}) => new Paragraph({
-  spacing: { after: 140, line: 300 },
+/** Body run: Times-compatible, 14 pt, black. */
+const t = (text, o = {}) => new TextRun({ text, font: SERIF, size: BODY_PT, color: INK, ...o });
+
+/** Body paragraph: justified, first-line indent, 1.5 spacing, no extra gaps. */
+const body = (text, o = {}) => new Paragraph({
   alignment: AlignmentType.JUSTIFIED,
-  children: [serif(t)],
+  indent: { firstLine: INDENT },
+  spacing: { line: LINE, before: 0, after: 0 },
+  children: typeof text === 'string' ? [t(text)] : text,
   ...o,
 });
 
-/** Table cell. Width must be set on the cell AND via columnWidths. */
-const cell = (children, { w, fill, align = AlignmentType.LEFT, span, vMerge, valign } = {}) =>
+/** Body paragraph built from runs (footnotes, tracked changes, comments). */
+const bodyRuns = (children, o = {}) => body(children, o);
+
+// ------------------------------------------------------------------ cover
+// ГОСТ: титульный лист не нумеруется, реквизиты выравниваются по центру,
+// наименование организации сверху, место и год — внизу. No background image:
+// a state-standard cover is typographic, not decorative.
+const centred = (text, o = {}) => new Paragraph({
+  alignment: AlignmentType.CENTER,
+  spacing: { line: LINE, before: 0, after: 0 },
+  children: [t(text, o)],
+});
+
+const blank = (count = 1) => Array.from({ length: count }, () => new Paragraph({
+  spacing: { line: LINE }, children: [t('')],
+}));
+
+const coverBlock = [
+  centred('АКЦИОНЕРНОЕ ОБЩЕСТВО «ЭНЕРГОСИСТЕМЫ СЕВЕРО-ЗАПАДА»', { bold: true }),
+  centred('Департамент стратегического развития'),
+  ...blank(6),
+  centred('УТВЕРЖДАЮ'),
+  new Paragraph({
+    alignment: AlignmentType.CENTER,
+    spacing: { line: LINE },
+    children: [t('Заместитель генерального директора')],
+  }),
+  new Paragraph({
+    alignment: AlignmentType.CENTER,
+    spacing: { line: LINE },
+    children: [t('________________ А. В. Соколов')],
+  }),
+  centred('«____» ____________ 2026 г.'),
+  ...blank(5),
+  centred('АНАЛИТИЧЕСКИЙ ОТЧЁТ', { bold: true }),
+  ...blank(1),
+  centred('О ЦЕЛЕСООБРАЗНОСТИ МОДЕРНИЗАЦИИ', { bold: true }),
+  centred('СЕТИ НАКОПИТЕЛЕЙ ЭНЕРГИИ', { bold: true }),
+  ...blank(1),
+  centred('на период 2026–2030 годов'),
+  ...blank(10),
+  new Paragraph({
+    alignment: AlignmentType.RIGHT,
+    spacing: { line: LINE },
+    children: [t('Руководитель департамента')],
+  }),
+  new Paragraph({
+    alignment: AlignmentType.RIGHT,
+    spacing: { line: LINE },
+    children: [t('________________ М. И. Дорохов')],
+  }),
+  ...blank(6),
+  centred('Псков'),
+  centred('2026'),
+];
+
+// ------------------------------------------------------------------ tables
+/**
+ * ГОСТ table cell: 12 pt inside tables is permitted when 14 pt does not fit,
+ * and it does not here. Header cells are bold on a light fill.
+ */
+const cell = (content, { w, bold = false, fill, align = AlignmentType.LEFT,
+  span, vMerge, valign = VerticalAlign.CENTER } = {}) =>
   new TableCell({
     width: { size: w, type: WidthType.DXA },
     columnSpan: span,
@@ -70,304 +151,45 @@ const cell = (children, { w, fill, align = AlignmentType.LEFT, span, vMerge, val
     verticalAlign: valign,
     // CLEAR + fill, never SOLID — SOLID renders as a solid black block.
     shading: fill ? { type: ShadingType.CLEAR, color: 'auto', fill } : undefined,
-    margins: { top: 90, bottom: 90, left: 130, right: 130 },
-    children: Array.isArray(children) ? children : [
-      new Paragraph({ alignment: align, children: [sans(String(children))] }),
-    ],
+    margins: { top: 60, bottom: 60, left: 108, right: 108 },
+    children: [new Paragraph({
+      alignment: align,
+      spacing: { line: 240, before: 0, after: 0 },  // single spacing in tables
+      children: [new TextRun({
+        text: String(content), font: SERIF, size: SMALL_PT, bold, color: INK,
+      })],
+    })],
   });
 
-const txtCell = (t, o = {}) => cell([
-  new Paragraph({
-    alignment: o.align || AlignmentType.LEFT,
-    children: [sans(String(t), { bold: o.bold, color: o.color, size: o.size })],
-  }),
-], o);
+const ALL_BORDERS = {
+  top: { style: BorderStyle.SINGLE, size: 4, color: INK },
+  bottom: { style: BorderStyle.SINGLE, size: 4, color: INK },
+  left: { style: BorderStyle.SINGLE, size: 4, color: INK },
+  right: { style: BorderStyle.SINGLE, size: 4, color: INK },
+  insideHorizontal: { style: BorderStyle.SINGLE, size: 4, color: INK },
+  insideVertical: { style: BorderStyle.SINGLE, size: 4, color: INK },
+};
 
-const caption = (t) => new Paragraph({
-  style: 'Caption',
-  spacing: { before: 80, after: 240 },
-  children: [new TextRun({ text: t, font: 'Inter', size: 17, color: MUTED, italics: true })],
+/** ГОСТ: «Таблица N — Название» над таблицей, с абзацного отступа, слева. */
+const tableCaption = (n, title) => new Paragraph({
+  alignment: AlignmentType.LEFT,
+  indent: { firstLine: INDENT },
+  spacing: { line: LINE, before: 240, after: 60 },
+  keepNext: true,
+  children: [t(`Таблица ${n} — ${title}`)],
 });
 
-const rule = () => new Paragraph({
-  spacing: { before: 60, after: 200 },
-  border: { bottom: { style: BorderStyle.SINGLE, size: 6, color: RULE } },
-  children: [],
-});
-
-// ------------------------------------------------------------------ cover
-// The image is anchored to the page, behind the text, with no wrapping —
-// that is what makes it full-bleed rather than an inline picture.
-const coverImage = new Paragraph({
-  frame: undefined,
-  children: [
-    new ImageRun({
-      type: 'png',
-      data: fs.readFileSync(path.join(ASSETS, 'cover-bg.png')),
-      transformation: { width: 595, height: 842 }, // A4 in points
-      floating: {
-        horizontalPosition: {
-          relative: HorizontalPositionRelativeFrom.PAGE,
-          align: HorizontalPositionAlign.CENTER,
-        },
-        verticalPosition: {
-          relative: VerticalPositionRelativeFrom.PAGE,
-          align: VerticalPositionAlign.CENTER,
-        },
-        wrap: { type: TextWrappingType.NONE },
-        behindDocument: true,
-        zIndex: 0,
-      },
-    }),
-  ],
-});
-
-const coverBlock = [
-  coverImage,
-  new Paragraph({ spacing: { before: 2600 }, children: [] }),
-  new Paragraph({
-    spacing: { after: 120 },
-    children: [new TextRun({
-      text: 'АНАЛИТИЧЕСКИЙ ОТЧЁТ',
-      font: 'Inter', size: 20, bold: true, color: 'CADCFC',
-      characterSpacing: 120,
-    })],
-  }),
-  new Paragraph({
-    heading: HeadingLevel.TITLE,
-    spacing: { after: 160 },
-    children: [new TextRun({
-      text: 'Модернизация сети накопителей энергии',
-      font: 'Inter', size: 52, bold: true, color: 'FFFFFF',
-    })],
-  }),
-  new Paragraph({
-    spacing: { after: 2400 },
-    children: [new TextRun({
-      text: 'Оценка инвестиционной программы на 2026–2030 годы',
-      font: 'PT Serif', size: 26, color: 'CADCFC',
-    })],
-  }),
-  new Paragraph({
-    children: [new TextRun({ text: 'Департамент стратегического развития', font: 'Inter', size: 19, color: 'CADCFC' })],
-  }),
-  new Paragraph({
-    children: [new TextRun({ text: '16 августа 2026 года · Конфиденциально', font: 'Inter', size: 19, color: 'CADCFC' })],
-  }),
-];
-
-// --------------------------------------------------------------- big table
-// Vertical merge: the "Сегмент" column spans several rows per group.
-const COLS = [
-  Math.round(CONTENT_W * 0.18), Math.round(CONTENT_W * 0.30),
-  Math.round(CONTENT_W * 0.13), Math.round(CONTENT_W * 0.13),
-  Math.round(CONTENT_W * 0.13), Math.round(CONTENT_W * 0.13),
-];
-
-const groups = [
-  ['Промышленный', [
-    ['Контейнерные накопители 2 МВт·ч', '1 240', '1 450', '+16,9', 'A'],
-    ['Модули быстрой зарядки', '860', '1 017', '+18,3', 'A'],
-    ['Сервисные контракты', '415', '458', '+10,4', 'B'],
-  ]],
-  ['Коммерческий', [
-    ['Системы для торговых центров', '640', '695', '+8,6', 'B'],
-    ['Резервное питание ЦОД', '1 105', '1 367', '+23,7', 'A'],
-  ]],
-  ['Розничный', [
-    ['Домашние накопители 10 кВт·ч', '298', '323', '+8,4', 'C'],
-  ]],
-];
-
-const headerRow = new TableRow({
-  tableHeader: true, // repeats on every page — mandatory for tables that break
-  height: { value: 560, rule: HeightRule.ATLEAST },
-  children: [
-    txtCell('Сегмент', { w: COLS[0], fill: NAVY, color: 'FFFFFF', bold: true, valign: VerticalAlign.CENTER }),
-    txtCell('Направление', { w: COLS[1], fill: NAVY, color: 'FFFFFF', bold: true, valign: VerticalAlign.CENTER }),
-    txtCell('2025', { w: COLS[2], fill: NAVY, color: 'FFFFFF', bold: true, align: AlignmentType.RIGHT, valign: VerticalAlign.CENTER }),
-    txtCell('2026П', { w: COLS[3], fill: NAVY, color: 'FFFFFF', bold: true, align: AlignmentType.RIGHT, valign: VerticalAlign.CENTER }),
-    txtCell('Δ, %', { w: COLS[4], fill: NAVY, color: 'FFFFFF', bold: true, align: AlignmentType.RIGHT, valign: VerticalAlign.CENTER }),
-    txtCell('Класс', { w: COLS[5], fill: NAVY, color: 'FFFFFF', bold: true, align: AlignmentType.CENTER, valign: VerticalAlign.CENTER }),
-  ],
-});
-
-const dataRows = [];
-let flat = 0;
-for (const [segment, items] of groups) {
-  items.forEach((row, idx) => {
-    const zebra = flat % 2 === 1 ? ZEBRA : undefined;
-    const cells = [];
-    // First row of the group owns the merged cell; the rest continue it.
-    cells.push(cell(
-      idx === 0
-        ? [new Paragraph({ children: [sans(segment, { bold: true, color: NAVY })] })]
-        : [new Paragraph({ children: [] })],
-      {
-        w: COLS[0],
-        fill: zebra,
-        vMerge: idx === 0 ? VerticalMergeType.RESTART : VerticalMergeType.CONTINUE,
-        valign: VerticalAlign.CENTER,
-      },
-    ));
-    cells.push(txtCell(row[0], { w: COLS[1], fill: zebra }));
-    cells.push(txtCell(row[1], { w: COLS[2], fill: zebra, align: AlignmentType.RIGHT }));
-    cells.push(txtCell(row[2], { w: COLS[3], fill: zebra, align: AlignmentType.RIGHT }));
-    cells.push(txtCell(row[3], { w: COLS[4], fill: zebra, align: AlignmentType.RIGHT, color: ACCENT }));
-    cells.push(txtCell(row[4], { w: COLS[5], fill: zebra, align: AlignmentType.CENTER }));
-    dataRows.push(new TableRow({ children: cells }));
-    flat += 1;
-  });
-}
-
-const totalRow = new TableRow({
-  children: [
-    cell([new Paragraph({ children: [sans('Итого', { bold: true, color: 'FFFFFF' })] })],
-      { w: COLS[0], fill: ACCENT, span: 2 }),
-    txtCell('4 558', { w: COLS[2], fill: ACCENT, color: 'FFFFFF', bold: true, align: AlignmentType.RIGHT }),
-    txtCell('5 310', { w: COLS[3], fill: ACCENT, color: 'FFFFFF', bold: true, align: AlignmentType.RIGHT }),
-    txtCell('+16,5', { w: COLS[4], fill: ACCENT, color: 'FFFFFF', bold: true, align: AlignmentType.RIGHT }),
-    txtCell('—', { w: COLS[5], fill: ACCENT, color: 'FFFFFF', bold: true, align: AlignmentType.CENTER }),
-  ],
-});
-
-const revenueTable = new Table({
-  columnWidths: COLS,
-  width: { size: CONTENT_W, type: WidthType.DXA },
-  borders: {
-    top: { style: BorderStyle.SINGLE, size: 2, color: RULE },
-    bottom: { style: BorderStyle.SINGLE, size: 2, color: RULE },
-    left: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
-    right: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
-    insideHorizontal: { style: BorderStyle.SINGLE, size: 2, color: RULE },
-    insideVertical: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
-  },
-  rows: [headerRow, ...dataRows, totalRow],
-});
-
-// ------------------------------------------------------------- landscape
-const LCOLS = [
-  Math.round(LAND_CONTENT_W * 0.22), Math.round(LAND_CONTENT_W * 0.13),
-  Math.round(LAND_CONTENT_W * 0.13), Math.round(LAND_CONTENT_W * 0.13),
-  Math.round(LAND_CONTENT_W * 0.13), Math.round(LAND_CONTENT_W * 0.13),
-  Math.round(LAND_CONTENT_W * 0.13),
-];
-const scenarioRows = [
-  ['Показатель', '2026', '2027', '2028', '2029', '2030', 'CAGR'],
-  ['Выручка, млн ₽', '5 310', '6 186', '7 207', '8 396', '9 781', '16,5 %'],
-  ['EBITDA, млн ₽', '1 168', '1 398', '1 672', '1 998', '2 387', '19,5 %'],
-  ['Рентабельность EBITDA', '22,0 %', '22,6 %', '23,2 %', '23,8 %', '24,4 %', '—'],
-  ['Капитальные затраты, млн ₽', '980', '1 020', '890', '760', '640', '−10,1 %'],
-  ['Свободный денежный поток', '−104', '218', '641', '1 084', '1 542', '—'],
-  ['Чистый долг / EBITDA', '2,4×', '2,0×', '1,5×', '1,0×', '0,6×', '—'],
-];
-
-const scenarioTable = new Table({
-  columnWidths: LCOLS,
-  width: { size: LAND_CONTENT_W, type: WidthType.DXA },
-  borders: {
-    top: { style: BorderStyle.SINGLE, size: 2, color: RULE },
-    bottom: { style: BorderStyle.SINGLE, size: 2, color: RULE },
-    left: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
-    right: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
-    insideHorizontal: { style: BorderStyle.SINGLE, size: 2, color: RULE },
-    insideVertical: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
-  },
-  rows: scenarioRows.map((r, i) => new TableRow({
-    tableHeader: i === 0,
-    children: r.map((v, j) => txtCell(v, {
-      w: LCOLS[j],
-      fill: i === 0 ? NAVY : (i % 2 === 0 ? ZEBRA : undefined),
-      color: i === 0 ? 'FFFFFF' : (j === 6 && i > 0 ? ACCENT : INK),
-      bold: i === 0 || j === 0,
-      align: j === 0 ? AlignmentType.LEFT : AlignmentType.RIGHT,
-    })),
-  })),
-});
-
-// ------------------------------------------------------------------ math
-const equationNPV = new Paragraph({
+/** ГОСТ: «Рисунок N — Название» под рисунком, по центру. */
+const figureCaption = (n, title) => new Paragraph({
   alignment: AlignmentType.CENTER,
-  spacing: { before: 200, after: 120 },
-  children: [
-    new OMath({
-      children: [
-        new MathRun('NPV = '),
-        new MathSum({
-          children: [new MathFraction({
-            numerator: [new MathRun('CF'), new MathRun('t')],
-            denominator: [
-              new MathSuperScript({
-                children: [new MathRun('(1 + r)')],
-                superScript: [new MathRun('t')],
-              }),
-            ],
-          })],
-          subScript: [new MathRun('t = 1')],
-          superScript: [new MathRun('n')],
-        }),
-        new MathRun(' − '),
-        new MathRun('C'),
-        new MathRun('0'),
-      ],
-    }),
-  ],
+  spacing: { line: LINE, before: 120, after: 240 },
+  children: [t(`Рисунок ${n} — ${title}`)],
 });
 
-const equationWACC = new Paragraph({
-  alignment: AlignmentType.CENTER,
-  spacing: { before: 120, after: 120 },
-  children: [
-    new OMath({
-      children: [
-        new MathRun('WACC = '),
-        new MathFraction({ numerator: [new MathRun('E')], denominator: [new MathRun('V')] }),
-        new MathRun(' · k'),
-        new MathRun('e'),
-        new MathRun(' + '),
-        new MathFraction({ numerator: [new MathRun('D')], denominator: [new MathRun('V')] }),
-        new MathRun(' · k'),
-        new MathRun('d'),
-        new MathRun(' · (1 − T)'),
-      ],
-    }),
-  ],
-});
-
-const equationSigma = new Paragraph({
-  alignment: AlignmentType.CENTER,
-  spacing: { before: 120, after: 200 },
-  children: [
-    new OMath({
-      children: [
-        new MathRun('σ = '),
-        new MathRadical({
-          children: [
-            new MathFraction({
-              numerator: [new MathRun('1')],
-              denominator: [new MathRun('n − 1')],
-            }),
-            new MathSum({
-              children: [
-                new MathSuperScript({
-                  children: [new MathRun('(x − μ)')],
-                  superScript: [new MathRun('2')],
-                }),
-              ],
-              subScript: [new MathRun('i = 1')],
-              superScript: [new MathRun('n')],
-            }),
-          ],
-        }),
-      ],
-    }),
-  ],
-});
-
-// ----------------------------------------------------------------- images
 const figure = (file, widthPt, heightPt) => new Paragraph({
   alignment: AlignmentType.CENTER,
-  spacing: { before: 160, after: 40 },
+  spacing: { line: LINE, before: 240, after: 0 },
+  keepNext: true,
   children: [new ImageRun({
     type: 'png',
     data: fs.readFileSync(path.join(ASSETS, file)),
@@ -375,352 +197,558 @@ const figure = (file, widthPt, heightPt) => new Paragraph({
   })],
 });
 
+/**
+ * ГОСТ: формула по центру, её номер в круглых скобках у правого поля.
+ * A right tab stop at the content edge is what puts the number there.
+ */
+const equation = (children, number) => new Paragraph({
+  alignment: AlignmentType.LEFT,
+  spacing: { line: LINE, before: 240, after: 240 },
+  tabStops: [
+    { type: TabStopType.CENTER, position: Math.round(CONTENT_W / 2) },
+    { type: TabStopType.RIGHT, position: CONTENT_W },
+  ],
+  children: [
+    new TextRun({ text: '\t', font: SERIF, size: BODY_PT }),
+    new OMath({ children }),
+    new TextRun({ text: `\t(${number})`, font: SERIF, size: BODY_PT, color: INK }),
+  ],
+});
+
+// ------------------------------------------------------- таблица 1: выручка
+const COLS = [
+  Math.round(CONTENT_W * 0.20), Math.round(CONTENT_W * 0.30),
+  Math.round(CONTENT_W * 0.13), Math.round(CONTENT_W * 0.13),
+  Math.round(CONTENT_W * 0.12), Math.round(CONTENT_W * 0.12),
+];
+
+const groups = [
+  ['Промышленный', [
+    ['Контейнерные накопители 2 МВт·ч', '1\u00a0240', '1\u00a0450', '+16,9', 'A'],
+    ['Модули быстрой зарядки', '860', '1\u00a0017', '+18,3', 'A'],
+    ['Сервисные контракты', '415', '458', '+10,4', 'B'],
+  ]],
+  ['Коммерческий', [
+    ['Системы для торговых центров', '640', '695', '+8,6', 'B'],
+    ['Резервное питание ЦОД', '1\u00a0105', '1\u00a0367', '+23,7', 'A'],
+  ]],
+  ['Розничный', [
+    ['Домашние накопители 10 кВт·ч', '298', '323', '+8,4', 'C'],
+  ]],
+];
+
+const headerRow = new TableRow({
+  tableHeader: true,   // повторять на каждой странице
+  height: { value: 400, rule: HeightRule.ATLEAST },
+  children: [
+    cell('Сегмент', { w: COLS[0], bold: true, fill: ZEBRA, align: AlignmentType.CENTER }),
+    cell('Направление', { w: COLS[1], bold: true, fill: ZEBRA, align: AlignmentType.CENTER }),
+    cell('2025', { w: COLS[2], bold: true, fill: ZEBRA, align: AlignmentType.CENTER }),
+    cell('2026', { w: COLS[3], bold: true, fill: ZEBRA, align: AlignmentType.CENTER }),
+    cell('Прирост, %', { w: COLS[4], bold: true, fill: ZEBRA, align: AlignmentType.CENTER }),
+    cell('Класс', { w: COLS[5], bold: true, fill: ZEBRA, align: AlignmentType.CENTER }),
+  ],
+});
+
+const dataRows = [];
+for (const [segment, items] of groups) {
+  items.forEach((row, idx) => {
+    dataRows.push(new TableRow({
+      children: [
+        cell(idx === 0 ? segment : '', {
+          w: COLS[0],
+          vMerge: idx === 0 ? VerticalMergeType.RESTART : VerticalMergeType.CONTINUE,
+        }),
+        cell(row[0], { w: COLS[1] }),
+        cell(row[1], { w: COLS[2], align: AlignmentType.RIGHT }),
+        cell(row[2], { w: COLS[3], align: AlignmentType.RIGHT }),
+        cell(row[3], { w: COLS[4], align: AlignmentType.RIGHT }),
+        cell(row[4], { w: COLS[5], align: AlignmentType.CENTER }),
+      ],
+    }));
+  });
+}
+
+const totalRow = new TableRow({
+  children: [
+    cell('Итого', { w: COLS[0] + COLS[1], span: 2, bold: true }),
+    cell('4\u00a0558', { w: COLS[2], bold: true, align: AlignmentType.RIGHT }),
+    cell('5\u00a0310', { w: COLS[3], bold: true, align: AlignmentType.RIGHT }),
+    cell('+16,5', { w: COLS[4], bold: true, align: AlignmentType.RIGHT }),
+    cell('—', { w: COLS[5], bold: true, align: AlignmentType.CENTER }),
+  ],
+});
+
+const revenueTable = new Table({
+  columnWidths: COLS,
+  width: { size: CONTENT_W, type: WidthType.DXA },
+  borders: ALL_BORDERS,
+  rows: [headerRow, ...dataRows, totalRow],
+});
+
+// ------------------------------------------- таблица 2: прогноз (альбомная)
+const LAND_CONTENT_W = PAGE.height - MARGIN.left - MARGIN.right;
+const LCOLS = [
+  Math.round(LAND_CONTENT_W * 0.26), Math.round(LAND_CONTENT_W * 0.123),
+  Math.round(LAND_CONTENT_W * 0.123), Math.round(LAND_CONTENT_W * 0.123),
+  Math.round(LAND_CONTENT_W * 0.123), Math.round(LAND_CONTENT_W * 0.123),
+  Math.round(LAND_CONTENT_W * 0.125),
+];
+const scenarioRows = [
+  ['Показатель', '2026', '2027', '2028', '2029', '2030', 'CAGR'],
+  ['Выручка, млн руб.', '5\u00a0310', '6\u00a0186', '7\u00a0207', '8\u00a0396', '9\u00a0781', '16,5 %'],
+  ['EBITDA, млн руб.', '1\u00a0168', '1\u00a0398', '1\u00a0672', '1\u00a0998', '2\u00a0387', '19,5 %'],
+  ['Рентабельность EBITDA, %', '22,0', '22,6', '23,2', '23,8', '24,4', '—'],
+  ['Капитальные затраты, млн руб.', '980', '921', '866', '814', '765', '−6,0 %'],
+  ['Свободный денежный поток, млн руб.', '−84', '173', '459', '783', '1\u00a0150', '—'],
+  ['Дисконтированный поток, млн руб.', '−75', '137', '326', '495', '649', '—'],
+];
+
+const scenarioTable = new Table({
+  columnWidths: LCOLS,
+  width: { size: LAND_CONTENT_W, type: WidthType.DXA },
+  borders: ALL_BORDERS,
+  rows: scenarioRows.map((r, i) => new TableRow({
+    tableHeader: i === 0,
+    children: r.map((v, j) => cell(v, {
+      w: LCOLS[j],
+      bold: i === 0,
+      fill: i === 0 ? ZEBRA : undefined,
+      align: i === 0 ? AlignmentType.CENTER
+        : (j === 0 ? AlignmentType.LEFT : AlignmentType.RIGHT),
+    })),
+  })),
+});
+
+// ------------------------------------------------------------------- OMML
+const eqNPV = equation([
+  new MathRun('NPV = '),
+  new MathSum({
+    children: [new MathFraction({
+      numerator: [new MathRun('CF'), new MathRun('t')],
+      denominator: [new MathSuperScript({
+        children: [new MathRun('(1 + r)')],
+        superScript: [new MathRun('t')],
+      })],
+    })],
+    subScript: [new MathRun('t = 1')],
+    superScript: [new MathRun('n')],
+  }),
+  new MathRun(' − IC'),
+], 1);
+
+const eqWACC = equation([
+  new MathRun('WACC = '),
+  new MathFraction({ numerator: [new MathRun('E')], denominator: [new MathRun('V')] }),
+  new MathRun(' · k'),
+  new MathRun('e'),
+  new MathRun(' + '),
+  new MathFraction({ numerator: [new MathRun('D')], denominator: [new MathRun('V')] }),
+  new MathRun(' · k'),
+  new MathRun('d'),
+  new MathRun(' · (1 − T)'),
+], 2);
+
+const eqSigma = equation([
+  new MathRun('σ = '),
+  new MathRadical({
+    children: [
+      new MathFraction({
+        numerator: [new MathRun('1')],
+        denominator: [new MathRun('n − 1')],
+      }),
+      new MathSum({
+        children: [new MathSuperScript({
+          children: [new MathRun('(x − μ)')],
+          superScript: [new MathRun('2')],
+        })],
+        subScript: [new MathRun('i = 1')],
+        superScript: [new MathRun('n')],
+      }),
+    ],
+  }),
+], 3);
+
+/** Экспликация к формуле: «где X — расшифровка». */
+const where = (lines) => lines.map((line, i) => new Paragraph({
+  alignment: AlignmentType.JUSTIFIED,
+  indent: { firstLine: INDENT },
+  spacing: { line: LINE, before: 0, after: 0 },
+  children: [t((i === 0 ? 'где ' : '') + line)],
+}));
+
 // ------------------------------------------------------------------- doc
 const doc = new Document({
-  creator: 'Департамент стратегического развития',
-  title: 'Модернизация сети накопителей энергии',
+  creator: 'АО «Энергосистемы Северо-Запада», Департамент стратегического развития',
+  title: 'Аналитический отчёт о целесообразности модернизации сети накопителей энергии',
   description: 'Оценка инвестиционной программы на 2026–2030 годы',
-  // Footnotes are document-level, keyed by id; FootnoteReferenceRun(id) cites them.
+  // Word only refreshes field results (TOC, PAGE) when told to. Without this
+  // the contents page opens blank — exactly the defect reported.
+  features: { updateFields: true },
   footnotes: {
-    1: { children: [new Paragraph({ children: [serif('Прогноз построен на консенсусе трёх независимых отраслевых обзоров за II квартал 2026 года.', { size: 18 })] })] },
-    2: { children: [new Paragraph({ children: [serif('Здесь и далее — среднегодовой темп роста (CAGR) рассчитан по формуле сложного процента.', { size: 18 })] })] },
-    3: { children: [new Paragraph({ children: [serif('Ставка дисконтирования принята равной средневзвешенной стоимости капитала на дату оценки.', { size: 18 })] })] },
+    1: { children: [new Paragraph({ children: [new TextRun({ text: 'Прогноз построен на консенсусе трёх независимых отраслевых обзоров за II квартал 2026 года.', font: SERIF, size: NOTE_PT })] })] },
+    2: { children: [new Paragraph({ children: [new TextRun({ text: 'Среднегодовой темп роста (CAGR) рассчитан по формуле сложного процента.', font: SERIF, size: NOTE_PT })] })] },
+    3: { children: [new Paragraph({ children: [new TextRun({ text: 'Ставка дисконтирования принята равной средневзвешенной стоимости капитала на дату оценки.', font: SERIF, size: NOTE_PT })] })] },
   },
   comments: {
     children: [
       {
-        id: 1,
-        author: 'Финансовый контроль',
-        initials: 'ФК',
+        id: 1, author: 'Финансовый контроль', initials: 'ФК',
         date: new Date('2026-08-12T10:15:00Z'),
-        children: [new Paragraph({ children: [sans('Проверить с казначейством: ставка привлечения могла измениться после июльского пересмотра.', { size: 18 })] })],
+        children: [new Paragraph({ children: [new TextRun({ text: 'Проверить с казначейством: ставка привлечения могла измениться после июльского пересмотра.', font: SERIF, size: NOTE_PT })] })],
       },
       {
-        id: 2,
-        author: 'Технический директор',
-        initials: 'ТД',
+        id: 2, author: 'Технический директор', initials: 'ТД',
         date: new Date('2026-08-13T08:40:00Z'),
-        children: [new Paragraph({ children: [sans('Сроки поставки контейнеров реалистичны только при заключении рамочного договора до конца октября.', { size: 18 })] })],
+        children: [new Paragraph({ children: [new TextRun({ text: 'Сроки поставки реалистичны только при заключении рамочного договора до конца октября.', font: SERIF, size: NOTE_PT })] })],
       },
     ],
   },
   numbering: {
     config: [
       {
-        reference: 'bullets',
+        reference: 'gost-list',
         levels: [
-          { level: 0, format: LevelFormat.BULLET, text: '•', alignment: AlignmentType.LEFT,
-            style: { paragraph: { indent: { left: 420, hanging: 240 } } } },
-          { level: 1, format: LevelFormat.BULLET, text: '–', alignment: AlignmentType.LEFT,
-            style: { paragraph: { indent: { left: 840, hanging: 240 } } } },
+          {
+            level: 0, format: LevelFormat.DECIMAL, text: '%1)',
+            alignment: AlignmentType.LEFT,
+            style: { paragraph: { indent: { left: INDENT + 400, hanging: 400 } } },
+          },
+          {
+            level: 1, format: LevelFormat.LOWER_LETTER, text: '%2)',
+            alignment: AlignmentType.LEFT,
+            style: { paragraph: { indent: { left: INDENT + 800, hanging: 400 } } },
+          },
         ],
       },
       {
-        reference: 'legal',
-        levels: [
-          { level: 0, format: LevelFormat.DECIMAL, text: '%1.', alignment: AlignmentType.LEFT,
-            style: { paragraph: { indent: { left: 420, hanging: 420 } }, run: { bold: true, color: NAVY } } },
-          { level: 1, format: LevelFormat.DECIMAL, text: '%1.%2.', alignment: AlignmentType.LEFT,
-            style: { paragraph: { indent: { left: 900, hanging: 540 } } } },
-          { level: 2, format: LevelFormat.LOWER_LETTER, text: '%3)', alignment: AlignmentType.LEFT,
-            style: { paragraph: { indent: { left: 1360, hanging: 400 } } } },
-        ],
+        reference: 'dash-list',
+        levels: [{
+          level: 0, format: LevelFormat.BULLET, text: '—',
+          alignment: AlignmentType.LEFT,
+          style: { paragraph: { indent: { left: INDENT + 400, hanging: 400 } } },
+        }],
       },
     ],
   },
   styles: {
-    // Heading styles MUST go through styles.default.* — declarations in
-    // styles.paragraphStyles with id 'Heading1' are silently ignored.
+    // Heading styles MUST be set through styles.default.* — entries in
+    // styles.paragraphStyles with id 'Heading1' are silently ignored by docx-js.
     default: {
-      title: { run: { font: 'Inter', size: 52, bold: true, color: 'FFFFFF' },
-        paragraph: { spacing: { after: 160 } } },
-      heading1: { run: { font: 'Inter', size: 30, bold: true, color: NAVY },
-        paragraph: { spacing: { before: 360, after: 160 }, outlineLevel: 0 } },
-      heading2: { run: { font: 'Inter', size: 24, bold: true, color: ACCENT },
-        paragraph: { spacing: { before: 280, after: 120 }, outlineLevel: 1 } },
-      heading3: { run: { font: 'Inter', size: 21, bold: true, color: INK },
-        paragraph: { spacing: { before: 220, after: 100 }, outlineLevel: 2 } },
-      document: { run: { font: 'PT Serif', size: 22, color: INK } },
-    },
-    // Custom (non-heading) styles DO work here.
-    paragraphStyles: [
-      { id: 'Caption', name: 'Caption', basedOn: 'Normal', next: 'Normal',
-        run: { font: 'Inter', size: 17, italics: true, color: MUTED },
-        paragraph: { alignment: AlignmentType.CENTER, spacing: { after: 240 } } },
-      { id: 'Callout', name: 'Callout', basedOn: 'Normal', next: 'Normal',
-        run: { font: 'Inter', size: 21, color: NAVY },
+      document: {
+        run: { font: SERIF, size: BODY_PT, color: INK },
+        paragraph: { spacing: { line: LINE, before: 0, after: 0 } },
+      },
+      // ГОСТ: заголовки с абзацного отступа, полужирные, без точки в конце,
+      // не отрываются от последующего текста.
+      heading1: {
+        run: { font: SERIF, size: BODY_PT, bold: true, color: INK },
         paragraph: {
-          spacing: { before: 200, after: 200, line: 300 },
-          indent: { left: 340, right: 340 },
-          border: { left: { style: BorderStyle.SINGLE, size: 18, color: ACCENT, space: 18 } },
-        } },
-    ],
+          spacing: { line: LINE, before: 360, after: 240 },
+          indent: { firstLine: INDENT },
+          outlineLevel: 0, keepNext: true, keepLines: true,
+        },
+      },
+      heading2: {
+        run: { font: SERIF, size: BODY_PT, bold: true, color: INK },
+        paragraph: {
+          spacing: { line: LINE, before: 240, after: 180 },
+          indent: { firstLine: INDENT },
+          outlineLevel: 1, keepNext: true, keepLines: true,
+        },
+      },
+      heading3: {
+        run: { font: SERIF, size: BODY_PT, bold: true, color: INK },
+        paragraph: {
+          spacing: { line: LINE, before: 240, after: 180 },
+          indent: { firstLine: INDENT },
+          outlineLevel: 2, keepNext: true, keepLines: true,
+        },
+      },
+    },
   },
   sections: [
-    // ---- Section 1: cover, no header/footer, no page number ----
+    // ---- 1. Титульный лист: без колонтитулов и без номера ----
     {
       properties: {
-        page: {
-          size: { width: PAGE.width, height: PAGE.height },
-          margin: { top: MARGIN, right: MARGIN, bottom: MARGIN, left: MARGIN },
-        },
+        page: { size: { width: PAGE.width, height: PAGE.height }, margin: MARGIN },
         titlePage: true,
       },
       children: coverBlock,
     },
 
-    // ---- Section 2: front matter, roman numerals ----
+    // ---- 2. Содержание + основной текст, сквозная нумерация со 2-й стр. ----
     {
       properties: {
         type: SectionType.NEXT_PAGE,
         page: {
           size: { width: PAGE.width, height: PAGE.height },
-          margin: { top: MARGIN, right: MARGIN, bottom: MARGIN, left: MARGIN },
-          pageNumbers: { start: 1, formatType: NumberFormat.LOWER_ROMAN },
+          margin: MARGIN,
+          // Сквозная нумерация: титул — страница 1, но номер на нём не печатается.
+          pageNumbers: { start: 2, formatType: NumberFormat.DECIMAL },
         },
       },
       footers: {
         default: new Footer({
           children: [new Paragraph({
             alignment: AlignmentType.CENTER,
-            children: [new TextRun({ children: [PageNumber.CURRENT], font: 'Inter', size: 17, color: MUTED })],
+            spacing: { line: 240 },
+            children: [new TextRun({
+              children: [PageNumber.CURRENT], font: SERIF, size: SMALL_PT, color: INK,
+            })],
           })],
         }),
       },
       children: [
-        new Paragraph({ text: 'Содержание', heading: HeadingLevel.HEADING_1 }),
+        // ------------------------------------------------ СОДЕРЖАНИЕ
+        new Paragraph({
+          alignment: AlignmentType.CENTER,
+          spacing: { line: LINE, before: 0, after: 240 },
+          children: [t('СОДЕРЖАНИЕ', { bold: true })],
+        }),
+        // Поле TOC. Заполняется Word при открытии благодаря updateFields.
         new TableOfContents('Содержание', {
           hyperlink: true,
           headingStyleRange: '1-3',
-          // Dotted leader to a right tab — what makes a TOC look typeset.
-          stylesWithLevels: undefined,
         }),
-      ],
-    },
 
-    // ---- Section 3: main body, arabic restart, running header/footer ----
-    {
-      properties: {
-        type: SectionType.NEXT_PAGE,
-        page: {
-          size: { width: PAGE.width, height: PAGE.height },
-          margin: { top: 1400, right: MARGIN, bottom: 1300, left: MARGIN },
-          pageNumbers: { start: 1, formatType: NumberFormat.DECIMAL },
-        },
-      },
-      headers: {
-        default: new Header({
-          children: [
-            new Paragraph({
-              tabStops: [{ type: TabStopType.RIGHT, position: CONTENT_W }],
-              border: { bottom: { style: BorderStyle.SINGLE, size: 4, color: RULE, space: 6 } },
-              children: [
-                new TextRun({ text: 'Модернизация сети накопителей энергии', font: 'Inter', size: 17, color: MUTED }),
-                new TextRun({ text: '\tКонфиденциально', font: 'Inter', size: 17, color: MUTED }),
-              ],
-            }),
-          ],
-        }),
-      },
-      footers: {
-        default: new Footer({
-          children: [
-            new Paragraph({
-              tabStops: [{ type: TabStopType.RIGHT, position: CONTENT_W }],
-              children: [
-                new TextRun({ text: 'Департамент стратегического развития', font: 'Inter', size: 17, color: MUTED }),
-                new TextRun({ text: '\tс. ', font: 'Inter', size: 17, color: MUTED }),
-                new TextRun({ children: [PageNumber.CURRENT], font: 'Inter', size: 17, color: MUTED, bold: true }),
-                new TextRun({ text: ' из ', font: 'Inter', size: 17, color: MUTED }),
-                new TextRun({ children: [PageNumber.TOTAL_PAGES], font: 'Inter', size: 17, color: MUTED }),
-              ],
-            }),
-          ],
-        }),
-      },
-      children: [
-        // ---------------------------------------------------- 1 Резюме
+        new Paragraph({ children: [new PageBreak()] }),
+
+        // ------------------------------------------------ 1 ОБЩИЕ ПОЛОЖЕНИЯ
         new Paragraph({
           heading: HeadingLevel.HEADING_1,
           children: [
-            new Bookmark({ id: 'summary', children: [new TextRun({ text: 'Резюме для руководства', font: 'Inter', size: 30, bold: true, color: NAVY })] }),
-          ],
-        }),
-        new Paragraph({
-          style: 'Callout',
-          children: [sans('Программа окупается за 4,1 года и создаёт стоимость при базовом сценарии, однако запас прочности невелик: NPV без учёта терминальной стоимости составляет 83 млн ₽, а спред IRR к стоимости капитала — всего 1,5 п.п.', { size: 21, color: NAVY }),
-          ],
-        }),
-        // Footnote reference: superscript number + entry at the foot of the page.
-        new Paragraph({
-          spacing: { after: 140, line: 300 },
-          alignment: AlignmentType.JUSTIFIED,
-          children: [
-            serif('Рынок промышленных накопителей энергии вырос на 16,9 % за последние двенадцать месяцев, и мы ожидаем сохранения двузначных темпов до конца десятилетия'),
-            new FootnoteReferenceRun(1),
-            serif('. Инвестиционная программа предполагает капитальные затраты в объёме 4,35 млрд ₽, распределённые на пять лет, с максимумом в первый год.'),
-          ],
-        }),
-        // Tracked changes: an insertion and a deletion by named authors.
-        new Paragraph({
-          spacing: { after: 140, line: 300 },
-          alignment: AlignmentType.JUSTIFIED,
-          children: [
-            serif('Совет директоров рассматривает программу на заседании '),
-            new DeletedTextRun({
-              text: '15 сентября',
-              font: 'PT Serif', size: 22,
-              id: 101, author: 'Секретариат', date: '2026-08-14T09:00:00Z',
+            new Bookmark({
+              id: 'sec1',
+              children: [t('1 Общие положения', { bold: true })],
             }),
-            new InsertedTextRun({
-              text: '29 сентября',
-              font: 'PT Serif', size: 22,
-              id: 102, author: 'Секретариат', date: '2026-08-14T09:00:00Z',
-            }),
-            serif(' 2026 года. Решение требует квалифицированного большинства.'),
           ],
         }),
-        // Comment anchored to a range of text.
-        new Paragraph({
-          spacing: { after: 140, line: 300 },
-          alignment: AlignmentType.JUSTIFIED,
-          children: [
-            serif('Финансирование предполагается за счёт комбинации собственных средств и целевого кредита. '),
-            new CommentRangeStart(1),
-            serif('Стоимость долга принята на уровне 11,5 % годовых'),
-            new CommentRangeEnd(1),
-            new TextRun({ children: [new CommentReference(1)] }),
-            serif(', что соответствует текущим условиям для заёмщиков нашего кредитного качества.'),
-          ],
-        }),
+        bodyRuns([
+          t('Настоящий отчёт подготовлен по поручению правления от 4 июня 2026 года и содержит оценку целесообразности модернизации сети накопителей энергии. Рынок промышленных накопителей вырос на 16,9 % за последние двенадцать месяцев'),
+          new FootnoteReferenceRun(1),
+          t('. Инвестиционная программа предполагает капитальные затраты в объёме 4,35 млрд рублей, распределённые на пять лет.'),
+        ]),
+        bodyRuns([
+          t('Совет директоров рассматривает программу на заседании '),
+          new DeletedTextRun({
+            text: '15 сентября', font: SERIF, size: BODY_PT,
+            id: 101, author: 'Секретариат', date: '2026-08-14T09:00:00Z',
+          }),
+          new InsertedTextRun({
+            text: '29 сентября', font: SERIF, size: BODY_PT,
+            id: 102, author: 'Секретариат', date: '2026-08-14T09:00:00Z',
+          }),
+          t(' 2026 года. Решение принимается квалифицированным большинством голосов.'),
+        ]),
+        bodyRuns([
+          t('Финансирование предполагается за счёт комбинации собственных средств и целевого кредита. '),
+          new CommentRangeStart(1),
+          t('Стоимость долга принята на уровне 11,5 % годовых'),
+          new CommentRangeEnd(1),
+          new TextRun({ children: [new CommentReference(1)] }),
+          t(', что соответствует текущим условиям для заёмщиков сопоставимого кредитного качества.'),
+        ]),
 
-        new Paragraph({ text: 'Ключевые выводы', heading: HeadingLevel.HEADING_2 }),
-        new Paragraph({ numbering: { reference: 'legal', level: 0 }, children: [serif('Программа экономически обоснована.')] }),
-        new Paragraph({ numbering: { reference: 'legal', level: 1 }, children: [serif('NPV базового сценария составляет 83 млн ₽ при ставке дисконтирования 12,1 %.')] }),
-        new Paragraph({ numbering: { reference: 'legal', level: 1 }, children: [serif('IRR равна 13,6 %, что превышает стоимость капитала на 1,5 п.п.')] }),
-        new Paragraph({ numbering: { reference: 'legal', level: 2 }, children: [serif('Порог равен WACC и пересматривается ежеквартально инвестиционным комитетом.')] }),
-        new Paragraph({ numbering: { reference: 'legal', level: 0 }, children: [serif('Основные риски — сроки поставки и узкий запас по доходности.')] }),
         new Paragraph({
-          numbering: { reference: 'legal', level: 1 },
+          heading: HeadingLevel.HEADING_2,
+          children: [t('1.1 Основные выводы', { bold: true })],
+        }),
+        new Paragraph({
+          numbering: { reference: 'gost-list', level: 0 },
+          spacing: { line: LINE },
+          children: [t('программа экономически обоснована: NPV базового сценария составляет 83 млн рублей при ставке дисконтирования 12,1 %;')],
+        }),
+        new Paragraph({
+          numbering: { reference: 'gost-list', level: 0 },
+          spacing: { line: LINE },
+          children: [t('внутренняя норма доходности равна 13,6 %, что превышает стоимость капитала на 1,5 процентных пункта;')],
+        }),
+        new Paragraph({
+          numbering: { reference: 'gost-list', level: 0 },
+          spacing: { line: LINE },
           children: [
             new CommentRangeStart(2),
-            serif('Контейнерные накопители имеют цикл поставки 34 недели.'),
+            t('срок поставки контейнерных накопителей составляет 34 недели, что определяет критический путь программы;'),
             new CommentRangeEnd(2),
             new TextRun({ children: [new CommentReference(2)] }),
           ],
         }),
-
-        // ---------------------------------------------------- 2 Рынок
-        new Paragraph({ text: 'Состояние рынка', heading: HeadingLevel.HEADING_1, pageBreakBefore: true }),
-        body('Отрасль проходит фазу ускоренной консолидации. Три крупнейших игрока контролируют 54 % поставок промышленных систем, однако сегмент сервисных контрактов остаётся фрагментированным, что открывает возможность для органического роста без крупных приобретений.'),
-        figure('facility.png', 440, 246),
-        caption('Рисунок 1. Площадка контейнерных накопителей после модернизации первой очереди.'),
-
-        new Paragraph({ text: 'Структура выручки по сегментам', heading: HeadingLevel.HEADING_2 }),
         new Paragraph({
-          spacing: { after: 140, line: 300 },
-          alignment: AlignmentType.JUSTIFIED,
-          children: [
-            serif('Наибольший вклад в прирост даёт промышленный сегмент. Совокупный среднегодовой темп роста по портфелю составляет 16,5 %'),
-            new FootnoteReferenceRun(2),
-            serif('.'),
-          ],
+          numbering: { reference: 'gost-list', level: 0 },
+          spacing: { line: LINE },
+          children: [t('запас прочности невелик: отклонение темпа роста выручки или валовой маржи на 10 % уводит чистую приведённую стоимость в отрицательную область.')],
         }),
+
+        // ------------------------------------------------ 2 СОСТОЯНИЕ РЫНКА
+        new Paragraph({
+          heading: HeadingLevel.HEADING_1,
+          children: [t('2 Состояние рынка и структура выручки', { bold: true })],
+        }),
+        body('Отрасль проходит фазу консолидации. Три крупнейших участника контролируют 54 % поставок промышленных систем, при этом сегмент сервисных контрактов остаётся фрагментированным, что открывает возможность органического роста без приобретений.'),
+        figure('facility.png', 400, 223),
+        figureCaption(1, 'Площадка контейнерных накопителей после модернизации первой очереди'),
+
+        bodyRuns([
+          t('Наибольший вклад в прирост обеспечивает промышленный сегмент. Совокупный среднегодовой темп роста по портфелю составляет 16,5 %'),
+          new FootnoteReferenceRun(2),
+          t('. Структура выручки по направлениям приведена в таблице 1.'),
+        ]),
+        tableCaption(1, 'Выручка по направлениям деятельности, млн рублей'),
         revenueTable,
-        caption('Таблица 1. Выручка по направлениям, млн ₽. Класс отражает приоритет инвестирования (A — высший).'),
-
-        new Paragraph({ text: 'Динамика EBITDA', heading: HeadingLevel.HEADING_2 }),
-        body('Мостик показывает, за счёт каких факторов формируется прирост операционной прибыли. Эффект цены почти полностью компенсирует рост себестоимости, а основной вклад даёт объём.'),
-        figure('waterfall.png', 460, 225),
-        caption('Рисунок 2. Мостик EBITDA: факторный разбор изменения за год, млн ₽.'),
-
-        // ---------------------------------------------------- 3 Методика
-        new Paragraph({ text: 'Методика оценки', heading: HeadingLevel.HEADING_1, pageBreakBefore: true }),
         new Paragraph({
-          spacing: { after: 140, line: 300 },
-          alignment: AlignmentType.JUSTIFIED,
-          children: [
-            serif('Оценка выполнена методом дисконтированных денежных потоков. Чистая приведённая стоимость рассчитывается как сумма дисконтированных потоков за вычетом первоначальных вложений'),
-            new FootnoteReferenceRun(3),
-            serif(':'),
-          ],
+          spacing: { line: LINE, before: 120, after: 0 },
+          indent: { firstLine: INDENT },
+          children: [t('Примечание — Класс отражает приоритет инвестирования: A — высший, C — низший.', { size: SMALL_PT })],
         }),
-        equationNPV,
-        caption('Формула 1. Чистая приведённая стоимость проекта.'),
-        body('Ставка дисконтирования определена как средневзвешенная стоимость капитала с учётом налогового щита по заёмной части:'),
-        equationWACC,
-        caption('Формула 2. Средневзвешенная стоимость капитала.'),
-        body('Разброс результатов по методу Монте-Карло характеризуется выборочным стандартным отклонением:'),
-        equationSigma,
-        caption('Формула 3. Выборочное стандартное отклонение по 10 000 итераций.'),
 
-        new Paragraph({ text: 'Чувствительность', heading: HeadingLevel.HEADING_2 }),
-        body('Результат наиболее чувствителен к темпу роста выручки и валовой марже. При тонком базовом NPV отклонение любого из двух первых драйверов на 10 % уводит проект в отрицательную зону, поэтому решение требует контроля именно этих параметров.'),
-        figure('tornado.png', 450, 236),
-        caption('Рисунок 3. Торнадо-диаграмма чувствительности NPV.'),
-
-        new Paragraph({ text: 'Контрольный список готовности', heading: HeadingLevel.HEADING_2 }),
-        new Paragraph({ spacing: { after: 90 }, children: [new CheckBox({ checked: true }), sans('  Финансовая модель прошла независимую проверку')] }),
-        new Paragraph({ spacing: { after: 90 }, children: [new CheckBox({ checked: true }), sans('  Технический аудит площадок завершён')] }),
-        new Paragraph({ spacing: { after: 90 }, children: [new CheckBox({ checked: false }), sans('  Рамочный договор с поставщиком подписан')] }),
-        new Paragraph({ spacing: { after: 90 }, children: [new CheckBox({ checked: false }), sans('  Кредитный комитет банка вынес решение')] }),
-
-        // Cross-reference back to the bookmark + an external link.
         new Paragraph({
-          spacing: { before: 240, after: 140, line: 300 },
-          children: [
-            serif('Итоговые рекомендации приведены в разделе '),
-            new InternalHyperlink({
-              anchor: 'summary',
-              children: [new TextRun({ text: '«Резюме для руководства»', font: 'PT Serif', size: 22, color: ACCENT, underline: { type: 'single' } })],
-            }),
-            serif('. Методические требования опубликованы на '),
-            new ExternalHyperlink({
-              link: 'https://www.consultant.ru/',
-              children: [new TextRun({ text: 'портале правовой информации', font: 'PT Serif', size: 22, color: ACCENT, underline: { type: 'single' } })],
-            }),
-            serif('.'),
-          ],
+          heading: HeadingLevel.HEADING_2,
+          children: [t('2.1 Факторный анализ операционной прибыли', { bold: true })],
         }),
+        body('Эффект цены практически полностью компенсирует рост себестоимости, основной вклад в прирост обеспечивает увеличение объёма. Разложение изменения показателя EBITDA по факторам приведено на рисунке 2.'),
+        figure('waterfall.png', 420, 205),
+        figureCaption(2, 'Факторное разложение изменения показателя EBITDA, млн рублей'),
+
+        // ------------------------------------------------ 3 МЕТОДИКА
+        new Paragraph({
+          heading: HeadingLevel.HEADING_1,
+          children: [t('3 Методика оценки', { bold: true })],
+        }),
+        bodyRuns([
+          t('Оценка выполнена методом дисконтированных денежных потоков. Чистая приведённая стоимость определяется как сумма дисконтированных потоков за вычетом первоначальных вложений'),
+          new FootnoteReferenceRun(3),
+          t(' по формуле (1):'),
+        ]),
+        eqNPV,
+        ...where([
+          'CF\u209C — денежный поток периода t, млн рублей;',
+          'r — ставка дисконтирования, доли единицы;',
+          'n — горизонт прогнозирования, лет;',
+          'IC — первоначальные вложения, млн рублей.',
+        ]),
+        body('Ставка дисконтирования определяется как средневзвешенная стоимость капитала с учётом налогового щита по заёмной части по формуле (2):'),
+        eqWACC,
+        ...where([
+          'E, D — рыночная стоимость собственного и заёмного капитала соответственно;',
+          'V — суммарная стоимость капитала, V = E + D;',
+          'k\u2091, k_d — стоимость собственного и заёмного капитала;',
+          'T — ставка налога на прибыль, доли единицы.',
+        ]),
+        body('Разброс результатов по методу Монте-Карло характеризуется выборочным стандартным отклонением, вычисляемым по формуле (3):'),
+        eqSigma,
+        ...where([
+          'x — значение показателя в отдельной итерации;',
+          'μ — среднее значение по выборке;',
+          'n — число итераций, принято равным 10 000.',
+        ]),
+
+        new Paragraph({
+          heading: HeadingLevel.HEADING_2,
+          children: [t('3.1 Анализ чувствительности', { bold: true })],
+        }),
+        body('Результат наиболее чувствителен к темпу роста выручки и валовой марже. При тонком базовом значении чистой приведённой стоимости отклонение любого из двух ведущих факторов на 10 % переводит проект в отрицательную область, что требует контроля именно этих параметров.'),
+        figure('tornado.png', 410, 215),
+        figureCaption(3, 'Чувствительность чистой приведённой стоимости к допущениям'),
+
+        new Paragraph({
+          heading: HeadingLevel.HEADING_2,
+          children: [t('3.2 Контроль готовности', { bold: true })],
+        }),
+        body('Состояние подготовительных мероприятий на дату составления отчёта:'),
+        new Paragraph({
+          spacing: { line: LINE }, indent: { left: INDENT },
+          children: [new CheckBox({ checked: true }), t('  финансовая модель прошла независимую проверку;')],
+        }),
+        new Paragraph({
+          spacing: { line: LINE }, indent: { left: INDENT },
+          children: [new CheckBox({ checked: true }), t('  технический аудит площадок завершён;')],
+        }),
+        new Paragraph({
+          spacing: { line: LINE }, indent: { left: INDENT },
+          children: [new CheckBox({ checked: false }), t('  рамочный договор с поставщиком не подписан;')],
+        }),
+        new Paragraph({
+          spacing: { line: LINE }, indent: { left: INDENT },
+          children: [new CheckBox({ checked: false }), t('  решение кредитного комитета банка не получено.')],
+        }),
+
+        // ------------------------------------------------ 4 ЗАКЛЮЧЕНИЕ
+        new Paragraph({
+          heading: HeadingLevel.HEADING_1,
+          children: [t('4 Заключение', { bold: true })],
+        }),
+        bodyRuns([
+          t('Программа модернизации признаётся целесообразной при выполнении условий, изложенных в разделе '),
+          new InternalHyperlink({
+            anchor: 'sec1',
+            children: [t('1 «Общие положения»')],
+          }),
+          t('. Рекомендуется утвердить программу в объёме 4,35 млрд рублей и делегировать правлению подписание рамочного договора с поставщиком в срок до 31 октября 2026 года.'),
+        ]),
+        bodyRuns([
+          t('Нормативные требования к оформлению организационно-распорядительной документации приведены на '),
+          new ExternalHyperlink({
+            link: 'https://www.consultant.ru/',
+            children: [new TextRun({
+              text: 'портале правовой информации',
+              font: SERIF, size: BODY_PT, color: '0563C1',
+              underline: { type: 'single' },
+            })],
+          }),
+          t('.'),
+        ]),
+        body('Пятилетний прогноз основных показателей приведён в приложении А.'),
       ],
     },
 
-    // ---- Section 4: landscape appendix ----
+    // ---- 3. Приложение А, альбомная ориентация ----
     {
       properties: {
         type: SectionType.NEXT_PAGE,
         page: {
-          size: { width: PAGE.width, height: PAGE.height, orientation: PageOrientation.LANDSCAPE },
-          margin: { top: MARGIN, right: MARGIN, bottom: MARGIN, left: MARGIN },
+          size: {
+            width: PAGE.width, height: PAGE.height,
+            orientation: PageOrientation.LANDSCAPE,
+          },
+          margin: MARGIN,
         },
-      },
-      headers: {
-        default: new Header({
-          children: [new Paragraph({
-            border: { bottom: { style: BorderStyle.SINGLE, size: 4, color: RULE, space: 6 } },
-            children: [new TextRun({ text: 'Приложение А · Пятилетний прогноз', font: 'Inter', size: 17, color: MUTED })],
-          })],
-        }),
       },
       footers: {
         default: new Footer({
           children: [new Paragraph({
-            alignment: AlignmentType.RIGHT,
-            children: [
-              new TextRun({ text: 'с. ', font: 'Inter', size: 17, color: MUTED }),
-              new TextRun({ children: [PageNumber.CURRENT], font: 'Inter', size: 17, color: MUTED, bold: true }),
-            ],
+            alignment: AlignmentType.CENTER,
+            spacing: { line: 240 },
+            children: [new TextRun({
+              children: [PageNumber.CURRENT], font: SERIF, size: SMALL_PT, color: INK,
+            })],
           })],
         }),
       },
       children: [
-        new Paragraph({ text: 'Приложение А. Пятилетний прогноз', heading: HeadingLevel.HEADING_1 }),
-        body('Таблица развёрнута на альбомной странице — единственный корректный способ разместить широкий финансовый прогноз без уменьшения кегля до нечитаемого размера.'),
-        scenarioTable,
-        caption('Таблица 2. Консолидированный прогноз, базовый сценарий.'),
-        rule(),
+        // ГОСТ: заголовок приложения по центру, слово «Приложение» и его буква.
         new Paragraph({
-          children: [sans('Подготовлено на основе управленческой отчётности за период, закрытый 30 июня 2026 года. Прогнозные значения не являются публичной офертой.', { size: 17, color: MUTED, italics: true })],
+          alignment: AlignmentType.CENTER,
+          spacing: { line: LINE, before: 0, after: 0 },
+          children: [t('Приложение А', { bold: true })],
+        }),
+        new Paragraph({
+          alignment: AlignmentType.CENTER,
+          spacing: { line: LINE, before: 0, after: 240 },
+          children: [t('(справочное)', { size: SMALL_PT })],
+        }),
+        new Paragraph({
+          alignment: AlignmentType.CENTER,
+          spacing: { line: LINE, before: 0, after: 240 },
+          children: [t('Пятилетний прогноз основных показателей', { bold: true })],
+        }),
+        body('Прогноз построен на допущениях базового сценария. Таблица развёрнута на листе альбомной ориентации, поскольку в книжной ориентации ширина граф не позволяет сохранить читаемый кегль.'),
+        tableCaption('А.1', 'Консолидированный прогноз, базовый сценарий'),
+        scenarioTable,
+        new Paragraph({
+          spacing: { line: LINE, before: 240, after: 0 },
+          indent: { firstLine: INDENT },
+          children: [t('Примечание — Подготовлено на основе управленческой отчётности за период, закрытый 30 июня 2026 года. Прогнозные значения не являются публичной офертой.', { size: SMALL_PT })],
         }),
       ],
     },

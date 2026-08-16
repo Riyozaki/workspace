@@ -429,6 +429,96 @@ def test_showcase(tmp: Path) -> None:
         assert marker in doc, f"docx lost {marker}"
 
 
+@check("pptx_fix removes the dangling series axis pptxgenjs emits")
+def test_pptx_fix(tmp: Path) -> None:
+    """
+    pptxgenjs writes three <c:axId> for every 2-D plot but only defines the
+    third for BAR3D. PowerPoint refuses to open a chart referencing an axis
+    that does not exist — it shows the slide blank or offers to repair the
+    file — while LibreOffice and the QA preview render it fine. Nothing but
+    an XML check catches this.
+    """
+    gen = REPO / f".test-deck-{tmp.name}.js"
+    out = tmp / "chart.pptx"
+    gen.write_text(
+        "const PptxGenJS = require('pptxgenjs');\n"
+        "const { fixPptx } = require('./tools/js/pptx_fix.js');\n"
+        "const p = new PptxGenJS();\n"
+        "p.layout = 'LAYOUT_WIDE';\n"
+        "const s = p.addSlide();\n"
+        "s.addChart([\n"
+        "  { type: p.ChartType.bar, data: [{ name: 'A', labels: ['x','y'], values: [1,2] }] },\n"
+        "  { type: p.ChartType.line, data: [{ name: 'B', labels: ['x','y'], values: [3,4] }],\n"
+        "    options: { secondaryValAxis: true, secondaryCatAxis: true } },\n"
+        "], { x:1, y:1, w:8, h:4,\n"
+        "     valAxes: [{ valAxisTitle: 'l' }, { valAxisTitle: 'r' }],\n"
+        "     catAxes: [{}, { catAxisHidden: true }] });\n"
+        f"p.writeFile({{ fileName: '{out}' }}).then(() => fixPptx('{out}'));\n",
+        encoding="utf-8",
+    )
+    try:
+        proc = run(["node", gen])
+        assert proc.returncode == 0, proc.stderr
+    finally:
+        gen.unlink(missing_ok=True)
+
+    import re
+
+    with zipfile.ZipFile(out) as z:
+        charts = [n for n in z.namelist() if re.match(r"ppt/charts/chart\d+\.xml$", n)]
+        assert charts, "no chart part produced"
+        for name in charts:
+            xml = z.read(name).decode()
+            defined = {
+                re.search(r'<c:axId val="(\d+)"/>', m.group(2)).group(1)
+                for m in re.finditer(r"<c:(catAx|valAx|serAx)>(.*?)</c:\1>", xml, re.S)
+            }
+            used: set[str] = set()
+            for plot in re.finditer(r"<c:(\w+Chart)>(.*?)</c:\1>", xml, re.S):
+                used |= set(re.findall(r'<c:axId val="(\d+)"/>', plot.group(2)))
+            assert not (used - defined), f"{name}: dangling axis {sorted(used - defined)}"
+
+
+@check("whitepaper follows ГОСТ Р 7.0.97-2016 page setup")
+def test_gost_layout(tmp: Path) -> None:
+    """
+    Margins, page size and field-update flag. A Russian official document with
+    30/10/20/20 mm margins is not a preference — it is the specification, and
+    a TOC that never refreshes opens blank in Word.
+    """
+    doc_path = REPO / "showcase" / "out" / "Модернизация_сети_накопителей.docx"
+    if not doc_path.is_file():
+        raise SkipTest("showcase not built — run showcase/build_all.py")
+
+    import re
+
+    with zipfile.ZipFile(doc_path) as z:
+        doc = z.read("word/document.xml").decode()
+        settings = z.read("word/settings.xml").decode()
+
+    # Word refreshes TOC/PAGE fields on open only when asked to.
+    assert "<w:updateFields" in settings, "updateFields missing — TOC opens empty"
+
+    mm = 1440 / 25.4
+    expect = {"left": round(30 * mm), "right": round(10 * mm),
+              "top": round(20 * mm), "bottom": round(20 * mm)}
+    sections = re.findall(r"<w:sectPr.*?</w:sectPr>", doc, re.S)
+    assert sections, "no sectPr found"
+    for i, block in enumerate(sections, 1):
+        mar = re.search(r"<w:pgMar([^/]*)/>", block)
+        assert mar, f"section {i}: no pgMar"
+        got = dict(re.findall(r'w:(\w+)="(\d+)"', mar.group(1)))
+        for side, want in expect.items():
+            actual = int(got[side])
+            assert abs(actual - want) <= 2, (
+                f"section {i}: {side} margin {actual} dxa, expected {want}"
+            )
+        size = re.search(r"<w:pgSz([^/]*)/>", block)
+        dims = dict(re.findall(r'w:(\w+)="(\d+)"', size.group(1)))
+        pair = {int(dims["w"]), int(dims["h"])}
+        assert pair == {11906, 16838}, f"section {i}: not A4 ({pair})"
+
+
 @check("setup --check passes")
 def test_setup_check(tmp: Path) -> None:
     proc = run(["bash", REPO / "tools" / "setup.sh", "--check"])

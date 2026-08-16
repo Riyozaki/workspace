@@ -14,6 +14,7 @@
  */
 
 const PptxGenJS = require('pptxgenjs');
+const { fixPptx } = require('../tools/js/pptx_fix.js');
 const fs = require('fs');
 const path = require('path');
 
@@ -154,6 +155,10 @@ function heading(slide, title, kicker) {
   heading(s, 'Выручка и рентабельность EBITDA', 'прогноз');
 
   const years = ['2026', '2027', '2028', '2029', '2030'];
+  // Combo chart. The axis options belong ONLY in `valAxes`/`catAxes`: repeating
+  // `secondaryValAxis` and single-axis keys at the top level made pptxgenjs
+  // emit a third, undeclared axId, and PowerPoint refuses to open a chart that
+  // references an axis that does not exist — the slide came up blank/repaired.
   s.addChart(
     [
       {
@@ -173,20 +178,29 @@ function heading(slide, title, kicker) {
     {
       x: 0.6, y: 1.6, w: 12.1, h: 4.9,
       showLegend: true, legendPos: 'b', legendFontFace: 'Inter', legendFontSize: 11,
-      catAxisLabelFontFace: 'Inter', catAxisLabelFontSize: 11, catAxisLabelColor: MUTED,
-      valAxisLabelFontFace: 'Inter', valAxisLabelFontSize: 11, valAxisLabelColor: MUTED,
-      valAxisTitle: 'млн ₽', showValAxisTitle: true, valAxisTitleFontSize: 11,
-      valGridLine: { color: 'E8EDF5', size: 1 },
-      catGridLine: { style: 'none' },
-      secondaryValAxis: true,
-      catAxes: [{ catAxisHidden: false }, { catAxisHidden: true }],
       valAxes: [
-        { showValAxisTitle: true, valAxisTitle: 'млн ₽', valAxisLabelFormatCode: '#,##0',
+        {
+          showValAxisTitle: true, valAxisTitle: 'млн ₽',
+          valAxisLabelFormatCode: '#,##0',
           valAxisLabelFontFace: 'Inter', valAxisLabelFontSize: 11, valAxisLabelColor: MUTED,
-          valGridLine: { color: 'E8EDF5', size: 1 } },
-        { showValAxisTitle: true, valAxisTitle: 'маржа', valAxisLabelFormatCode: '0.0%',
+          valAxisTitleFontFace: 'Inter', valAxisTitleFontSize: 11,
+          valGridLine: { color: 'E8EDF5', size: 1 },
+        },
+        {
+          showValAxisTitle: true, valAxisTitle: 'маржа',
+          valAxisLabelFormatCode: '0.0%',
           valAxisLabelFontFace: 'Inter', valAxisLabelFontSize: 11, valAxisLabelColor: MUTED,
-          valGridLine: { style: 'none' }, valAxisMinVal: 0.18, valAxisMaxVal: 0.28 },
+          valAxisTitleFontFace: 'Inter', valAxisTitleFontSize: 11,
+          valGridLine: { style: 'none' },
+          valAxisMinVal: 0.18, valAxisMaxVal: 0.28,
+        },
+      ],
+      catAxes: [
+        {
+          catAxisLabelFontFace: 'Inter', catAxisLabelFontSize: 11, catAxisLabelColor: MUTED,
+          catAxisTitle: 'Год', showCatAxisTitle: false,
+        },
+        { catAxisHidden: true },
       ],
     },
   );
@@ -342,6 +356,12 @@ function heading(slide, title, kicker) {
 }
 
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
-pptx.writeFile({ fileName: OUT }).then(() => {
-  console.log('wrote ' + path.relative(process.cwd(), OUT));
-});
+pptx.writeFile({ fileName: OUT })
+  // Mandatory after every pptxgenjs write when the deck contains a 2-D chart:
+  // it emits a reference to a series axis it never defines, and PowerPoint
+  // shows the slide as blank/corrupt. See tools/js/pptx_fix.js.
+  .then(() => fixPptx(OUT))
+  .then((r) => {
+    console.log(`wrote ${path.relative(process.cwd(), OUT)} `
+      + `(${r.removed} dangling axis ref(s) repaired)`);
+  });
