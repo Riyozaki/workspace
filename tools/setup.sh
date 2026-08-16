@@ -48,7 +48,7 @@ if [[ $CHECK_ONLY -eq 0 ]]; then
 
   # -------------------------------------------------------------------- fonts
   say "Fonts"
-  "$PY" "$REPO_ROOT/tools/install_fonts.py" || warn "font sync incomplete"
+  "$PY" "$REPO_ROOT/tools/install_fonts.py" || die "font installation failed"
 fi
 
 # ------------------------------------------------------------------- verify
@@ -57,8 +57,9 @@ say "Verifying toolchain"
 
 "$PY" - <<'PYCHECK'
 import importlib, sys
-mods = ["openpyxl","docx","formulas","pypdf","pypdfium2","pdfplumber","reportlab",
-        "pypandoc","typst","lxml","defusedxml","matplotlib","PIL","fontTools","brotli"]
+mods = ["openpyxl","docx","pptx","formulas","pypdf","pypdfium2","pdfplumber",
+        "reportlab","pypandoc","typst","lxml","defusedxml","matplotlib","PIL",
+        "fontTools","brotli"]
 bad = []
 for m in mods:
     try: importlib.import_module(m)

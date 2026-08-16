@@ -31,7 +31,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 FONT_OUT = REPO / "assets" / "fonts"
-NODE_MODULES = REPO / "tools" / "node_modules"
+NODE_MODULES = REPO / "node_modules"  # package.json lives at the repo root
 
 # family name -> (npm package, fontsource slug)
 FAMILIES = {
@@ -171,6 +171,7 @@ def main() -> int:
 
     made = build_fonts()
     dejavu = sync_dejavu()
+    expected = len(FAMILIES) * len(WEIGHTS)
 
     (FONT_OUT / "README.md").write_text(
         "# Fonts\n\n"
@@ -191,6 +192,15 @@ def main() -> int:
         encoding="utf-8",
     )
     print(f"  fonts: {made} merged TTF from @fontsource, {dejavu} DejaVu TTF")
+    if made < expected:
+        # Silently shipping DejaVu-only would mean every document quietly
+        # renders in the fallback face, so make this a hard failure.
+        print(
+            f"  ! expected {expected} generated fonts, got {made} — "
+            "run `npm install` first",
+            file=sys.stderr,
+        )
+        return 1
     return 0
 
 

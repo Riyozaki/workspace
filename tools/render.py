@@ -322,13 +322,34 @@ def from_pptx(src: Path, work: Path) -> tuple[Path, dict]:
             if shape.shape_type == 13:  # PICTURE
                 boxes.append(f'<div class="ph pic" style="{geom}">image</div>')
                 continue
-            if not getattr(shape, "has_text_frame", False):
+
+            shape_fill = _solid_hex(shape.fill) if hasattr(shape, "fill") else None
+            line_hex = None
+            if hasattr(shape, "line"):
+                try:
+                    line_hex = _solid_hex(shape.line.fill)
+                except Exception:
+                    line_hex = None
+
+            # Rounded-rectangle cards, rules, and dividers carry a lot of a
+            # deck's design. Drawing only text boxes makes a card-based layout
+            # look empty in the preview and hides contrast problems.
+            radius = ""
+            if shape.shape_type is not None and "ROUNDED" in str(shape.shape_type):
+                radius = ";border-radius:8px"
+            decor = ""
+            if shape_fill:
+                decor += f";background:#{shape_fill}"
+            if line_hex:
+                decor += f";border:1px solid #{line_hex}"
+
+            has_text = getattr(shape, "has_text_frame", False) and shape.text_frame.text.strip()
+            if not has_text:
+                if decor:
+                    boxes.append(f'<div class="shp" style="{geom}{decor}{radius}"></div>')
                 continue
 
-            shape_fill = None
-            if hasattr(shape, "fill"):
-                shape_fill = _solid_hex(shape.fill)
-            fill_css = f";background:#{shape_fill}" if shape_fill else ""
+            fill_css = decor + radius
 
             paras: list[str] = []
             for para in shape.text_frame.paragraphs:
@@ -359,6 +380,9 @@ def from_pptx(src: Path, work: Path) -> tuple[Path, dict]:
                 boxes.append(f'<div class="tb" style="{geom}{fill_css}">{"".join(paras)}</div>')
 
         style = f' style="background:#{bg}"' if bg else ""
+        # Notes overlay the foot of their own slide. Giving them a page of
+        # their own doubles the page count and makes the render useless for
+        # flicking through a deck.
         note = ""
         if slide.has_notes_slide and slide.notes_slide.notes_text_frame.text.strip():
             note = (
@@ -368,7 +392,7 @@ def from_pptx(src: Path, work: Path) -> tuple[Path, dict]:
             )
         slides_html.append(
             f'<div class="slide"{style}><div class="num">{index}</div>'
-            f'{"".join(boxes)}</div>{note}'
+            f'{"".join(boxes)}{note}</div>'
         )
 
     css = """
@@ -379,10 +403,12 @@ def from_pptx(src: Path, work: Path) -> tuple[Path, dict]:
     .tb{position:absolute;overflow:hidden;font-size:12pt;line-height:1.25;
         display:flex;flex-direction:column;justify-content:center}
     .tb p{margin:0 0 .2em}
+    .shp{position:absolute}
     .ph{position:absolute;border:1px dashed #98a2b3;color:#667085;font-size:10pt;
         display:flex;align-items:center;justify-content:center;background:#f7f9fb}
     .num{position:absolute;right:6px;bottom:4px;font-size:8pt;color:#98a2b3;z-index:9}
-    .notes{font-size:9pt;color:#475467;padding:4mm;page-break-after:always}
+    .notes{position:absolute;left:0;right:0;bottom:0;padding:2mm 4mm;font-size:8pt;
+           color:#475467;background:rgba(255,255,255,.92);border-top:1px solid #d5d9e0}
     """
 
     page = work / "input.html"
