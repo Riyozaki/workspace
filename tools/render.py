@@ -335,7 +335,20 @@ def from_pptx(src: Path, work: Path) -> tuple[Path, dict]:
             # deck's design. Drawing only text boxes makes a card-based layout
             # look empty in the preview and hides contrast problems.
             radius = ""
-            if shape.shape_type is not None and "ROUNDED" in str(shape.shape_type):
+            shape_name = str(shape.shape_type) if shape.shape_type is not None else ""
+            auto_shape = ""
+            try:
+                # Only AUTO_SHAPE exposes .auto_shape_type; anything else raises.
+                auto_shape = str(shape.auto_shape_type or "")
+            except (AttributeError, ValueError):
+                auto_shape = ""
+            kind = f"{shape_name} {auto_shape}"
+            if "OVAL" in kind or "ELLIPSE" in kind:
+                # An ellipse drawn as a square box misreports the design: risk
+                # bubbles and timeline dots are round, and reviewers judge the
+                # preview, not the XML.
+                radius = ";border-radius:50%"
+            elif "ROUNDED" in kind:
                 radius = ";border-radius:8px"
             decor = ""
             if shape_fill:

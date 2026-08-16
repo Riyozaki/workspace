@@ -257,11 +257,17 @@ def test_fonts(tmp: Path) -> None:
     if not generated:
         raise SkipTest("fonts not installed — run tools/install_fonts.py")
 
+    # ₽ lives in the latin-ext subset, not latin or cyrillic. Merging only
+    # latin+cyrillic produced fonts that rendered every ruble as a blank box.
+    required = {"A": 0x41, "А": 0x410, "₽": 0x20BD, "—": 0x2014,
+                "«": 0x00AB, "№": 0x2116}
     for path in generated:
         font = TTFont(str(path), lazy=True, fontNumber=0)
-        cmaps = font["cmap"].tables
-        assert any(ord("A") in t.cmap for t in cmaps), f"{path.name}: no Latin"
-        assert any(ord("А") in t.cmap for t in cmaps), f"{path.name}: no Cyrillic"
+        points: set[int] = set()
+        for table in font["cmap"].tables:
+            points |= set(table.cmap)
+        missing = [ch for ch, cp in required.items() if cp not in points]
+        assert not missing, f"{path.name}: missing {' '.join(missing)}"
 
 
 @check("render produces one page per slide, not two")
@@ -348,6 +354,79 @@ def test_examples(tmp: Path) -> None:
         assert path.is_file(), f"{name} not produced"
         proc = run([PY, REPO / "tools" / "validate.py", path])
         assert proc.returncode == 0, f"{name} failed validation:\n{proc.stdout}"
+
+
+@check("recalc leaves engine-gap formulas for Excel instead of caching #NAME?")
+def test_recalc_engine_gap(tmp: Path) -> None:
+    """
+    SUBTOTAL is valid Excel but unimplemented by `formulas`. Caching the
+    engine's #NAME? into the file turns a working workbook into a broken one,
+    so such cells must be left uncached for Excel to fill on open.
+    """
+    import openpyxl
+
+    path = tmp / "subtotal.xlsx"
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "Реестр"
+    for i, v in enumerate([10, 20, 30], start=1):
+        ws.cell(i, 1, v)
+    ws["A4"] = "=SUBTOTAL(109,A1:A3)"   # engine gap
+    ws["B1"] = "=A1*2"                  # ordinary formula, must be cached
+    wb.save(path)
+
+    proc = run([PY, REPO / "tools" / "recalc.py", path, "--json"])
+    assert proc.returncode == 0, f"recalc should not fail on SUBTOTAL:\n{proc.stdout}"
+
+    import json
+
+    report = json.loads(proc.stdout)
+    assert report["status"] == "success", report
+    assert report["total_left_to_excel"] == 1, report
+    assert "SUBTOTAL" in report["left_to_excel"][0], report
+
+    with zipfile.ZipFile(path) as z:
+        sheet = next(n for n in z.namelist() if n.startswith("xl/worksheets/sheet"))
+        xml = z.read(sheet).decode()
+    assert "#NAME?" not in xml, "recalc cached a fake error over a valid formula"
+    assert 'fullCalcOnLoad="1"' in z_read_workbook(path), "Excel will not recalc on open"
+
+    wb2 = openpyxl.load_workbook(path, data_only=True)
+    assert wb2["Реестр"]["B1"].value == 20, "ordinary formula lost its cached value"
+
+
+def z_read_workbook(path: Path) -> str:
+    with zipfile.ZipFile(path) as z:
+        return z.read("xl/workbook.xml").decode()
+
+
+@check("showcase documents build and validate")
+def test_showcase(tmp: Path) -> None:
+    if FAST:
+        raise SkipTest("--fast")
+    proc = run([PY, REPO / "showcase" / "build_all.py"])
+    assert proc.returncode == 0, f"showcase build failed:\n{proc.stdout}{proc.stderr}"
+
+    out = REPO / "showcase" / "out"
+    expected = [
+        "Модернизация_сети_накопителей.docx",
+        "Финансовая_модель_накопители.xlsx",
+        "Совет_директоров_накопители.pptx",
+        "Резюме_программы_одна_страница.pdf",
+    ]
+    for name in expected:
+        assert (out / name).is_file(), f"{name} not produced"
+
+    # The docx is the one that exercises footnotes, comments, tracked changes
+    # and OMML — verify the parts survived rather than trusting the exit code.
+    with zipfile.ZipFile(out / expected[0]) as z:
+        names = z.namelist()
+        doc = z.read("word/document.xml").decode()
+    for part in ("word/footnotes.xml", "word/comments.xml", "word/numbering.xml"):
+        assert part in names, f"missing {part}"
+    for marker in ("<w:footnoteReference", "<w:commentRangeStart", "<w:ins ",
+                   "<w:del ", "<m:oMath>", 'w:orient="landscape"', "<w:vMerge"):
+        assert marker in doc, f"docx lost {marker}"
 
 
 @check("setup --check passes")

@@ -222,10 +222,19 @@ def check_docx(path: Path, rep: Report) -> None:
         rep.warn("no page-number field in any header/footer")
 
 
+# Valid Excel functions the `formulas` engine cannot evaluate. recalc.py leaves
+# these cells uncached on purpose, so their absence is not a defect.
+ENGINE_GAPS = {
+    "SUBTOTAL", "AGGREGATE", "XLOOKUP", "XMATCH", "FILTER", "SORTBY",
+    "TEXTSPLIT", "LAMBDA", "LET", "TEXTJOIN", "IFS", "SWITCH",
+}
+
+
 def check_xlsx(path: Path, rep: Report) -> None:
     import openpyxl
 
     formulas_no_cache = 0
+    engine_gap_cells = 0
     error_cells: list[str] = []
     wb_f = openpyxl.load_workbook(path, data_only=False)
     wb_v = openpyxl.load_workbook(path, data_only=True)
@@ -236,11 +245,18 @@ def check_xlsx(path: Path, rep: Report) -> None:
                 cached = vs[cell.coordinate].value
                 if isinstance(cell.value, str) and cell.value.startswith("="):
                     if cached is None:
-                        formulas_no_cache += 1
+                        expr = cell.value.upper()
+                        if any(fn + "(" in expr for fn in ENGINE_GAPS):
+                            # recalc.py deliberately leaves these to Excel.
+                            engine_gap_cells += 1
+                        else:
+                            formulas_no_cache += 1
                 if isinstance(cached, str) and cached.startswith("#") and cached.endswith(("!", "?", "A")):
                     error_cells.append(f"{sheet}!{cell.coordinate}={cached}")
     rep.info["sheets"] = wb_f.sheetnames
     rep.info["formulas_without_cached_value"] = formulas_no_cache
+    if engine_gap_cells:
+        rep.info["cells_left_to_excel"] = engine_gap_cells
     if formulas_no_cache:
         rep.warn(
             f"{formulas_no_cache} formula cell(s) have no cached value — "

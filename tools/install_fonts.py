@@ -40,24 +40,44 @@ FAMILIES = {
     "JetBrains Mono": ("@fontsource/jetbrains-mono", "jetbrains-mono"),
 }
 WEIGHTS = ["400", "700"]
-SUBSETS = ["latin", "cyrillic"]
+# latin-ext is not optional: the ruble sign ₽ (U+20BD) lives there, not in
+# `latin` or `cyrillic`. Omitting it means every Russian financial document
+# renders its currency as a blank box, and matplotlib warns rather than fails.
+SUBSETS = ["latin", "latin-ext", "cyrillic", "cyrillic-ext"]
 CYR_TEST = ord("А")
 LAT_TEST = ord("A")
 
+# Characters a Russian business document will actually use. Checked after the
+# merge so a missing subset is caught here rather than in a delivered PDF.
+REQUIRED_GLYPHS = {
+    "₽": 0x20BD, "—": 0x2014, "«": 0x00AB, "»": 0x00BB,
+    "№": 0x2116, "±": 0x00B1, "×": 0x00D7, "…": 0x2026,
+}
 
-def coverage(path: Path) -> tuple[bool, bool]:
-    """Return (has_latin, has_cyrillic) for a font file."""
+
+def _codepoints(path: Path) -> set[int]:
     from fontTools.ttLib import TTFont
 
     try:
         font = TTFont(str(path), lazy=True, fontNumber=0)
-        cmaps = font["cmap"].tables
-        return (
-            any(LAT_TEST in t.cmap for t in cmaps),
-            any(CYR_TEST in t.cmap for t in cmaps),
-        )
+        points: set[int] = set()
+        for table in font["cmap"].tables:
+            points |= set(table.cmap)
+        return points
     except Exception:
-        return (False, False)
+        return set()
+
+
+def coverage(path: Path) -> tuple[bool, bool]:
+    """Return (has_latin, has_cyrillic) for a font file."""
+    points = _codepoints(path)
+    return (LAT_TEST in points, CYR_TEST in points)
+
+
+def missing_glyphs(path: Path) -> list[str]:
+    """Which of the required business glyphs this font lacks."""
+    points = _codepoints(path)
+    return [ch for ch, cp in REQUIRED_GLYPHS.items() if cp not in points]
 
 
 def merge_subsets(sources: list[Path], dest: Path, family: str) -> bool:
@@ -95,6 +115,9 @@ def merge_subsets(sources: list[Path], dest: Path, family: str) -> bool:
                 f"{'latin' if not has_lat else 'cyrillic'}",
                 file=sys.stderr,
             )
+        gaps = missing_glyphs(dest)
+        if gaps:
+            print(f"  ! {family} {dest.name}: missing {' '.join(gaps)}", file=sys.stderr)
         return True
     except Exception as exc:  # noqa: BLE001 - report and continue with others
         print(f"  ! {family} {dest.name}: {exc}", file=sys.stderr)
@@ -148,16 +171,24 @@ def report() -> int:
         return 1
     from fontTools.ttLib import TTFont
 
-    print(f"{'file':<32} {'family':<20} latin cyrillic")
-    print("-" * 68)
+    print(f"{'file':<30} {'family':<18} lat  cyr  missing glyphs")
+    print("-" * 76)
+    bad = 0
     for f in files:
         has_lat, has_cyr = coverage(f)
+        gaps = missing_glyphs(f)
+        if gaps or not (has_lat and has_cyr):
+            bad += 1
         try:
             name = TTFont(str(f), lazy=True)["name"].getDebugName(1) or "?"
         except Exception:
             name = "?"
-        print(f"{f.name:<32} {name:<20} {'yes' if has_lat else 'NO ':<5} {'yes' if has_cyr else 'NO'}")
-    return 0
+        print(
+            f"{f.name:<30} {name:<18} "
+            f"{'yes' if has_lat else 'NO':<4} {'yes' if has_cyr else 'NO':<4} "
+            f"{' '.join(gaps) if gaps else '-'}"
+        )
+    return 1 if bad else 0
 
 
 def main() -> int:
@@ -172,6 +203,8 @@ def main() -> int:
     made = build_fonts()
     dejavu = sync_dejavu()
     expected = len(FAMILIES) * len(WEIGHTS)
+    gaps = {f.name: missing_glyphs(f) for f in FONT_OUT.glob("*.ttf")}
+    gaps = {k: v for k, v in gaps.items() if v}
 
     (FONT_OUT / "README.md").write_text(
         "# Fonts\n\n"
@@ -192,6 +225,10 @@ def main() -> int:
         encoding="utf-8",
     )
     print(f"  fonts: {made} merged TTF from @fontsource, {dejavu} DejaVu TTF")
+    if gaps:
+        for name, chars in sorted(gaps.items()):
+            print(f"  ! {name}: missing {' '.join(chars)}", file=sys.stderr)
+        return 1
     if made < expected:
         # Silently shipping DejaVu-only would mean every document quietly
         # renders in the fallback face, so make this a hard failure.

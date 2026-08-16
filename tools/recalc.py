@@ -47,6 +47,14 @@ KNOWN_UNSUPPORTED = {
     "XLOOKUP", "XMATCH", "FILTER", "SORTBY", "TEXTSPLIT", "LAMBDA", "LET",
 }
 
+# Functions Excel implements but the `formulas` engine does not. A cell using
+# one of these evaluates to #NAME? here while being perfectly valid in Excel,
+# so its result must be left uncached rather than poisoned with a fake error.
+ENGINE_GAPS = {
+    "SUBTOTAL", "AGGREGATE", "XLOOKUP", "XMATCH", "FILTER", "SORTBY",
+    "TEXTSPLIT", "LAMBDA", "LET", "TEXTJOIN", "IFS", "SWITCH",
+}
+
 CELL_KEY = re.compile(r"^'\[(?P<book>[^\]]+)\](?P<sheet>[^']+)'!(?P<cell>[A-Z]+\d+)$")
 
 
@@ -115,17 +123,24 @@ def _xml_value(value: Any) -> tuple[str | None, str] | None:
     return ("str", text)
 
 
-def inject(path: Path, values: dict[tuple[str, str], Any]) -> tuple[int, list[str]]:
+def inject(path: Path, values: dict[tuple[str, str], Any]) -> tuple[int, list[str], list[str]]:
     """
     Write cached values into the sheet XML beside each <f>.
 
     Rewrites the zip because a .xlsx entry cannot be edited in place.
+
+    Returns (written, errors, skipped). A cell whose formula uses a function
+    the engine does not implement is SKIPPED, never cached: writing the
+    engine's #NAME? over a formula Excel handles perfectly well would turn a
+    working workbook into a broken one. Such cells keep no cached value and
+    fullCalcOnLoad makes Excel fill them on open.
     """
     from lxml import etree
 
     ns = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
     written = 0
     errors: list[str] = []
+    skipped: list[str] = []
 
     with zipfile.ZipFile(path) as zin:
         entries = {name: zin.read(name) for name in zin.namelist()}
@@ -169,6 +184,19 @@ def inject(path: Path, values: dict[tuple[str, str], Any]) -> tuple[int, list[st
             t_attr, text = mapped
 
             if t_attr == "e":
+                expr = (formula.text or "").upper()
+                engine_gap = next(
+                    (fn for fn in ENGINE_GAPS if fn + "(" in expr), None
+                )
+                if engine_gap:
+                    # Our engine's limitation, not the workbook's error.
+                    skipped.append(f"{display or name}!{ref} ({engine_gap})")
+                    for old in cell.findall("m:v", ns) + cell.findall("m:is", ns):
+                        cell.remove(old)
+                    if "t" in cell.attrib:
+                        del cell.attrib["t"]
+                    changed = True
+                    continue
                 errors.append(f"{display or name}!{ref} = {text}")
 
             for old in cell.findall("m:v", ns) + cell.findall("m:is", ns):
@@ -204,7 +232,7 @@ def inject(path: Path, values: dict[tuple[str, str], Any]) -> tuple[int, list[st
         for name, blob in entries.items():
             zout.writestr(name, blob)
     tmp.replace(path)
-    return written, errors
+    return written, errors, skipped
 
 
 def scan_unsupported(path: Path) -> list[str]:
@@ -245,7 +273,7 @@ def main() -> int:
     try:
         unsupported = scan_unsupported(target)
         values, warnings = evaluate(target)
-        written, errors = inject(target, values)
+        written, errors, skipped = inject(target, values)
     except Exception as exc:  # noqa: BLE001
         report = {"status": "failed", "error": str(exc)}
         print(json.dumps(report, indent=2) if args.json else f"error: {exc}", file=sys.stderr)
@@ -259,6 +287,10 @@ def main() -> int:
         "total_errors": len(errors),
         "errors": errors[:100],
         "unsupported_functions": unsupported,
+        # Valid in Excel, not implemented by the engine: left uncached on
+        # purpose so Excel computes them on open.
+        "left_to_excel": skipped[:50],
+        "total_left_to_excel": len(skipped),
         "warnings": warnings[:20],
     }
 
@@ -266,6 +298,13 @@ def main() -> int:
         print(json.dumps(report, indent=2, ensure_ascii=False))
     else:
         print(f"{status}: wrote {written} cached values to {target.name}")
+        if skipped:
+            print(f"  i {len(skipped)} cell(s) left for Excel to calculate "
+                  f"(engine gap, formula is valid):")
+            for item in skipped[:8]:
+                print(f"      {item}")
+            if len(skipped) > 8:
+                print(f"      ... and {len(skipped) - 8} more")
         for item in unsupported:
             print(f"  ! unsupported: {item}")
         for err in errors[:20]:

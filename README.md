@@ -6,7 +6,7 @@ deliverables — built to work in a sandbox with no apt, no LibreOffice, and no
 
 ```bash
 bash tools/setup.sh                      # install (idempotent, ~40s)
-.venv/bin/python tests/test_toolchain.py # 15 regression tests
+.venv/bin/python tests/test_toolchain.py # 17 regression tests
 ```
 
 ## Quick start
@@ -16,6 +16,9 @@ bash tools/setup.sh                      # install (idempotent, ~40s)
 node examples/build_report.js                       # Word report
 .venv/bin/python examples/build_model.py            # Excel model with formulas
 node examples/build_deck.js                         # PowerPoint deck
+
+# or build the full showcase: four linked documents, one coherent case
+.venv/bin/python showcase/build_all.py --preview
 
 # the two steps that matter before delivering anything
 .venv/bin/python tools/validate.py .workdir/Квартальный_отчёт.docx
@@ -36,6 +39,7 @@ tools/          the toolchain
   js/chromium.js    headless browser that actually launches here
   js/docx_fix.js    repair docx-js output
 examples/       worked examples, all verified in CI-style tests
+showcase/       four documents pushing the toolchain to its limits
 tests/          regression tests for every bug found during development
 docs/           environment constraints, and the Kimi-vs-Claude analysis
 assets/         fonts and the preview stylesheet
@@ -60,6 +64,20 @@ its own after boot. Always launch through `tools/js/chromium.js`.
 
 Full details, including everything the network blocks, in
 [`docs/environment.md`](docs/environment.md).
+
+## How far it goes
+
+[`showcase/`](showcase/README.md) builds four documents telling one case in four
+formats, with the same numbers in each. The Word file carries footnotes,
+threaded comments, tracked changes, OMML equations, a full-bleed cover and a
+landscape section; the workbook is six sheets of live formulas; the deck uses
+native editable charts; the PDF is drawn to an exact millimetre grid.
+
+Building it surfaced three real toolchain bugs — fonts that silently lacked the
+ruble sign, `recalc.py` caching `#NAME?` over valid `SUBTOTAL` formulas, and
+`render.py` drawing every ellipse as a rectangle. All three are fixed and now
+have tests. That is the argument for building something demanding: the
+regression suite only covers what you have already tried to do.
 
 ## Which skills, and why
 
