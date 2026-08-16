@@ -103,3 +103,19 @@ table.grid th.rowhdr {
   color: var(--muted);
   width: 34px;
 }
+
+/* Pandoc lifts a Caption-styled paragraph that follows a table into
+   <caption>, which browsers render above the table. In Word it sits below.
+   Put it back so the preview matches the document. */
+table caption {
+  caption-side: bottom;
+  font-size: 9pt;
+  color: var(--muted);
+  text-align: left;
+  margin-top: 6px;
+}
+table caption p { margin: 0; }
+
+/* pandoc emits a Word `Title`-styled paragraph as a document header block */
+#title-block-header { margin: 0 0 1.5em; }
+#title-block-header h1.title { font-size: 26pt; margin: 0; }

@@ -38,12 +38,12 @@ if [[ $CHECK_ONLY -eq 0 ]]; then
 
   # --------------------------------------------------------------------- node
   say "Node environment"
-  (cd "$REPO_ROOT/tools" && npm install --silent --no-audit --no-fund)
+  (cd "$REPO_ROOT" && npm install --silent --no-audit --no-fund)
   ok "installed node packages"
 
   # ------------------------------------------------------- chromium native deps
   say "Chromium native dependencies"
-  (cd "$REPO_ROOT/tools" && node -e "require('./js/chromium.js').ensureNativeDeps()")
+  (cd "$REPO_ROOT" && node -e "require('./tools/js/chromium.js').ensureNativeDeps()")
   ok "inflated libnspr4/libnss3 + bundled fonts"
 
   # -------------------------------------------------------------------- fonts
@@ -71,7 +71,7 @@ import pypandoc
 print(f"  \033[32m✓\033[0m pandoc {pypandoc.get_pandoc_version()} (bundled)")
 PYCHECK
 
-(cd "$REPO_ROOT/tools" && node -e "
+(cd "$REPO_ROOT" && node -e "
 const need = ['docx','pptxgenjs','exceljs','puppeteer-core','@sparticuz/chromium'];
 const bad = need.filter(m => { try { require.resolve(m); return false } catch { return true } });
 if (bad.length) { console.error('  \x1b[31m✗\x1b[0m missing node modules: ' + bad.join(', ')); process.exit(1) }
@@ -79,8 +79,8 @@ console.log('  \x1b[32m✓\x1b[0m ' + need.length + ' node modules resolve');
 ")
 
 say "Smoke test: render a PDF through headless Chromium"
-(cd "$REPO_ROOT/tools" && node -e "
-const {launch} = require('./js/chromium.js');
+(cd "$REPO_ROOT" && node -e "
+const {launch} = require('./tools/js/chromium.js');
 (async () => {
   const b = await launch();
   const p = await b.newPage();

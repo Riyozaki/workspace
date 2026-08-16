@@ -33,6 +33,7 @@ from __future__ import annotations
 import argparse
 import html as html_mod
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -40,7 +41,7 @@ import tempfile
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-NODE_DIR = REPO / "tools"
+NODE_DIR = REPO  # package.json lives at the repo root
 CSS = REPO / "assets" / "preview.css"
 
 
@@ -51,7 +52,7 @@ def _fail(msg: str) -> None:
 
 
 def _run_node(script: str, *args: str) -> None:
-    """Run a node one-liner from tools/ so require() resolves node_modules."""
+    """Run a node one-liner from the repo root so require() finds node_modules."""
     proc = subprocess.run(
         ["node", "-e", script, "--", *args],
         cwd=str(NODE_DIR),
@@ -65,7 +66,7 @@ def _run_node(script: str, *args: str) -> None:
 def html_to_pdf(html_path: Path, pdf_path: Path, landscape: bool = False,
                 page_size: str = "A4", margin: str = "18mm") -> Path:
     script = """
-    const { launch } = require('./js/chromium.js');
+    const { launch } = require('./tools/js/chromium.js');
     // `node -e` puts the first user argument at argv[1], not argv[2].
     const [htmlPath, pdfPath, landscape, format, margin] = process.argv.slice(1);
     (async () => {
@@ -146,13 +147,24 @@ def from_markdown(src: Path, work: Path) -> tuple[Path, dict]:
 
 
 def from_docx(src: Path, work: Path) -> tuple[Path, dict]:
+    """
+    docx -> HTML via pandoc.
+
+    Note --standalone: a paragraph in Word's `Title` style becomes pandoc
+    document metadata, which is emitted in a <header> block that only exists in
+    standalone output. Converting as a fragment silently drops the document's
+    title — the most prominent line on the cover just disappears from the
+    preview. We take the standalone document and pull out its <body>.
+    """
     import pypandoc
 
     media = work / "media"
-    body = pypandoc.convert_file(
+    full = pypandoc.convert_file(
         str(src), "html5",
-        extra_args=[f"--extract-media={media}", "--wrap=none"],
+        extra_args=[f"--extract-media={media}", "--wrap=none", "--standalone"],
     )
+    match = re.search(r"<body[^>]*>(.*)</body>", full, re.S)
+    body = match.group(1) if match else full
     page = work / "input.html"
     page.write_text(_wrap_html(body, src.stem), encoding="utf-8")
     return page, {}
