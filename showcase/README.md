@@ -10,8 +10,10 @@ in the four formats, with **the same numbers in all of them**.
 .venv/bin/python showcase/build_all.py --clean    # rebuild from scratch
 ```
 
-Output lands in `showcase/out/` (gitignored). Exit code is non-zero if any
-generator fails or any validation reports FAIL, so it is CI-safe.
+The four documents live in `showcase/out/` and are **committed**, so they can be
+opened and reviewed without running anything. Rebuilding overwrites them; the
+QA preview folders (`showcase/out/qa-*/`) are gitignored. Exit code is non-zero
+if any generator fails or any validation reports FAIL, so it is CI-safe.
 
 | File | Generator | What it demonstrates |
 |---|---|---|

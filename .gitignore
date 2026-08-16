@@ -16,9 +16,6 @@ node_modules/
 # Generated font binaries (rebuild with: python tools/install_fonts.py)
 assets/fonts/*.ttf
 
-# Showcase build output (rebuild with: python showcase/build_all.py)
-showcase/out/
-
-# Charts rebuilt by showcase/make_charts.py (source images are committed)
-showcase/assets/waterfall.png
-showcase/assets/tornado.png
+# Showcase QA previews are regenerated on demand; the documents themselves
+# are committed so they can actually be opened and reviewed.
+showcase/out/qa-*/
