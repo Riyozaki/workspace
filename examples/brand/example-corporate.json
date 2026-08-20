@@ -1,0 +1,46 @@
+{
+  "name": "Example Corporate",
+  "description": "Shared restrained navy/teal/orange document identity",
+  "theme": {
+    "primary": "203F54",
+    "secondary": "3E6B78",
+    "accent": "C77932",
+    "background": "F7F9FA",
+    "light": "E9F0F3",
+    "text": "23313A",
+    "muted": "667985",
+    "positive": "25734C",
+    "negative": "B04444",
+    "font": "Arial",
+    "heading_font": "Arial"
+  },
+  "formats": {
+    "docx": {
+      "page": {
+        "size": "A4",
+        "orientation": "portrait",
+        "margin_top_mm": 20,
+        "margin_right_mm": 19,
+        "margin_bottom_mm": 20,
+        "margin_left_mm": 22
+      },
+      "footer": {
+        "left": "Example Corporate",
+        "page_numbers": true,
+        "page_number_label": "Страница "
+      }
+    },
+    "xlsx": {},
+    "pptx": {
+      "size": "wide",
+      "footer": "Example Corporate · confidential"
+    },
+    "pdf": {
+      "page": {
+        "size": "A4",
+        "orientation": "portrait"
+      },
+      "footer": "Example Corporate · confidential"
+    }
+  }
+}

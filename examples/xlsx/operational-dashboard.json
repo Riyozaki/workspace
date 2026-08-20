@@ -1,0 +1,177 @@
+{
+  "metadata": {
+    "title": "Операционная панель",
+    "subject": "Показатели и сценарные параметры",
+    "creator": "Document System",
+    "keywords": "операции, KPI, dashboard",
+    "description": "Пример XLSX vertical slice"
+  },
+  "theme": {
+    "primary": "23465C",
+    "secondary": "3D6B78",
+    "accent": "C47A35",
+    "positive": "26734D",
+    "negative": "B54343",
+    "text": "26343D",
+    "muted": "687983",
+    "light": "EDF3F5",
+    "font": "Arial"
+  },
+  "active_sheet": "Панель",
+  "sheets": [
+    {
+      "name": "Панель",
+      "tab_color": "23465C",
+      "show_gridlines": false,
+      "zoom": 90,
+      "freeze_panes": "A5",
+      "merge_cells": ["A1:H2"],
+      "columns": [
+        {"column": "A", "width": 27},
+        {"column": "B", "width": 17},
+        {"column": "C", "width": 17},
+        {"column": "D", "width": 3},
+        {"column": "E", "width": 14},
+        {"column": "F", "width": 14},
+        {"column": "G", "width": 14},
+        {"column": "H", "width": 14}
+      ],
+      "rows": [
+        {"row": 1, "height": 32},
+        {"row": 2, "height": 20},
+        {"row": 4, "height": 24}
+      ],
+      "cells": [
+        {"cell": "A1", "value": "Операционная панель", "style": "title"},
+        {"cell": "A3", "value": "Обновлено: 20 августа 2026", "style": "subtitle"},
+        {"cell": "A4", "value": "Показатель", "style": "header"},
+        {"cell": "B4", "value": "Значение", "style": "header"},
+        {"cell": "C4", "value": "Статус", "style": "header"},
+        {"cell": "A5", "value": "Выручка за период", "style": "text"},
+        {"cell": "B5", "formula": "=SUM(Данные!B2:B5)", "style": "currency"},
+        {"cell": "C5", "formula": "=IF(B5>=50000000,\"В плане\",\"Ниже плана\")", "style": "formula"},
+        {"cell": "A6", "value": "Средняя маржа", "style": "text"},
+        {"cell": "B6", "formula": "=AVERAGE(Данные!C2:C5)", "style": "percent"},
+        {"cell": "C6", "formula": "=IF(B6>=Допущения!B2,\"В плане\",\"Ниже плана\")", "style": "formula"},
+        {"cell": "A8", "value": "Интерпретация", "style": "section"},
+        {"cell": "A9", "value": "Синие ячейки — формулы, жёлтые — пользовательские допущения. Все итоговые значения пересчитываются в Excel или LibreOffice.", "style": "note", "wrap": true}
+      ],
+      "conditional_formats": [
+        {"range": "C5:C6", "type": "cell", "operator": "equal", "formula": ["\"Ниже плана\""], "fill": "F8E8E8", "font_color": "B54343"}
+      ],
+      "charts": [
+        {
+          "type": "column",
+          "title": "Выручка по кварталам",
+          "data_sheet": "Данные",
+          "data_range": "B1:B5",
+          "categories_range": "A2:A5",
+          "anchor": "E4",
+          "series_from": "columns",
+          "titles_from_data": true,
+          "y_title": "Значение",
+          "legend": "bottom",
+          "style": 10,
+          "width": 14,
+          "height": 8
+        }
+      ],
+      "print": {
+        "orientation": "landscape",
+        "paper_size": "A4",
+        "fit_to_width": 1,
+        "fit_to_height": 1,
+        "print_area": "A1:H22",
+        "headers_footers": true
+      }
+    },
+    {
+      "name": "Данные",
+      "tab_color": "3D6B78",
+      "freeze_panes": "A2",
+      "show_gridlines": false,
+      "columns": [
+        {"column": "A", "width": 14},
+        {"column": "B", "width": 18},
+        {"column": "C", "width": 15}
+      ],
+      "tables": [
+        {
+          "name": "QuarterlyData",
+          "start_cell": "A1",
+          "headers": ["Квартал", "Выручка", "Маржа"],
+          "rows": [
+            ["I кв.", 12000000, 0.21],
+            ["II кв.", 14500000, 0.23],
+            ["III кв.", 16800000, 0.24],
+            ["IV кв.", 19200000, 0.26]
+          ],
+          "style": "TableStyleMedium2"
+        }
+      ],
+      "cells": [
+        {"cell": "B2", "value": 12000000, "style": "currency"},
+        {"cell": "B3", "value": 14500000, "style": "currency"},
+        {"cell": "B4", "value": 16800000, "style": "currency"},
+        {"cell": "B5", "value": 19200000, "style": "currency"},
+        {"cell": "C2", "value": 0.21, "style": "percent"},
+        {"cell": "C3", "value": 0.23, "style": "percent"},
+        {"cell": "C4", "value": 0.24, "style": "percent"},
+        {"cell": "C5", "value": 0.26, "style": "percent"}
+      ],
+      "conditional_formats": [
+        {"range": "C2:C5", "type": "color_scale", "min_color": "F8E8E8", "mid_color": "FFF2CC", "max_color": "E8F3EC"}
+      ],
+      "print": {
+        "orientation": "portrait",
+        "paper_size": "A4",
+        "fit_to_width": 1,
+        "fit_to_height": 0,
+        "repeat_rows": "1:1",
+        "print_area": "A1:C5"
+      }
+    },
+    {
+      "name": "Допущения",
+      "tab_color": "C47A35",
+      "show_gridlines": false,
+      "columns": [
+        {"column": "A", "width": 32},
+        {"column": "B", "width": 20}
+      ],
+      "cells": [
+        {"cell": "A1", "value": "Сценарные параметры", "style": "section"},
+        {"cell": "A2", "value": "Целевая маржа", "style": "text"},
+        {"cell": "B2", "value": 0.22, "style": "input", "number_format": "0.0%"},
+        {"cell": "A3", "value": "Сценарий", "style": "text"},
+        {"cell": "B3", "value": "Базовый", "style": "input"},
+        {"cell": "A5", "value": "Изменяйте только жёлтые ячейки.", "style": "note"}
+      ],
+      "data_validations": [
+        {"range": "B3", "type": "list", "formula1": "\"Консервативный,Базовый,Оптимистичный\"", "allow_blank": false, "prompt_title": "Сценарий", "prompt": "Выберите один из трёх сценариев"}
+      ],
+      "print": {
+        "orientation": "portrait",
+        "paper_size": "A4",
+        "fit_to_width": 1,
+        "fit_to_height": 1,
+        "print_area": "A1:B6"
+      }
+    },
+    {
+      "name": "_Источники",
+      "state": "hidden",
+      "show_gridlines": false,
+      "columns": [
+        {"column": "A", "width": 24},
+        {"column": "B", "width": 70}
+      ],
+      "cells": [
+        {"cell": "A1", "value": "Источник", "style": "header"},
+        {"cell": "B1", "value": "Описание", "style": "header"},
+        {"cell": "A2", "value": "Management reporting", "style": "text"},
+        {"cell": "B2", "value": "Демонстрационные данные; заменить на проверенный источник в реальном отчёте.", "style": "text"}
+      ]
+    }
+  ]
+}

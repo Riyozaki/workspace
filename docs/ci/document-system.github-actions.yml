@@ -1,0 +1,74 @@
+name: document-system
+
+on:
+  push:
+    paths:
+      - "src/document_system/**"
+      - "tests/**"
+      - "tools/openxml-validator/**"
+      - "scripts/**"
+      - "examples/**"
+      - "skills/**"
+      - "pyproject.toml"
+      - "requirements.lock"
+      - ".github/workflows/document-system.yml"
+  pull_request:
+    paths:
+      - "src/document_system/**"
+      - "tests/**"
+      - "tools/openxml-validator/**"
+      - "scripts/**"
+      - "examples/**"
+      - "skills/**"
+      - "pyproject.toml"
+      - "requirements.lock"
+      - ".github/workflows/document-system.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+      - name: Install renderers and fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            libreoffice-writer libreoffice-calc libreoffice-impress \
+            pandoc poppler-utils qpdf tesseract-ocr tesseract-ocr-eng \
+            fonts-dejavu-core fonts-liberation2 fonts-noto-core \
+            fonts-crosextra-carlito fonts-crosextra-caladea
+      - name: Install Python package
+        run: |
+          pip install --require-hashes -r requirements.lock
+          pip install --no-deps -e .
+      - name: Static checks
+        run: ruff check src tests
+      - name: Unit and integration tests
+        run: pytest --cov=document_system --cov-report=term-missing
+      - name: Build optional Open XML validator
+        run: dotnet build tools/openxml-validator/OpenXmlValidator.csproj --configuration Release
+      - name: Run DOCX end-to-end evaluation
+        run: scripts/run-docx-evals.sh .document-work/ci-evals/docx
+      - name: Run XLSX end-to-end evaluation
+        run: scripts/run-xlsx-evals.sh .document-work/ci-evals/xlsx
+      - name: Run PPTX end-to-end evaluation
+        run: scripts/run-pptx-evals.sh .document-work/ci-evals/pptx
+      - name: Run PDF end-to-end evaluation
+        run: scripts/run-pdf-evals.sh .document-work/ci-evals/pdf
+      - name: Run cross-format system evaluation
+        run: scripts/run-system-evals.sh .document-work/ci-evals/system
+      - name: Upload QA artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: document-system-failure-artifacts
+          path: .document-work/
+          retention-days: 7

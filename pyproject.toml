@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "workspace-document-system"
+version = "0.6.0"
+description = "Safe, testable document creation, editing, rendering, and QA for agent workflows"
+requires-python = ">=3.11"
+dependencies = [
+  "defusedxml>=0.7.1,<1",
+  "jsonschema>=4.23,<5",
+  "lxml>=5.3,<7",
+  "matplotlib>=3.9,<4",
+  "openpyxl>=3.1.5,<4",
+  "pandas>=2.2,<4",
+  "Pillow>=11,<13",
+  "pypandoc_binary>=1.15,<2",
+  "pdfplumber>=0.11,<1",
+  "pypdf>=5,<7",
+  "pypdfium2>=4.30,<6",
+  "pytesseract>=0.3.13,<1",
+  "reportlab>=4.2,<5",
+  "python-docx>=1.1.2,<2",
+  "python-pptx>=1.0.2,<2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3,<10",
+  "pytest-cov>=6,<8",
+  "ruff>=0.12,<1",
+]
+
+[project.scripts]
+documentctl = "document_system.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+document_system = ["schemas/*.json"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers"
+testpaths = ["tests"]
+markers = [
+  "integration: requires external document renderers",
+]
+
+[tool.coverage.run]
+source = ["document_system"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+target-version = "py311"
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]

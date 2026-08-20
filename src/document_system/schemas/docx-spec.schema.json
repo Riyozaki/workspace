@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://workspace.local/schemas/docx-spec.schema.json",
+  "title": "Declarative DOCX document specification",
+  "type": "object",
+  "required": ["content"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "title": {"type": "string"},
+        "subject": {"type": "string"},
+        "author": {"type": "string"},
+        "keywords": {"type": "string"},
+        "category": {"type": "string"},
+        "comments": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "language": {"type": "string", "default": "ru-RU"},
+    "page": {
+      "type": "object",
+      "properties": {
+        "size": {"enum": ["A4", "Letter"]},
+        "orientation": {"enum": ["portrait", "landscape"]},
+        "margin_top_mm": {"type": "number", "minimum": 5, "maximum": 60},
+        "margin_right_mm": {"type": "number", "minimum": 5, "maximum": 60},
+        "margin_bottom_mm": {"type": "number", "minimum": 5, "maximum": 60},
+        "margin_left_mm": {"type": "number", "minimum": 5, "maximum": 60}
+      },
+      "additionalProperties": false
+    },
+    "theme": {
+      "type": "object",
+      "properties": {
+        "primary": {"$ref": "#/$defs/color"},
+        "secondary": {"$ref": "#/$defs/color"},
+        "accent": {"$ref": "#/$defs/color"},
+        "text": {"$ref": "#/$defs/color"},
+        "muted": {"$ref": "#/$defs/color"},
+        "light": {"$ref": "#/$defs/color"},
+        "font": {"type": "string"},
+        "heading_font": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "cover": {
+      "type": "object",
+      "required": ["title"],
+      "properties": {
+        "eyebrow": {"type": "string"},
+        "title": {"type": "string"},
+        "subtitle": {"type": "string"},
+        "organization": {"type": "string"},
+        "date": {"type": "string"},
+        "confidentiality": {"type": "string"},
+        "image": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "header": {
+      "type": "object",
+      "properties": {
+        "left": {"type": "string"},
+        "right": {"type": "string"},
+        "logo": {"type": "string"},
+        "show_on_first_page": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "footer": {
+      "type": "object",
+      "properties": {
+        "left": {"type": "string"},
+        "right": {"type": "string"},
+        "page_numbers": {"type": "boolean"},
+        "page_number_label": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "toc": {
+      "oneOf": [
+        {"type": "boolean"},
+        {
+          "type": "object",
+          "properties": {
+            "title": {"type": "string"},
+            "min_level": {"type": "integer", "minimum": 1, "maximum": 9},
+            "max_level": {"type": "integer", "minimum": 1, "maximum": 9},
+            "page_break_after": {"type": "boolean"}
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "content": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/block"}
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "color": {"type": "string", "pattern": "^[0-9A-Fa-f]{6}$"},
+    "run": {
+      "type": "object",
+      "required": ["text"],
+      "properties": {
+        "text": {"type": "string"},
+        "bold": {"type": "boolean"},
+        "italic": {"type": "boolean"},
+        "underline": {"type": "boolean"},
+        "color": {"$ref": "#/$defs/color"},
+        "size_pt": {"type": "number", "minimum": 6, "maximum": 96},
+        "font": {"type": "string"},
+        "link": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "paragraph-data": {
+      "type": "object",
+      "properties": {
+        "text": {"type": "string"},
+        "runs": {"type": "array", "items": {"$ref": "#/$defs/run"}},
+        "style": {"type": "string"},
+        "align": {"enum": ["left", "center", "right", "justify"]},
+        "space_after_pt": {"type": "number", "minimum": 0, "maximum": 100},
+        "keep_with_next": {"type": "boolean"},
+        "keep_together": {"type": "boolean"}
+      }
+    },
+    "cell": {
+      "oneOf": [
+        {"type": ["string", "number", "boolean", "null"]},
+        {
+          "type": "object",
+          "properties": {
+            "text": {"type": ["string", "number", "boolean", "null"]},
+            "bold": {"type": "boolean"},
+            "color": {"$ref": "#/$defs/color"},
+            "fill": {"$ref": "#/$defs/color"},
+            "align": {"enum": ["left", "center", "right"]}
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "block": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "enum": ["heading", "paragraph", "bullets", "numbered", "table", "callout", "image", "chart", "page_break", "spacer"]
+        },
+        "level": {"type": "integer", "minimum": 1, "maximum": 9},
+        "text": {"type": "string"},
+        "runs": {"type": "array", "items": {"$ref": "#/$defs/run"}},
+        "style": {"type": "string"},
+        "align": {"enum": ["left", "center", "right", "justify"]},
+        "space_after_pt": {"type": "number", "minimum": 0, "maximum": 100},
+        "keep_with_next": {"type": "boolean"},
+        "keep_together": {"type": "boolean"},
+        "items": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {"type": "string"},
+              {
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                  "text": {"type": "string"},
+                  "level": {"type": "integer", "minimum": 0, "maximum": 3}
+                },
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
+        "headers": {"type": "array", "items": {"$ref": "#/$defs/cell"}},
+        "rows": {
+          "type": "array",
+          "items": {"type": "array", "items": {"$ref": "#/$defs/cell"}}
+        },
+        "widths_pct": {
+          "type": "array",
+          "items": {"type": "number", "exclusiveMinimum": 0, "maximum": 100}
+        },
+        "caption": {"type": "string"},
+        "zebra": {"type": "boolean"},
+        "path": {"type": "string"},
+        "width_mm": {"type": "number", "minimum": 5, "maximum": 300},
+        "height_mm": {"type": "number", "minimum": 5, "maximum": 300},
+        "kind": {"enum": ["bar", "line", "pie", "horizontal_bar"]},
+        "labels": {"type": "array", "items": {"type": "string"}},
+        "series": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "values"],
+            "properties": {
+              "name": {"type": "string"},
+              "values": {"type": "array", "items": {"type": "number"}}
+            },
+            "additionalProperties": false
+          }
+        },
+        "title": {"type": "string"},
+        "y_label": {"type": "string"},
+        "note": {"type": "string"},
+        "fill": {"$ref": "#/$defs/color"},
+        "border": {"$ref": "#/$defs/color"},
+        "height_pt": {"type": "number", "minimum": 1, "maximum": 300}
+      },
+      "additionalProperties": false
+    }
+  }
+}

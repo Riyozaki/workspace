@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://workspace.local/schemas/pdf-spec.schema.json",
+  "type": "object",
+  "required": ["content"],
+  "properties": {
+    "metadata": {"type": "object", "additionalProperties": {"type": "string"}},
+    "page": {
+      "type": "object",
+      "properties": {
+        "size": {"enum": ["A4", "Letter"]},
+        "orientation": {"enum": ["portrait", "landscape"]},
+        "margin_top_mm": {"type": "number", "minimum": 5, "maximum": 50},
+        "margin_right_mm": {"type": "number", "minimum": 5, "maximum": 50},
+        "margin_bottom_mm": {"type": "number", "minimum": 5, "maximum": 50},
+        "margin_left_mm": {"type": "number", "minimum": 5, "maximum": 50}
+      },
+      "additionalProperties": false
+    },
+    "theme": {"type": "object", "additionalProperties": {"type": "string"}},
+    "header": {"type": "string"},
+    "footer": {"type": "string"},
+    "cover": {
+      "type": "object",
+      "required": ["title"],
+      "properties": {
+        "kicker": {"type": "string"},
+        "title": {"type": "string"},
+        "subtitle": {"type": "string"},
+        "organization": {"type": "string"},
+        "date": {"type": "string"},
+        "confidentiality": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "toc": {"type": "boolean"},
+    "content": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type"],
+        "properties": {
+          "type": {"enum": ["heading", "paragraph", "bullets", "table", "callout", "image", "chart", "page_break", "spacer"]},
+          "level": {"type": "integer", "minimum": 1, "maximum": 3},
+          "text": {"type": "string"},
+          "runs": {"type": "array", "items": {"type": "object", "required": ["text"], "properties": {"text": {"type": "string"}, "bold": {"type": "boolean"}, "italic": {"type": "boolean"}, "color": {"type": "string"}, "link": {"type": "string"}}, "additionalProperties": false}},
+          "items": {"type": "array", "items": {"type": "string"}},
+          "headers": {"type": "array", "items": {"type": "string"}},
+          "rows": {"type": "array", "items": {"type": "array", "items": {"type": ["string", "number", "integer", "boolean", "null"]}}},
+          "widths_pct": {"type": "array", "items": {"type": "number"}},
+          "repeat_header": {"type": "boolean"},
+          "path": {"type": "string"},
+          "width_mm": {"type": "number"},
+          "height_mm": {"type": "number"},
+          "caption": {"type": "string"},
+          "kind": {"enum": ["bar", "line", "pie", "horizontal_bar"]},
+          "title": {"type": "string"},
+          "labels": {"type": "array", "items": {"type": "string"}},
+          "series": {"type": "array", "items": {"type": "object", "required": ["name", "values"], "properties": {"name": {"type": "string"}, "values": {"type": "array", "items": {"type": "number"}}}, "additionalProperties": false}},
+          "height_pt": {"type": "number"},
+          "source": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

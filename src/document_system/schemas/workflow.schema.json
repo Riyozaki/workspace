@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["steps"],
+  "properties": {
+    "job_id": {"type": "string", "pattern": "^[A-Za-z0-9_.-]{1,80}$"},
+    "continue_on_error": {"type": "boolean"},
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "action"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[A-Za-z0-9_.-]{1,80}$"},
+          "action": {"enum": ["create", "edit", "inspect", "validate", "render", "compare", "convert", "docx-revisions", "xlsx-recalc", "pptx-structure", "pdf-transform", "pdf-overlay", "pdf-redact", "lineage", "approval"]},
+          "format": {"enum": ["docx", "xlsx", "pptx", "pdf"]},
+          "input": {"type": "string"},
+          "original": {"type": "string"},
+          "modified": {"type": "string"},
+          "output": {"type": "string"},
+          "spec": {"type": "string"},
+          "plan": {"type": "string"},
+          "target": {"type": "string"},
+          "options": {"type": "object"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

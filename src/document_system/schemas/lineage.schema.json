@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["claims"],
+  "properties": {
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "value", "sources", "targets"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+$"},
+          "value": {"type": ["string", "number", "integer", "boolean"]},
+          "sources": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/location"}},
+          "targets": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/location"}}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "location": {
+      "type": "object",
+      "required": ["path"],
+      "properties": {
+        "path": {"type": "string"},
+        "query": {"type": "string"},
+        "case_sensitive": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

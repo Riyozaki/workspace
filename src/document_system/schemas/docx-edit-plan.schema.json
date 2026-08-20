@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://workspace.local/schemas/docx-edit-plan.schema.json",
+  "title": "DOCX edit plan",
+  "type": "object",
+  "properties": {
+    "author": {"type": "string", "minLength": 1},
+    "track_changes": {"type": "boolean"},
+    "replacements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["find"],
+        "properties": {
+          "find": {"type": "string", "minLength": 1},
+          "replace": {"type": "string"},
+          "expected": {"type": "integer", "minimum": 0},
+          "required": {"type": "boolean"},
+          "all": {"type": "boolean"},
+          "scopes": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {"enum": ["document", "headers", "footers"]}
+          },
+          "track_changes": {"type": "boolean"},
+          "author": {"type": "string", "minLength": 1},
+          "date": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "comments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["target", "text"],
+        "properties": {
+          "target": {"type": "string", "minLength": 1},
+          "text": {"type": "string", "minLength": 1},
+          "occurrence": {"type": "integer", "minimum": 1},
+          "phase": {"enum": ["before", "after"]},
+          "author": {"type": "string", "minLength": 1},
+          "initials": {"type": "string", "minLength": 1, "maxLength": 16},
+          "date": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "title": {"type": "string"},
+        "subject": {"type": "string"},
+        "author": {"type": "string"},
+        "keywords": {"type": "string"},
+        "category": {"type": "string"},
+        "comments": {"type": "string"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "anyOf": [
+    {"required": ["replacements"]},
+    {"required": ["comments"]},
+    {"required": ["metadata"]}
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,24 @@
+{
+  "author": "Редактор документа",
+  "track_changes": true,
+  "comments": [
+    {
+      "target": "через 30 дней",
+      "text": "Подтвердить срок контрольной проверки.",
+      "occurrence": 1,
+      "initials": "РД",
+      "phase": "before"
+    }
+  ],
+  "replacements": [
+    {
+      "find": "через 30 дней",
+      "replace": "через 20 рабочих дней",
+      "expected": 1,
+      "scopes": ["document"]
+    }
+  ],
+  "metadata": {
+    "comments": "Отредактировано с отслеживанием изменений"
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://workspace.local/schemas/pptx-spec.schema.json",
+  "title": "Declarative PPTX presentation specification",
+  "type": "object",
+  "required": ["slides"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "title": {"type": "string"},
+        "subject": {"type": "string"},
+        "author": {"type": "string"},
+        "keywords": {"type": "string"},
+        "category": {"type": "string"},
+        "comments": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "size": {"enum": ["wide"]},
+    "language": {"type": "string"},
+    "theme": {
+      "type": "object",
+      "properties": {
+        "primary": {"$ref": "#/$defs/color"},
+        "secondary": {"$ref": "#/$defs/color"},
+        "accent": {"$ref": "#/$defs/color"},
+        "background": {"$ref": "#/$defs/color"},
+        "light": {"$ref": "#/$defs/color"},
+        "text": {"$ref": "#/$defs/color"},
+        "muted": {"$ref": "#/$defs/color"},
+        "positive": {"$ref": "#/$defs/color"},
+        "negative": {"$ref": "#/$defs/color"},
+        "font": {"type": "string"},
+        "heading_font": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "footer": {"type": "string"},
+    "slides": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/slide"}
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "color": {"type": "string", "pattern": "^[0-9A-Fa-f]{6}$"},
+    "bullet": {
+      "oneOf": [
+        {"type": "string", "maxLength": 220},
+        {
+          "type": "object",
+          "required": ["text"],
+          "properties": {
+            "text": {"type": "string", "maxLength": 220},
+            "level": {"type": "integer", "minimum": 0, "maximum": 2},
+            "emphasis": {"type": "boolean"}
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "metric": {
+      "type": "object",
+      "required": ["value", "label"],
+      "properties": {
+        "value": {"type": "string", "maxLength": 24},
+        "label": {"type": "string", "maxLength": 70},
+        "detail": {"type": "string", "maxLength": 100},
+        "status": {"enum": ["neutral", "positive", "negative", "accent"]}
+      },
+      "additionalProperties": false
+    },
+    "series": {
+      "type": "object",
+      "required": ["name", "values"],
+      "properties": {
+        "name": {"type": "string", "maxLength": 60},
+        "values": {"type": "array", "items": {"type": "number"}}
+      },
+      "additionalProperties": false
+    },
+    "event": {
+      "type": "object",
+      "required": ["label", "title"],
+      "properties": {
+        "label": {"type": "string", "maxLength": 30},
+        "title": {"type": "string", "maxLength": 70},
+        "body": {"type": "string", "maxLength": 150}
+      },
+      "additionalProperties": false
+    },
+    "slide": {
+      "type": "object",
+      "required": ["layout"],
+      "properties": {
+        "layout": {"enum": ["title", "section", "bullets", "two-column", "metrics", "table", "chart", "image", "quote", "timeline"]},
+        "title": {"type": "string", "maxLength": 120},
+        "subtitle": {"type": "string", "maxLength": 220},
+        "kicker": {"type": "string", "maxLength": 80},
+        "section_number": {"type": "string", "maxLength": 10},
+        "bullets": {"type": "array", "maxItems": 10, "items": {"$ref": "#/$defs/bullet"}},
+        "left_title": {"type": "string", "maxLength": 80},
+        "right_title": {"type": "string", "maxLength": 80},
+        "left": {"type": "array", "maxItems": 7, "items": {"$ref": "#/$defs/bullet"}},
+        "right": {"type": "array", "maxItems": 7, "items": {"$ref": "#/$defs/bullet"}},
+        "metrics": {"type": "array", "minItems": 2, "maxItems": 4, "items": {"$ref": "#/$defs/metric"}},
+        "headers": {"type": "array", "items": {"type": "string", "maxLength": 80}},
+        "rows": {"type": "array", "items": {"type": "array", "items": {"type": ["string", "number", "integer", "boolean", "null"]}}},
+        "widths_pct": {"type": "array", "items": {"type": "number", "exclusiveMinimum": 0, "maximum": 100}},
+        "chart_type": {"enum": ["column", "bar", "line", "pie", "doughnut", "area"]},
+        "categories": {"type": "array", "items": {"type": "string", "maxLength": 40}},
+        "series": {"type": "array", "minItems": 1, "maxItems": 5, "items": {"$ref": "#/$defs/series"}},
+        "y_title": {"type": "string", "maxLength": 60},
+        "legend": {"enum": ["top", "bottom", "left", "right", "none"]},
+        "data_labels": {"type": "boolean"},
+        "image": {"type": "string"},
+        "image_fit": {"enum": ["contain", "cover"]},
+        "caption": {"type": "string", "maxLength": 180},
+        "quote": {"type": "string", "maxLength": 420},
+        "attribution": {"type": "string", "maxLength": 120},
+        "events": {"type": "array", "minItems": 2, "maxItems": 6, "items": {"$ref": "#/$defs/event"}},
+        "notes": {"type": "string", "maxLength": 8000},
+        "source": {"type": "string", "maxLength": 240},
+        "footer": {"type": "string", "maxLength": 100},
+        "background": {"$ref": "#/$defs/color"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

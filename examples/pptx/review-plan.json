@@ -1,0 +1,26 @@
+{
+  "replacements": [
+    {
+      "find": "две пилотные команды",
+      "replace": "три пилотные команды",
+      "expected": 1,
+      "slides": [1],
+      "include_notes": true
+    },
+    {
+      "find": "две команды",
+      "replace": "три команды",
+      "expected": 1,
+      "slides": [9]
+    },
+    {
+      "find": "31 октября",
+      "replace": "7 ноября",
+      "expected": 1,
+      "slides": [9]
+    }
+  ],
+  "metadata": {
+    "comments": "Обновлённый сценарий масштабирования"
+  }
+}

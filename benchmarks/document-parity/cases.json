@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "dimensions": [
+    "semantic_correctness",
+    "structural_validity",
+    "preservation_fidelity",
+    "visual_quality",
+    "native_editability",
+    "auditability",
+    "safety",
+    "operational_reliability"
+  ],
+  "cases": [
+    {
+      "id": "docx-create-report-ru",
+      "format": "docx",
+      "tier": "hosted-skill",
+      "automated": true,
+      "task": "Create a Russian report with cover, TOC, tables, chart, headers, footers and page fields.",
+      "fixture": "examples/docx/operational-review.json",
+      "assertions": ["opens", "required text", "TOC/PAGE fields", "embedded image", "no placeholders", "visual review"]
+    },
+    {
+      "id": "docx-redline-comment",
+      "format": "docx",
+      "tier": "hosted-skill",
+      "automated": true,
+      "task": "Apply a minimal tracked replacement and anchored comment across split runs.",
+      "fixture": "tests/test_docx_edit.py",
+      "assertions": ["accepted/rejected views", "comment anchors", "unrelated parts byte-identical"]
+    },
+    {
+      "id": "docx-threaded-review",
+      "format": "docx",
+      "tier": "m365",
+      "automated": false,
+      "task": "Resolve five threaded reviewer comments with tracked edits and replies in a legal template.",
+      "fixture_required": "licensed legal DOCX with numbering, replies and cross-references",
+      "assertions": ["reply threading", "tracked completeness", "numbering preservation", "native Word review"]
+    },
+    {
+      "id": "docx-crossref-numbering-audit",
+      "format": "docx",
+      "tier": "m365",
+      "automated": false,
+      "task": "Find inconsistent defined terms, broken cross-references and numbering errors with section citations.",
+      "fixture_required": "100-page structured handbook/contract",
+      "assertions": ["precision/recall", "clickable/locatable citations", "no false edits"]
+    },
+    {
+      "id": "xlsx-create-dashboard",
+      "format": "xlsx",
+      "tier": "hosted-skill",
+      "automated": true,
+      "task": "Create a multi-sheet dashboard with assumptions, formulas, native table/chart, validation and print areas.",
+      "fixture": "examples/xlsx/operational-dashboard.json",
+      "assertions": ["formula inventory", "native chart/table", "styles", "sources sheet", "recalculation"]
+    },
+    {
+      "id": "xlsx-atomic-scenario-edit",
+      "format": "xlsx",
+      "tier": "hosted-skill",
+      "automated": true,
+      "task": "Update assumptions and a formula without changing unrelated package parts.",
+      "fixture": "examples/xlsx/scenario-update.json",
+      "assertions": ["expected-value guard", "style preservation", "forced recalculation", "package diff"]
+    },
+    {
+      "id": "xlsx-inherited-model-citations",
+      "format": "xlsx",
+      "tier": "m365",
+      "automated": false,
+      "task": "Explain a three-statement model and trace summary values to assumptions with cell-level citations.",
+      "fixture_required": "licensed multi-tab financial model",
+      "assertions": ["dependency graph", "citation accuracy", "hidden sheets", "named ranges"]
+    },
+    {
+      "id": "xlsx-pivot-chart-edit",
+      "format": "xlsx",
+      "tier": "m365",
+      "automated": false,
+      "task": "Edit a pivot, chart, conditional formatting and data validation in place.",
+      "fixture_required": "XLSX with pivot cache, slicer and charts",
+      "assertions": ["native objects preserved", "Excel refresh", "no cache corruption"]
+    },
+    {
+      "id": "xlsx-external-link-guard",
+      "format": "xlsx",
+      "tier": "hosted-skill",
+      "automated": false,
+      "task": "Edit a workbook with external links without destroying cached values or links.",
+      "fixture_required": "paired externally linked workbooks",
+      "assertions": ["refusal or safe plan", "links preserved", "cached values preserved"]
+    },
+    {
+      "id": "pptx-create-deck",
+      "format": "pptx",
+      "tier": "hosted-skill",
+      "automated": true,
+      "task": "Create a nine-slide editable deck with varied layouts, native chart, table and notes.",
+      "fixture": "examples/pptx/operational-review.json",
+      "assertions": ["slide/notes count", "native chart", "geometry QA", "visual review"]
+    },
+    {
+      "id": "pptx-surgical-edit",
+      "format": "pptx",
+      "tier": "hosted-skill",
+      "automated": true,
+      "task": "Replace fragmented text and notes while preserving unrelated parts.",
+      "fixture": "examples/pptx/review-plan.json",
+      "assertions": ["expected count", "run formatting", "package diff"]
+    },
+    {
+      "id": "pptx-template-new-slides",
+      "format": "pptx",
+      "tier": "m365",
+      "automated": false,
+      "task": "Generate new slides using a corporate master and varied existing layouts.",
+      "fixture_required": "licensed corporate POTX/PPTX template",
+      "assertions": ["master/layout reuse", "brand fonts/colors", "no generic slide style", "PowerPoint render"]
+    },
+    {
+      "id": "pptx-structural-operations",
+      "format": "pptx",
+      "tier": "hosted-skill",
+      "automated": true,
+      "task": "Duplicate, reorder and delete slides while cleaning orphaned parts.",
+      "fixture": "tests/test_pptx.py::test_structural_slide_operations_and_orphan_cleanup",
+      "assertions": ["presentation order", "relationships", "shared chart behavior", "no orphans"]
+    },
+    {
+      "id": "pdf-create-report",
+      "format": "pdf",
+      "tier": "hosted-skill",
+      "automated": true,
+      "task": "Create a four-page Unicode report with TOC, outline, table and chart.",
+      "fixture": "examples/pdf/operational-report.json",
+      "assertions": ["embedded fonts", "text/table extraction", "page render", "no active content"]
+    },
+    {
+      "id": "pdf-transform-overlay",
+      "format": "pdf",
+      "tier": "hosted-skill",
+      "automated": true,
+      "task": "Merge/select/watermark and place bounded text/check overlays.",
+      "fixture": "scripts/run-pdf-evals.sh",
+      "assertions": ["page lineage", "bounds", "visual placement", "metadata"]
+    },
+    {
+      "id": "pdf-nonfillable-form-inference",
+      "format": "pdf",
+      "tier": "hosted-skill",
+      "automated": true,
+      "task": "Infer labels and field boxes on a non-fillable form, fill it and verify collisions.",
+      "fixture": "tests/test_pdf.py::test_infers_nonfillable_form_structure",
+      "assertions": ["field detection recall", "label association", "placement", "collision-free render"]
+    },
+    {
+      "id": "pdf-redaction-safety",
+      "format": "pdf",
+      "tier": "above",
+      "automated": true,
+      "task": "Redact text/images and prove content cannot be recovered from streams, metadata or OCR.",
+      "fixture": "tests/test_pdf.py::test_secure_raster_redaction_removes_original_streams",
+      "assertions": ["visual removal", "text extraction removal", "object-stream removal", "metadata cleanup", "OCR verification when available"]
+    },
+    {
+      "id": "cross-format-model-to-pack",
+      "format": "multi",
+      "tier": "m365",
+      "automated": false,
+      "task": "Use one XLSX source to create a cited DOCX memo, PPTX deck and PDF package without number drift.",
+      "fixture_required": "financial model plus brand templates",
+      "assertions": ["cross-format number equality", "cell/page citations", "brand fit", "lineage manifest"]
+    },
+    {
+      "id": "batch-untrusted-collection",
+      "format": "multi",
+      "tier": "above",
+      "automated": true,
+      "task": "Inspect a mixed directory concurrently while rejecting traversal, entities, active PDF and malformed relationships.",
+      "fixture": "tests/test_security.py + tests/test_orchestration.py",
+      "assertions": ["no execution", "bounded resources", "deterministic manifest", "failure isolation"]
+    },
+    {
+      "id": "workflow-replay-audit",
+      "format": "multi",
+      "tier": "above",
+      "automated": true,
+      "task": "Replay an eight-step document suite with hashes, reports and fail-closed QA.",
+      "fixture": "examples/workflows/document-suite.json",
+      "assertions": ["manifest", "hashes", "step reports", "QA stops workflow", "replay"]
+    }
+  ]
+}

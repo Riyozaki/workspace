@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://workspace.local/schemas/pptx-edit-plan.schema.json",
+  "title": "PPTX edit plan",
+  "type": "object",
+  "properties": {
+    "replacements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["find", "replace"],
+        "properties": {
+          "find": {"type": "string", "minLength": 1},
+          "replace": {"type": "string"},
+          "expected": {"type": "integer", "minimum": 0},
+          "slides": {"type": "array", "uniqueItems": true, "items": {"type": "integer", "minimum": 1}},
+          "include_notes": {"type": "boolean"},
+          "all": {"type": "boolean"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "media_replacements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["part", "path"],
+        "properties": {
+          "part": {"type": "string", "pattern": "^ppt/media/[A-Za-z0-9_.-]+$"},
+          "path": {"type": "string"},
+          "expected_sha256": {"type": "string", "pattern": "^[0-9A-Fa-f]{64}$"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "title": {"type": "string"},
+        "subject": {"type": "string"},
+        "author": {"type": "string"},
+        "keywords": {"type": "string"},
+        "category": {"type": "string"},
+        "comments": {"type": "string"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "anyOf": [
+    {"required": ["replacements"]},
+    {"required": ["media_replacements"]},
+    {"required": ["metadata"]}
+  ],
+  "additionalProperties": false
+}

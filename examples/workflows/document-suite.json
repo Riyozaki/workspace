@@ -1,0 +1,74 @@
+{
+  "job_id": "document-suite-example",
+  "steps": [
+    {
+      "id": "docx",
+      "action": "create",
+      "format": "docx",
+      "spec": "../docx/operational-review.json",
+      "output": "../../.document-work/workflow/operational-review.docx"
+    },
+    {
+      "id": "docx-qa",
+      "action": "validate",
+      "input": "${docx.output}",
+      "options": {
+        "require_header": true,
+        "require_footer": true,
+        "require_page_numbers": true,
+        "require_toc": true,
+        "require_images": 1
+      }
+    },
+    {
+      "id": "xlsx",
+      "action": "create",
+      "format": "xlsx",
+      "spec": "../xlsx/operational-dashboard.json",
+      "output": "../../.document-work/workflow/operational-dashboard.xlsx"
+    },
+    {
+      "id": "xlsx-qa",
+      "action": "validate",
+      "input": "${xlsx.output}",
+      "options": {
+        "require_sheets": ["Панель", "Данные", "Допущения"],
+        "require_formulas": true
+      }
+    },
+    {
+      "id": "pptx",
+      "action": "create",
+      "format": "pptx",
+      "spec": "../pptx/operational-review.json",
+      "output": "../../.document-work/workflow/operational-review.pptx"
+    },
+    {
+      "id": "pptx-qa",
+      "action": "validate",
+      "input": "${pptx.output}",
+      "options": {
+        "expected_slides": 9,
+        "require_notes": true
+      }
+    },
+    {
+      "id": "pdf",
+      "action": "create",
+      "format": "pdf",
+      "spec": "../pdf/operational-report.json",
+      "output": "../../.document-work/workflow/operational-report.pdf"
+    },
+    {
+      "id": "pdf-qa",
+      "action": "validate",
+      "input": "${pdf.output}",
+      "options": {
+        "expected_pages": 4,
+        "require_text": ["7 ноября"],
+        "render": true,
+        "render_dir": ".document-work/workflow/pdf-render"
+      }
+    }
+  ]
+}

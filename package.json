@@ -1,0 +1,16 @@
+{
+  "name": "workspace-document-runtime",
+  "private": true,
+  "version": "0.6.0",
+  "description": "Pinned JavaScript/WASM runtime dependencies for documentctl",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@matbee/libreoffice-converter": "2.7.2",
+    "@tesseract.js-data/eng": "1.0.0",
+    "@xarsh/ooxml-validator": "0.3.0",
+    "@tesseract.js-data/rus": "1.0.0",
+    "tesseract.js": "7.0.0"
+  }
+}

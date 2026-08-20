@@ -1,0 +1,27 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Runtime caches and document jobs
+.cache/
+.document-work/
+work/
+node_modules/
+
+# Generated evaluation outputs
+tests/output/
+
+# .NET build outputs
+**/bin/
+**/obj/
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/

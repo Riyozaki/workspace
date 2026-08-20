@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["items"],
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["page", "type", "x", "y"],
+        "properties": {
+          "page": {"type": "integer", "minimum": 1},
+          "type": {"enum": ["text", "check", "rectangle", "image"]},
+          "x": {"type": "number", "minimum": 0},
+          "y": {"type": "number", "minimum": 0},
+          "width": {"type": "number", "minimum": 1},
+          "height": {"type": "number", "minimum": 1},
+          "text": {"type": "string"},
+          "font_size": {"type": "number", "minimum": 5, "maximum": 72},
+          "color": {"type": "string", "pattern": "^[0-9A-Fa-f]{6}$"},
+          "align": {"enum": ["left", "center", "right"]},
+          "path": {"type": "string"},
+          "line_width": {"type": "number", "minimum": 0.1, "maximum": 20}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
