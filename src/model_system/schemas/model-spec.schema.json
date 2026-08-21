@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://workspace.local/schemas/model-spec.schema.json",
+  "title": "Declarative 3D model specification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["objects"],
+  "properties": {
+    "version": {"const": "1.0", "default": "1.0"},
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {"type": "string", "maxLength": 200},
+        "description": {"type": "string", "maxLength": 2000},
+        "author": {"type": "string", "maxLength": 200},
+        "license": {"type": "string", "maxLength": 120},
+        "source_prompt": {"type": "string", "maxLength": 4000}
+      }
+    },
+    "units": {"enum": ["m", "cm", "mm"], "default": "m"},
+    "up_axis": {"const": "Z", "default": "Z"},
+    "materials": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "base_color"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$"},
+          "name": {"type": "string", "maxLength": 120},
+          "base_color": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}([0-9A-Fa-f]{2})?$"},
+          "metallic": {"type": "number", "minimum": 0, "maximum": 1, "default": 0},
+          "roughness": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.5},
+          "alpha": {"type": "number", "minimum": 0, "maximum": 1, "default": 1},
+          "emission_color": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$"},
+          "emission_strength": {"type": "number", "minimum": 0, "maximum": 100, "default": 0}
+        }
+      }
+    },
+    "objects": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5000,
+      "items": {"$ref": "#/$defs/object"}
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "profile": {"enum": ["web", "render", "print"], "default": "render"},
+        "max_triangles": {"type": "integer", "minimum": 1, "maximum": 50000000, "default": 1000000},
+        "require_materials": {"type": "boolean", "default": true}
+      }
+    },
+    "render": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "resolution": {"type": "integer", "minimum": 128, "maximum": 2048, "default": 512},
+        "samples": {"type": "integer", "minimum": 1, "maximum": 512, "default": 24},
+        "transparent": {"type": "boolean", "default": false},
+        "background": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$", "default": "#162333"},
+        "views": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": {"enum": ["perspective", "front", "right", "back", "left", "top"]},
+          "default": ["perspective", "front", "right", "back"]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "positiveVector3": {
+      "type": "array",
+      "prefixItems": [
+        {"type": "number", "exclusiveMinimum": 0, "maximum": 1000000},
+        {"type": "number", "exclusiveMinimum": 0, "maximum": 1000000},
+        {"type": "number", "exclusiveMinimum": 0, "maximum": 1000000}
+      ],
+      "items": false
+    },
+    "vector3": {
+      "type": "array",
+      "prefixItems": [
+        {"type": "number", "minimum": -1000000, "maximum": 1000000},
+        {"type": "number", "minimum": -1000000, "maximum": 1000000},
+        {"type": "number", "minimum": -1000000, "maximum": 1000000}
+      ],
+      "items": false
+    },
+    "object": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$"},
+        "name": {"type": "string", "maxLength": 120},
+        "type": {"enum": ["box", "rounded_box", "sphere", "cylinder", "cone", "torus", "plane"]},
+        "material": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$"},
+        "size": {"$ref": "#/$defs/positiveVector3"},
+        "radius": {"type": "number", "exclusiveMinimum": 0, "maximum": 1000000},
+        "top_radius": {"type": "number", "minimum": 0, "maximum": 1000000},
+        "depth": {"type": "number", "exclusiveMinimum": 0, "maximum": 1000000},
+        "major_radius": {"type": "number", "exclusiveMinimum": 0, "maximum": 1000000},
+        "minor_radius": {"type": "number", "exclusiveMinimum": 0, "maximum": 1000000},
+        "segments": {"type": "integer", "minimum": 8, "maximum": 512, "default": 48},
+        "location": {"$ref": "#/$defs/vector3"},
+        "rotation_deg": {"$ref": "#/$defs/vector3"},
+        "scale": {"$ref": "#/$defs/positiveVector3"},
+        "bevel": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["width"],
+          "properties": {
+            "width": {"type": "number", "minimum": 0, "maximum": 1000000},
+            "segments": {"type": "integer", "minimum": 1, "maximum": 12, "default": 3}
+          }
+        },
+        "smooth": {"type": "boolean", "default": false}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"type": {"enum": ["box", "rounded_box", "plane"]}}},
+          "then": {"required": ["size"]}
+        },
+        {
+          "if": {"properties": {"type": {"const": "sphere"}}},
+          "then": {"required": ["radius"]}
+        },
+        {
+          "if": {"properties": {"type": {"enum": ["cylinder", "cone"]}}},
+          "then": {"required": ["radius", "depth"]}
+        },
+        {
+          "if": {"properties": {"type": {"const": "torus"}}},
+          "then": {"required": ["major_radius", "minor_radius"]}
+        }
+      ]
+    }
+  }
+}

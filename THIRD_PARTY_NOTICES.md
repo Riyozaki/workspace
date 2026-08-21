@@ -1,6 +1,6 @@
 # Third-party dependency notices
 
-This repository contains original clean-room orchestration and document-processing code. It does not vendor the source or binaries of the dependencies below; bootstrap installs them from their normal package sources. Exact Python artifacts and hashes are recorded in `requirements.lock`.
+This repository contains original clean-room orchestration and document/3D-processing code. It does not vendor dependency binaries; bootstrap installs them from their normal package sources. Exact Python artifacts and hashes are recorded in `requirements.lock` and `requirements-blender.lock`.
 
 This file is an engineering inventory, not legal advice. Confirm terms before redistributing a bundled runtime.
 
@@ -29,6 +29,15 @@ This file is an engineering inventory, not legal advice. Confirm terms before re
 | LibreOffice | external compatibility renderer/converter | MPL-2.0 / LGPLv3+ |
 | @matbee/libreoffice-converter / LibreOffice WASM | pinned in-process Office renderer fallback | MPL-2.0 |
 | System fonts | rendering | package-specific; DejaVu, Liberation, Noto, Carlito, and Caladea have their own open font licenses |
+| Trimesh | mesh creation, exchange, and topology inspection | MIT |
+| Manifold3D | robust mesh booleans | Apache-2.0 |
+| Blender / official `bpy` wheel | isolated modeling, glTF import/export, Cycles CPU render | GPL-3.0-or-later |
+| Khronos glTF Validator / `gltf-validator` | glTF 2.0 conformance | Apache-2.0 |
+| glTF Transform | deterministic glTF optimization | MIT |
+| Sharp/libvips | image transforms used by glTF Transform | Apache-2.0 / LGPL-2.1-or-later (dynamic libvips); pinned override addresses current advisories |
+| Google `<model-viewer>` | local interactive GLB review | Apache-2.0 |
+| `@emnapi/runtime` / `tslib` | pinned transitive support required by cross-platform Sharp packages | MIT / 0BSD |
+| CadQuery / Open Cascade (research proof only) | optional precision BREP/STEP route | Apache-2.0 / LGPL-2.1 with OCCT exception; not in default runtime |
 
 ## Proprietary comparison artifact
 

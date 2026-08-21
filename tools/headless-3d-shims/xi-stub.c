@@ -1,0 +1,9 @@
+void *XCloseDevice(void) { return 0; }
+void *XFreeDeviceList(void) { return 0; }
+void *XFreeDeviceState(void) { return 0; }
+void *XListInputDevices(void) { return 0; }
+void *XOpenDevice(void) { return 0; }
+void *XQueryDeviceState(void) { return 0; }
+void *XGetExtensionVersion(void) { return 0; }
+void *XSelectExtensionEvent(void) { return 0; }
+void *_XiGetDevicePresenceNotifyEvent(void) { return 0; }

@@ -1,0 +1,239 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Modern lounge chair",
+    "description": "Parametric product-visualization example built from a restricted declarative assembly.",
+    "author": "Workspace model system",
+    "license": "CC0-1.0",
+    "source_prompt": "Create a modern lounge chair with cream upholstery, warm walnut armrests and brushed brass legs."
+  },
+  "units": "m",
+  "up_axis": "Z",
+  "materials": [
+    {
+      "id": "fabric",
+      "name": "Cream fabric",
+      "base_color": "#D8C9B2",
+      "metallic": 0,
+      "roughness": 0.88
+    },
+    {
+      "id": "wood",
+      "name": "Warm walnut",
+      "base_color": "#8B3F1F",
+      "metallic": 0,
+      "roughness": 0.34
+    },
+    {
+      "id": "brass",
+      "name": "Brushed brass",
+      "base_color": "#A86A21",
+      "metallic": 0.82,
+      "roughness": 0.24
+    }
+  ],
+  "objects": [
+    {
+      "id": "seat",
+      "name": "Upholstered seat",
+      "type": "rounded_box",
+      "size": [
+        1.35,
+        1.08,
+        0.16
+      ],
+      "location": [
+        0,
+        0,
+        0.76
+      ],
+      "material": "fabric",
+      "bevel": {
+        "width": 0.07,
+        "segments": 5
+      }
+    },
+    {
+      "id": "back",
+      "name": "Upholstered back",
+      "type": "rounded_box",
+      "size": [
+        1.35,
+        0.16,
+        1.02
+      ],
+      "location": [
+        0,
+        0.44,
+        1.29
+      ],
+      "rotation_deg": [
+        -8,
+        0,
+        0
+      ],
+      "material": "fabric",
+      "bevel": {
+        "width": 0.07,
+        "segments": 5
+      }
+    },
+    {
+      "id": "arm_left",
+      "name": "Left walnut arm",
+      "type": "rounded_box",
+      "size": [
+        0.18,
+        1.02,
+        0.34
+      ],
+      "location": [
+        -0.59,
+        0,
+        1.08
+      ],
+      "material": "wood",
+      "bevel": {
+        "width": 0.07,
+        "segments": 5
+      }
+    },
+    {
+      "id": "arm_right",
+      "name": "Right walnut arm",
+      "type": "rounded_box",
+      "size": [
+        0.18,
+        1.02,
+        0.34
+      ],
+      "location": [
+        0.59,
+        0,
+        1.08
+      ],
+      "material": "wood",
+      "bevel": {
+        "width": 0.07,
+        "segments": 5
+      }
+    },
+    {
+      "id": "leg_front_left",
+      "name": "Front left leg",
+      "type": "rounded_box",
+      "size": [
+        0.12,
+        0.12,
+        0.68
+      ],
+      "location": [
+        -0.5,
+        -0.38,
+        0.34
+      ],
+      "rotation_deg": [
+        3,
+        4,
+        0
+      ],
+      "material": "brass",
+      "bevel": {
+        "width": 0.025,
+        "segments": 3
+      }
+    },
+    {
+      "id": "leg_front_right",
+      "name": "Front right leg",
+      "type": "rounded_box",
+      "size": [
+        0.12,
+        0.12,
+        0.68
+      ],
+      "location": [
+        0.5,
+        -0.38,
+        0.34
+      ],
+      "rotation_deg": [
+        3,
+        -4,
+        0
+      ],
+      "material": "brass",
+      "bevel": {
+        "width": 0.025,
+        "segments": 3
+      }
+    },
+    {
+      "id": "leg_back_left",
+      "name": "Back left leg",
+      "type": "rounded_box",
+      "size": [
+        0.12,
+        0.12,
+        0.68
+      ],
+      "location": [
+        -0.5,
+        0.38,
+        0.34
+      ],
+      "rotation_deg": [
+        -3,
+        4,
+        0
+      ],
+      "material": "brass",
+      "bevel": {
+        "width": 0.025,
+        "segments": 3
+      }
+    },
+    {
+      "id": "leg_back_right",
+      "name": "Back right leg",
+      "type": "rounded_box",
+      "size": [
+        0.12,
+        0.12,
+        0.68
+      ],
+      "location": [
+        0.5,
+        0.38,
+        0.34
+      ],
+      "rotation_deg": [
+        -3,
+        -4,
+        0
+      ],
+      "material": "brass",
+      "bevel": {
+        "width": 0.025,
+        "segments": 3
+      }
+    }
+  ],
+  "quality": {
+    "profile": "render",
+    "max_triangles": 100000,
+    "require_materials": true
+  },
+  "render": {
+    "resolution": 512,
+    "samples": 24,
+    "transparent": false,
+    "background": "#162333",
+    "views": [
+      "perspective",
+      "front",
+      "right",
+      "back"
+    ]
+  }
+}

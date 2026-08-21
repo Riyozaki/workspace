@@ -1,0 +1,2 @@
+# Isolated GPL Blender Python runtime used only by tools/blender/model_worker.py.
+bpy==4.5.12

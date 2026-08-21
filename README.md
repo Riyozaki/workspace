@@ -1,6 +1,6 @@
-# Workspace document system
+# Workspace document and 3D asset system
 
-A clean-room, agent-oriented document platform for safely creating, editing, inspecting, rendering, comparing, and validating complex files in the repository runtime.
+A clean-room, agent-oriented platform for safely creating, editing, inspecting, rendering, comparing, and validating complex documents and 3D assets in the repository runtime.
 
 ## Current capability
 
@@ -28,18 +28,26 @@ The common layer adds environment self-tests, schema-validated cross-format work
 
 Advanced review routes now include DOCX accept/reject plus tracked-completeness proof, XLSX dependency tracing and formula compatibility lint, PPTX structural slide operations and master/layout inventory, PDF form-structure inference, and secure raster redaction. Cross-format brand profiles and claim lineage provide reusable styling plus source-to-deliverable citations.
 
+3D modeling adds a restricted declarative scene specification, Blender 4.5 LTS procedural construction, PBR materials, Cycles CPU multi-view rendering, Trimesh topology inspection, official Khronos glTF validation, source-preserving optimization, and a local interactive GLB viewer. The current deterministic lane targets products, furniture and hard-surface assemblies; precision CAD and provider-backed organic generation have explicit separate roadmaps.
+
 ## Ready-to-view examples
 
-Download the generated [DOCX, XLSX, PPTX, and PDF examples](examples/generated/README.md), or review their rendered contact sheets directly on GitHub.
+Download the generated [DOCX, XLSX, PPTX, and PDF examples](examples/generated/README.md), review their rendered contact sheets directly on GitHub, and inspect the new [GLB 3D example with four Cycles views](examples/modeling/generated/README.md).
 
 ## Bootstrap
 
 ```bash
 scripts/bootstrap-documents.sh
 scripts/documentctl env
+
+# Adds the isolated Blender/3D runtime and runs its self-test.
+scripts/bootstrap-modeling.sh
+scripts/modelctl doctor
 ```
 
 Bootstrap installs Python dependencies plus integrity-pinned LibreOffice/Tesseract WASM runtimes and a standalone Microsoft Open XML SDK validator from npm. Native LibreOffice/Tesseract are used when present; WASM is the automatic fallback in restricted Arena sandboxes, so DOCX/XLSX/PPTX rendering, XLSX recalculation, English/Russian OCR, and Microsoft 365 OOXML validation work without APT or host .NET. Use `DOCUMENT_SYSTEM_OFFICE_BACKEND=native|wasm|auto` to select the Office backend explicitly.
+
+The modeling bootstrap installs the official integrity-locked `bpy 4.5.12 LTS` wheel into an isolated ignored environment. In Arena it uses original headless ABI shims and permits only Cycles CPU and fixed declarative workers — never GUI/EEVEE or untrusted Blender scripts.
 
 ## Quick start
 
@@ -136,6 +144,21 @@ scripts/run-pdf-evals.sh
 scripts/run-system-evals.sh
 ```
 
+Create, validate, render, optimize, and interactively review a 3D asset:
+
+```bash
+scripts/modelctl create \
+  examples/modeling/lounge-chair.json \
+  .model-work/lounge-chair.glb \
+  --backend blender --render --render-dir .model-work/lounge-chair-render \
+  -o .model-work/lounge-chair-report.json
+scripts/modelctl validate .model-work/lounge-chair.glb --strict
+scripts/modelctl optimize .model-work/lounge-chair.glb \
+  .model-work/lounge-chair-optimized.glb --compression none
+scripts/modelctl viewer .model-work/lounge-chair.glb \
+  -o .model-work/lounge-chair-viewer
+```
+
 ## Agent entry points
 
 - [`AGENTS.md`](AGENTS.md) — mandatory repository behavior for document requests.
@@ -144,6 +167,7 @@ scripts/run-system-evals.sh
 - [`skills/xlsx/SKILL.md`](skills/xlsx/SKILL.md) — XLSX modeling, recalculation, and QA.
 - [`skills/pptx/SKILL.md`](skills/pptx/SKILL.md) — PPTX authoring, editing, and slide QA.
 - [`skills/pdf/SKILL.md`](skills/pdf/SKILL.md) — PDF creation, forms, transforms, OCR, and QA.
+- [`skills/modeling/SKILL.md`](skills/modeling/SKILL.md) — prompt-to-3D routing, modeling, rendering, and QA.
 
 ## Documentation
 
@@ -152,6 +176,9 @@ scripts/run-system-evals.sh
 - [LibreOffice and Tesseract WASM runtime](docs/architecture/wasm-runtime.md)
 - [Optional Microsoft Office oracle](docs/architecture/microsoft-oracle.md)
 - [GitHub Actions CI workflow template](docs/ci/README.md)
+- [3D modeling architecture](docs/architecture/model-system.md)
+- [Agent 3D modeling research](docs/research/agent-3d-modeling-research-2026-08-21.md)
+- [3D modeling benchmark](benchmarks/modeling/README.md)
 - [Claude parity gap analysis](docs/research/claude-parity-gap-analysis-2026-08-20.md)
 - [Parity benchmark](benchmarks/document-parity/README.md)
 - [Initial landscape research](docs/research/document-system-research-2026-08-20.md)

@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "workspace-document-system"
-version = "0.6.0"
-description = "Safe, testable document creation, editing, rendering, and QA for agent workflows"
+version = "0.7.0"
+description = "Safe, testable document and 3D asset creation, rendering, inspection, and QA for agent workflows"
 requires-python = ">=3.11"
 dependencies = [
   "defusedxml>=0.7.1,<1",
@@ -23,6 +23,8 @@ dependencies = [
   "reportlab>=4.2,<5",
   "python-docx>=1.1.2,<2",
   "python-pptx>=1.0.2,<2",
+  "trimesh>=5,<6",
+  "manifold3d>=3.5,<4",
 ]
 
 [project.optional-dependencies]
@@ -34,12 +36,14 @@ dev = [
 
 [project.scripts]
 documentctl = "document_system.cli:main"
+modelctl = "model_system.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
 document_system = ["schemas/*.json"]
+model_system = ["schemas/*.json"]
 
 [tool.pytest.ini_options]
 addopts = "-ra --strict-markers"
@@ -49,7 +53,7 @@ markers = [
 ]
 
 [tool.coverage.run]
-source = ["document_system"]
+source = ["document_system", "model_system"]
 branch = true
 
 [tool.coverage.report]

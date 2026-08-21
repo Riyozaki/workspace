@@ -55,7 +55,7 @@ else
 fi
 
 if command -v npm >/dev/null 2>&1 && [[ -f package-lock.json ]]; then
-  echo "Installing pinned LibreOffice WASM runtime..."
+  echo "Installing pinned JavaScript/WASM runtimes..."
   npm ci --ignore-scripts --no-audit --no-fund
 fi
 

@@ -1,0 +1,57 @@
+{
+  "version": "1.0",
+  "dimensions": [
+    "prompt_fidelity",
+    "dimension_fidelity",
+    "multiview_silhouette",
+    "topology",
+    "materials",
+    "budget_performance",
+    "editability",
+    "interoperability",
+    "manufacturing",
+    "provenance"
+  ],
+  "cases": [
+    {
+      "id": "product-lounge-chair",
+      "lane": "deterministic-blender",
+      "profile": "render",
+      "target": "A modern upholstered lounge chair with separate seat, back, walnut arms and four brushed-brass legs.",
+      "required_views": ["perspective", "front", "right", "back"],
+      "max_triangles": 100000
+    },
+    {
+      "id": "hard-surface-enclosure",
+      "lane": "deterministic-blender",
+      "profile": "web",
+      "target": "A compact electronics enclosure with lid seam, four feet, ventilation slots and named material variants.",
+      "required_views": ["perspective", "front", "right", "back", "top"],
+      "max_triangles": 50000
+    },
+    {
+      "id": "mechanical-mounting-bracket",
+      "lane": "precision-cad",
+      "profile": "print",
+      "target": "Dimensioned filleted bracket with countersunk mounting holes and a bored boss; STEP and 3MF delivery.",
+      "required_views": ["perspective", "front", "right", "top"],
+      "max_triangles": 250000
+    },
+    {
+      "id": "stylized-game-prop",
+      "lane": "deterministic-or-provider",
+      "profile": "web",
+      "target": "Stylized low-poly sci-fi supply crate with clean silhouette, separate lid and two PBR materials.",
+      "required_views": ["perspective", "front", "right", "back"],
+      "max_triangles": 10000
+    },
+    {
+      "id": "organic-creature",
+      "lane": "provider-gpu",
+      "profile": "render",
+      "target": "Original quadruped creature from four licensed orthographic reference images; textured candidate plus cleanup.",
+      "required_views": ["perspective", "front", "right", "back"],
+      "max_triangles": 100000
+    }
+  ]
+}

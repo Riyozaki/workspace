@@ -1,39 +1,53 @@
-name: document-system
+name: workspace-asset-system
 
 on:
   push:
     paths:
       - "src/document_system/**"
+      - "src/model_system/**"
       - "tests/**"
       - "tools/openxml-validator/**"
+      - "tools/blender/**"
+      - "tools/headless-3d-shims/**"
       - "scripts/**"
       - "examples/**"
       - "skills/**"
       - "pyproject.toml"
       - "requirements.lock"
+      - "requirements-blender.lock"
+      - "package-lock.json"
       - ".github/workflows/document-system.yml"
   pull_request:
     paths:
       - "src/document_system/**"
+      - "src/model_system/**"
       - "tests/**"
       - "tools/openxml-validator/**"
+      - "tools/blender/**"
+      - "tools/headless-3d-shims/**"
       - "scripts/**"
       - "examples/**"
       - "skills/**"
       - "pyproject.toml"
       - "requirements.lock"
+      - "requirements-blender.lock"
+      - "package-lock.json"
       - ".github/workflows/document-system.yml"
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "8.0.x"
@@ -45,14 +59,18 @@ jobs:
             pandoc poppler-utils qpdf tesseract-ocr tesseract-ocr-eng \
             fonts-dejavu-core fonts-liberation2 fonts-noto-core \
             fonts-crosextra-carlito fonts-crosextra-caladea
-      - name: Install Python package
+      - name: Install pinned runtimes
         run: |
           pip install --require-hashes -r requirements.lock
           pip install --no-deps -e .
+          npm ci --ignore-scripts --no-audit --no-fund
+          scripts/bootstrap-modeling.sh
       - name: Static checks
         run: ruff check src tests
       - name: Unit and integration tests
-        run: pytest --cov=document_system --cov-report=term-missing
+        run: pytest --cov=document_system --cov=model_system --cov-report=term-missing
+      - name: Dependency audit
+        run: npm audit --omit=dev
       - name: Build optional Open XML validator
         run: dotnet build tools/openxml-validator/OpenXmlValidator.csproj --configuration Release
       - name: Run DOCX end-to-end evaluation
@@ -65,10 +83,14 @@ jobs:
         run: scripts/run-pdf-evals.sh .document-work/ci-evals/pdf
       - name: Run cross-format system evaluation
         run: scripts/run-system-evals.sh .document-work/ci-evals/system
+      - name: Run 3D asset end-to-end evaluation
+        run: scripts/run-model-evals.sh .model-work/ci-evals/modeling
       - name: Upload QA artifacts on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: document-system-failure-artifacts
-          path: .document-work/
+          name: workspace-asset-failure-artifacts
+          path: |
+            .document-work/
+            .model-work/
           retention-days: 7

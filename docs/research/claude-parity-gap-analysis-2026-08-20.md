@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-20
 **Reference snapshot:** `anthropics/skills@0a64e398ec6bb34a494f0c347e8ccae53a862f8e` (2026-08-18)
-**Our runtime:** `documentctl 0.6.0` (the initial comparison began on `0.4.0`)
+**Our runtime:** `documentctl 0.7.0` (the document implementation described here reached `0.6.0`; `0.7.0` adds the separate 3D asset system)
 
 ## Post-analysis implementation update
 
@@ -22,7 +22,7 @@ The first achievable P1 batch identified below has now been implemented:
 - a self-contained Microsoft Open XML SDK validator binary from npm, eliminating the host .NET dependency;
 - an explicit opt-in Microsoft Graph rendering oracle adapter with temporary upload, cleanup, and LibreOffice-vs-Microsoft visual diff.
 
-The advanced baseline now contains 64 passing tests with no unavailable local capability path after npm bootstrap, plus all five end-to-end suites. LibreOffice rendering/recalculation, English/Russian OCR, and Microsoft 365 Open XML SDK validation all execute in the interactive runtime. Live Microsoft rendering remains disabled until an approved delegated token and Graph network access are supplied.
+The advanced document baseline contains 64 passing tests with no unavailable local capability path after npm bootstrap, plus all five document end-to-end suites. The repository currently has 72 passing tests after adding the separate 3D asset vertical slice. LibreOffice rendering/recalculation, English/Russian OCR, and Microsoft 365 Open XML SDK validation all execute in the interactive runtime. Live Microsoft rendering remains disabled until an approved delegated token and Graph network access are supplied.
 
 The remaining matrix is retained as the decision record. Items above should now be treated as **implemented but awaiting real Microsoft Office/external-fixture validation**, rather than absent.
 

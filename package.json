@@ -1,16 +1,24 @@
 {
   "name": "workspace-document-runtime",
   "private": true,
-  "version": "0.6.0",
-  "description": "Pinned JavaScript/WASM runtime dependencies for documentctl",
+  "version": "0.7.0",
+  "description": "Pinned JavaScript/WASM runtimes for documentctl and modelctl",
   "engines": {
     "node": ">=18"
   },
   "dependencies": {
+    "@emnapi/runtime": "1.11.3",
+    "@gltf-transform/cli": "4.4.2",
+    "@google/model-viewer": "4.3.1",
     "@matbee/libreoffice-converter": "2.7.2",
     "@tesseract.js-data/eng": "1.0.0",
-    "@xarsh/ooxml-validator": "0.3.0",
     "@tesseract.js-data/rus": "1.0.0",
-    "tesseract.js": "7.0.0"
+    "@xarsh/ooxml-validator": "0.3.0",
+    "gltf-validator": "2.0.0-dev.3.10",
+    "tesseract.js": "7.0.0",
+    "tslib": "2.8.1"
+  },
+  "overrides": {
+    "sharp": "0.35.3"
   }
 }
