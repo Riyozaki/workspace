@@ -1,0 +1,57 @@
+{
+  "date": "2026-09-09",
+  "branch": "arena/01a08101-workspace",
+  "base_previous_delivery": "af000ed",
+  "draft": "drafts/ch-03/ch-03-v2.md",
+  "draft_sha256": "30042dadc1803d03c52c791483d00afc268136db0743338ab0e50873981a234b",
+  "characters": 51814,
+  "whitespace_words": 8615,
+  "lines": 1179,
+  "source": "book/03-manuscript/arc-01/ch-03.md",
+  "source_sha256": "4e5e587a2ccbe4555193f6230041b2ebf38e898dfc7071340c948807d524bc04",
+  "source_characters": 54878,
+  "source_whitespace_words": 9602,
+  "source_lines": 1323,
+  "imported_files_checked": 397,
+  "changed_imported_files": [],
+  "missing_imported_files": [],
+  "previous_chapters": {
+    "ch-01": {
+      "unchanged_from_af000ed": true,
+      "sha256": "20d0ffe2b450dfe067f0716e06b8482cf5c6145d85a209726bdc76b5d778f21e"
+    },
+    "ch-02": {
+      "unchanged_from_af000ed": true,
+      "sha256": "ae1237c7a0c0035e650e70f9d6faef70a7b7a93d904dcaea60799cddee49042e"
+    }
+  },
+  "ch01_protected_opening_byte_identical": true,
+  "replacement_characters": 0,
+  "unexpected_control_characters": [],
+  "cr_characters": 0,
+  "trailing_whitespace_lines": [],
+  "starts_with_chapter_heading": true,
+  "chapter_heading_count": 1,
+  "ends_with_complete_selected_ending": true,
+  "ending_once": true,
+  "new_pdf_export": false,
+  "comparisons": [
+    {
+      "title": "Торен: вместо опроса о жизненной цели — разговор с торговцем о городе",
+      "before_exact_contiguous_source": true,
+      "after_exact_contiguous_draft": true,
+      "before_words": 170,
+      "after_words": 232
+    },
+    {
+      "title": "Хельга: вместо наставления — риск для собственной кофейни",
+      "before_exact_contiguous_source": true,
+      "after_exact_contiguous_draft": true,
+      "before_words": 132,
+      "after_words": 186
+    }
+  ],
+  "reading_record": "ch-03-v2-editor-notes.md",
+  "literary_reading": "Two complete readings of the assembled draft; final local refinements subsequently read in context. See editor notes for exact ranges and remaining downstream obligations.",
+  "scope": "Technical integrity only; not a claim that all literary or continuity problems have been eliminated."
+}
