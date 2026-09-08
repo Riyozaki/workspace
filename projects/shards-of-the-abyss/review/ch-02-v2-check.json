@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-08",
+  "branch": "arena/01a08101-workspace",
+  "draft": "drafts/ch-02/ch-02-v2.md",
+  "draft_sha256": "b0b0ddc72964d08b9300bb079e501acb0e295fcb0473eb59d7921d6c6e7a23f7",
+  "characters": 46009,
+  "whitespace_words": 7638,
+  "lines": 1099,
+  "source_characters": 71541,
+  "source_whitespace_words": 12456,
+  "imported_files_checked": 397,
+  "changed_imported_files": [],
+  "missing_imported_files": [],
+  "replacement_characters": 0,
+  "ending_once": true,
+  "new_pdf_export": false,
+  "scope": "Technical integrity only. Literary reading and narrative/editorial decisions are recorded in the editor notes. This is not a claim that all possible continuity or literary problems have been eliminated.",
+  "literary_reading_record": "Two complete reads of the assembled chapter: initial assembly and revised full chapter. Ranges: 1–220 / 221–440 / 441–660 / 661–880 / 881–1099. See ch-02-v2-editor-notes.md."
+}

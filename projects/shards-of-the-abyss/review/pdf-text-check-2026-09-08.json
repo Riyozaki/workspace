@@ -1,0 +1,117 @@
+{
+  "scope": "chapters 1–16; normalized text only, not typography",
+  "results": [
+    {
+      "chapter": 1,
+      "pages": 55,
+      "manuscript_characters_normalized": 54412,
+      "pdf_characters_normalized": 54412,
+      "normalized_body_equal": true
+    },
+    {
+      "chapter": 2,
+      "pages": 56,
+      "manuscript_characters_normalized": 54619,
+      "pdf_characters_normalized": 54619,
+      "normalized_body_equal": true
+    },
+    {
+      "chapter": 3,
+      "pages": 45,
+      "manuscript_characters_normalized": 41647,
+      "pdf_characters_normalized": 41647,
+      "normalized_body_equal": true
+    },
+    {
+      "chapter": 4,
+      "pages": 58,
+      "manuscript_characters_normalized": 52910,
+      "pdf_characters_normalized": 52910,
+      "normalized_body_equal": true
+    },
+    {
+      "chapter": 5,
+      "pages": 46,
+      "manuscript_characters_normalized": 42200,
+      "pdf_characters_normalized": 42200,
+      "normalized_body_equal": true
+    },
+    {
+      "chapter": 6,
+      "pages": 46,
+      "manuscript_characters_normalized": 40727,
+      "pdf_characters_normalized": 40727,
+      "normalized_body_equal": true
+    },
+    {
+      "chapter": 7,
+      "pages": 38,
+      "manuscript_characters_normalized": 32839,
+      "pdf_characters_normalized": 32839,
+      "normalized_body_equal": true
+    },
+    {
+      "chapter": 8,
+      "pages": 43,
+      "manuscript_characters_normalized": 37854,
+      "pdf_characters_normalized": 37854,
+      "normalized_body_equal": true
+    },
+    {
+      "chapter": 9,
+      "pages": 40,
+      "manuscript_characters_normalized": 35608,
+      "pdf_characters_normalized": 35608,
+      "normalized_body_equal": true
+    },
+    {
+      "chapter": 10,
+      "pages": 51,
+      "manuscript_characters_normalized": 48064,
+      "pdf_characters_normalized": 48064,
+      "normalized_body_equal": true
+    },
+    {
+      "chapter": 11,
+      "pages": 56,
+      "manuscript_characters_normalized": 47739,
+      "pdf_characters_normalized": 47739,
+      "normalized_body_equal": true
+    },
+    {
+      "chapter": 12,
+      "pages": 58,
+      "manuscript_characters_normalized": 51052,
+      "pdf_characters_normalized": 51052,
+      "normalized_body_equal": true
+    },
+    {
+      "chapter": 13,
+      "pages": 34,
+      "manuscript_characters_normalized": 31065,
+      "pdf_characters_normalized": 31065,
+      "normalized_body_equal": true
+    },
+    {
+      "chapter": 14,
+      "pages": 52,
+      "manuscript_characters_normalized": 44492,
+      "pdf_characters_normalized": 44492,
+      "normalized_body_equal": true
+    },
+    {
+      "chapter": 15,
+      "pages": 34,
+      "manuscript_characters_normalized": 28918,
+      "pdf_characters_normalized": 28918,
+      "normalized_body_equal": true
+    },
+    {
+      "chapter": 16,
+      "pages": 39,
+      "manuscript_characters_normalized": 35256,
+      "pdf_characters_normalized": 35256,
+      "normalized_body_equal": true
+    }
+  ]
+}

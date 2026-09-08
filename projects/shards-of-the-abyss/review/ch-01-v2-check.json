@@ -1,0 +1,34 @@
+{
+  "date": "2026-09-08",
+  "branch": "arena/01a08101-workspace",
+  "draft": "drafts/ch-01/ch-01-v2.md",
+  "draft_sha256": "10a224ce0fb15ff3e74d9c47db1626a397f7039b3e42ea341bac2fdc0b301374",
+  "characters": 46596,
+  "whitespace_words": 7766,
+  "lines": 1249,
+  "source_characters": 71007,
+  "source_whitespace_words": 12261,
+  "protected_source_lines": [
+    1,
+    111
+  ],
+  "opening_byte_identical": true,
+  "protected_opening_sha256": "1d3e980b199316c1b1ab8b3932773943df70c49002b8556988ac87d531b9880b",
+  "imported_files_checked": 397,
+  "changed_imported_files": [],
+  "missing_imported_files": [],
+  "replacement_characters": 0,
+  "ending_once": true,
+  "new_pdf_export": false,
+  "scope": "Technical integrity only. Literary reading and narrative/editorial decisions are recorded in the editor notes. This is not a claim that all possible continuity or literary problems have been eliminated.",
+  "first_presented_version": {
+    "draft_sha256": "d13f620a8c8d50c7d3a7c544c2c28d9098bf4bb712deed49a04cd3ab0667dfe5",
+    "characters": 46585,
+    "whitespace_words": 7765,
+    "lines": 1249
+  },
+  "post_delivery_continuity_changes": [
+    "Festival countdown: three days -> two days.",
+    "Uniform specified as uniform shirt; sleeve continuity with chapter 2."
+  ]
+}

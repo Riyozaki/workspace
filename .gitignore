@@ -1,0 +1,11 @@
+# Local environments and temporary downloads
+.venv/
+.cache/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Secrets must not enter Git
+.env
+.env.*
+!.env.example
