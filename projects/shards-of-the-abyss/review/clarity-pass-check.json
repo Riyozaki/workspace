@@ -1,0 +1,38 @@
+{
+  "date": "2026-09-08",
+  "branch": "arena/01a08101-workspace",
+  "comparison_base_commit": "c5a4eba",
+  "imported_files_checked": 397,
+  "changed_imported_files": [],
+  "protected_opening_byte_identical": true,
+  "protected_opening_sha256": "1d3e980b199316c1b1ab8b3932773943df70c49002b8556988ac87d531b9880b",
+  "approved_varden_excerpt_unchanged": true,
+  "approved_agnis_retake_excerpt_unchanged": true,
+  "chapters": {
+    "01": {
+      "draft": "drafts/ch-01/ch-01-v2.md",
+      "draft_sha256": "20d0ffe2b450dfe067f0716e06b8482cf5c6145d85a209726bdc76b5d778f21e",
+      "characters": 48921,
+      "whitespace_words": 8190,
+      "lines": 1269,
+      "before_pass_sha256": "10a224ce0fb15ff3e74d9c47db1626a397f7039b3e42ea341bac2fdc0b301374",
+      "before_pass_characters": 46596,
+      "before_pass_whitespace_words": 7766,
+      "replacement_characters": 0,
+      "ending_once": true
+    },
+    "02": {
+      "draft": "drafts/ch-02/ch-02-v2.md",
+      "draft_sha256": "ae1237c7a0c0035e650e70f9d6faef70a7b7a93d904dcaea60799cddee49042e",
+      "characters": 47693,
+      "whitespace_words": 7929,
+      "lines": 1125,
+      "before_pass_sha256": "363070a3655c9d73762c459350d259a6d63375d49505067075ee8cc0498b11be",
+      "before_pass_characters": 46264,
+      "before_pass_whitespace_words": 7683,
+      "replacement_characters": 0,
+      "ending_once": true
+    }
+  },
+  "scope": "Technical integrity only. Full reading before and after manual editing, local corrections, editorial decisions and downstream seams are recorded in clarity-pass-ch01-ch02.md. No claim that all possible literary problems have been eliminated."
+}

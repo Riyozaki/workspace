@@ -2,10 +2,10 @@
   "date": "2026-09-08",
   "branch": "arena/01a08101-workspace",
   "draft": "drafts/ch-02/ch-02-v2.md",
-  "draft_sha256": "363070a3655c9d73762c459350d259a6d63375d49505067075ee8cc0498b11be",
-  "characters": 46264,
-  "whitespace_words": 7683,
-  "lines": 1099,
+  "draft_sha256": "ae1237c7a0c0035e650e70f9d6faef70a7b7a93d904dcaea60799cddee49042e",
+  "characters": 47693,
+  "whitespace_words": 7929,
+  "lines": 1125,
   "source_characters": 71541,
   "source_whitespace_words": 12456,
   "imported_files_checked": 397,
@@ -22,5 +22,13 @@
     "whitespace_words": 7638,
     "lines": 1099
   },
-  "author_feedback_revision": "Agnis opening only: remove unsuitable insult and opaque rehearsal; name the oral assignment; reread entire scene with adjacent transitions and recheck final local edit. Varden and all other chapter text verified unchanged. The two earlier complete chapter reads preceded this local revision."
+  "author_feedback_revision": "Historical c5a4eba change: Agnis opening only: remove unsuitable insult and opaque rehearsal; name the oral assignment; reread entire scene with adjacent transitions and recheck final local edit. Varden and all other chapter text verified unchanged. The two earlier complete chapter reads preceded this local revision.",
+  "before_clarity_pass": {
+    "commit": "c5a4eba",
+    "draft_sha256": "363070a3655c9d73762c459350d259a6d63375d49505067075ee8cc0498b11be",
+    "characters": 46264,
+    "whitespace_words": 7683,
+    "lines": 1099
+  },
+  "clarity_pass": "Complete chapter reread before and after manual revision, then final small edits read in context. See clarity-pass-ch01-ch02.md and clarity-pass-check.json."
 }

@@ -2,10 +2,10 @@
   "date": "2026-09-08",
   "branch": "arena/01a08101-workspace",
   "draft": "drafts/ch-01/ch-01-v2.md",
-  "draft_sha256": "10a224ce0fb15ff3e74d9c47db1626a397f7039b3e42ea341bac2fdc0b301374",
-  "characters": 46596,
-  "whitespace_words": 7766,
-  "lines": 1249,
+  "draft_sha256": "20d0ffe2b450dfe067f0716e06b8482cf5c6145d85a209726bdc76b5d778f21e",
+  "characters": 48921,
+  "whitespace_words": 8190,
+  "lines": 1269,
   "source_characters": 71007,
   "source_whitespace_words": 12261,
   "protected_source_lines": [
@@ -30,5 +30,13 @@
   "post_delivery_continuity_changes": [
     "Festival countdown: three days -> two days.",
     "Uniform specified as uniform shirt; sleeve continuity with chapter 2."
-  ]
+  ],
+  "before_clarity_pass": {
+    "commit": "c5a4eba",
+    "draft_sha256": "10a224ce0fb15ff3e74d9c47db1626a397f7039b3e42ea341bac2fdc0b301374",
+    "characters": 46596,
+    "whitespace_words": 7766,
+    "lines": 1249
+  },
+  "clarity_pass": "Complete chapter reread before and after manual revision, then final small edits read in context. See clarity-pass-ch01-ch02.md and clarity-pass-check.json."
 }
