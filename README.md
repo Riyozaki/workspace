@@ -14,6 +14,8 @@
 
 [База проекта](projects/shards-of-the-abyss/README.md) · [Задача автора](projects/shards-of-the-abyss/BRIEF.md) · [Итог чтения первой арки и журналы](projects/shards-of-the-abyss/review/arc-01-reading/README.md)
 
+**[Новая глава 6 — читать целиком](projects/shards-of-the-abyss/drafts/ch-06/ch-06-v2.md)** — первый готовый этап порученной второй арки 6–10. [Решения](projects/shards-of-the-abyss/review/ch-06-v2-editor-notes.md) · [Сравнения](projects/shards-of-the-abyss/review/ch-06-before-after.md) · [Ход автономной задачи](projects/shards-of-the-abyss/review/arc-02-v2-worklog.md). Пятая положительно оценена; 7–10 пока не переписаны.
+
 **[Новая глава 5 — читать целиком](projects/shards-of-the-abyss/drafts/ch-05/ch-05-v2.md)** · [Глава 4](projects/shards-of-the-abyss/drafts/ch-04/ch-04-v2.md) · [Глава 3](projects/shards-of-the-abyss/drafts/ch-03/ch-03-v2.md) · [Глава 2](projects/shards-of-the-abyss/drafts/ch-02/ch-02-v2.md) · [Глава 1](projects/shards-of-the-abyss/drafts/ch-01/ch-01-v2.md).
 
 Четвёртая положительно оценена; по прямому запросу автора подготовлена пятая — завершение первой арки. **Новые 1–5 прочитаны подряд целиком**; затем пятая прочитана ещё раз после исправлений по арке, последние локальные уточнения — в контексте. [Два сравнения с исходником](projects/shards-of-the-abyss/review/ch-05-before-after.md) · [Решения и стыки](projects/shards-of-the-abyss/review/ch-05-v2-editor-notes.md) · [Журнал новой арки](projects/shards-of-the-abyss/review/arc-01-v2-reread.md). Пятая автором ещё не оценена.
