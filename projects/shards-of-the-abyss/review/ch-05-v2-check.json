@@ -1,0 +1,135 @@
+{
+  "date": "2026-09-10",
+  "branch": "arena/01a08101-workspace",
+  "base_previous_delivery": "b1ba5b8b5b38ec7ae40b6762c4291ddb54abd487",
+  "scope": "Technical integrity and exact excerpt/scope checks only. Not an automated literary verdict or a proof of exhaustive chronology/medical realism.",
+  "chapters": {
+    "ch-01": {
+      "path": "drafts/ch-01/ch-01-v2.md",
+      "sha256": "9eabf25689c52beb82c79cd54993d4d4d344e89d840a74986554a5dddac10e1d",
+      "characters": 48895,
+      "whitespace_words": 8180,
+      "lines": 1269,
+      "base_sha256": "8148f5dfaf9504fa4c590f8ffe1d842f3fd9de40cc5e8a1c6c80ec9aaf145de6",
+      "only_documented_local_replacements": true,
+      "replacements": [
+        {
+          "before": "— Рикке списки через две декады подаёт. Ты документы собирала?",
+          "after": "— Рикке списки через два дня подаёт. Ты документы собирала?"
+        },
+        {
+          "before": "— Здесь направление, здесь дата. Списки через две декады. Без рекомендации в них не внесут.",
+          "after": "— Здесь направление, здесь дата. Списки через два дня. Без рекомендации в них не внесут."
+        },
+        {
+          "before": "За спиной он начал объяснять, что может и без этой монеты",
+          "after": "За спиной рыжий начал объяснять, что может и без этой монеты"
+        }
+      ]
+    },
+    "ch-02": {
+      "path": "drafts/ch-02/ch-02-v2.md",
+      "sha256": "cc5ed9a20cb9536d11d17274acff6ac122e8d4f60e37a044b87eb7a9bf62f4f9",
+      "characters": 47702,
+      "whitespace_words": 7926,
+      "lines": 1125,
+      "base_sha256": "d1ebd308277d93a11a211cb693c685826a092b3a2e88651abd718b6e0a5e893b",
+      "only_documented_local_replacements": true,
+      "replacements": [
+        {
+          "before": "— Фамилия?",
+          "after": "— Имя?"
+        },
+        {
+          "before": "крупный, немолодой, правая бровь рассечена, куртка хорошая",
+          "after": "крупный, немолодой, борода короткая, рыжая с проседью, куртка хорошая"
+        },
+        {
+          "before": "У ворот повернулся к нам боком, и я увидела светлый разрыв в правой брови.",
+          "after": "У ворот повернулся к нам боком, и я разглядела короткую рыжую бороду с проседью."
+        },
+        {
+          "before": "— Запиши бровь. Ставню могли и без него открыть.",
+          "after": "— Запиши бороду. Ставню могли и без него открыть."
+        }
+      ]
+    },
+    "ch-03": {
+      "path": "drafts/ch-03/ch-03-v2.md",
+      "sha256": "325f48672916dfc7abe0acc4dd43be1a93f898ce12efd9a597dac8471ba877ed",
+      "characters": 51790,
+      "whitespace_words": 8608,
+      "lines": 1179,
+      "base_sha256": "6b930dbb667ce092b6b7dd396ecbdba358f316e3f04eb6624ca47f785de62021",
+      "only_documented_local_replacements": true,
+      "replacements": [
+        {
+          "before": "Я хотела сказать что-нибудь про конец месяца, про то, что ещё не решили, но не сказала.",
+          "after": "Я хотела сказать, что комиссия ещё ничего не решила, но не сказала."
+        },
+        {
+          "before": "У Гар Вельта",
+          "after": "У Гара Вельта"
+        }
+      ]
+    },
+    "ch-04": {
+      "path": "drafts/ch-04/ch-04-v2.md",
+      "sha256": "82d43855a695c9395d3a9b6c316a75ce8eaa1d113ba48816dc122498fe907bf0",
+      "characters": 54625,
+      "whitespace_words": 8899,
+      "lines": 1137,
+      "base_sha256": "82d43855a695c9395d3a9b6c316a75ce8eaa1d113ba48816dc122498fe907bf0",
+      "only_documented_local_replacements": true,
+      "replacements": []
+    },
+    "ch-05": {
+      "path": "drafts/ch-05/ch-05-v2.md",
+      "sha256": "2c40fc4cf7e73c8551aaa07cd0027b7402c8b13ad4d766caf0b8d9a8246708e4",
+      "characters": 38037,
+      "whitespace_words": 6397,
+      "lines": 867
+    }
+  },
+  "source": {
+    "path": "book/03-manuscript/arc-01/ch-05.md",
+    "sha256": "56f24ce9055ce3ebce04cbd79c297bc43ff2e67d50db098d3003d4822ca97bf7",
+    "characters": 55695,
+    "whitespace_words": 9722,
+    "lines": 1487
+  },
+  "imported_files_checked": 397,
+  "changed_imported_files": [],
+  "missing_imported_files": [],
+  "previous_chapters_local_replacement_count": 9,
+  "ch04_unchanged": true,
+  "ch01_protected_opening_lines_1_111_byte_identical": true,
+  "all_five_drafts_no_replacement_control_cr_or_trailing_whitespace": true,
+  "all_five_single_correct_chapter_heading": true,
+  "ch05_selected_ending_once_and_at_end": true,
+  "ch05_alien_question_once": true,
+  "new_pdf_export": false,
+  "comparisons": [
+    {
+      "title": "Возле Кайра: действие вместо готового заключения",
+      "before_exact_contiguous_source": true,
+      "after_exact_contiguous_draft": true,
+      "before_words": 78,
+      "after_words": 110
+    },
+    {
+      "title": "Элизабет и Северин: помощь, затем реальный конфликт",
+      "before_exact_contiguous_source": true,
+      "after_exact_contiguous_draft": true,
+      "before_words": 133,
+      "after_words": 188
+    }
+  ],
+  "updated_navigation_local_links_checked": 59,
+  "missing_updated_navigation_links": [],
+  "reading_record": "arc-01-v2-reread.md",
+  "editorial_decisions_and_downstream": "ch-05-v2-editor-notes.md",
+  "literary_reading": "Fifth source freshly read in full. First complete reading of assembled fifth, 29 contextual corrections. Separate complete consecutive reading of revised chapters 1 through 5, then 17 fifth-chapter corrections and nine localized changes in earlier chapters. One more complete fifth reading, followed by nine contextual final refinements. This is not three readings of the whole arc; exact ranges and limits are in the record.",
+  "calendar_caveat": "Three previously missed calendar references fixed after the full arc reading. The earlier twelve-replacement audit was not an exhaustive chronology proof.",
+  "velt_caveat": "Shared eyebrow marker was introduced in our chapter 2, not the September chapter 2. Replaced our three markers with an editorial beard description; retained the original chapter-5 attacker mark. No canonical identity claim."
+}
