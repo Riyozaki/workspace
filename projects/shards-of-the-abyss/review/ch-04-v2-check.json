@@ -1,0 +1,121 @@
+{
+  "date": "2026-09-10",
+  "branch": "arena/01a08101-workspace",
+  "base_previous_delivery": "f97d1342d7807a0b793f744756c83f1740df0063",
+  "draft": "drafts/ch-04/ch-04-v2.md",
+  "draft_sha256": "82d43855a695c9395d3a9b6c316a75ce8eaa1d113ba48816dc122498fe907bf0",
+  "characters": 54625,
+  "whitespace_words": 8899,
+  "lines": 1137,
+  "source": "book/03-manuscript/arc-01/ch-04.md",
+  "source_sha256": "f639eca6bd47c0a76aa3aee9f81f76af10d58106e896625c1e6aa034b73a762c",
+  "source_characters": 69642,
+  "source_whitespace_words": 11963,
+  "source_lines": 1823,
+  "imported_files_checked": 397,
+  "changed_imported_files": [],
+  "missing_imported_files": [],
+  "previous_chapters": {
+    "ch-01": {
+      "base_sha256": "20d0ffe2b450dfe067f0716e06b8482cf5c6145d85a209726bdc76b5d778f21e",
+      "current_sha256": "8148f5dfaf9504fa4c590f8ffe1d842f3fd9de40cc5e8a1c6c80ec9aaf145de6",
+      "only_documented_calendar_replacements": true,
+      "replacements": [
+        {
+          "before": "Через две декады списки подают.",
+          "after": "Через два дня списки подают."
+        },
+        {
+          "before": "Ты в шестой день к третьему приходи",
+          "after": "Ты десятого к третьему приходи"
+        },
+        {
+          "before": "Она в шестой учится",
+          "after": "Она десятого учится"
+        },
+        {
+          "before": "И в шестой?",
+          "after": "И десятого?"
+        },
+        {
+          "before": "В шестой день я могу после второго.",
+          "after": "Десятого я могу после второго."
+        },
+        {
+          "before": "Мама в шестой день за реку уходит",
+          "after": "Мама десятого за реку уходит"
+        },
+        {
+          "before": "У меня в шестой день западный квартал",
+          "after": "У меня десятого западный квартал"
+        }
+      ]
+    },
+    "ch-02": {
+      "base_sha256": "ae1237c7a0c0035e650e70f9d6faef70a7b7a93d904dcaea60799cddee49042e",
+      "current_sha256": "d1ebd308277d93a11a211cb693c685826a092b3a2e88651abd718b6e0a5e893b",
+      "only_documented_calendar_replacements": true,
+      "replacements": [
+        {
+          "before": "Не в шестой день, как договаривались.",
+          "after": "Не десятого, как договаривались."
+        },
+        {
+          "before": "В шестой день после пятого у меня.",
+          "after": "Десятого после пятого у меня."
+        },
+        {
+          "before": "Комиссия в конце месяца.",
+          "after": "Комиссия тринадцатого цветня."
+        }
+      ]
+    },
+    "ch-03": {
+      "base_sha256": "30042dadc1803d03c52c791483d00afc268136db0743338ab0e50873981a234b",
+      "current_sha256": "6b930dbb667ce092b6b7dd396ecbdba358f316e3f04eb6624ca47f785de62021",
+      "only_documented_calendar_replacements": true,
+      "replacements": [
+        {
+          "before": "с покрытием я попробую в шестой день, как договаривались.",
+          "after": "с покрытием я попробую десятого, как договаривались."
+        },
+        {
+          "before": "В шестой. После пятого.",
+          "after": "Десятого. После пятого."
+        }
+      ]
+    }
+  },
+  "calendar_replacement_count": 12,
+  "ch01_protected_opening_byte_identical": true,
+  "replacement_characters": 0,
+  "unexpected_control_characters": [],
+  "cr_characters": 0,
+  "trailing_whitespace_lines": [],
+  "starts_with_chapter_heading": true,
+  "chapter_heading_count": 1,
+  "ends_with_complete_selected_ending": true,
+  "ending_once": true,
+  "new_pdf_export": false,
+  "comparisons": [
+    {
+      "title": "Комиссия: ограничение должно отвечать реальному риску",
+      "before_exact_contiguous_source": true,
+      "after_exact_contiguous_draft": true,
+      "before_words": 109,
+      "after_words": 81
+    },
+    {
+      "title": "Иво: характер в работе, а не готовая справка о себе",
+      "before_exact_contiguous_source": true,
+      "after_exact_contiguous_draft": true,
+      "before_words": 146,
+      "after_words": 103
+    }
+  ],
+  "reading_record": "ch-04-v2-editor-notes.md",
+  "literary_reading": "Source freshly read in full. Two complete readings of the assembled draft (ranges in editor notes), followed by contextual reading of final small corrections. Not a claim of literary perfection. No new full reading of ch1-3; their changes are exclusively the documented calendar phrases.",
+  "downstream_obligations": "See editor notes and calendar. Chapter 5 still to rewrite, then consecutive complete reading of revised chapters 1-5.",
+  "updated_navigation_local_links_checked": 53,
+  "missing_updated_navigation_links": []
+}
