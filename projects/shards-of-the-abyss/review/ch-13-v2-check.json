@@ -1,0 +1,91 @@
+{
+  "scope": "Technical integrity and exact packaging, not a literary or medical certificate.",
+  "branch": "arena/01a08101-workspace",
+  "preservation_baseline_commit": "77c0bbb4b1248e7103708957f7ab86787a572545",
+  "comparison_baseline": "September source chapter 13; no previously delivered new chapter 13 existed.",
+  "imported_files_checked": 397,
+  "changed_or_missing_imported_files": [],
+  "previously_tracked_drafts_unchanged": {
+    "projects/shards-of-the-abyss/drafts/arc-02/arc-02-v3.md": "172e9188d95711d08398d5ea8f08f705c66f750db25d290a211824d3d7b1c7d9",
+    "projects/shards-of-the-abyss/drafts/ch-01/ch-01-v2.md": "9eabf25689c52beb82c79cd54993d4d4d344e89d840a74986554a5dddac10e1d",
+    "projects/shards-of-the-abyss/drafts/ch-01/nord-workshop-v1.md": "29208d8eae5e27dcbe286b95dd6c12dec07b5ba254183772955faf2236ce6cf8",
+    "projects/shards-of-the-abyss/drafts/ch-02/ch-02-v2.md": "cc5ed9a20cb9536d11d17274acff6ac122e8d4f60e37a044b87eb7a9bf62f4f9",
+    "projects/shards-of-the-abyss/drafts/ch-03/ch-03-v2.md": "325f48672916dfc7abe0acc4dd43be1a93f898ce12efd9a597dac8471ba877ed",
+    "projects/shards-of-the-abyss/drafts/ch-04/ch-04-v2.md": "82d43855a695c9395d3a9b6c316a75ce8eaa1d113ba48816dc122498fe907bf0",
+    "projects/shards-of-the-abyss/drafts/ch-05/ch-05-v2.md": "2c40fc4cf7e73c8551aaa07cd0027b7402c8b13ad4d766caf0b8d9a8246708e4",
+    "projects/shards-of-the-abyss/drafts/ch-06/ch-06-v2.md": "90952ca59f786128b4b0360c83eb56f1d29afab4132fb216e671fabc415d31cc",
+    "projects/shards-of-the-abyss/drafts/ch-07/ch-07-v2.md": "1398a948021ceae18241146a7f6e24e157aaf5ccf6d3e05b0f7f16c492ebec55",
+    "projects/shards-of-the-abyss/drafts/ch-08/ch-08-v2.md": "c249fad011bd9eaed3326033a8ee644c0a3fa4eb9791ed9e639b7024b340e571",
+    "projects/shards-of-the-abyss/drafts/ch-08/ch-08-v3.md": "1475c9d8715eeda0c1ff3bfe5b09720fd3fc0437ef23572aaa8125673bf71933",
+    "projects/shards-of-the-abyss/drafts/ch-09/ch-09-v2.md": "e349f05033f46d0b8769e9d8530f59b7a5aebadf8014cfe94bd9370304b0ba17",
+    "projects/shards-of-the-abyss/drafts/ch-09/ch-09-v3.md": "2c405ca2414050d7b61139d73b3922ce11088c8db01f250712a0eec216f1df3d",
+    "projects/shards-of-the-abyss/drafts/ch-10/ch-10-v2.md": "ab99ca1e2903a4a34e6896971d8ecdd8caed57a8f96a5fda3ffa12fda5b86453",
+    "projects/shards-of-the-abyss/drafts/ch-10/ch-10-v3.md": "d5494a8f12b7643c78b45967f4855538e95b77e33852e0b068e686f5adaa5855",
+    "projects/shards-of-the-abyss/drafts/ch-11/ch-11-v2.md": "65a5b7f6df2b16c3dd51370144c82b2b1006361835aa77d2e507cdec6451c99d",
+    "projects/shards-of-the-abyss/drafts/ch-12/ch-12-v2.md": "4cce5c69cdfc4582a2a2a9c2d17e9e2e81ce399e815b813c1ef8c8a24f934b82"
+  },
+  "protected_ch01_opening_lines_1_111_byte_identical": true,
+  "arc02_v3_chapter_bodies_exact": true,
+  "source_ch13": {
+    "sha256": "884c00b4ab63612a41f3d5ebac70203def71d4ffbd0ba19ee94f7c4e545c6890",
+    "characters": 41068,
+    "whitespace_words": 7218,
+    "lines": 985
+  },
+  "new_ch13": {
+    "sha256": "e5b57e53d60fa1cb99bf2b4d31e605f6712f1e0039c3de5bce741d19d73c535a",
+    "characters": 31940,
+    "whitespace_words": 5142,
+    "lines": 855
+  },
+  "comparisons": [
+    {
+      "title": "Сушильня за цифрами в поручении",
+      "before": {
+        "path": "book/03-manuscript/arc-03/ch-13.md",
+        "exact_contiguous": true,
+        "lines": [
+          583,
+          587
+        ],
+        "sha256": "2be002c4f650ddd2ab6b3e1b9619518d92fa40c312e885913892a964b2d999c5"
+      },
+      "after": {
+        "path": "drafts/ch-13/ch-13-v2.md",
+        "exact_contiguous": true,
+        "lines": [
+          427,
+          471
+        ],
+        "sha256": "d8b16b605393facf769d6502a6f3155e25838c807175c8bb3ee9f8677acd09dd"
+      }
+    },
+    {
+      "title": "Догадка о том, кому достанется работа",
+      "before": {
+        "path": "book/03-manuscript/arc-03/ch-13.md",
+        "exact_contiguous": true,
+        "lines": [
+          963,
+          985
+        ],
+        "sha256": "1b591a958cafe3567d6d21c1bad37f44ca6e84ba3a00717a3989986a6b1b06a6"
+      },
+      "after": {
+        "path": "drafts/ch-13/ch-13-v2.md",
+        "exact_contiguous": true,
+        "lines": [
+          755,
+          793
+        ],
+        "sha256": "048d133d788f85bee8e9c0058395875b49bd65211e9a1eda49b9cebe4e97442d"
+      }
+    }
+  ],
+  "local_markdown_links_checked": 252,
+  "formatting_checks_passed": true,
+  "contextual_refinement_operations": 49,
+  "initial_draft_reconstructed_sha256": "e5605788b09e7cbd284ee48f86d5ac437d4ccc9df9f1b47769fe9bf7975ed399",
+  "refinement_sequence_reverse_replayed": true,
+  "reading_boundary": "All selected source 11–17 read in multiple stages; source 13 reread fully for this chapter. New 13 read fully twice; final 16 edits read in local context. Source 14 opening reread locally. Earlier PDF 17 not read. No new 14–17 prose."
+}
