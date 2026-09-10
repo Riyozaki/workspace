@@ -14,7 +14,7 @@
 
 [База проекта](projects/shards-of-the-abyss/README.md) · [Задача автора](projects/shards-of-the-abyss/BRIEF.md) · [Итог чтения первой арки и журналы](projects/shards-of-the-abyss/review/arc-01-reading/README.md)
 
-**[Новая глава 10 — читать целиком](projects/shards-of-the-abyss/drafts/ch-10/ch-10-v2.md)** — финал второй арки: первый выход, сводка из Минты, возвращение и собственные записи. **Арка 6–10 переписана целиком.** [Два сравнения](projects/shards-of-the-abyss/review/ch-10-before-after.md) · [Решения и передача в третью арку](projects/shards-of-the-abyss/review/ch-10-v2-editor-notes.md). Десятая ещё не оценена. Проверены начало и конец исходной 11; её полная читка и новая редакция впереди.
+**[Новая глава 10 — читать целиком](projects/shards-of-the-abyss/drafts/ch-10/ch-10-v2.md)** — финал второй арки: первый выход, сводка из Минты, возвращение и собственные записи. **Арка 6–10 переписана целиком.** [Два сравнения](projects/shards-of-the-abyss/review/ch-10-before-after.md) · [Решения и передача в третью арку](projects/shards-of-the-abyss/review/ch-10-v2-editor-notes.md). Десятая положительно оценена: «класс», особенно сцена с Кайром. Проверены начало и конец исходной 11; её полная читка и новая редакция впереди.
 
 **[Новая глава 9](projects/shards-of-the-abyss/drafts/ch-09/ch-09-v2.md)** получила «отлично». [Сравнения девятой](projects/shards-of-the-abyss/review/ch-09-before-after.md).
 
