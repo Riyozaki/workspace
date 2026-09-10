@@ -1,35 +1,20 @@
 # workspace
 
-Общая рабочая база арбуза и агента: проекты, учёба, писательство, программирование и другие задачи по мере появления.
+Рабочая база арбуза и агента: проекты, учёба, писательство и программирование.
 
-## Быстрый вход
+[Как работаем](AGENTS.md) · [Предпочтения](ABOUT.md) · [Состояние и следующий шаг](NOW.md)
 
-- [Как работаем](AGENTS.md) — инструкции, включая запрет Git merge.
-- [Предпочтения арбуза](ABOUT.md) — только подтверждённые сведения.
-- [Где остановились](NOW.md) — состояние и следующий шаг.
+## «Хроники Этериума — Осколки Бездны»
 
-## Сейчас в работе
+**Подготовлена структурная редакция второй арки.** Сильвия обучается ставить внешнюю метку и отправляется на небольшую южную разведку. Поездка заменяет прежнее сопровождение груза; подготовка уплотнена. Герра — через культуру, Сильвия и Тень — через общее дело и интерес.
 
-### «Хроники Этериума — Осколки Бездны»
+### Читать
 
-[База проекта](projects/shards-of-the-abyss/README.md) · [Задача автора](projects/shards-of-the-abyss/BRIEF.md) · [Итог чтения первой арки и журналы](projects/shards-of-the-abyss/review/arc-01-reading/README.md)
+- **[Арка 6–10 одним файлом](projects/shards-of-the-abyss/drafts/arc-02/arc-02-v3.md)** — 6–7 v2, новые 8–10 v3.
+- Отдельно: [8](projects/shards-of-the-abyss/drafts/ch-08/ch-08-v3.md) · [9](projects/shards-of-the-abyss/drafts/ch-09/ch-09-v3.md) · [10](projects/shards-of-the-abyss/drafts/ch-10/ch-10-v3.md).
+- [Точные сравнения с выданными v2](projects/shards-of-the-abyss/review/arc-02-v3-before-after.md) · [Журнал](projects/shards-of-the-abyss/review/arc-02-v3-worklog.md) · [Передача в 11](projects/shards-of-the-abyss/review/arc-02-v3-handoff.md).
+- [Все новые главы, включая 1–7](projects/shards-of-the-abyss/drafts/README.md) · [База проекта](projects/shards-of-the-abyss/README.md) · [Задача](projects/shards-of-the-abyss/BRIEF.md).
 
-**Сейчас — подготовка перестройки второй арки.** Автор опасается затянутости и разрешил новую конструкцию глав. Первый ответ получен: [новое направление — разведка на Юге](projects/shards-of-the-abyss/review/arc-02-rebuild-proposal.md). [Уточнения автора](projects/shards-of-the-abyss/canon/author-decisions-2026-09.md): устройство порталов и отмена старой организации. Перед редактурой уточняем исполнителя метки и изображение Герры. Выданная проза пока не меняется.
+Автор разрешил эту перестройку; новая v3 ещё не оценена им. Положительные отклики на прежние главы не переносятся на новый текст автоматически. Полностью прочитан источник 11; новая 11 не написана, 12–16 прочитаны только адресно.
 
-**[Новая глава 10 — читать целиком](projects/shards-of-the-abyss/drafts/ch-10/ch-10-v2.md)** — финал второй арки: первый выход, сводка из Минты, возвращение и собственные записи. **Арка 6–10 переписана целиком.** [Два сравнения](projects/shards-of-the-abyss/review/ch-10-before-after.md) · [Решения и передача в третью арку](projects/shards-of-the-abyss/review/ch-10-v2-editor-notes.md). Десятая положительно оценена: «класс», особенно сцена с Кайром. Проверены начало и конец исходной 11; её полная читка и новая редакция впереди.
-
-**[Новая глава 9](projects/shards-of-the-abyss/drafts/ch-09/ch-09-v2.md)** получила «отлично». [Сравнения девятой](projects/shards-of-the-abyss/review/ch-09-before-after.md).
-
-**[Новая глава 8](projects/shards-of-the-abyss/drafts/ch-08/ch-08-v2.md)** получила отклик «хорошо». [Сравнения восьмой](projects/shards-of-the-abyss/review/ch-08-before-after.md). Новое пожелание автора — стараться убирать «не …, а …», «это не …, это …» и перестраивать фразы другим способом.
-
-**[Новая глава 7](projects/shards-of-the-abyss/drafts/ch-07/ch-07-v2.md)** положительно оценена: «отличная работа, продолжаем». [Сравнения седьмой](projects/shards-of-the-abyss/review/ch-07-before-after.md). После шестой автор особо подчеркнул близость книги к тёмному фэнтези; это требование сохраняется.
-
-**[Новая глава 6 — читать целиком](projects/shards-of-the-abyss/drafts/ch-06/ch-06-v2.md)** — первый готовый этап порученной второй арки 6–10. [Решения](projects/shards-of-the-abyss/review/ch-06-v2-editor-notes.md) · [Сравнения](projects/shards-of-the-abyss/review/ch-06-before-after.md) · [Ход автономной задачи](projects/shards-of-the-abyss/review/arc-02-v2-worklog.md). Пятая положительно оценена. [План седьмой](projects/shards-of-the-abyss/review/ch-07-v2-plan.md) теперь относится к истории подготовки; новая проза готова по ссылке выше.
-
-**[Новая глава 5 — читать целиком](projects/shards-of-the-abyss/drafts/ch-05/ch-05-v2.md)** · [Глава 4](projects/shards-of-the-abyss/drafts/ch-04/ch-04-v2.md) · [Глава 3](projects/shards-of-the-abyss/drafts/ch-03/ch-03-v2.md) · [Глава 2](projects/shards-of-the-abyss/drafts/ch-02/ch-02-v2.md) · [Глава 1](projects/shards-of-the-abyss/drafts/ch-01/ch-01-v2.md).
-
-Четвёртая положительно оценена; по прямому запросу автора подготовлена пятая — завершение первой арки. **Новые 1–5 прочитаны подряд целиком**; затем пятая прочитана ещё раз после исправлений по арке, последние локальные уточнения — в контексте. [Два сравнения с исходником](projects/shards-of-the-abyss/review/ch-05-before-after.md) · [Решения и стыки](projects/shards-of-the-abyss/review/ch-05-v2-editor-notes.md) · [Журнал новой арки](projects/shards-of-the-abyss/review/arc-01-v2-reread.md). Пятая уже получила положительный отклик автора.
-
-В прежних 1–3 после этой читки девять локальных исправлений, в том числе три пропущенные календарные ссылки; четвёртая и защищённое начало первой не менялись. [Календарь](projects/shards-of-the-abyss/review/ch-04-calendar.md) · [История версий](projects/shards-of-the-abyss/drafts/README.md) · [Сохранённые выводы о ясности](projects/shards-of-the-abyss/review/clarity-pass-ch01-ch02.md). Главы 1–10 исходника и смысловая ось прочитаны полностью; 11–16 ещё нет. Все 397 импортированных файлов неизменны, старые PDF не содержат новых редакций.
-
-Остальные разделы заводим по настоящим задачам, а не заранее ради структуры.
+Выданные 1–10 v2 сохранены. Все 397 файлов сентябрьского импорта неприкосновенны; старые PDF не содержат новых редакций. **Никогда не выполнять merge**, работать только в закреплённой Arena-ветке.

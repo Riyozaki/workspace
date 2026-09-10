@@ -1,0 +1,191 @@
+{
+  "scope": "Technical preservation, exact excerpts, package, local links and formatting; not a literary or medical certificate.",
+  "branch": "arena/01a08101-workspace",
+  "comparison_baseline_commit": "db5550f7ff12acbb2da9d49b5f36ae70f0eb7c08",
+  "imported_files_checked": 397,
+  "changed_or_missing_imported_files": [],
+  "previous_ten_v2_unchanged": {
+    "drafts/ch-01/ch-01-v2.md": "9eabf25689c52beb82c79cd54993d4d4d344e89d840a74986554a5dddac10e1d",
+    "drafts/ch-02/ch-02-v2.md": "cc5ed9a20cb9536d11d17274acff6ac122e8d4f60e37a044b87eb7a9bf62f4f9",
+    "drafts/ch-03/ch-03-v2.md": "325f48672916dfc7abe0acc4dd43be1a93f898ce12efd9a597dac8471ba877ed",
+    "drafts/ch-04/ch-04-v2.md": "82d43855a695c9395d3a9b6c316a75ce8eaa1d113ba48816dc122498fe907bf0",
+    "drafts/ch-05/ch-05-v2.md": "2c40fc4cf7e73c8551aaa07cd0027b7402c8b13ad4d766caf0b8d9a8246708e4",
+    "drafts/ch-06/ch-06-v2.md": "90952ca59f786128b4b0360c83eb56f1d29afab4132fb216e671fabc415d31cc",
+    "drafts/ch-07/ch-07-v2.md": "1398a948021ceae18241146a7f6e24e157aaf5ccf6d3e05b0f7f16c492ebec55",
+    "drafts/ch-08/ch-08-v2.md": "c249fad011bd9eaed3326033a8ee644c0a3fa4eb9791ed9e639b7024b340e571",
+    "drafts/ch-09/ch-09-v2.md": "e349f05033f46d0b8769e9d8530f59b7a5aebadf8014cfe94bd9370304b0ba17",
+    "drafts/ch-10/ch-10-v2.md": "ab99ca1e2903a4a34e6896971d8ecdd8caed57a8f96a5fda3ffa12fda5b86453"
+  },
+  "protected_ch01_opening_lines_1_111_byte_identical": true,
+  "chapters": {
+    "drafts/ch-06/ch-06-v2.md": {
+      "sha256": "90952ca59f786128b4b0360c83eb56f1d29afab4132fb216e671fabc415d31cc",
+      "characters": 32498,
+      "whitespace_words": 5420,
+      "lines": 1137
+    },
+    "drafts/ch-07/ch-07-v2.md": {
+      "sha256": "1398a948021ceae18241146a7f6e24e157aaf5ccf6d3e05b0f7f16c492ebec55",
+      "characters": 35421,
+      "whitespace_words": 5989,
+      "lines": 1261
+    },
+    "drafts/ch-08/ch-08-v3.md": {
+      "sha256": "1475c9d8715eeda0c1ff3bfe5b09720fd3fc0437ef23572aaa8125673bf71933",
+      "characters": 32029,
+      "whitespace_words": 5242,
+      "lines": 971
+    },
+    "drafts/ch-09/ch-09-v3.md": {
+      "sha256": "2c405ca2414050d7b61139d73b3922ce11088c8db01f250712a0eec216f1df3d",
+      "characters": 42307,
+      "whitespace_words": 6803,
+      "lines": 1235
+    },
+    "drafts/ch-10/ch-10-v3.md": {
+      "sha256": "d5494a8f12b7643c78b45967f4855538e95b77e33852e0b068e686f5adaa5855",
+      "characters": 37587,
+      "whitespace_words": 6007,
+      "lines": 907
+    }
+  },
+  "reading_edition": {
+    "path": "drafts/arc-02/arc-02-v3.md",
+    "sha256": "172e9188d95711d08398d5ea8f08f705c66f750db25d290a211824d3d7b1c7d9",
+    "characters": 179846,
+    "whitespace_words": 29461,
+    "lines": 5515,
+    "chapter_bodies_exact": true
+  },
+  "comparisons": [
+    {
+      "title": "8. Граница: вместо нового приступа — решение повернуть",
+      "before": {
+        "path": "drafts/ch-08/ch-08-v2.md",
+        "exact_contiguous": true,
+        "lines": [
+          637,
+          641
+        ],
+        "sha256": "888c541221a3b1ec284bec8de317873caf16cf65d9719e879ebdc9740bc6f00a"
+      },
+      "after": {
+        "path": "drafts/ch-08/ch-08-v3.md",
+        "exact_contiguous": true,
+        "lines": [
+          431,
+          433
+        ],
+        "sha256": "ba280ca217f301f42005beba9906c455ce6f5256f5d58959d863e8a5c2bacff0"
+      }
+    },
+    {
+      "title": "8. Бирке получает собственный разговор",
+      "before": {
+        "path": "drafts/ch-08/ch-08-v2.md",
+        "exact_contiguous": true,
+        "lines": [
+          697,
+          703
+        ],
+        "sha256": "f0d36b9054242f6b6c67436434f9435441e6e523f9938915a28f57b97eb9079f"
+      },
+      "after": {
+        "path": "drafts/ch-08/ch-08-v3.md",
+        "exact_contiguous": true,
+        "lines": [
+          837,
+          845
+        ],
+        "sha256": "87e0d0667cf7aae256c0451a3111f20d7d5cc2fad31e2a62b3948514a7817310"
+      }
+    },
+    {
+      "title": "9. Повторные пробы собраны в один отрезок; прежде — в десятой",
+      "before": {
+        "path": "drafts/ch-10/ch-10-v2.md",
+        "exact_contiguous": true,
+        "lines": [
+          179,
+          183
+        ],
+        "sha256": "75a22ebac1004244f803fff6c89e1d55ed39329733ddeb5caff8069c66552751"
+      },
+      "after": {
+        "path": "drafts/ch-09/ch-09-v3.md",
+        "exact_contiguous": true,
+        "lines": [
+          811,
+          811
+        ],
+        "sha256": "ca64d4b5e33e6a7e19b379865f28aa4932f0ba47e8b86ef529c44f24badf2aae"
+      }
+    },
+    {
+      "title": "9. Другое назначение; прежде — в десятой",
+      "before": {
+        "path": "drafts/ch-10/ch-10-v2.md",
+        "exact_contiguous": true,
+        "lines": [
+          401,
+          403
+        ],
+        "sha256": "2f04dbb2401deaf33af431e1de6e7e53d2f6ed9ea7fa6b30aea89633ae616bf0"
+      },
+      "after": {
+        "path": "drafts/ch-09/ch-09-v3.md",
+        "exact_contiguous": true,
+        "lines": [
+          833,
+          839
+        ],
+        "sha256": "e24f1bc6b2fc84aecc2af0492fb6d483557f7659ee83ae78fde701239c9bb74e"
+      }
+    },
+    {
+      "title": "10. Тень: от дополнительных усилий к общему прожитому дню",
+      "before": {
+        "path": "drafts/ch-10/ch-10-v2.md",
+        "exact_contiguous": true,
+        "lines": [
+          185,
+          193
+        ],
+        "sha256": "575d3afba1da731feee6709a6ff6c1ca9db0555c0be8aa12a8f0f8c918ad4a06"
+      },
+      "after": {
+        "path": "drafts/ch-10/ch-10-v3.md",
+        "exact_contiguous": true,
+        "lines": [
+          239,
+          247
+        ],
+        "sha256": "9011d3c945c634f04b4f91f6235c6cf04bfffe518bcb12a39236316bdfc43b0e"
+      }
+    },
+    {
+      "title": "10. Результат работы: имя на схеме вместо сдачи пакета",
+      "before": {
+        "path": "drafts/ch-10/ch-10-v2.md",
+        "exact_contiguous": true,
+        "lines": [
+          803,
+          809
+        ],
+        "sha256": "308e92dc222c1dbee72ce23cbbb8466b2413ba97c453cb41279a2da077bd569f"
+      },
+      "after": {
+        "path": "drafts/ch-10/ch-10-v3.md",
+        "exact_contiguous": true,
+        "lines": [
+          725,
+          729
+        ],
+        "sha256": "bb0fe88ec8baa1dd2f97010ebf8a72073519917d2eebd12cc37fe058495b8e38"
+      }
+    }
+  ],
+  "local_markdown_links_checked": 178,
+  "formatting_checks_passed": true,
+  "reading_boundary": "All delivered 6–10 v2, all source 11, each new 8–10 v3 twice; final eight changes read locally. 12–16 only targeted."
+}
