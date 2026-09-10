@@ -1,0 +1,79 @@
+{
+  "branch": "arena/01a08101-workspace",
+  "base_before_ch08": "9a7fed662ea9bfe00042c84dc358d94f2067c117",
+  "scope": "Technical integrity and exact excerpts, not a literary verdict, clinical certification or exhaustive chronology/canon proof.",
+  "draft": "drafts/ch-08/ch-08-v2.md",
+  "draft_sha256": "c249fad011bd9eaed3326033a8ee644c0a3fa4eb9791ed9e639b7024b340e571",
+  "characters": 39569,
+  "whitespace_words": 6558,
+  "lines": 1173,
+  "source_sha256": "50950eae26ba68939b9882be14e19b9240e00d19e84c06feadf7d7496e4cd5e1",
+  "source_characters": 50030,
+  "source_whitespace_words": 8618,
+  "source_lines": 1385,
+  "imported_files_checked": 397,
+  "changed_or_missing_imported_files": [],
+  "previous_seven_unchanged_sha256": {
+    "ch-01": "9eabf25689c52beb82c79cd54993d4d4d344e89d840a74986554a5dddac10e1d",
+    "ch-02": "cc5ed9a20cb9536d11d17274acff6ac122e8d4f60e37a044b87eb7a9bf62f4f9",
+    "ch-03": "325f48672916dfc7abe0acc4dd43be1a93f898ce12efd9a597dac8471ba877ed",
+    "ch-04": "82d43855a695c9395d3a9b6c316a75ce8eaa1d113ba48816dc122498fe907bf0",
+    "ch-05": "2c40fc4cf7e73c8551aaa07cd0027b7402c8b13ad4d766caf0b8d9a8246708e4",
+    "ch-06": "90952ca59f786128b4b0360c83eb56f1d29afab4132fb216e671fabc415d31cc",
+    "ch-07": "1398a948021ceae18241146a7f6e24e157aaf5ccf6d3e05b0f7f16c492ebec55"
+  },
+  "protected_ch01_opening_lines_1_111_byte_identical": true,
+  "invalid_text_characters_or_trailing_whitespace": false,
+  "inline_italics_balanced": true,
+  "heading_and_ending_verified": true,
+  "comparisons": [
+    {
+      "title": "Граница: не авторский вывод о привычном насилии, а приготовленное для него место",
+      "before": {
+        "exact_contiguous": true,
+        "lines": [
+          787,
+          813
+        ],
+        "words": 165,
+        "excerpt_sha256": "b50b12dce49ce8fc3a9b9859640cc5a80d6c01801b61084a727d3ec0167050d8"
+      },
+      "after": {
+        "exact_contiguous": true,
+        "lines": [
+          653,
+          667
+        ],
+        "words": 108,
+        "excerpt_sha256": "f2b495b5c45348eb498a7403b4908bb657baf8e6334750fb90d65b35efc81e6d"
+      }
+    },
+    {
+      "title": "Кайр: вина за действительную минуту облегчения вместо проверки всего дня",
+      "before": {
+        "exact_contiguous": true,
+        "lines": [
+          1303,
+          1311
+        ],
+        "words": 99,
+        "excerpt_sha256": "4d2b1f9544ee48efa77ecda519bd3475f56ad16e34a19758ccd7112191f018ce"
+      },
+      "after": {
+        "exact_contiguous": true,
+        "lines": [
+          1079,
+          1109
+        ],
+        "words": 118,
+        "excerpt_sha256": "07dd7730c6729317c73f718db08264cb2586e76d9beb5eb9f7867fbf8a10f9a2"
+      }
+    }
+  ],
+  "local_navigation_links_checked": 98,
+  "missing_links": [],
+  "reading_record": "ch-08-v2-editor-notes.md",
+  "readings": "Source ch08 fresh complete in six ranges; first assembly complete in five ranges, 27 replacements including one technical cleanup; revised assembly complete in five ranges; three final local changes read in context.",
+  "arc_status": "New chapters 6–8 complete. Chapters 9–10 not rewritten. Fresh source ch09 reading only 1–140, ch10 targeted searches; older full reading is a separate historical pass.",
+  "new_pdf_export": false
+}
