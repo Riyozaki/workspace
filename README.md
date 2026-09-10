@@ -14,7 +14,9 @@
 
 [База проекта](projects/shards-of-the-abyss/README.md) · [Задача автора](projects/shards-of-the-abyss/BRIEF.md) · [Итог чтения первой арки и журналы](projects/shards-of-the-abyss/review/arc-01-reading/README.md)
 
-**[Новая глава 9 — читать целиком](projects/shards-of-the-abyss/drafts/ch-09/ch-09-v2.md)** — восстановление, две части аттестации, второй ранг и трещина. [Два сравнения](projects/shards-of-the-abyss/review/ch-09-before-after.md) · [Решения и передача в десятую](projects/shards-of-the-abyss/review/ch-09-v2-editor-notes.md). Из второй арки готовы 6–9; десятая ещё не переписана. Девятая пока не оценена автором.
+**[Новая глава 10 — читать целиком](projects/shards-of-the-abyss/drafts/ch-10/ch-10-v2.md)** — финал второй арки: первый выход, сводка из Минты, возвращение и собственные записи. **Арка 6–10 переписана целиком.** [Два сравнения](projects/shards-of-the-abyss/review/ch-10-before-after.md) · [Решения и передача в третью арку](projects/shards-of-the-abyss/review/ch-10-v2-editor-notes.md). Десятая ещё не оценена. Проверены начало и конец исходной 11; её полная читка и новая редакция впереди.
+
+**[Новая глава 9](projects/shards-of-the-abyss/drafts/ch-09/ch-09-v2.md)** получила «отлично». [Сравнения девятой](projects/shards-of-the-abyss/review/ch-09-before-after.md).
 
 **[Новая глава 8](projects/shards-of-the-abyss/drafts/ch-08/ch-08-v2.md)** получила отклик «хорошо». [Сравнения восьмой](projects/shards-of-the-abyss/review/ch-08-before-after.md). Новое пожелание автора — стараться убирать «не …, а …», «это не …, это …» и перестраивать фразы другим способом.
 

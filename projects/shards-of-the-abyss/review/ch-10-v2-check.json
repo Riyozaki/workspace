@@ -1,0 +1,182 @@
+{
+  "branch": "arena/01a08101-workspace",
+  "base_before_ch10": "5700db60e32b128edc2dcf078caabd3312b61543",
+  "scope": "Technical integrity, preservation and exact excerpts. Literary/canon reading has a separate bounded record; no claim that all mistakes are excluded.",
+  "draft": "drafts/ch-10/ch-10-v2.md",
+  "draft_sha256": "ab99ca1e2903a4a34e6896971d8ecdd8caed57a8f96a5fda3ffa12fda5b86453",
+  "characters": 49145,
+  "whitespace_words": 7990,
+  "lines": 1263,
+  "source_sha256": "0b9c2bd9e30abc7fcf5dc49f72bfb09f690729c18652fe686d376120ebf90c89",
+  "source_characters": 62749,
+  "source_whitespace_words": 10722,
+  "source_lines": 1441,
+  "imported_files_checked": 397,
+  "changed_or_missing_imported_files": [],
+  "previous_nine_unchanged_sha256": {
+    "ch-01": "9eabf25689c52beb82c79cd54993d4d4d344e89d840a74986554a5dddac10e1d",
+    "ch-02": "cc5ed9a20cb9536d11d17274acff6ac122e8d4f60e37a044b87eb7a9bf62f4f9",
+    "ch-03": "325f48672916dfc7abe0acc4dd43be1a93f898ce12efd9a597dac8471ba877ed",
+    "ch-04": "82d43855a695c9395d3a9b6c316a75ce8eaa1d113ba48816dc122498fe907bf0",
+    "ch-05": "2c40fc4cf7e73c8551aaa07cd0027b7402c8b13ad4d766caf0b8d9a8246708e4",
+    "ch-06": "90952ca59f786128b4b0360c83eb56f1d29afab4132fb216e671fabc415d31cc",
+    "ch-07": "1398a948021ceae18241146a7f6e24e157aaf5ccf6d3e05b0f7f16c492ebec55",
+    "ch-08": "c249fad011bd9eaed3326033a8ee644c0a3fa4eb9791ed9e639b7024b340e571",
+    "ch-09": "e349f05033f46d0b8769e9d8530f59b7a5aebadf8014cfe94bd9370304b0ba17"
+  },
+  "protected_ch01_opening_lines_1_111_byte_identical": true,
+  "invalid_text_characters_or_trailing_whitespace": false,
+  "inline_italics_balanced": true,
+  "heading_and_ending_verified": true,
+  "comparisons": [
+    {
+      "title": "Кайр в сводке",
+      "before": {
+        "exact_contiguous": true,
+        "lines": [
+          1043,
+          1047
+        ],
+        "words": 103,
+        "sha256": "4c2f996ae86260069443f253681bd5562ab8b3d4ce27c2b9fdd223e8ebc45685"
+      },
+      "after": {
+        "exact_contiguous": true,
+        "lines": [
+          857,
+          867
+        ],
+        "words": 121,
+        "sha256": "95f9e262b37702dd3187ccbdfe460468c00b625c592e00a6c51a16f8a50f17fe"
+      }
+    },
+    {
+      "title": "Почему она встаёт утром",
+      "before": {
+        "exact_contiguous": true,
+        "lines": [
+          1429,
+          1441
+        ],
+        "words": 84,
+        "sha256": "eec00b1435337e96f5e571eeaebcc81123f66e2d930dd6111f2c8cdc44007e51"
+      },
+      "after": {
+        "exact_contiguous": true,
+        "lines": [
+          1247,
+          1257
+        ],
+        "words": 93,
+        "sha256": "b491a4c0b40dd6dadaa704bd808cdfd5295327455e194c81c51d834aa7cae00a"
+      }
+    }
+  ],
+  "local_navigation_links_checked": 118,
+  "missing_links": [],
+  "style_scan": {
+    "broad_candidate_lines": [
+      291,
+      623,
+      955,
+      1181
+    ],
+    "manual_disposition": "All four reviewed in context: memory transition, cart positioning, failed recall, anticipated conversation. These are not the targeted rhetorical definitions. This scan is not a literary verdict."
+  },
+  "reading_record": "ch-10-v2-editor-notes.md",
+  "reading_coverage": {
+    "source_ch10_complete": [
+      [
+        1,
+        240
+      ],
+      [
+        241,
+        480
+      ],
+      [
+        481,
+        720
+      ],
+      [
+        721,
+        960
+      ],
+      [
+        961,
+        1200
+      ],
+      [
+        1201,
+        1441
+      ]
+    ],
+    "first_assembly_complete": [
+      [
+        1,
+        260
+      ],
+      [
+        261,
+        520
+      ],
+      [
+        521,
+        780
+      ],
+      [
+        781,
+        1040
+      ],
+      [
+        1041,
+        1257
+      ]
+    ],
+    "intermediate_changes": 35,
+    "second_assembly_complete": [
+      [
+        1,
+        315
+      ],
+      [
+        316,
+        630
+      ],
+      [
+        631,
+        945
+      ],
+      [
+        946,
+        1263
+      ]
+    ],
+    "final_local_changes": 2,
+    "final_changed_context": [
+      894,
+      943
+    ],
+    "source_ch11_contiguous_ranges": [
+      [
+        1,
+        260
+      ],
+      [
+        261,
+        520
+      ],
+      [
+        1880,
+        2029
+      ]
+    ],
+    "source_ch11_not_read_in_full": [
+      521,
+      1879
+    ],
+    "new_arc_6_10_separate_complete_reread_this_pass": false
+  },
+  "arc_status": "Chapters 6–10 rewritten. Chapter 11 opening and ending checked, full reading and rewrite pending.",
+  "new_pdf_export": false
+}
