@@ -14,7 +14,9 @@
 
 [База проекта](projects/shards-of-the-abyss/README.md) · [Задача автора](projects/shards-of-the-abyss/BRIEF.md) · [Итог чтения первой арки и журналы](projects/shards-of-the-abyss/review/arc-01-reading/README.md)
 
-**[Новая глава 8 — читать целиком](projects/shards-of-the-abyss/drafts/ch-08/ch-08-v2.md)** — город, отказ в связи с домом, граница, договор с голосом и Кайр. [Два сравнения](projects/shards-of-the-abyss/review/ch-08-before-after.md) · [Решения и передача в девятую](projects/shards-of-the-abyss/review/ch-08-v2-editor-notes.md). Из второй арки готовы 6–8; 9–10 ещё не переписаны. Восьмая пока не оценена автором.
+**[Новая глава 9 — читать целиком](projects/shards-of-the-abyss/drafts/ch-09/ch-09-v2.md)** — восстановление, две части аттестации, второй ранг и трещина. [Два сравнения](projects/shards-of-the-abyss/review/ch-09-before-after.md) · [Решения и передача в десятую](projects/shards-of-the-abyss/review/ch-09-v2-editor-notes.md). Из второй арки готовы 6–9; десятая ещё не переписана. Девятая пока не оценена автором.
+
+**[Новая глава 8](projects/shards-of-the-abyss/drafts/ch-08/ch-08-v2.md)** получила отклик «хорошо». [Сравнения восьмой](projects/shards-of-the-abyss/review/ch-08-before-after.md). Новое пожелание автора — стараться убирать «не …, а …», «это не …, это …» и перестраивать фразы другим способом.
 
 **[Новая глава 7](projects/shards-of-the-abyss/drafts/ch-07/ch-07-v2.md)** положительно оценена: «отличная работа, продолжаем». [Сравнения седьмой](projects/shards-of-the-abyss/review/ch-07-before-after.md). После шестой автор особо подчеркнул близость книги к тёмному фэнтези; это требование сохраняется.
 

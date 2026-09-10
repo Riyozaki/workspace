@@ -1,0 +1,86 @@
+{
+  "branch": "arena/01a08101-workspace",
+  "base_before_ch09": "7befc7ce86dbf5191c440eedb89b3d4f0cd03cd1",
+  "scope": "Technical integrity, preservation, exact excerpts. Literary reading and limited canon checks recorded separately.",
+  "draft": "drafts/ch-09/ch-09-v2.md",
+  "draft_sha256": "e349f05033f46d0b8769e9d8530f59b7a5aebadf8014cfe94bd9370304b0ba17",
+  "characters": 41970,
+  "whitespace_words": 6859,
+  "lines": 1295,
+  "source_sha256": "1a9bdb43e1a54b0fc39d809cc4715142e51b1fb3fd65b42114a0b45d6ba072d4",
+  "source_characters": 47293,
+  "source_whitespace_words": 8252,
+  "source_lines": 1337,
+  "imported_files_checked": 397,
+  "changed_or_missing_imported_files": [],
+  "previous_eight_unchanged_sha256": {
+    "ch-01": "9eabf25689c52beb82c79cd54993d4d4d344e89d840a74986554a5dddac10e1d",
+    "ch-02": "cc5ed9a20cb9536d11d17274acff6ac122e8d4f60e37a044b87eb7a9bf62f4f9",
+    "ch-03": "325f48672916dfc7abe0acc4dd43be1a93f898ce12efd9a597dac8471ba877ed",
+    "ch-04": "82d43855a695c9395d3a9b6c316a75ce8eaa1d113ba48816dc122498fe907bf0",
+    "ch-05": "2c40fc4cf7e73c8551aaa07cd0027b7402c8b13ad4d766caf0b8d9a8246708e4",
+    "ch-06": "90952ca59f786128b4b0360c83eb56f1d29afab4132fb216e671fabc415d31cc",
+    "ch-07": "1398a948021ceae18241146a7f6e24e157aaf5ccf6d3e05b0f7f16c492ebec55",
+    "ch-08": "c249fad011bd9eaed3326033a8ee644c0a3fa4eb9791ed9e639b7024b340e571"
+  },
+  "protected_ch01_opening_lines_1_111_byte_identical": true,
+  "invalid_text_characters_or_trailing_whitespace": false,
+  "inline_italics_balanced": true,
+  "heading_and_ending_verified": true,
+  "comparisons": [
+    {
+      "title": "Рэйна: конкретная зависимость от мастера и приглашение к общему делу",
+      "before": {
+        "exact_contiguous": true,
+        "lines": [
+          993,
+          1011
+        ],
+        "words": 93,
+        "sha256": "db53c8fda435ffdef21f77f0b17d726a33fb323ed1c670031df91eafaaca99fa"
+      },
+      "after": {
+        "exact_contiguous": true,
+        "lines": [
+          963,
+          977
+        ],
+        "words": 85,
+        "sha256": "f5d1a08a22f1b7208b5a3f85050aae2b41a4a6baef71978ac51e1ed93b30d1d8"
+      }
+    },
+    {
+      "title": "Ранг и Агнис: попытка начать письмо",
+      "before": {
+        "exact_contiguous": true,
+        "lines": [
+          1097,
+          1107
+        ],
+        "words": 103,
+        "sha256": "9f54ddf4a1bbcb6d6c0b43b64ded31a34e1828cad7f9771a9b9623b3ae870729"
+      },
+      "after": {
+        "exact_contiguous": true,
+        "lines": [
+          1087,
+          1095
+        ],
+        "words": 67,
+        "sha256": "0b39b380aa305cac7a56faa01d19c072d6fd9d37084c5655732a01070d4e3021"
+      }
+    }
+  ],
+  "local_navigation_links_checked": 107,
+  "missing_links": [],
+  "style_scan": {
+    "broad_candidate_lines": [
+      563
+    ],
+    "manual_disposition": "Line 563 combines едва не with separate actions of the sisters joined by а; ordinary remembered action, retained after contextual reading. Scan is not an exhaustive literary test."
+  },
+  "reading_record": "ch-09-v2-editor-notes.md",
+  "readings": "Source ch09 fresh complete in six ranges. First assembly complete in five ranges; 23 contextual changes; revised assembly complete in three ranges; five final local changes read in context.",
+  "arc_status": "Chapters 6–9 rewritten; ch10 not rewritten. Fresh ch10 reading 1–200 plus targeted searches.",
+  "new_pdf_export": false
+}
