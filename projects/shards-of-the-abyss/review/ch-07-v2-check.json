@@ -1,0 +1,49 @@
+{
+  "branch": "arena/01a08101-workspace",
+  "base_before_ch07": "885f4e03173b11379155344b89e1db11e3324d87",
+  "scope": "Technical integrity and exact excerpts, not a literary verdict, medical certification or exhaustive chronology proof.",
+  "draft": "drafts/ch-07/ch-07-v2.md",
+  "draft_sha256": "1398a948021ceae18241146a7f6e24e157aaf5ccf6d3e05b0f7f16c492ebec55",
+  "characters": 35421,
+  "whitespace_words": 5989,
+  "lines": 1261,
+  "source_sha256": "7a96c457f727d92271cdf64dcc54724f578499ed24d131046e013c71bb97c173",
+  "source_characters": 43629,
+  "source_whitespace_words": 7598,
+  "source_lines": 1251,
+  "imported_files_checked": 397,
+  "changed_or_missing_imported_files": [],
+  "previous_six_unchanged_sha256": {
+    "ch-01": "9eabf25689c52beb82c79cd54993d4d4d344e89d840a74986554a5dddac10e1d",
+    "ch-02": "cc5ed9a20cb9536d11d17274acff6ac122e8d4f60e37a044b87eb7a9bf62f4f9",
+    "ch-03": "325f48672916dfc7abe0acc4dd43be1a93f898ce12efd9a597dac8471ba877ed",
+    "ch-04": "82d43855a695c9395d3a9b6c316a75ce8eaa1d113ba48816dc122498fe907bf0",
+    "ch-05": "2c40fc4cf7e73c8551aaa07cd0027b7402c8b13ad4d766caf0b8d9a8246708e4",
+    "ch-06": "90952ca59f786128b4b0360c83eb56f1d29afab4132fb216e671fabc415d31cc"
+  },
+  "protected_ch01_opening_lines_1_111_byte_identical": true,
+  "invalid_text_characters_or_trailing_whitespace": false,
+  "heading_and_ending_verified": true,
+  "comparisons": [
+    {
+      "title": "Мать: от согласованной операции к ране собственной дочери",
+      "before_exact_contiguous_source": true,
+      "after_exact_contiguous_draft": true,
+      "before_words": 82,
+      "after_words": 97
+    },
+    {
+      "title": "После захвата тела: без привычной перепалки и мгновенного «голова цела»",
+      "before_exact_contiguous_source": true,
+      "after_exact_contiguous_draft": true,
+      "before_words": 66,
+      "after_words": 80
+    }
+  ],
+  "local_navigation_links_checked": 88,
+  "missing_links": [],
+  "reading_record": "ch-07-v2-editor-notes.md",
+  "readings": "Source freshly reread in full this turn after previous full reading; two complete draft readings; 28 contextual corrections between readings and 2 final local clarifications read in context.",
+  "arc_status": "Chapters 6 and 7 newly rewritten; 8–10 not rewritten. Chapter 8 only targeted passages in this pass.",
+  "new_pdf_export": false
+}
