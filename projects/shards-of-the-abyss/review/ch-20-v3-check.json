@@ -1,0 +1,151 @@
+{
+  "date": "2026-09-12",
+  "branch": "arena/01a08101-workspace",
+  "prepublication_head": "dee0b92018b81e337174c8ccfb0f277fd3663003",
+  "scope": "Preservation, exact quotations and packaging; not a certificate of literary or medical perfection. Publication is verified separately after commit and push.",
+  "status": "passed",
+  "baseline_files": 585,
+  "baseline_changed_exactly": [
+    "NOW.md",
+    "projects/shards-of-the-abyss/README.md",
+    "projects/shards-of-the-abyss/drafts/README.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-reading.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-structure.md"
+  ],
+  "baseline_other_files_identical": 580,
+  "immutable_book_files": 397,
+  "immutable_reference_files": 39,
+  "global_text_diff": "unset",
+  "chapter": {
+    "sha256": "e3c2a82b0558e74e14cdb4b1378eb159b4fbc744ac819e7027fefd8391b5f563",
+    "bytes": 71664,
+    "characters": 40084,
+    "words": 6636,
+    "lines": 851
+  },
+  "readings": {
+    "first_complete_lines": [
+      1,
+      831
+    ],
+    "second_complete_lines": [
+      1,
+      849
+    ],
+    "edits_between_readings": [
+      38,
+      5
+    ],
+    "final_edits_read_in_context": 20,
+    "final_lines": 851
+  },
+  "literal_excerpt_pairs": [
+    {
+      "title": "Выбор Тавии: от наблюдения снаружи к разговору о том, чего она не успевала",
+      "before": {
+        "text": "Она осталась сидеть на пятках и повернула голову влево, туда, где Райгар только что вышел из-под чужого огня и стоял на одном колене. Посмотрела на него. Опять на Кетта. Опять на Райгара. Лицо у неё было такое же, как каждое утро над тряпицей со склянками.\n\nОна встала и пошла к Райгару.",
+        "start_line": 379,
+        "end_line": 381
+      },
+      "after": {
+        "text": "— Я пробовала остановить кровь. Снаружи стягивалось, а он всё равно захлёбывался. Нужно было искать глубже, и на это уходило то, чем я ещё могла помочь Райгару. Он уже почти не дышал. Я пошла к нему.\n\n— Ты знала, что у Кетта не получится?\n\n— Нет. Я поняла, что могу остаться возле него и потерять обоих.",
+        "start_line": 617,
+        "end_line": 621
+      }
+    },
+    {
+      "title": "Тень: личный страх вместо достоверного прогноза всей жизни",
+      "before": {
+        "text": "*Первое ты будешь помнить всю жизнь и не захочешь повторять. Второе ты захочешь повторить и не запомнишь толком.* — Она помолчала. — *Из этих двух опасно второе.*",
+        "start_line": 499,
+        "end_line": 499
+      },
+      "after": {
+        "text": "*Когда ты упала, я не могла понять, слышишь ли меня. Я говорила, а ты не отвечала.*\n\n«Потом отвечала».\n\n*Потом. Сперва я ничего не могла.*",
+        "start_line": 687,
+        "end_line": 691
+      }
+    }
+  ],
+  "local_markdown_links_checked": 134,
+  "utf8_replacement_characters_in_deliverables": 0,
+  "mixed_latin_cyrillic_words_in_chapter": [],
+  "undesired_stem_in_chapter": 0,
+  "changed_text_files": {
+    "NOW.md": {
+      "sha256": "9262df0bf5648886500f925f7c44d9a35172e2ae08a4b6194a025ba1a7093f5f",
+      "bytes": 28935,
+      "characters": 16961,
+      "words": 2169,
+      "lines": 93
+    },
+    "projects/shards-of-the-abyss/README.md": {
+      "sha256": "82c68669d342780a220a3a61b118e279d3215914426a1178a136a8931ef624b5",
+      "bytes": 18201,
+      "characters": 11143,
+      "words": 1357,
+      "lines": 102
+    },
+    "projects/shards-of-the-abyss/drafts/README.md": {
+      "sha256": "f0cebbecd2089f9daf7c2484cead0748bdb00389e0ec7a956ff33b556d1b23d4",
+      "bytes": 12180,
+      "characters": 7415,
+      "words": 858,
+      "lines": 70
+    },
+    "projects/shards-of-the-abyss/review/arc-04-v3-reading.md": {
+      "sha256": "9b7ef32a844e7588cc9febc439a5241fa75cacfa6d27827a0f7e1d9124c860e8",
+      "bytes": 79337,
+      "characters": 44150,
+      "words": 6242,
+      "lines": 295
+    },
+    "projects/shards-of-the-abyss/review/arc-04-v3-structure.md": {
+      "sha256": "f55a35c9e58dc15e460cfda2f90d5f0a53fa4aa39a356d235dd1fb3f59628efe",
+      "bytes": 32953,
+      "characters": 18413,
+      "words": 2512,
+      "lines": 119
+    },
+    "projects/shards-of-the-abyss/drafts/ch-20/ch-20-v3.md": {
+      "sha256": "e3c2a82b0558e74e14cdb4b1378eb159b4fbc744ac819e7027fefd8391b5f563",
+      "bytes": 71664,
+      "characters": 40084,
+      "words": 6636,
+      "lines": 851
+    },
+    "projects/shards-of-the-abyss/review/ch-20-v3-editor-notes.md": {
+      "sha256": "4d69becae9065179b1ae98a85b8067f6d22ccdcd47b05d15c8f4b0043b40035d",
+      "bytes": 31231,
+      "characters": 17531,
+      "words": 2441,
+      "lines": 112
+    },
+    "projects/shards-of-the-abyss/review/ch-20-v3-before-after.md": {
+      "sha256": "016cf1fc3008dc2bbb42d07372230712fef6fc53338a87d9b35a072b2b2361ae",
+      "bytes": 3058,
+      "characters": 1875,
+      "words": 283,
+      "lines": 37
+    },
+    "projects/shards-of-the-abyss/review/ch-20-v3-before-after.json": {
+      "sha256": "69f2d76922f1ad34d874583dcda5abce5d1475d234a7be1fd5bbababe1096a1c",
+      "bytes": 2570,
+      "characters": 1767,
+      "words": 225,
+      "lines": 34
+    }
+  },
+  "planned_paths": [
+    "NOW.md",
+    "projects/shards-of-the-abyss/README.md",
+    "projects/shards-of-the-abyss/drafts/README.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-reading.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-structure.md",
+    "projects/shards-of-the-abyss/drafts/ch-20/ch-20-v3.md",
+    "projects/shards-of-the-abyss/review/ch-20-v3-editor-notes.md",
+    "projects/shards-of-the-abyss/review/ch-20-v3-before-after.md",
+    "projects/shards-of-the-abyss/review/ch-20-v3-before-after.json",
+    "projects/shards-of-the-abyss/review/ch-20-v3-check.json"
+  ]
+}
