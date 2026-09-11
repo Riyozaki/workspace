@@ -1,13 +1,9 @@
-# Keep the session's cumulative diff focused on editable chapters and notes.
-# These rules suppress textual diff expansion only: all files stay tracked,
-# readable and unchanged. `git diff --text` overrides this for inspection.
-
-# Immutable imported source snapshot, including historical manuscripts/archives.
-projects/shards-of-the-abyss/book/** -diff
-
-# Machine-readable checks, exact comparisons and refinement journals.
-# Their human-readable Markdown counterparts retain normal text diffs.
-projects/shards-of-the-abyss/review/*.json -diff
-
-# Reading copy assembled from the individual chapters; avoid displaying it twice.
-projects/shards-of-the-abyss/drafts/arc-02/arc-02-v3.md -diff
+# Author request: disable ALL textual diffs to reduce Arena UI overhead.
+# Applies to current and future files, including individual manuscript chapters.
+# Files remain tracked and readable; no content or history is removed.
+# Read full files normally. For an explicit local comparison of a TEXT file:
+#   git diff --text <base> <head> -- <path>
+# Do not force --text over the whole repository (it includes PDF/PNG/ZIP).
+# Arena may still show a changed-file list or use its own diff/cache behavior.
+# To restore normal textual diffs, remove the following rule in a normal commit.
+* -diff
