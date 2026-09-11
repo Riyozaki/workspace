@@ -6,17 +6,14 @@
   "imported_files_checked": 397,
   "changed_or_missing_imported_files": [],
   "previously_tracked_drafts_unchanged": {
-    "projects/shards-of-the-abyss/drafts/arc-02/arc-02-v3.md": "172e9188d95711d08398d5ea8f08f705c66f750db25d290a211824d3d7b1c7d9",
     "projects/shards-of-the-abyss/drafts/ch-01/ch-01-v2.md": "9eabf25689c52beb82c79cd54993d4d4d344e89d840a74986554a5dddac10e1d",
     "projects/shards-of-the-abyss/drafts/ch-01/nord-workshop-v1.md": "29208d8eae5e27dcbe286b95dd6c12dec07b5ba254183772955faf2236ce6cf8",
     "projects/shards-of-the-abyss/drafts/ch-02/ch-02-v2.md": "cc5ed9a20cb9536d11d17274acff6ac122e8d4f60e37a044b87eb7a9bf62f4f9",
     "projects/shards-of-the-abyss/drafts/ch-03/ch-03-v2.md": "325f48672916dfc7abe0acc4dd43be1a93f898ce12efd9a597dac8471ba877ed",
     "projects/shards-of-the-abyss/drafts/ch-04/ch-04-v2.md": "82d43855a695c9395d3a9b6c316a75ce8eaa1d113ba48816dc122498fe907bf0",
     "projects/shards-of-the-abyss/drafts/ch-05/ch-05-v2.md": "2c40fc4cf7e73c8551aaa07cd0027b7402c8b13ad4d766caf0b8d9a8246708e4",
-    "projects/shards-of-the-abyss/drafts/ch-06/ch-06-v2.md": "90952ca59f786128b4b0360c83eb56f1d29afab4132fb216e671fabc415d31cc",
     "projects/shards-of-the-abyss/drafts/ch-07/ch-07-v2.md": "1398a948021ceae18241146a7f6e24e157aaf5ccf6d3e05b0f7f16c492ebec55",
     "projects/shards-of-the-abyss/drafts/ch-08/ch-08-v2.md": "c249fad011bd9eaed3326033a8ee644c0a3fa4eb9791ed9e639b7024b340e571",
-    "projects/shards-of-the-abyss/drafts/ch-08/ch-08-v3.md": "1475c9d8715eeda0c1ff3bfe5b09720fd3fc0437ef23572aaa8125673bf71933",
     "projects/shards-of-the-abyss/drafts/ch-09/ch-09-v2.md": "e349f05033f46d0b8769e9d8530f59b7a5aebadf8014cfe94bd9370304b0ba17",
     "projects/shards-of-the-abyss/drafts/ch-09/ch-09-v3.md": "2c405ca2414050d7b61139d73b3922ce11088c8db01f250712a0eec216f1df3d",
     "projects/shards-of-the-abyss/drafts/ch-10/ch-10-v2.md": "ab99ca1e2903a4a34e6896971d8ecdd8caed57a8f96a5fda3ffa12fda5b86453",
@@ -25,6 +22,22 @@
     "projects/shards-of-the-abyss/drafts/ch-12/ch-12-v2.md": "4cce5c69cdfc4582a2a2a9c2d17e9e2e81ce399e815b813c1ef8c8a24f934b82",
     "projects/shards-of-the-abyss/drafts/ch-13/ch-13-v2.md": "e5b57e53d60fa1cb99bf2b4d31e605f6712f1e0039c3de5bce741d19d73c535a"
   },
+  "previously_tracked_drafts_author_wording_only": {
+    "projects/shards-of-the-abyss/drafts/arc-02/arc-02-v3.md": {
+      "before_sha256": "172e9188d95711d08398d5ea8f08f705c66f750db25d290a211824d3d7b1c7d9",
+      "current_sha256": "a26d5e6a74ab1a78cf97e642edc6dc067482a662c329a55fdea51bd74c673881"
+    },
+    "projects/shards-of-the-abyss/drafts/ch-06/ch-06-v2.md": {
+      "before_sha256": "90952ca59f786128b4b0360c83eb56f1d29afab4132fb216e671fabc415d31cc",
+      "current_sha256": "ef1e1816f2223e3252884f8932f1c7be06812675c9234902d63a79178ea9264e"
+    },
+    "projects/shards-of-the-abyss/drafts/ch-08/ch-08-v3.md": {
+      "before_sha256": "1475c9d8715eeda0c1ff3bfe5b09720fd3fc0437ef23572aaa8125673bf71933",
+      "current_sha256": "abe4addfc4a69b2a5deae6f0e8866b247cd135a1b6176268e3c0008029db1ce2"
+    }
+  },
+  "author_wording_edits": 3,
+  "unwanted_word_absent_in_all_14_current_chapters": true,
   "protected_ch01_opening_lines_1_111_byte_identical": true,
   "arc02_v3_chapter_bodies_exact": true,
   "source_ch14": {
@@ -34,9 +47,9 @@
     "lines": 1857
   },
   "new_ch14": {
-    "sha256": "c328f0a20081dfb64108b1e2cf1dff7d5a5be985a5e49d1f32db2730a5bdc2e4",
-    "characters": 35692,
-    "whitespace_words": 5679,
+    "sha256": "38688dec199e7a683f1fba8dc2f8cb461fb694e007c6ba322cabefcb6685237b",
+    "characters": 35676,
+    "whitespace_words": 5677,
     "lines": 983
   },
   "comparisons": [
@@ -58,7 +71,7 @@
           289,
           295
         ],
-        "sha256": "bc9050e2991c56fd0c03b9327fd51af6a5e3fb048faca124b570ccd68e545282"
+        "sha256": "7ccd9352f0f10a406afbc3ed19c528ffbef68be7405629ddae6ba285eeef5658"
       }
     },
     {
@@ -88,5 +101,5 @@
   "contextual_refinement_operations": 62,
   "initial_draft_reconstructed_sha256": "139657b94bf8ebf86fa56c6dac8af7ab98645b5439e03922ff2a4f14c462e941",
   "refinement_sequence_reverse_replayed": true,
-  "reading_boundary": "All selected source 11–17 read in multiple stages; source 14 reread fully for this chapter. New 14 read fully twice (initial and after 44 operations); final 18 edits read in local context. New 11 city/letter and new 4 plant continuity checked locally. Source 15 first 190 lines freshly read; not a full fresh reread. Earlier PDF 17 not read. No new 15–17 prose."
+  "reading_boundary": "All selected source 11–17 read in multiple stages; source 14 reread fully for this chapter. New 14 read fully twice (initial and after 44 operations); final 18 edits read in local context. Subsequent author-requested wording changes in current 6, 8 and 14 read locally before and after; no additional full read. New 11 city/letter and new 4 plant continuity checked locally. Source 15 first 190 lines freshly read; not a full fresh reread. Earlier PDF 17 not read. No new 15–17 prose."
 }

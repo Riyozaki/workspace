@@ -30,14 +30,40 @@ assert len(manifest['files']) == 397
 for item in manifest['files']:
     assert sha((P / 'book' / item['path']).read_bytes()) == item['sha256'], item['path']
 
+author_wording = json.loads((P / 'review/author-wording-2026-09-11.json').read_text())
+assert len(author_wording['edits']) == 3
+
+def before_author_wording(path, text):
+    relative = path.relative_to(P).as_posix()
+    for edit in reversed(author_wording['edits']):
+        applies = relative == edit['path'] or (
+            relative == author_wording['collection'] and edit['path'].split('/')[1] in ('ch-06', 'ch-08'))
+        if applies:
+            assert text.count(edit['after']) == 1, relative
+            text = text.replace(edit['after'], edit['before'], 1)
+    return text
+
+active_chapters = [P / f'drafts/ch-{n:02}/ch-{n:02}-v{3 if 8 <= n <= 10 else 2}.md' for n in range(1, 15)]
+for f in active_chapters:
+    assert not re.search('костяш', f.read_text(), re.I), f
+for name in [e['path'] for e in author_wording['edits']] + [author_wording['collection']]:
+    f = P / name
+    assert before_author_wording(f, f.read_text()).encode() == git(
+        'show', f"{author_wording['baseline_commit']}:{f.relative_to(R).as_posix()}")
+
 preserved = {}
+authorized_changes = {}
 prefix = str((P / 'drafts').relative_to(R)) + '/'
 for name in git('ls-tree', '-r', '--name-only', BASE, '--', prefix).decode().splitlines():
     f = R / name
     if f.name == 'README.md':  # Navigation is intentionally updated for the new chapter.
         continue
-    assert f.read_bytes() == git('show', f'{BASE}:{name}'), name
-    preserved[name] = sha(f.read_bytes())
+    baseline = git('show', f'{BASE}:{name}')
+    assert before_author_wording(f, f.read_text()).encode() == baseline, name
+    if f.read_bytes() == baseline:
+        preserved[name] = sha(f.read_bytes())
+    else:
+        authorized_changes[name] = dict(before_sha256=sha(baseline), current_sha256=sha(f.read_bytes()))
 assert len(preserved) >= 10
 old = (P / 'book/03-manuscript/arc-01/ch-01.md').read_bytes().splitlines(keepends=True)[:111]
 new = (P / 'drafts/ch-01/ch-01-v2.md').read_bytes().splitlines(keepends=True)[:111]
@@ -90,7 +116,7 @@ for f in files:
 
 refinements = json.loads((P / 'review/ch-14-v2-refinements.json').read_text())
 assert len(refinements) == 62
-reconstructed = text
+reconstructed = before_author_wording(chapter, text)
 for edit in reversed(refinements):
     assert reconstructed.count(edit['after']) == 1, edit['reason']
     reconstructed = reconstructed.replace(edit['after'], edit['before'], 1)
@@ -106,6 +132,9 @@ report = dict(
     imported_files_checked=397,
     changed_or_missing_imported_files=[],
     previously_tracked_drafts_unchanged=preserved,
+    previously_tracked_drafts_author_wording_only=authorized_changes,
+    author_wording_edits=3,
+    unwanted_word_absent_in_all_14_current_chapters=True,
     protected_ch01_opening_lines_1_111_byte_identical=True,
     arc02_v3_chapter_bodies_exact=True,
     source_ch14=stats(source),
@@ -116,7 +145,7 @@ report = dict(
     contextual_refinement_operations=62,
     initial_draft_reconstructed_sha256=initial_hash,
     refinement_sequence_reverse_replayed=True,
-    reading_boundary='All selected source 11–17 read in multiple stages; source 14 reread fully for this chapter. New 14 read fully twice (initial and after 44 operations); final 18 edits read in local context. New 11 city/letter and new 4 plant continuity checked locally. Source 15 first 190 lines freshly read; not a full fresh reread. Earlier PDF 17 not read. No new 15–17 prose.',
+    reading_boundary='All selected source 11–17 read in multiple stages; source 14 reread fully for this chapter. New 14 read fully twice (initial and after 44 operations); final 18 edits read in local context. Subsequent author-requested wording changes in current 6, 8 and 14 read locally before and after; no additional full read. New 11 city/letter and new 4 plant continuity checked locally. Source 15 first 190 lines freshly read; not a full fresh reread. Earlier PDF 17 not read. No new 15–17 prose.',
 )
 REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
-print(f'PASS: 397 imports, {len(preserved)} prior draft files unchanged, protected opening, exact arc02 v3, 2 exact pairs, {links} local links, new chapter formatting.')
+print(f'PASS: 397 imports, {len(preserved)} prior draft files unchanged, {len(authorized_changes)} with authorized wording only, protected opening, exact arc02 v3, 2 exact pairs, {links} local links, new chapter formatting.')
