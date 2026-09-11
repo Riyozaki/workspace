@@ -6,11 +6,13 @@
 
 ## «Хроники Этериума — Осколки Бездны»
 
-**[Готова новая глава 13](projects/shards-of-the-abyss/drafts/ch-13/ch-13-v2.md).** [Два точных сравнения](projects/shards-of-the-abyss/review/ch-13-before-after.md) · [Передача в 14](projects/shards-of-the-abyss/review/ch-13-v2-editor-notes.md). После положительной оценки 12 автор разрешил продолжение. Следующая — полная 14, без нового согласования. [Устройство арки](projects/shards-of-the-abyss/review/arc-03-structure.md) · [Журнал](projects/shards-of-the-abyss/review/arc-03-worklog.md).
+**[Готова новая глава 14](projects/shards-of-the-abyss/drafts/ch-14/ch-14-v2.md).** [Два точных сравнения](projects/shards-of-the-abyss/review/ch-14-before-after.md) · [Передача в 15](projects/shards-of-the-abyss/review/ch-14-v2-editor-notes.md). После 13 автор: «отлично, продолжаем». Следующая — полная 15, без нового согласования. [Устройство арки](projects/shards-of-the-abyss/review/arc-03-structure.md) · [Журнал](projects/shards-of-the-abyss/review/arc-03-worklog.md).
 
 **Выдана структурная редакция второй арки.** Сильвия обучается ставить внешнюю метку и отправляется на небольшую южную разведку. Поездка заменяет прежнее сопровождение груза; подготовка уплотнена. Герра — через культуру, Сильвия и Тень — через общее дело и интерес.
 
 ### Читать
+
+- **[Новая глава 14](projects/shards-of-the-abyss/drafts/ch-14/ch-14-v2.md)** — библиотека, чужое знание и то, что приходится пережить вместе с ним.
 
 - **[Новая глава 13](projects/shards-of-the-abyss/drafts/ch-13/ch-13-v2.md)** — рамка, мастерская, контора при красильне и цена отчёта.
 
