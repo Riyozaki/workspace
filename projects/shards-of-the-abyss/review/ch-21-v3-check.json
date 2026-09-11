@@ -1,0 +1,164 @@
+{
+  "date": "2026-09-12",
+  "branch": "arena/01a08101-workspace",
+  "prepublication_head": "0ac558119ab8f159be73d3244fa5f523699cb588",
+  "scope": "Preservation, literal quotations, encoding and packaging only; not literary or medical certification. Commit/push verification is separate.",
+  "status": "passed",
+  "baseline_files": 590,
+  "baseline_changed_exactly": [
+    "NOW.md",
+    "projects/shards-of-the-abyss/README.md",
+    "projects/shards-of-the-abyss/drafts/README.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-reading.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-structure.md"
+  ],
+  "baseline_other_files_identical": 585,
+  "immutable_book_files": 397,
+  "immutable_reference_files": 39,
+  "global_text_diff": "unset",
+  "chapter": {
+    "sha256": "d448add5be9025ca16bd65765cfe8703b4c3c7aca6450b780369f5ed80ff5779",
+    "bytes": 71315,
+    "characters": 39843,
+    "words": 6532,
+    "lines": 891
+  },
+  "readings": {
+    "first_complete_ranges": [
+      [
+        1,
+        230
+      ],
+      [
+        231,
+        455
+      ],
+      [
+        456,
+        680
+      ],
+      [
+        681,
+        893
+      ]
+    ],
+    "edits_between_readings": 30,
+    "second_complete_ranges": [
+      [
+        1,
+        225
+      ],
+      [
+        226,
+        450
+      ],
+      [
+        451,
+        675
+      ],
+      [
+        676,
+        893
+      ]
+    ],
+    "final_contextual_edits": 12,
+    "final_lines": 891
+  },
+  "literal_excerpt_pairs": [
+    {
+      "title": "Агнис и Тавия: совместная работа над раненым",
+      "before": {
+        "text": "— Третий заход ты вот тут остановила, да? Правильно остановилась, дальше нельзя было, у него бы пошёл жар.\n\n— Он и пошёл.\n\n— Небольшой?\n\n— Полсуток.\n\n— Значит, правильно.",
+        "start_line": 419,
+        "end_line": 427
+      },
+      "after": {
+        "text": "Тавия подала ей полотно. Некоторое время они работали вместе, почти не разговаривая. Потом Агнис спросила, как Райгар дышал в первый день.\n\nТавия рассказала.\n\n— Ты до него дошла ещё на поляне?\n\n— Да.\n\nАгнис кивнула.\n\n— Покажи, где держала. Я оттуда начну.\n\nТавия провела пальцем по плечу, остановилась. Агнис накрыла это место ладонью, и под ней стало светлеть.",
+        "start_line": 725,
+        "end_line": 737
+      }
+    },
+    {
+      "title": "Сёстры: трудный личный разговор вместо разговора чужих",
+      "before": {
+        "text": "— Ты из вторых, — сказала Агнис. — Разведка?\n\n— Разведка.\n\n— Как тут с водой? Наши набрали выше по ручью, я говорю — там стоянка была.\n\n— Была. Три дня назад, человек на шесть. Ниже брода чисто, я смотрела.\n\n— Ниже брода. Ясно. Спасибо.\n\n— Не за что.\n\nОна кивнула и отвернулась к огню.",
+        "start_line": 515,
+        "end_line": 527
+      },
+      "after": {
+        "text": "— Ты знала, что я жива? — спросила она тихо.\n\nЯ кивнула.\n\n— Мне сказали. Потом я увидела твоё заявление.\n\nОна поставила миску на землю.\n\n— А я про тебя не знала.\n\nЯ смотрела на её пустые руки.\n\n— Письмо у Лирана. Я передала перед дорогой на юг. Адреса не было.\n\n— Только перед выходом?\n\n— Да.\n\nАгнис убрала волосы за ухо. Прядь тут же упала обратно, и она оставила её.\n\n— Мне нужно было хотя бы знать, — сказала она.",
+        "start_line": 825,
+        "end_line": 845
+      }
+    }
+  ],
+  "local_markdown_links_checked": 142,
+  "utf8_replacement_characters_in_deliverables": 0,
+  "mixed_latin_cyrillic_words_in_chapter": [],
+  "undesired_stem_in_chapter": 0,
+  "changed_text_files": {
+    "NOW.md": {
+      "sha256": "339b7274ceffa5a27f845a54f0285303576b18eb7a7e094239b86c6e05ef1a12",
+      "bytes": 28844,
+      "characters": 16859,
+      "words": 2133,
+      "lines": 93
+    },
+    "projects/shards-of-the-abyss/README.md": {
+      "sha256": "1abd03a4ab2dc22dc016e0b062f5a41d6b90f0bfd784ccb50047db001ae97560",
+      "bytes": 18219,
+      "characters": 11180,
+      "words": 1354,
+      "lines": 102
+    },
+    "projects/shards-of-the-abyss/drafts/README.md": {
+      "sha256": "5d9ff370bf963d5c3a0f53d7e28485169c4f805df04b80919bc5cc483ad809be",
+      "bytes": 12805,
+      "characters": 7838,
+      "words": 900,
+      "lines": 76
+    },
+    "projects/shards-of-the-abyss/review/arc-04-v3-reading.md": {
+      "sha256": "2c9a5f83e44347cf4a16c52328f19a7caa5a8a43f5a09afca176b266c86e7cc1",
+      "bytes": 82770,
+      "characters": 46122,
+      "words": 6494,
+      "lines": 306
+    },
+    "projects/shards-of-the-abyss/review/arc-04-v3-structure.md": {
+      "sha256": "417820c776df3dc60f1adb53857e260d14a20f36d62c461af19f74beb5f82427",
+      "bytes": 37202,
+      "characters": 20801,
+      "words": 2815,
+      "lines": 132
+    },
+    "projects/shards-of-the-abyss/drafts/ch-21/ch-21-v3.md": {
+      "sha256": "d448add5be9025ca16bd65765cfe8703b4c3c7aca6450b780369f5ed80ff5779",
+      "bytes": 71315,
+      "characters": 39843,
+      "words": 6532,
+      "lines": 891
+    },
+    "projects/shards-of-the-abyss/review/ch-21-v3-editor-notes.md": {
+      "sha256": "a14ea06bc9fcac2d8fec16b6a50ae26b836dbf348c45dfb1c464ee115fca997c",
+      "bytes": 25037,
+      "characters": 14045,
+      "words": 1903,
+      "lines": 91
+    },
+    "projects/shards-of-the-abyss/review/ch-21-v3-before-after.md": {
+      "sha256": "db0ba0348ef874f9b15f5b41ea5df43da413a98dd9051cc3fe8d772c6fabb0eb",
+      "bytes": 3027,
+      "characters": 1818,
+      "words": 336,
+      "lines": 76
+    },
+    "projects/shards-of-the-abyss/review/ch-21-v3-before-after.json": {
+      "sha256": "c0ebc79c908d7eb66c88865ff12b6736926dfdce141ce68d40df6fb9d667bb35",
+      "bytes": 3152,
+      "characters": 2117,
+      "words": 262,
+      "lines": 34
+    }
+  }
+}
