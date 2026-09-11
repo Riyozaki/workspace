@@ -1,0 +1,42 @@
+{
+  "date": "2026-09-12",
+  "scope": "Preservation, excerpt fidelity and packaging; not literary or medical certification",
+  "baseline": "c2bc45dcefcb5db96f627a0b2ccff6d9e0f5ec7d",
+  "branch": "arena/01a08101-workspace",
+  "chapter": "projects/shards-of-the-abyss/drafts/ch-19/ch-19-v3.md",
+  "chapter_sha256": "be535cef38281fb6ad7aa669bc9d880fba486cd2d187c1724512034617041a8f",
+  "chapter_counts": {
+    "characters": 39092,
+    "words_split": 6374,
+    "lines_splitlines": 1023
+  },
+  "fresh_source19_reads": "Both September and external v2 complete; broader previous coverage in reading journal",
+  "full_draft_reads": 2,
+  "context_edits_after_first_full_read": 26,
+  "context_edits_after_second_full_read": 14,
+  "changed_existing_paths": [
+    "NOW.md",
+    "projects/shards-of-the-abyss/README.md",
+    "projects/shards-of-the-abyss/drafts/README.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-reading.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-structure.md"
+  ],
+  "other_baseline_files_blob_identical": 575,
+  "book_files_preserved": 397,
+  "external_reference_files_preserved": 39,
+  "previous_prose_and_protected_opening": "Included in unchanged baseline file comparison",
+  "local_markdown_links_checked": 116,
+  "exact_excerpt_pairs_checked": 2,
+  "replacement_characters": 0,
+  "mixed_script_words": [],
+  "undesired_word_stem_present": false,
+  "global_textual_diff_suppression": true,
+  "new_deliverable_paths": [
+    "projects/shards-of-the-abyss/drafts/ch-19/ch-19-v3.md",
+    "projects/shards-of-the-abyss/review/ch-19-v3-before-after.json",
+    "projects/shards-of-the-abyss/review/ch-19-v3-before-after.md",
+    "projects/shards-of-the-abyss/review/ch-19-v3-check.json",
+    "projects/shards-of-the-abyss/review/ch-19-v3-editor-notes.md"
+  ],
+  "publication": "Commit/push and separate remote/HEAD/branch/clean-tree verification follow this check"
+}
