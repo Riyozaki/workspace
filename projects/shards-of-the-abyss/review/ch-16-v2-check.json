@@ -1,0 +1,96 @@
+{
+  "scope": "Technical preservation and exact packaging only; not literary or medical certification.",
+  "branch": "arena/01a08101-workspace",
+  "preservation_baseline_commit": "c342d3c235d9345e2d3abc1bc7950d5638b00dbe",
+  "comparison_baseline": "Selected September chapter 16; no previously delivered new chapter 16 existed.",
+  "imported_files_checked": 397,
+  "changed_or_missing_imported_files": [],
+  "previously_tracked_drafts_unchanged": {
+    "projects/shards-of-the-abyss/drafts/arc-02/arc-02-v3.md": "a26d5e6a74ab1a78cf97e642edc6dc067482a662c329a55fdea51bd74c673881",
+    "projects/shards-of-the-abyss/drafts/ch-01/ch-01-v2.md": "9eabf25689c52beb82c79cd54993d4d4d344e89d840a74986554a5dddac10e1d",
+    "projects/shards-of-the-abyss/drafts/ch-01/nord-workshop-v1.md": "29208d8eae5e27dcbe286b95dd6c12dec07b5ba254183772955faf2236ce6cf8",
+    "projects/shards-of-the-abyss/drafts/ch-02/ch-02-v2.md": "cc5ed9a20cb9536d11d17274acff6ac122e8d4f60e37a044b87eb7a9bf62f4f9",
+    "projects/shards-of-the-abyss/drafts/ch-03/ch-03-v2.md": "325f48672916dfc7abe0acc4dd43be1a93f898ce12efd9a597dac8471ba877ed",
+    "projects/shards-of-the-abyss/drafts/ch-04/ch-04-v2.md": "82d43855a695c9395d3a9b6c316a75ce8eaa1d113ba48816dc122498fe907bf0",
+    "projects/shards-of-the-abyss/drafts/ch-05/ch-05-v2.md": "2c40fc4cf7e73c8551aaa07cd0027b7402c8b13ad4d766caf0b8d9a8246708e4",
+    "projects/shards-of-the-abyss/drafts/ch-06/ch-06-v2.md": "ef1e1816f2223e3252884f8932f1c7be06812675c9234902d63a79178ea9264e",
+    "projects/shards-of-the-abyss/drafts/ch-07/ch-07-v2.md": "1398a948021ceae18241146a7f6e24e157aaf5ccf6d3e05b0f7f16c492ebec55",
+    "projects/shards-of-the-abyss/drafts/ch-08/ch-08-v2.md": "c249fad011bd9eaed3326033a8ee644c0a3fa4eb9791ed9e639b7024b340e571",
+    "projects/shards-of-the-abyss/drafts/ch-08/ch-08-v3.md": "abe4addfc4a69b2a5deae6f0e8866b247cd135a1b6176268e3c0008029db1ce2",
+    "projects/shards-of-the-abyss/drafts/ch-09/ch-09-v2.md": "e349f05033f46d0b8769e9d8530f59b7a5aebadf8014cfe94bd9370304b0ba17",
+    "projects/shards-of-the-abyss/drafts/ch-09/ch-09-v3.md": "2c405ca2414050d7b61139d73b3922ce11088c8db01f250712a0eec216f1df3d",
+    "projects/shards-of-the-abyss/drafts/ch-10/ch-10-v2.md": "ab99ca1e2903a4a34e6896971d8ecdd8caed57a8f96a5fda3ffa12fda5b86453",
+    "projects/shards-of-the-abyss/drafts/ch-10/ch-10-v3.md": "d5494a8f12b7643c78b45967f4855538e95b77e33852e0b068e686f5adaa5855",
+    "projects/shards-of-the-abyss/drafts/ch-11/ch-11-v2.md": "65a5b7f6df2b16c3dd51370144c82b2b1006361835aa77d2e507cdec6451c99d",
+    "projects/shards-of-the-abyss/drafts/ch-12/ch-12-v2.md": "4cce5c69cdfc4582a2a2a9c2d17e9e2e81ce399e815b813c1ef8c8a24f934b82",
+    "projects/shards-of-the-abyss/drafts/ch-13/ch-13-v2.md": "e5b57e53d60fa1cb99bf2b4d31e605f6712f1e0039c3de5bce741d19d73c535a",
+    "projects/shards-of-the-abyss/drafts/ch-14/ch-14-v2.md": "38688dec199e7a683f1fba8dc2f8cb461fb694e007c6ba322cabefcb6685237b",
+    "projects/shards-of-the-abyss/drafts/ch-15/ch-15-v2.md": "b09812eaf9a6aa034437554a599b8a012b227da5d280c3a36903736b32f532cb"
+  },
+  "author_wording_corrections_already_in_preservation_baseline": true,
+  "unwanted_word_absent_in_all_16_current_chapters": true,
+  "protected_ch01_opening_lines_1_111_byte_identical": true,
+  "arc02_v3_chapter_bodies_exact": true,
+  "source_ch16": {
+    "sha256": "239f03e24ae49e7815d3dee9b76a32c713e22fba5d2d028cdd827c33dbb36d24",
+    "characters": 46590,
+    "whitespace_words": 8188,
+    "lines": 1201
+  },
+  "new_ch16": {
+    "sha256": "9f4e207a555d4b6a7ce87dbcb7f74b8494cbe03b6549d22c22de8762f8ff0d52",
+    "characters": 41005,
+    "whitespace_words": 6591,
+    "lines": 1017
+  },
+  "comparisons": [
+    {
+      "title": "Сильвия сама вспоминает, где могла остановиться",
+      "before": {
+        "path": "book/03-manuscript/arc-03/ch-16.md",
+        "exact_contiguous": true,
+        "lines": [
+          1063,
+          1063
+        ],
+        "sha256": "defb74ccac2862d2e7deb64a69c80b74fbbd78e1d9bb6dc34ba2b110dad5db9e"
+      },
+      "after": {
+        "path": "drafts/ch-16/ch-16-v2.md",
+        "exact_contiguous": true,
+        "lines": [
+          905,
+          911
+        ],
+        "sha256": "3f2eb030a4e666ca5259e998bf7e9ccd7ec42c23393587de06521b2315f73e78"
+      }
+    },
+    {
+      "title": "Чужая жизнь: место отца",
+      "before": {
+        "path": "book/03-manuscript/arc-03/ch-16.md",
+        "exact_contiguous": true,
+        "lines": [
+          899,
+          899
+        ],
+        "sha256": "4b363c09ab871afe7d02428448947c3759ef453ef834084729cefc7adcee14fd"
+      },
+      "after": {
+        "path": "drafts/ch-16/ch-16-v2.md",
+        "exact_contiguous": true,
+        "lines": [
+          657,
+          665
+        ],
+        "sha256": "10d6675407fd5e2793b1484f99d17fa7786e51dc1edb98e2149e162215ef7fde"
+      }
+    }
+  ],
+  "local_markdown_links_checked": 291,
+  "formatting_checks_passed": true,
+  "contextual_refinement_operations": 66,
+  "initial_draft_reconstructed_sha256": "e313ac59d055a34fd00b895aa111fd376c54565e1fca36f1c151d27d86d449b6",
+  "refinement_sequence_reverse_replayed": true,
+  "reading_boundary": "Selected source 11–17 previously read in stages; source 16 freshly reread fully. New 16 read fully twice (initial and after 51 operations); final 15 edits read in local context. Source 17 first 155 lines freshly read; not a full fresh reread. Current 12 permission/Mabrik/weapon passages checked locally. Earlier author PDF 17 not examined; must be read separately before new 17. New 17 not yet written."
+}
