@@ -1,0 +1,13 @@
+# Keep the session's cumulative diff focused on editable chapters and notes.
+# These rules suppress textual diff expansion only: all files stay tracked,
+# readable and unchanged. `git diff --text` overrides this for inspection.
+
+# Immutable imported source snapshot, including historical manuscripts/archives.
+projects/shards-of-the-abyss/book/** -diff
+
+# Machine-readable checks, exact comparisons and refinement journals.
+# Their human-readable Markdown counterparts retain normal text diffs.
+projects/shards-of-the-abyss/review/*.json -diff
+
+# Reading copy assembled from the individual chapters; avoid displaying it twice.
+projects/shards-of-the-abyss/drafts/arc-02/arc-02-v3.md -diff
