@@ -1,0 +1,232 @@
+{
+  "scope": "Technical preservation and exact packaging only; not literary or medical certification.",
+  "branch": "arena/01a08101-workspace",
+  "preservation_baseline_commit": "e1e92bfcc6a4e62ca827d92ee674b9ef3206c83c",
+  "comparison_baseline": "Selected September chapter 17; early author PDF separately compared; no previously delivered new chapter 17 existed.",
+  "imported_files_checked": 397,
+  "changed_or_missing_imported_files": [],
+  "previously_tracked_drafts_unchanged": {
+    "projects/shards-of-the-abyss/drafts/arc-02/arc-02-v3.md": "a26d5e6a74ab1a78cf97e642edc6dc067482a662c329a55fdea51bd74c673881",
+    "projects/shards-of-the-abyss/drafts/ch-01/ch-01-v2.md": "9eabf25689c52beb82c79cd54993d4d4d344e89d840a74986554a5dddac10e1d",
+    "projects/shards-of-the-abyss/drafts/ch-01/nord-workshop-v1.md": "29208d8eae5e27dcbe286b95dd6c12dec07b5ba254183772955faf2236ce6cf8",
+    "projects/shards-of-the-abyss/drafts/ch-02/ch-02-v2.md": "cc5ed9a20cb9536d11d17274acff6ac122e8d4f60e37a044b87eb7a9bf62f4f9",
+    "projects/shards-of-the-abyss/drafts/ch-03/ch-03-v2.md": "325f48672916dfc7abe0acc4dd43be1a93f898ce12efd9a597dac8471ba877ed",
+    "projects/shards-of-the-abyss/drafts/ch-04/ch-04-v2.md": "82d43855a695c9395d3a9b6c316a75ce8eaa1d113ba48816dc122498fe907bf0",
+    "projects/shards-of-the-abyss/drafts/ch-05/ch-05-v2.md": "2c40fc4cf7e73c8551aaa07cd0027b7402c8b13ad4d766caf0b8d9a8246708e4",
+    "projects/shards-of-the-abyss/drafts/ch-06/ch-06-v2.md": "ef1e1816f2223e3252884f8932f1c7be06812675c9234902d63a79178ea9264e",
+    "projects/shards-of-the-abyss/drafts/ch-07/ch-07-v2.md": "1398a948021ceae18241146a7f6e24e157aaf5ccf6d3e05b0f7f16c492ebec55",
+    "projects/shards-of-the-abyss/drafts/ch-08/ch-08-v2.md": "c249fad011bd9eaed3326033a8ee644c0a3fa4eb9791ed9e639b7024b340e571",
+    "projects/shards-of-the-abyss/drafts/ch-08/ch-08-v3.md": "abe4addfc4a69b2a5deae6f0e8866b247cd135a1b6176268e3c0008029db1ce2",
+    "projects/shards-of-the-abyss/drafts/ch-09/ch-09-v2.md": "e349f05033f46d0b8769e9d8530f59b7a5aebadf8014cfe94bd9370304b0ba17",
+    "projects/shards-of-the-abyss/drafts/ch-09/ch-09-v3.md": "2c405ca2414050d7b61139d73b3922ce11088c8db01f250712a0eec216f1df3d",
+    "projects/shards-of-the-abyss/drafts/ch-10/ch-10-v2.md": "ab99ca1e2903a4a34e6896971d8ecdd8caed57a8f96a5fda3ffa12fda5b86453",
+    "projects/shards-of-the-abyss/drafts/ch-10/ch-10-v3.md": "d5494a8f12b7643c78b45967f4855538e95b77e33852e0b068e686f5adaa5855",
+    "projects/shards-of-the-abyss/drafts/ch-11/ch-11-v2.md": "65a5b7f6df2b16c3dd51370144c82b2b1006361835aa77d2e507cdec6451c99d",
+    "projects/shards-of-the-abyss/drafts/ch-12/ch-12-v2.md": "4cce5c69cdfc4582a2a2a9c2d17e9e2e81ce399e815b813c1ef8c8a24f934b82",
+    "projects/shards-of-the-abyss/drafts/ch-13/ch-13-v2.md": "e5b57e53d60fa1cb99bf2b4d31e605f6712f1e0039c3de5bce741d19d73c535a",
+    "projects/shards-of-the-abyss/drafts/ch-14/ch-14-v2.md": "38688dec199e7a683f1fba8dc2f8cb461fb694e007c6ba322cabefcb6685237b",
+    "projects/shards-of-the-abyss/drafts/ch-15/ch-15-v2.md": "b09812eaf9a6aa034437554a599b8a012b227da5d280c3a36903736b32f532cb",
+    "projects/shards-of-the-abyss/drafts/ch-16/ch-16-v2.md": "9f4e207a555d4b6a7ce87dbcb7f74b8494cbe03b6549d22c22de8762f8ff0d52"
+  },
+  "author_wording_corrections_already_in_preservation_baseline": true,
+  "unwanted_word_absent_in_all_17_current_chapters": true,
+  "protected_ch01_opening_lines_1_111_byte_identical": true,
+  "arc02_v3_chapter_bodies_exact": true,
+  "source_ch17": {
+    "sha256": "21944b40af7ab29562c2e6e6799371b35af8cb53a0ead88ef70581306b92f035",
+    "characters": 42844,
+    "whitespace_words": 7685,
+    "lines": 1343
+  },
+  "new_ch17": {
+    "sha256": "d84ebc78eba07a3be1c59ad55fc57af69cacbd8754f2bc42322d6e6ff6941707",
+    "characters": 34660,
+    "whitespace_words": 5647,
+    "lines": 921
+  },
+  "comparisons": [
+    {
+      "title": "Разбор смерти",
+      "before": {
+        "path": "book/03-manuscript/arc-03/ch-17.md",
+        "exact_contiguous": true,
+        "lines": [
+          459,
+          463
+        ],
+        "sha256": "3d62d35f14ead337345f26351e89ffb53ef93a9edbe20be30788c372216dc49d"
+      },
+      "after": {
+        "path": "drafts/ch-17/ch-17-v2.md",
+        "exact_contiguous": true,
+        "lines": [
+          631,
+          639
+        ],
+        "sha256": "d957d64d74b830607e73ddbc35b635a105f16ac734043a99ecc2074b828bfa6a"
+      }
+    },
+    {
+      "title": "Человек и память о нём",
+      "before": {
+        "path": "book/03-manuscript/arc-03/ch-17.md",
+        "exact_contiguous": true,
+        "lines": [
+          1193,
+          1199
+        ],
+        "sha256": "6b2545b32c16aa42c83726690ef7ffd2e812f543adaf3de94275b70dac7eb11f"
+      },
+      "after": {
+        "path": "drafts/ch-17/ch-17-v2.md",
+        "exact_contiguous": true,
+        "lines": [
+          427,
+          437
+        ],
+        "sha256": "45563053c9e9e17997bdd74c0e01bdaec9d63b19a31d90c4efa5cbcfec101aea"
+      }
+    }
+  ],
+  "local_markdown_links_checked": 308,
+  "formatting_checks_passed": true,
+  "contextual_refinement_operations": 99,
+  "initial_draft_reconstructed_sha256": "d08d6b3015d639ef5a4f78ee4739f50c4a97bcad77da61c24db68a53e5cd3c50",
+  "refinement_sequence_reverse_replayed": true,
+  "reading_boundary": "September ch17, early PDF-derived MD, and direct text of all 42 PDF pages read fully before initial draft; no visual typography audit. Current ch15/ch16 and source ch17 fully reread during refinement; source ch18 read fully for the first time. New ch17 read fully three times: initial, after 59 edits, after 33 more; last 7 edits read in local context. Total 99. No new ch18 yet.",
+  "source_layers": {
+    "pdf_pages": 42,
+    "read": "September MD, imported PDF-derived MD and fresh text extracted from all 42 PDF pages read fully. No visual typography audit claimed.",
+    "differences": [
+      {
+        "line": 69,
+        "september": "— Плечо.",
+        "pdf_markdown": "— Плечо. 7"
+      },
+      {
+        "line": 83,
+        "september": "— Ходи неделю с грузом в левой, — сказал он.",
+        "pdf_markdown": "— Ходи декаду с грузом в левой, — сказал он."
+      },
+      {
+        "line": 135,
+        "september": "*Возьми оба,* — сказала она. — *Нож туда, где он был всегда. Её на спину.* — Пауза. — *И сорок дней не трогай, кроме стойки.*",
+        "pdf_markdown": "*Возьми оба,* — сказала она. — *Нож туда, где он был всегда. Её на спину.* — Пауза. — *И сорок дней не трогай, кроме стойки.* 7"
+      },
+      {
+        "line": 219,
+        "september": "Я села и стала есть, и ела медленно, и она возилась у жаровни и на меня не смотрела.",
+        "pdf_markdown": "Я села и стала есть, и ела медленно, и она возилась у жаровни и на меня не смотрела. 7"
+      },
+      {
+        "line": 243,
+        "september": "— Три недели дрожали, — сказала Марна. — Потом перестали.",
+        "pdf_markdown": "— Три декады дрожали, — сказала Марна. — Потом перестали."
+      },
+      {
+        "line": 289,
+        "september": "К Ветту я пошла на пятый день, вернуть книгу, которую взяла две декады назад и не открыла.",
+        "pdf_markdown": "К Ветту я пошла на пятый день, вернуть книгу, которую взяла две декады назад и не открыла. 7"
+      },
+      {
+        "line": 367,
+        "september": "— Заказ закрыт, — сказал он. — Образцы приняты, замечаний нет.",
+        "pdf_markdown": "— Заказ закрыт, — сказал он. — Образцы приняты, замечаний нет. 7"
+      },
+      {
+        "line": 443,
+        "september": "— Отмечено, — сказал он.",
+        "pdf_markdown": "— Отмечено, — сказал он. 7"
+      },
+      {
+        "line": 509,
+        "september": "— Вы пришли докладывать сами, на шестой день, когда заказ был уже закрыт и никто ничего не спрашивал. — Он взялся за ручку. — За двадцать три года так делали шестеро.",
+        "pdf_markdown": "— Вы пришли докладывать сами, на шестой день, когда заказ был уже закрыт и никто ничего не спра- 7 шивал. — Он взялся за ручку. — За двадцать три года так делали шестеро."
+      },
+      {
+        "line": 563,
+        "september": "— И всё?",
+        "pdf_markdown": "— И всё? 7"
+      },
+      {
+        "line": 615,
+        "september": "Вписать было некого.",
+        "pdf_markdown": "Вписать было некого. 7"
+      },
+      {
+        "line": 667,
+        "september": "Потом посмотрела на эту строчку и поняла, что распорядилась не тетрадью. Кайр переписан с казённой доски, и в казённой бумаге он останется и без меня. Агнис нет нигде, кроме письма, которое лежит у меня между страниц. Вальда нет нигде вообще.",
+        "pdf_markdown": "Потом посмотрела на эту строчку и поняла, что распорядилась не тетрадью. Кайр переписан с казённой доски, и в казённой бумаге он останется и без меня. Агнис нет нигде, кроме письма, которое лежит у меня между страниц. Вальда нет нигде вообще. 7"
+      },
+      {
+        "line": 725,
+        "september": "— Нет.",
+        "pdf_markdown": "— Нет. 7"
+      },
+      {
+        "line": 797,
+        "september": "Я ждала следующего вопроса и знала уже, что не отвечу на него правдиво, и знала, что она это увидит.",
+        "pdf_markdown": "Я ждала следующего вопроса и знала уже, что не отвечу на него правдиво, и знала, что она это увидит. 7"
+      },
+      {
+        "line": 869,
+        "september": "— То, что осмотрела. Шов сросся, ограничений по нагрузке нет. Сон нарушен, аппетит снижен, тремор кистей пятые сутки, причина известна и не медицинская. Компенсаторная установка правого плеча, наблюдать.",
+        "pdf_markdown": "— То, что осмотрела. Шов сросся, ограничений по нагрузке нет. Сон нарушен, аппетит снижен, тремор кистей пятые сутки, причина известна и не 7 медицинская. Компенсаторная установка правого плеча, наблюдать."
+      },
+      {
+        "line": 933,
+        "september": "— Что не пройдёт, — сказала Ханна. — Идите. И возвращайтесь через сорок дней, я вас посмотрю сразу, а не через декаду, как остальных.",
+        "pdf_markdown": "— Что не пройдёт, — сказала Ханна. — Идите. И 7 возвращайтесь через сорок дней, я вас посмотрю сразу, а не через декаду, как остальных."
+      },
+      {
+        "line": 993,
+        "september": "Оно у меня было, а тело к нему не прилагалось: пока я успевала подумать «правой, снизу», правая уже шла, и уходить надо было тогда, когда я ещё только смотрела на ключицы.",
+        "pdf_markdown": "Оно у меня было, а тело к нему не прилагалось: пока я успевала подумать «правой, снизу», правая 7 уже шла, и уходить надо было тогда, когда я ещё только смотрела на ключицы."
+      },
+      {
+        "line": 1047,
+        "september": "— Про катану он тоже говорил вслух.",
+        "pdf_markdown": "— Про катану он тоже говорил вслух. 7"
+      },
+      {
+        "line": 1125,
+        "september": "*Ты неделю ходишь и не спрашиваешь. Спрашивай.*",
+        "pdf_markdown": "*Ты декаду ходишь и не спрашиваешь. Спрашивай.*"
+      },
+      {
+        "line": 1131,
+        "september": "*Шестнадцать.*",
+        "pdf_markdown": "*Шестнадцать.* 7"
+      },
+      {
+        "line": 1213,
+        "september": "— Какую.",
+        "pdf_markdown": "— Какую. 7"
+      },
+      {
+        "line": 1273,
+        "september": "Я записала его имя, потому что записанное существует. Правда, теперь я знала, сколько оно существует и при скольких свидетелях кончается.",
+        "pdf_markdown": "Я записала его имя, потому что записанное су- 7 ществует. Правда, теперь я знала, сколько оно существует и при скольких свидетелях кончается."
+      },
+      {
+        "line": 1327,
+        "september": "Рэйна стояла в стороне с луком в чехле и разговаривала с кем-то, кого я не видела. Тавия сидела на ящике, поставив между ног сумку, и по тому, как она эту сумку держала, было ясно: в сумке склянки и она их пересчитала дважды.",
+        "pdf_markdown": "Рэйна стояла в стороне с луком в чехле и разговаривала с кем-то, кого я не видела. Тавия сидела на ящике, поставив между ног сумку, и по тому, как 7 она эту сумку держала, было ясно: в сумке склянки и она их пересчитала дважды."
+      }
+    ],
+    "source_sha256": "21944b40af7ab29562c2e6e6799371b35af8cb53a0ead88ef70581306b92f035",
+    "pdf_md_sha256": "90b6fcb920d65da6b35bb27c1ec7ba53ebb2c063e6aa5cc1ec54bdf5eed85ea1",
+    "decision": "Use September MD as comparison baseline. Same scenes and ending; three week/decade substitutions plus extraction artifacts in PDF-derived MD. No separate alternate finale or actual burning of notebooks.",
+    "pdf_sha256": "948a1a583962238d8dfcdecff05f1ac17465031ca0a0cb0024c14d2c46320d02",
+    "comparison_baseline_path": "book/03-manuscript/arc-03/ch-17.md",
+    "pdf_path": "book/05-publication/author-pdf-2026-09-01/Глава_17.pdf"
+  },
+  "ledger": {
+    "seals": 6,
+    "earned_coins": 0,
+    "gift_copper_equivalent": 69,
+    "gift_change_shown": "71 minus 2 at Marna; 6 silver + 9 copper remain",
+    "numbered_trials": 31,
+    "failed_order_paid": false
+  }
+}
