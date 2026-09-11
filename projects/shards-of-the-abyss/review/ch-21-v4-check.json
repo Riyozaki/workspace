@@ -1,0 +1,37 @@
+{
+  "scope": "Packaging and preservation checks only; not literary certification",
+  "baseline_commit": "dc65a6a1d09db505b5fdbab21264859ec25eb4b6",
+  "branch": "arena/01a08101-workspace",
+  "baseline_files": 596,
+  "unchanged_existing_files": 590,
+  "modified_existing_paths": [
+    "NOW.md",
+    "projects/shards-of-the-abyss/README.md",
+    "projects/shards-of-the-abyss/drafts/README.md",
+    "projects/shards-of-the-abyss/review/agnis-sylvia-development.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-reading.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-structure.md"
+  ],
+  "added_paths": [
+    "projects/shards-of-the-abyss/drafts/ch-21/ch-21-v4.md",
+    "projects/shards-of-the-abyss/review/ch-21-v4-before-after.json",
+    "projects/shards-of-the-abyss/review/ch-21-v4-before-after.md",
+    "projects/shards-of-the-abyss/review/ch-21-v4-check.json",
+    "projects/shards-of-the-abyss/review/ch-21-v4-editor-notes.md"
+  ],
+  "immutable_book_files_preserved": 397,
+  "external_reference_files_preserved": 39,
+  "chapter": {
+    "characters": 52101,
+    "whitespace_words": 8646,
+    "splitlines": 1207,
+    "sha256": "402e48289038a86723954fc655d02cec934cb2c3f1ec54678d4bf7f9941a2228"
+  },
+  "before_after_pairs_exact": 2,
+  "checked_local_links": 173,
+  "utf8_newline_no_replacement_or_nul": true,
+  "global_diff_attribute": "projects/shards-of-the-abyss/drafts/ch-21/ch-21-v4.md: diff: unset",
+  "opening_and_report_preserved": true,
+  "previous_v3_preserved": true,
+  "publication": "Run commit/push, then separate verification of remote HEAD, branch and clean status; not established by this report"
+}
