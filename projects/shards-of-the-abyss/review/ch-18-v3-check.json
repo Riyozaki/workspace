@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-12",
+  "scope": "Preservation and packaging only; not certification of literary or medical quality",
+  "baseline": "1c39672dab6e8b7be29011a13e804e394b0a29e8",
+  "branch": "arena/01a08101-workspace",
+  "chapter": "projects/shards-of-the-abyss/drafts/ch-18/ch-18-v3.md",
+  "chapter_sha256": "6b9a82fb93cb63203107e8d176921d125cd10254bb675fe14df69c2b7a4e1e73",
+  "chapter_counts": {
+    "characters": 32169,
+    "words_split": 5214,
+    "lines_splitlines": 869
+  },
+  "full_draft_reads": 2,
+  "context_edits_after_first_read": 19,
+  "context_edits_after_second_read": 5,
+  "changed_existing_paths": [
+    "NOW.md",
+    "projects/shards-of-the-abyss/README.md",
+    "projects/shards-of-the-abyss/drafts/README.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-reading.md"
+  ],
+  "other_baseline_files_blob_identical": 570,
+  "book_files_preserved": 397,
+  "external_reference_files_preserved": 39,
+  "new_deliverable_paths": [
+    "projects/shards-of-the-abyss/drafts/ch-18/ch-18-v3.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-structure.md",
+    "projects/shards-of-the-abyss/review/ch-18-v3-before-after.json",
+    "projects/shards-of-the-abyss/review/ch-18-v3-before-after.md",
+    "projects/shards-of-the-abyss/review/ch-18-v3-check.json",
+    "projects/shards-of-the-abyss/review/ch-18-v3-editor-notes.md"
+  ],
+  "local_markdown_links_checked": 106,
+  "exact_excerpt_pairs_checked": 2,
+  "chapter_replacement_characters": 0,
+  "undesired_word_stem_present": false,
+  "global_text_diff_suppression": true,
+  "protected_opening_and_previous_chapters": "Included in unchanged baseline file comparison",
+  "publication": "Commit/push and separate remote verification occur after this pre-publication check"
+}
