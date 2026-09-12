@@ -1,0 +1,111 @@
+{
+  "baseline_commit": "f47c60257dbc0a00cbe4aba873ec52840137ac04",
+  "branch": "arena/01a08101-workspace",
+  "status": "passed",
+  "scope": "Packaging/integrity and exact replacement replay; not literary or semantic canon certification.",
+  "baseline_files": 606,
+  "preserved_baseline_files": 598,
+  "modified_files": [
+    "AGENTS.md",
+    "NOW.md",
+    "projects/shards-of-the-abyss/README.md",
+    "projects/shards-of-the-abyss/canon/author-decisions-2026-09.md",
+    "projects/shards-of-the-abyss/drafts/README.md",
+    "projects/shards-of-the-abyss/review/agnis-sylvia-development.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-reading.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-structure.md"
+  ],
+  "new_files": [
+    "projects/shards-of-the-abyss/drafts/ch-17/ch-17-v3.md",
+    "projects/shards-of-the-abyss/drafts/ch-18/ch-18-v4.md",
+    "projects/shards-of-the-abyss/drafts/ch-19/ch-19-v4.md",
+    "projects/shards-of-the-abyss/drafts/ch-20/ch-20-v4.md",
+    "projects/shards-of-the-abyss/drafts/ch-21/ch-21-v6.md",
+    "projects/shards-of-the-abyss/drafts/ch-22/ch-22-v3.md",
+    "projects/shards-of-the-abyss/review/ch-22-v3-before-after.json",
+    "projects/shards-of-the-abyss/review/ch-22-v3-before-after.md",
+    "projects/shards-of-the-abyss/review/ch-22-v3-editor-notes.md",
+    "projects/shards-of-the-abyss/review/raygar-before-after.json",
+    "projects/shards-of-the-abyss/review/raygar-continuity-fixes.json",
+    "projects/shards-of-the-abyss/review/raygar-continuity-fixes.md",
+    "projects/shards-of-the-abyss/review/ch-22-v3-check.json"
+  ],
+  "immutable_book_files": 397,
+  "immutable_reference_files": 39,
+  "previous_prose_unchanged": true,
+  "global_text_diff": "unset",
+  "raygar_replayed_operations": 37,
+  "raygar_versions": [
+    {
+      "old": "projects/shards-of-the-abyss/drafts/ch-17/ch-17-v2.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-17/ch-17-v3.md",
+      "operations": 2,
+      "sha256": "182195c36777802a807ec4420b44a730c8a565ea6c1f88fab2d28cf644b5be56",
+      "characters": 34757,
+      "words": 5660,
+      "lines": 921
+    },
+    {
+      "old": "projects/shards-of-the-abyss/drafts/ch-18/ch-18-v3.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-18/ch-18-v4.md",
+      "operations": 16,
+      "sha256": "30046e3c7c6991d6be8b30ed1cd0b293e7b48d501e6a70a55794642ce69a675c",
+      "characters": 32203,
+      "words": 5211,
+      "lines": 863
+    },
+    {
+      "old": "projects/shards-of-the-abyss/drafts/ch-19/ch-19-v3.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-19/ch-19-v4.md",
+      "operations": 5,
+      "sha256": "ceacbde8da0a431ffd4c46b7107c65f9b4bb123b3e8db4f5c2a45e993125e07c",
+      "characters": 38837,
+      "words": 6336,
+      "lines": 1015
+    },
+    {
+      "old": "projects/shards-of-the-abyss/drafts/ch-20/ch-20-v3.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-20/ch-20-v4.md",
+      "operations": 5,
+      "sha256": "45bbeec01d3fb2c0b78f7237d8967db5ed1a2609e17cc9175c251e44d202d724",
+      "characters": 39962,
+      "words": 6610,
+      "lines": 833
+    },
+    {
+      "old": "projects/shards-of-the-abyss/drafts/ch-21/ch-21-v5.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-21/ch-21-v6.md",
+      "operations": 9,
+      "sha256": "acf5796dcf12be3ee6567170a27b0ffc4bfff83aa4081a938f99f91bb3c91d39",
+      "characters": 51078,
+      "words": 8510,
+      "lines": 1189
+    }
+  ],
+  "chapter22": {
+    "path": "projects/shards-of-the-abyss/drafts/ch-22/ch-22-v3.md",
+    "sha256": "db80f1e493f5505e2469322d14d01ba65b2b0f38eec921853414b8a70f337d55",
+    "characters": 25645,
+    "words": 4305,
+    "lines": 719
+  },
+  "verified_exact_pairs": [
+    "1. Поиск освобождения без выдуманного готового отдела",
+    "2. Мотив кражи: сама возможность, а не добыча скрытого рассказа",
+    "17.1. Первое появление",
+    "17.2. Руки закрыты перчатками",
+    "18.1. Узел в перчатках",
+    "18.2. Сон — наблюдение и предположение",
+    "19.1. Отмена переодевания",
+    "19.2. Чаша переходит другому участнику",
+    "20.1. Дыхание из-под шлема",
+    "20.2. Без объяснения Райгаром собственной вины",
+    "21.1. Лечение без раздевания",
+    "21.2. За общим столом смеётся Рэйна"
+  ],
+  "verified_local_links": 183,
+  "utf8_replacement_and_null_checks": "passed",
+  "new_prose_unwanted_word_check": "passed",
+  "new_prose_placeholder_check": "passed",
+  "reading_scope": "See ch-22-v3-editor-notes.md; full first 22 assembly then all revised contexts, Raygar changed contexts with supplementary 20/21 passages. Not a new whole reread of all five chapters."
+}

@@ -1,0 +1,115 @@
+{
+  "baseline_commit": "f47c60257dbc0a00cbe4aba873ec52840137ac04",
+  "pairs": [
+    {
+      "title": "17.1. Первое появление",
+      "old": "projects/shards-of-the-abyss/drafts/ch-17/ch-17-v2.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-17/ch-17-v3.md",
+      "before": "Рядом с ней стоял человек со щитом.",
+      "after": "Рядом с ней стоял огромный человек в полной броне, с закрытым шлемом и щитом.",
+      "before_line": 873,
+      "after_line": 873,
+      "old_sha256": "d84ebc78eba07a3be1c59ad55fc57af69cacbd8754f2bc42322d6e6ff6941707",
+      "new_sha256": "182195c36777802a807ec4420b44a730c8a565ea6c1f88fab2d28cf644b5be56"
+    },
+    {
+      "title": "17.2. Руки закрыты перчатками",
+      "old": "projects/shards-of-the-abyss/drafts/ch-17/ch-17-v2.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-17/ch-17-v3.md",
+      "before": "Я смотрела на его пальцы.",
+      "after": "На сгибах его перчаток перекрывались металлические пластинки.",
+      "before_line": 909,
+      "after_line": 909,
+      "old_sha256": "d84ebc78eba07a3be1c59ad55fc57af69cacbd8754f2bc42322d6e6ff6941707",
+      "new_sha256": "182195c36777802a807ec4420b44a730c8a565ea6c1f88fab2d28cf644b5be56"
+    },
+    {
+      "title": "18.1. Узел в перчатках",
+      "old": "projects/shards-of-the-abyss/drafts/ch-18/ch-18-v3.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-18/ch-18-v4.md",
+      "before": "Я следила за бечёвкой между его пальцами.",
+      "after": "Я следила за бечёвкой между металлическими пальцами перчаток.",
+      "before_line": 173,
+      "after_line": 173,
+      "old_sha256": "6b9a82fb93cb63203107e8d176921d125cd10254bb675fe14df69c2b7a4e1e73",
+      "new_sha256": "30046e3c7c6991d6be8b30ed1cd0b293e7b48d501e6a70a55794642ce69a675c"
+    },
+    {
+      "title": "18.2. Сон — наблюдение и предположение",
+      "old": "projects/shards-of-the-abyss/drafts/ch-18/ch-18-v3.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-18/ch-18-v4.md",
+      "before": "Райгар сидел напротив, опустив голову. Он уснул прежде, чем мы доели.",
+      "after": "Райгар сидел напротив. Затылок закрытого шлема упирался в дерево. Он не двигался, и я решила, что спит.",
+      "before_line": 317,
+      "after_line": 311,
+      "old_sha256": "6b9a82fb93cb63203107e8d176921d125cd10254bb675fe14df69c2b7a4e1e73",
+      "new_sha256": "30046e3c7c6991d6be8b30ed1cd0b293e7b48d501e6a70a55794642ce69a675c"
+    },
+    {
+      "title": "19.1. Отмена переодевания",
+      "old": "projects/shards-of-the-abyss/drafts/ch-19/ch-19-v3.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-19/ch-19-v4.md",
+      "before": "Райгар поднял руки, и Рэйна стащила куртку через голову.",
+      "after": "Райгар стоял у двери в той же броне и закрытом шлеме, что на дороге.",
+      "before_line": 595,
+      "after_line": 591,
+      "old_sha256": "be535cef38281fb6ad7aa669bc9d880fba486cd2d187c1724512034617041a8f",
+      "new_sha256": "ceacbde8da0a431ffd4c46b7107c65f9b4bb123b3e8db4f5c2a45e993125e07c"
+    },
+    {
+      "title": "19.2. Чаша переходит другому участнику",
+      "old": "projects/shards-of-the-abyss/drafts/ch-19/ch-19-v3.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-19/ch-19-v4.md",
+      "before": "Райгар поставил чашу перед собой. Мальчик налил, устроившись на коленях, и встал с помощью его руки.",
+      "after": "Возле Тавии он опустился на колени, налил и поднялся, придерживаясь за край настила. Райгар сидел чуть позади нас, поставив щит ребром на землю.",
+      "before_line": 643,
+      "after_line": 635,
+      "old_sha256": "be535cef38281fb6ad7aa669bc9d880fba486cd2d187c1724512034617041a8f",
+      "new_sha256": "ceacbde8da0a431ffd4c46b7107c65f9b4bb123b3e8db4f5c2a45e993125e07c"
+    },
+    {
+      "title": "20.1. Дыхание из-под шлема",
+      "old": "projects/shards-of-the-abyss/drafts/ch-20/ch-20-v3.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-20/ch-20-v4.md",
+      "before": "Я слышала, как он втягивает воздух короткими рывками.",
+      "after": "Из-под шлема доносились короткие рывки дыхания.",
+      "before_line": 499,
+      "after_line": 499,
+      "old_sha256": "e3c2a82b0558e74e14cdb4b1378eb159b4fbc744ac819e7027fefd8391b5f563",
+      "new_sha256": "45bbeec01d3fb2c0b78f7237d8967db5ed1a2609e17cc9175c251e44d202d724"
+    },
+    {
+      "title": "20.2. Без объяснения Райгаром собственной вины",
+      "old": "projects/shards-of-the-abyss/drafts/ch-20/ch-20-v3.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-20/ch-20-v4.md",
+      "before": "— Хотел сказать, чтобы к нему вернулась. Не мог вдохнуть. Пока смог, она уже держала меня.",
+      "after": "— Ты видел, когда Тавия от Кетта встала?\n\nЗакрытый шлем повернулся ко мне. Райгар кивнул.",
+      "before_line": 727,
+      "after_line": 711,
+      "old_sha256": "e3c2a82b0558e74e14cdb4b1378eb159b4fbc744ac819e7027fefd8391b5f563",
+      "new_sha256": "45bbeec01d3fb2c0b78f7237d8967db5ed1a2609e17cc9175c251e44d202d724"
+    },
+    {
+      "title": "21.1. Лечение без раздевания",
+      "old": "projects/shards-of-the-abyss/drafts/ch-21/ch-21-v5.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-21/ch-21-v6.md",
+      "before": "Агнис вернулась, когда Райгар пытался снять рубаху.",
+      "after": "Агнис вернулась, когда Райгар сидел у стены. Щит стоял рядом. Он положил правую руку на колено и держал её неподвижно.",
+      "before_line": 747,
+      "after_line": 743,
+      "old_sha256": "f0dbf3c19bf49c0fe9f59ac9639350b2196d7b0915a1935a1a1909dd25a8f8e7",
+      "new_sha256": "acf5796dcf12be3ee6567170a27b0ffc4bfff83aa4081a938f99f91bb3c91d39"
+    },
+    {
+      "title": "21.2. За общим столом смеётся Рэйна",
+      "old": "projects/shards-of-the-abyss/drafts/ch-21/ch-21-v5.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-21/ch-21-v6.md",
+      "before": "Райгар закашлялся над миской.",
+      "after": "Рэйна прыснула и закрыла рот ладонью.",
+      "before_line": 853,
+      "after_line": 841,
+      "old_sha256": "f0dbf3c19bf49c0fe9f59ac9639350b2196d7b0915a1935a1a1909dd25a8f8e7",
+      "new_sha256": "acf5796dcf12be3ee6567170a27b0ffc4bfff83aa4081a938f99f91bb3c91d39"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "baseline_commit": "f47c60257dbc0a00cbe4aba873ec52840137ac04",
+  "comparison_basis": "September source; first original chapter 22 in this session. External v2 consulted, not a previously issued draft here.",
+  "pairs": [
+    {
+      "title": "1. Поиск освобождения без выдуманного готового отдела",
+      "old": "projects/shards-of-the-abyss/book/03-manuscript/arc-04/ch-22.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-22/ch-22-v3.md",
+      "before": "— Умеют, — сказала Агнис. — Не быстро и не бесплатно. Есть отдел, они этим занимаются лет двадцать, через них проходили люди из «Фениксов». Немного, десятка полтора. Но проходили.",
+      "after": "— Я могу обратиться к Эфир. Не обещаю тебе ответа. Но не стану сидеть и гадать, согласится ли она помочь, даже не попробовав.",
+      "before_line": 1349,
+      "after_line": 187,
+      "old_sha256": "74ccd24cd0ffe4fb2a51fdb2810fb9b681c851fec4c22c818e2db87e67cb6294",
+      "new_sha256": "db80f1e493f5505e2469322d14d01ba65b2b0f38eec921853414b8a70f337d55"
+    },
+    {
+      "title": "2. Мотив кражи: сама возможность, а не добыча скрытого рассказа",
+      "old": "projects/shards-of-the-abyss/book/03-manuscript/arc-04/ch-22.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-22/ch-22-v3.md",
+      "before": "Я не хочу писать, что оно пошло само. Оно не пошло само. Я лежала лицом в холст, слушала, как она рассказывает про соседского кота, и в какой-то момент очень спокойно, целыми словами, подумала: я хочу знать, что она мне не говорит.",
+      "after": "Я хотела проверить, получится ли. Мне хотелось уметь ещё и это.\n\nЕсли спросить, Агнис захочет узнать, что я собираюсь делать и чем это кончится. Я не знала. Она могла убрать руку.",
+      "before_line": 391,
+      "after_line": 539,
+      "old_sha256": "74ccd24cd0ffe4fb2a51fdb2810fb9b681c851fec4c22c818e2db87e67cb6294",
+      "new_sha256": "db80f1e493f5505e2469322d14d01ba65b2b0f38eec921853414b8a70f337d55"
+    }
+  ]
+}
