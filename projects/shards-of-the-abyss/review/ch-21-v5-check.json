@@ -1,0 +1,40 @@
+{
+  "scope": "Packaging, preservation and targeted consistency only; not literary certification",
+  "baseline_commit": "c5223371c187a3e02531145ba79ca30e0c806e34",
+  "branch": "arena/01a08101-workspace",
+  "baseline_files": 601,
+  "unchanged_existing_files": 594,
+  "modified_existing_paths": [
+    "NOW.md",
+    "projects/shards-of-the-abyss/README.md",
+    "projects/shards-of-the-abyss/canon/author-decisions-2026-09.md",
+    "projects/shards-of-the-abyss/drafts/README.md",
+    "projects/shards-of-the-abyss/review/agnis-sylvia-development.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-reading.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-structure.md"
+  ],
+  "added_paths": [
+    "projects/shards-of-the-abyss/drafts/ch-21/ch-21-v5.md",
+    "projects/shards-of-the-abyss/review/ch-21-v5-before-after.json",
+    "projects/shards-of-the-abyss/review/ch-21-v5-before-after.md",
+    "projects/shards-of-the-abyss/review/ch-21-v5-check.json",
+    "projects/shards-of-the-abyss/review/ch-21-v5-editor-notes.md"
+  ],
+  "immutable_book_files_preserved": 397,
+  "external_reference_files_preserved": 39,
+  "chapter": {
+    "characters": 51646,
+    "whitespace_words": 8604,
+    "splitlines": 1201,
+    "sha256": "f0dbf3c19bf49c0fe9f59ac9639350b2196d7b0915a1935a1a1909dd25a8f8e7"
+  },
+  "before_after_pairs_exact": 2,
+  "checked_local_links": 184,
+  "utf8_newline_no_replacement_or_nul": true,
+  "global_diff_attribute": "projects/shards-of-the-abyss/drafts/ch-21/ch-21-v5.md: diff: unset",
+  "previous_v4_and_other_prose_preserved": true,
+  "first_615_lines_and_captain_report_unchanged": true,
+  "old_medical_dependency_lines_removed": true,
+  "no_live_bandages_or_old_wound_pain_in_evening": true,
+  "publication": "Commit/push and separate remote HEAD / branch / clean status verification must follow; not established by this report"
+}
