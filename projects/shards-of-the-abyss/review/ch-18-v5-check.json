@@ -1,0 +1,55 @@
+{
+  "date_local": "2026-09-13",
+  "chapter": "ch-18-v5",
+  "scope": "Техническая проверка перечисленных признаков; не автоматическая оценка литературного качества.",
+  "base": "1122d773f337d5ec45d9fa15b3d3156a392e6b96",
+  "branch": "arena/01a08101-workspace",
+  "characters": 46533,
+  "words_whitespace": 7565,
+  "lines": 1043,
+  "sha256": "bc72d55ace20e9dd4902a7f3d75757c7408c308ce9ee983556275b326b785ab2",
+  "reading": {
+    "17_v3": "whole; 921 lines",
+    "18_v4": "whole; 863 lines",
+    "19_v4": "whole; 1015 lines",
+    "new_18_initial": "whole; 1037 lines",
+    "new_18_after_21_refinements": "changed contexts; no separate full final reread claimed"
+  },
+  "preservation": {
+    "total": 636,
+    "unchanged": 633,
+    "changed": [
+      "NOW.md",
+      "projects/shards-of-the-abyss/canon/author-decisions-2026-09.md",
+      "projects/shards-of-the-abyss/drafts/README.md"
+    ],
+    "missing": [],
+    "unsupported": [],
+    "unexpected_changed": [],
+    "passed": true
+  },
+  "immutable_source_counts": {
+    "book": 397,
+    "external_continuation": 39
+  },
+  "checks": {
+    "exact_before_after_pairs": 2,
+    "comparison_baseline": "ch-18-v4",
+    "local_markdown_links": 62,
+    "utf8_without_replacement_or_NUL_or_BOM": true,
+    "markdown_final_newlines_and_no_trailing_spaces": true,
+    "git_diff_text_check": true,
+    "forbidden_kostyash_stem_absent_in_new_prose": true,
+    "draft_placeholder_scan": true,
+    "scene_separators": 10
+  },
+  "manual_review": {
+    "chronology": "92 briefing; 93 departure; 97 arrival; 98–100 waiting; 100 evening experiment; 101 Irne/site; Misla/Annvir not reached",
+    "magic": "copying not data weight/source removal; sword movement success retained; own existing wound strained by physical repeat",
+    "Akatsuki": "professional cult-service disclosure; volunteered; family news and expected water chosen; fire cause unknown",
+    "Raygar": "closed armor and helmet; no observed eating/drinking or new biology",
+    "handoff": "new 19 unwritten; legacy 19–24 preserved, registry distinguishes rebuild"
+  },
+  "passed": true,
+  "publication": "Commit/push and independent remote=HEAD/clean verification follow this file; this report is pre-publication."
+}
