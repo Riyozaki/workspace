@@ -9,3 +9,19 @@ __pycache__/
 .env
 .env.*
 !.env.example
+
+# Development dependencies and disposable outputs (not manuscript sources)
+node_modules/
+build/
+dist/
+coverage/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Browser diagnostics can contain cookies, tokens, URLs and private text.
+# Keep raw captures local; never commit them to this public repository.
+*.har
+*.har.gz
+*.heapsnapshot
+*.cpuprofile

@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "baseline_commit": "44bfc5a4fef7592c902a037b09f76af9aee35413",
+  "scope": "Integrity/navigation/attributes/code tests; not an Arena browser speed measurement or literary review.",
+  "baseline_files": 625,
+  "unchanged_baseline_files": 618,
+  "modified_files": [
+    ".gitattributes",
+    ".gitignore",
+    "AGENTS.md",
+    "NOW.md",
+    "README.md",
+    "projects/shards-of-the-abyss/README.md",
+    "projects/shards-of-the-abyss/drafts/README.md"
+  ],
+  "added_files": [
+    "docs/arena-optimization-2026-09-12.md",
+    "docs/arena-optimization-2026-09-12-check.json",
+    "tools/workspace_health.py",
+    "tools/test_workspace_health.py"
+  ],
+  "deleted_baseline_files": 0,
+  "immutable_book_files": 397,
+  "immutable_reference_files": 39,
+  "active_chapter_links_verified": 23,
+  "local_links_verified": 64,
+  "unit_tests_passed": 8,
+  "negative_cli_checks_passed": [
+    "invalid base exits 2",
+    "unallowed changes exit 1",
+    "require-clean on dirty tree exits 1"
+  ],
+  "entry_documents": {
+    "AGENTS.md": {
+      "before_bytes": 36572,
+      "after_bytes": 11031
+    },
+    "NOW.md": {
+      "before_bytes": 16096,
+      "after_bytes": 7546
+    },
+    "README.md": {
+      "before_bytes": 4466,
+      "after_bytes": 1018
+    },
+    "projects/shards-of-the-abyss/README.md": {
+      "before_bytes": 17843,
+      "after_bytes": 4206
+    },
+    "projects/shards-of-the-abyss/drafts/README.md": {
+      "before_bytes": 13115,
+      "after_bytes": 2652
+    }
+  },
+  "entry_documents_total_before_bytes": 88092,
+  "entry_documents_total_after_bytes": 26453,
+  "entry_documents_reduction_percent": 69.97,
+  "new_rules_ignore_existing_tracked_files": false,
+  "global_diff_attribute": "unset",
+  "github_generated_samples_verified": true,
+  "chapter_23_sha256": "8feb3d04a7f5d77765ab11067523e763ef50972ebb3147475f1476573bae7598",
+  "publication_verification": "To be performed separately after commit/push; this report does not claim a future remote HEAD."
+}

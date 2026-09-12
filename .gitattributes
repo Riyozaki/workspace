@@ -7,3 +7,11 @@
 # Arena may still show a changed-file list or use its own diff/cache behavior.
 # To restore normal textual diffs, remove the following rule in a normal commit.
 * -diff
+
+# GitHub-specific: collapse machine reports / duplicate assembled output.
+# This does not hide files from the tree and is not an Arena UI setting.
+projects/shards-of-the-abyss/review/**/*.json linguist-generated=true
+projects/shards-of-the-abyss/IMPORT.json linguist-generated=true
+projects/shards-of-the-abyss/reference/continuation-5246612/MANIFEST.json linguist-generated=true
+projects/shards-of-the-abyss/drafts/arc-02/arc-02-v3.md linguist-generated=true
+docs/*-check.json linguist-generated=true
