@@ -1,0 +1,71 @@
+{
+  "date_local": "2026-09-13",
+  "scope": "Проверка перечисленных технических признаков и сохранности; не автоматическая литературная оценка.",
+  "base": "26bd233b83d32ba315cf013b731a7992bc7f36b0",
+  "branch": "arena/01a08101-workspace",
+  "chapters": {
+    "ch-18-v6": {
+      "characters": 48460,
+      "words_whitespace": 7891,
+      "lines": 1083,
+      "sha256": "c2e71d83186a86abaa3fa06cea678336d155ae54d061c239bf420773da18150b",
+      "scene_separators": 10
+    },
+    "ch-19-v5": {
+      "characters": 45563,
+      "words_whitespace": 7271,
+      "lines": 901,
+      "sha256": "1ae579f6e1e19cf54cd154767c34fb98fb0885bb170f4331fb8a14196fdab6ee",
+      "scene_separators": 8
+    }
+  },
+  "preservation": {
+    "total": 641,
+    "unchanged": 636,
+    "changed": [
+      "NOW.md",
+      "projects/shards-of-the-abyss/canon/author-decisions-2026-09.md",
+      "projects/shards-of-the-abyss/drafts/README.md",
+      "projects/shards-of-the-abyss/review/arc-04-rebuild-blueprint.md",
+      "projects/shards-of-the-abyss/review/mizu-faith-and-conflict-proposal.md"
+    ],
+    "missing": [],
+    "unsupported": [],
+    "unexpected_changed": [],
+    "passed": true
+  },
+  "immutable_source_counts": {
+    "book": 397,
+    "external_snapshot": 39
+  },
+  "checks": {
+    "exact_before_after_pairs": 4,
+    "pairs_per_chapter": 2,
+    "baselines": [
+      "18 v5",
+      "19 v4"
+    ],
+    "chapter18_reconstructs_from_exactly_two_scene_replacements": true,
+    "local_markdown_links": 79,
+    "utf8_without_replacement_NUL_BOM": true,
+    "final_newlines_no_trailing_spaces": true,
+    "git_diff_text_check": true,
+    "forbidden_kostyash_stem_absent": true,
+    "draft_placeholders_absent": true
+  },
+  "reading": {
+    "18_v5": "Full 1043 lines; six bounded ranges in editor notes",
+    "19_v4": "Full 1015 lines; six bounded ranges in editor notes",
+    "18_v6": "Full baseline read, then both new passages read; no separate whole final reread claimed",
+    "19_v5": "Full initial 893 lines read, then 14 refinements read; no separate whole final reread claimed"
+  },
+  "manual_review": {
+    "chronology": "18: 92–101; 19: 101–105; invitation for 106; court and potion transferred to future 20",
+    "magic": "No new absorption in 19, retained copied movement and Vald knowledge; own wound healed, no phantom penalty for data",
+    "Mizu": "Author chose voluntary consent; characters do not know it. Ordinary temple aid real; coercion distinct; patron unassigned",
+    "Raygar": "No removal of armor/helmet, no observed eating/drinking/new biology; gauntlet touches ritual bowl",
+    "inventory": "6 silver 9 copper; beautiful box not purchased; letters/drawings not sent; notebooks still stored"
+  },
+  "passed": true,
+  "publication": "Pre-publication; commit/push and a separate clean/remote=HEAD check follow."
+}
