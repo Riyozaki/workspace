@@ -1,0 +1,28 @@
+{
+  "baseline_commit": "0c3cf3ebbd6d8eb4bdb209fb04147ee0ed041524",
+  "comparison_basis": "September chapter 23; first original chapter 23 in this session. External v2 is a consulted source, not a prior issued draft here.",
+  "pairs": [
+    {
+      "title": "Мотив Ирсанны: конкретная помощь своим",
+      "old": "projects/shards-of-the-abyss/book/03-manuscript/arc-04/ch-23.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-23/ch-23-v3.md",
+      "before": "— Зачем вы это сделали? — спросила я.\n\nИрсанна подняла на меня глаза.\n\n— Вот этого я тебе не скажу, — сказала она. — Ты чужая, ты уедешь через декаду, и тебе незачем.\n\nОна отвернулась к огню.",
+      "after": "— Потом перестали давать полную меру. Потом старшие стали говорить, что уже ели. У одной женщины я нашла нетронутую чашу — она оставляла дочери. Три дня подряд.\n\nИрсанна поставила котелок.\n\n— Людей с побережья я знала прежде. Они обещали провести обоз по закрытой дороге. Зерна хватило бы до нового урожая.",
+      "before_line": 1311,
+      "after_line": 695,
+      "old_sha256": "78432e512f22bf3173aada32a99a9ebe8f6c95f2992eb60c9407a1e844ecb658",
+      "new_sha256": "8feb3d04a7f5d77765ab11067523e763ef50972ebb3147475f1476573bae7598"
+    },
+    {
+      "title": "Сильвия добивается другого решения",
+      "old": "projects/shards-of-the-abyss/book/03-manuscript/arc-04/ch-23.md",
+      "new": "projects/shards-of-the-abyss/drafts/ch-23/ch-23-v3.md",
+      "before": "— Я сказала, что происходит, — сказала я. — Что с этим делать, решаю не я.",
+      "after": "— Я могу остаться, — сказала я. — Искать дальше. Если дело в сроке заказа, я останусь.\n\nАкацуки повернулся ко мне.\n\n— Своим сроком ты пока не распоряжаешься.\n\n— Тогда попроси за меня.",
+      "before_line": 323,
+      "after_line": 935,
+      "old_sha256": "78432e512f22bf3173aada32a99a9ebe8f6c95f2992eb60c9407a1e844ecb658",
+      "new_sha256": "8feb3d04a7f5d77765ab11067523e763ef50972ebb3147475f1476573bae7598"
+    }
+  ]
+}

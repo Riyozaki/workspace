@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "baseline_commit": "0c3cf3ebbd6d8eb4bdb209fb04147ee0ed041524",
+  "branch": "arena/01a08101-workspace",
+  "scope": "Packaging, integrity, exact comparisons, locators, and refinement replay only; not literary or comprehensive semantic/canon certification.",
+  "baseline_files": 620,
+  "unchanged_baseline_files": 611,
+  "modified_files": [
+    "AGENTS.md",
+    "NOW.md",
+    "projects/shards-of-the-abyss/README.md",
+    "projects/shards-of-the-abyss/canon/author-decisions-2026-09.md",
+    "projects/shards-of-the-abyss/drafts/README.md",
+    "projects/shards-of-the-abyss/review/agnis-sylvia-development.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-reading.md",
+    "projects/shards-of-the-abyss/review/arc-04-v3-structure.md",
+    "projects/shards-of-the-abyss/review/ch-23-v3-worklog.md"
+  ],
+  "new_files": [
+    "projects/shards-of-the-abyss/drafts/ch-23/ch-23-v3.md",
+    "projects/shards-of-the-abyss/review/ch-23-v3-before-after.json",
+    "projects/shards-of-the-abyss/review/ch-23-v3-before-after.md",
+    "projects/shards-of-the-abyss/review/ch-23-v3-editor-notes.md",
+    "projects/shards-of-the-abyss/review/ch-23-v3-check.json"
+  ],
+  "immutable_book_files": 397,
+  "immutable_reference_files": 39,
+  "previous_prose_files_unchanged": 34,
+  "global_text_diff": "unset",
+  "chapter": {
+    "path": "projects/shards-of-the-abyss/drafts/ch-23/ch-23-v3.md",
+    "sha256": "8feb3d04a7f5d77765ab11067523e763ef50972ebb3147475f1476573bae7598",
+    "characters": 43634,
+    "words": 7254,
+    "lines": 1379
+  },
+  "refinement_operations_replayed": 34,
+  "exact_comparisons_verified": 2,
+  "local_links_verified": 186,
+  "new_prose_latin_replacement_null_unwanted_word_checks": "passed",
+  "new_prose_deferred_identity_locator_check": "passed",
+  "author_answers_recorded": true,
+  "reading_scope": "Both source 23 chapters fully read this stage; full first original assembly plus all 34 revised contexts. See editor notes for exact coverage."
+}
