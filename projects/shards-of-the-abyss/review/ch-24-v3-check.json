@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "baseline_commit": "5bf0101047f3eae7e3b05847c102ad9ed1900e43",
+  "branch": "arena/01a08101-workspace",
+  "scope": "Packaging, baseline file preservation, literal pairs, local links, encoding and refinement replay only; not literary or comprehensive canon certification.",
+  "baseline_files": 630,
+  "unchanged_baseline_files": 626,
+  "modified_files": [
+    "NOW.md",
+    "projects/shards-of-the-abyss/canon/author-decisions-2026-09.md",
+    "projects/shards-of-the-abyss/drafts/README.md",
+    "projects/shards-of-the-abyss/review/ch-24-v3-editor-notes.md"
+  ],
+  "new_files": [
+    "projects/shards-of-the-abyss/drafts/ch-24/ch-24-v3.md",
+    "projects/shards-of-the-abyss/review/ch-24-v3-before-after.md",
+    "projects/shards-of-the-abyss/review/ch-24-v3-check.json"
+  ],
+  "immutable_book_files": 397,
+  "immutable_reference_files": 39,
+  "previous_chapter_prose_files_unchanged": 34,
+  "global_text_diff": "unset",
+  "chapter": {
+    "path": "projects/shards-of-the-abyss/drafts/ch-24/ch-24-v3.md",
+    "sha256": "49c0a7fbdb4bff100d464eecdcedb81deb7e7282d70e7f1a2e8e79fefe1c9a1c",
+    "characters": 40466,
+    "words": 6732,
+    "lines": 1251
+  },
+  "refinement_operations_replayed": 27,
+  "exact_comparisons_verified": [
+    {
+      "source_line": 211,
+      "new_line": 125,
+      "source_sha256": "68aae98fc66cbb84ea3fe7fee3254a8abbc643c97486f70635e88e7d41f786b9",
+      "new_sha256": "fbe2a7f60ee94dc8c5c21d11134d8f7ab579504b6f532426d21bf8e2ac3fd22f"
+    },
+    {
+      "source_line": 1745,
+      "new_line": 1193,
+      "source_sha256": "8df5feef4dc08b8c1adddd86a4a0b156d962776ccaa6c802a723ab0a17f8590c",
+      "new_sha256": "e782f1db819fca8929df4d5da64207f78963999fd5ae31512524d806ffbfc4d1"
+    }
+  ],
+  "local_links_verified": 52,
+  "new_prose_latin_replacement_null_unwanted_word_checks": "passed",
+  "reading_scope": "Both source chapters fully read; full first assembly followed by all 27 refinements in final context. No fresh full arc 18–24 reread yet; see editor notes.",
+  "author_answers_recorded": true
+}
