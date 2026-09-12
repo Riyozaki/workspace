@@ -1,0 +1,41 @@
+{
+  "scope": "Technical prepublication QA, not a literary rating, browser-health diagnosis or final remote verification",
+  "passed": true,
+  "base": "a57c9ab4c8aee2da972416aa15fcef4c69426700",
+  "branch": "arena/01a08101-workspace",
+  "chapter": {
+    "path": "projects/shards-of-the-abyss/drafts/ch-20/ch-20-v5.md",
+    "characters": 42881,
+    "words": 6850,
+    "lines": 833,
+    "sha256": "9820cce79506201bb5a71cc234231f265bba15d720e593a164750f3d7697a00c"
+  },
+  "reading": "Complete 829-line initial assembly, then all eight contextual refinements; no second complete final reread claimed",
+  "initial_reconstructed_from_eight_refinements": true,
+  "literal_pairs": 2,
+  "comparison_bases": [
+    "ch-19-v4.md (transferred reception)",
+    "ch-20-v4.md (potion investigation)"
+  ],
+  "utf8_and_whitespace_files": 7,
+  "local_links_checked": 76,
+  "diff_attributes_preserved": true,
+  "source_counts": {
+    "book/": 397,
+    "reference/continuation-5246612/": 39
+  },
+  "preservation": {
+    "total": 646,
+    "unchanged": 643,
+    "changed": [
+      "NOW.md",
+      "projects/shards-of-the-abyss/canon/author-decisions-2026-09.md",
+      "projects/shards-of-the-abyss/drafts/README.md"
+    ],
+    "missing": [],
+    "unsupported": [],
+    "unexpected_changed": [],
+    "passed": true
+  },
+  "publication": "Commit/push followed by a separate --base HEAD --verify-base --remote --require-clean audit"
+}
