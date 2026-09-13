@@ -1,0 +1,210 @@
+{
+  "scope": "Technical prepublication QA; literary reading and judgement are recorded separately. Not final remote or browser-health verification.",
+  "passed": true,
+  "base": "d01a28ce2f5311c61b08571c8904ec61ad0680fd",
+  "branch": "arena/01a08101-workspace",
+  "chapters": [
+    {
+      "chapter": 18,
+      "path": "projects/shards-of-the-abyss/drafts/ch-18/ch-18-v6.md",
+      "characters": 48460,
+      "words": 7891,
+      "lines": 1083,
+      "sha256": "c2e71d83186a86abaa3fa06cea678336d155ae54d061c239bf420773da18150b"
+    },
+    {
+      "chapter": 19,
+      "path": "projects/shards-of-the-abyss/drafts/ch-19/ch-19-v5.md",
+      "characters": 45563,
+      "words": 7271,
+      "lines": 901,
+      "sha256": "1ae579f6e1e19cf54cd154767c34fb98fb0885bb170f4331fb8a14196fdab6ee"
+    },
+    {
+      "chapter": 20,
+      "path": "projects/shards-of-the-abyss/drafts/ch-20/ch-20-v5.md",
+      "characters": 42881,
+      "words": 6850,
+      "lines": 833,
+      "sha256": "9820cce79506201bb5a71cc234231f265bba15d720e593a164750f3d7697a00c"
+    },
+    {
+      "chapter": 21,
+      "path": "projects/shards-of-the-abyss/drafts/ch-21/ch-21-v7.md",
+      "characters": 37462,
+      "words": 6197,
+      "lines": 779,
+      "sha256": "36a711c2cb04795bfd7aa031861e9b9f524225144210dc25966c07aa83bd74f3"
+    },
+    {
+      "chapter": 22,
+      "path": "projects/shards-of-the-abyss/drafts/ch-22/ch-22-v4.md",
+      "characters": 40245,
+      "words": 6582,
+      "lines": 843,
+      "sha256": "f2d3c282af8b50874c59191213a87e05c620c6b6f092817fdc0d790b9133ce4f"
+    },
+    {
+      "chapter": 23,
+      "path": "projects/shards-of-the-abyss/drafts/ch-23/ch-23-v4.md",
+      "characters": 53315,
+      "words": 8825,
+      "lines": 1296,
+      "sha256": "4c63dcbc1d3361d2bb44ae49189c2f8e29b0d0cfd1f1d10084adb746d30c3adf"
+    },
+    {
+      "chapter": 24,
+      "path": "projects/shards-of-the-abyss/drafts/ch-24/ch-24-v4.md",
+      "characters": 45665,
+      "words": 7358,
+      "lines": 929,
+      "sha256": "175f460a744f51b7c1d27996f1c44d84f483af0f69656f25159f3b17c9838cb9"
+    },
+    {
+      "chapter": 25,
+      "path": "projects/shards-of-the-abyss/drafts/ch-25/ch-25-v1.md",
+      "characters": 45642,
+      "words": 7558,
+      "lines": 1289,
+      "sha256": "d01b77c59db1351cfad9bce816e5f841a255ba6f73f00a687999f3f39cdb7978"
+    }
+  ],
+  "new_chapters_words": 36520,
+  "whole_arc_words": 58532,
+  "anthology": {
+    "path": "projects/shards-of-the-abyss/drafts/arc-04/arc-04-rebuild-v1.md",
+    "sha256": "65b05599cda56cee3be504a009432876f3210eed74e3a5aed2968dda31168c15",
+    "chapters_verbatim": 8
+  },
+  "literal_pairs": [
+    {
+      "chapter": 21,
+      "title": "Самозащита и намеренная проба — разные решения",
+      "kind": "Переработанный эпизод",
+      "source": "projects/shards-of-the-abyss/drafts/ch-20/ch-20-v4.md",
+      "target": "projects/shards-of-the-abyss/drafts/ch-21/ch-21-v7.md",
+      "before": "Мы договаривались обсуждать попытки заранее. В бою я разрешения не давал. Ещё раз начнёшь сама — работа для тебя закончится.",
+      "after": "Защищаться тем, что есть, я тебе не запрещаю. Но остаться под новым ударом ради пробы — другое дело. Ещё раз так сделаешь — работа для тебя закончится."
+    },
+    {
+      "chapter": 21,
+      "title": "Командир отвечает за собственный расчёт",
+      "kind": "Расширение разговора: исходная связка сохранена, после неё добавлен разбор ошибки",
+      "source": "projects/shards-of-the-abyss/drafts/ch-20/ch-20-v4.md",
+      "target": "projects/shards-of-the-abyss/drafts/ch-21/ch-21-v7.md",
+      "before": "Он взялся за карту, но остался сидеть.",
+      "after": "— И про захват запишу сам. Четверых можно было дождаться. Я решил, что уходящий груз важнее времени. Выход на дальний склон Лаур показал, а я оставил там одну пару глаз."
+    },
+    {
+      "chapter": 22,
+      "title": "Ойвен спасает Мерна и выходит живым",
+      "kind": "Переработанный эпизод",
+      "source": "projects/shards-of-the-abyss/drafts/ch-21/ch-21-v6.md",
+      "target": "projects/shards-of-the-abyss/drafts/ch-22/ch-22-v4.md",
+      "before": "Тавия поднималась одна. Ойвен остался у края оврага.",
+      "after": "Тавия шла рядом с Ойвеном. Он держался за перевязь щита Райгара и переставлял ноги сам."
+    },
+    {
+      "chapter": 22,
+      "title": "Арклайт входит без приглашения",
+      "kind": "Переработанный эпизод",
+      "source": "projects/shards-of-the-abyss/drafts/ch-21/ch-21-v6.md",
+      "target": "projects/shards-of-the-abyss/drafts/ch-22/ch-22-v4.md",
+      "before": "— По верхней дороге идёт Арклайт, — сказал Тэйвен. — Им разрешили пройти к западному склону. В общину без наших не войдут. Нерра отправлю к ним с вашим местом встречи.",
+      "after": "— По верхней дороге идёт Арклайт, — сказал Тэйвен. — Приглашения им не посылали. Входной пост потребовал, чтобы ждали нашего ответа. Они поставили рядом своих и дальше отправили разведчиков."
+    },
+    {
+      "chapter": 23,
+      "title": "Копия не оплачивается кровью",
+      "kind": "Переработанный эпизод",
+      "source": "projects/shards-of-the-abyss/drafts/ch-22/ch-22-v3.md",
+      "target": "projects/shards-of-the-abyss/drafts/ch-23/ch-23-v4.md",
+      "before": "Свет прошёл под её пальцами. Кровь перестала течь. Во рту всё равно был белый состав, а на левой руке саднило там, где кожа оставалась целой.",
+      "after": "Я согласилась. Крови не было, голова не болела. Я могла продолжить читать. Просто теперь знала то, что Агнис сама мне не рассказывала, и не хотела, чтобы она отняла у меня право знать ещё."
+    },
+    {
+      "chapter": 23,
+      "title": "Сама приходит обсуждать применение",
+      "kind": "Переработанный эпизод",
+      "source": "projects/shards-of-the-abyss/drafts/ch-23/ch-23-v3.md",
+      "target": "projects/shards-of-the-abyss/drafts/ch-23/ch-23-v4.md",
+      "before": "Акацуки велел мне подойти, когда остальные разошлись от карты.\n\n— Тавия сказала, у тебя опять кровь была.",
+      "after": "Утром я пошла к Акацуки сама.\n\n— Я могу получить память живого человека. Копию. Он ничего не забывает."
+    },
+    {
+      "chapter": 24,
+      "title": "Помощь Агнис происходит лично",
+      "kind": "Переработанный эпизод",
+      "source": "projects/shards-of-the-abyss/drafts/ch-23/ch-23-v3.md",
+      "target": "projects/shards-of-the-abyss/drafts/ch-24/ch-24-v4.md",
+      "before": "— Можно отправить к Арклайту, — сказала я. — Агнис спросит у своих. Или сама захочет приехать. Она…",
+      "after": "Агнис села рядом. Свет прошёл под воротом, по запястьям, задержался возле груди. Ирсанна закрыла глаза. Когда сестра отняла ладони, сама поднялась с подстилки, подержалась за спинку скамьи и выпрямилась."
+    },
+    {
+      "chapter": 24,
+      "title": "Обеспеченная отсрочка вместо немедленной казни",
+      "kind": "Переработанный эпизод",
+      "source": "projects/shards-of-the-abyss/drafts/ch-23/ch-23-v3.md",
+      "target": "projects/shards-of-the-abyss/drafts/ch-24/ch-24-v4.md",
+      "before": "— Искать человека с побережья продолжите. Его имя запишут отдельно. Ирсанну я живой не оставлю.",
+      "after": "Решение читали долго. До сто шестьдесят шестого Ирсанна оставалась жива под охраной. Тогда назначалось новое слушание: с результатами работы, состоянием общин и расходом запасов. Приговора о смерти в этот день заранее не объявляли. Права двора вернуться к нему никто не отменил."
+    },
+    {
+      "chapter": 25,
+      "title": "Признание вместо ещё одного ухода от него",
+      "kind": "Переработанный эпизод",
+      "source": "projects/shards-of-the-abyss/drafts/ch-24/ch-24-v3.md",
+      "target": "projects/shards-of-the-abyss/drafts/ch-25/ch-25-v1.md",
+      "before": "Я поняла, что молчу слишком долго.\n\n— У тебя ещё остались голубые куски?",
+      "after": "— Ты держала лист. Я взяла тебя за запястье, будто помогала повернуть к свету. На самом деле хотела получить память. Не спрашивала, потому что ты могла отказать."
+    },
+    {
+      "chapter": 25,
+      "title": "Промежуточное сообщение о живой Ирсанне",
+      "kind": "Переработанный эпизод",
+      "source": "projects/shards-of-the-abyss/drafts/ch-24/ch-24-v3.md",
+      "target": "projects/shards-of-the-abyss/drafts/ch-25/ch-25-v1.md",
+      "before": "Ирсанна умерла. Я начала с этого, чтобы она не прочла сначала всю дорогу к случившемуся и не стала по ходу искать, где ещё можно успеть.",
+      "after": "Припасы дошли до временных домов. Ирсанна оставалась под охраной, дала ещё два имени для проверки. Один из вызванных ответил; его сведения Тэйвен собирался сопоставить с записями Ордека. У Тэн-Аруда по-прежнему не было слышно воды с прежней границы. Следующее слушание оставалось на сто шестьдесят шестое."
+    }
+  ],
+  "reading": "Complete initial assemblies21–25, then complete current18–20 plus join from17, then42 contextual refinements. No second complete reread of final files after refinements claimed.",
+  "postassembly_refinements": 42,
+  "initial_assemblies_reconstructed_and_lengths_verified": {
+    "21": 37415,
+    "22": 39910,
+    "23": 52867,
+    "24": 44064,
+    "25": 44996
+  },
+  "utf8_whitespace_links_checked_files": 12,
+  "local_links_checked": 87,
+  "narrative_marker_checks": "Only the explicit positive/negative strings in qa.py; they complement, not replace, full reading.",
+  "arithmetic_checks": {
+    "allies": 45,
+    "enemy_working_group": 43,
+    "still_affected_sites": 10,
+    "money_copper_equivalent": 197,
+    "next_hearing": 166
+  },
+  "source_counts": {
+    "book/": 397,
+    "reference/continuation-5246612/": 39
+  },
+  "diff_attributes_preserved": true,
+  "preservation": {
+    "total": 650,
+    "unchanged": 646,
+    "changed": [
+      "NOW.md",
+      "projects/shards-of-the-abyss/canon/author-decisions-2026-09.md",
+      "projects/shards-of-the-abyss/drafts/README.md",
+      "projects/shards-of-the-abyss/review/arc-04-rebuild-blueprint.md"
+    ],
+    "missing": [],
+    "unsupported": [],
+    "unexpected_changed": [],
+    "passed": true
+  },
+  "publication": "Ordinary commit/push on fixed branch, then separate remote=HEAD and clean-tree audit."
+}
