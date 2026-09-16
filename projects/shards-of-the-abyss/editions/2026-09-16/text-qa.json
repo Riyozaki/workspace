@@ -1,0 +1,255 @@
+{
+  "operations": 446,
+  "unique_paragraphs": 415,
+  "chapters_changed": 35,
+  "before_words": 225635,
+  "after_words": 225421,
+  "pairs": 70,
+  "by_chapter": [
+    {
+      "chapter": 1,
+      "before": 8078,
+      "after": 8083,
+      "operations": 19,
+      "unique_paragraphs": 17
+    },
+    {
+      "chapter": 2,
+      "before": 7888,
+      "after": 7887,
+      "operations": 8,
+      "unique_paragraphs": 8
+    },
+    {
+      "chapter": 3,
+      "before": 8816,
+      "after": 8821,
+      "operations": 9,
+      "unique_paragraphs": 8
+    },
+    {
+      "chapter": 4,
+      "before": 9770,
+      "after": 9768,
+      "operations": 9,
+      "unique_paragraphs": 9
+    },
+    {
+      "chapter": 5,
+      "before": 6675,
+      "after": 6679,
+      "operations": 4,
+      "unique_paragraphs": 4
+    },
+    {
+      "chapter": 6,
+      "before": 5781,
+      "after": 5792,
+      "operations": 11,
+      "unique_paragraphs": 10
+    },
+    {
+      "chapter": 7,
+      "before": 5714,
+      "after": 5723,
+      "operations": 9,
+      "unique_paragraphs": 8
+    },
+    {
+      "chapter": 8,
+      "before": 6269,
+      "after": 6286,
+      "operations": 13,
+      "unique_paragraphs": 13
+    },
+    {
+      "chapter": 9,
+      "before": 6626,
+      "after": 6625,
+      "operations": 8,
+      "unique_paragraphs": 8
+    },
+    {
+      "chapter": 10,
+      "before": 5740,
+      "after": 5739,
+      "operations": 5,
+      "unique_paragraphs": 5
+    },
+    {
+      "chapter": 11,
+      "before": 6193,
+      "after": 6192,
+      "operations": 7,
+      "unique_paragraphs": 5
+    },
+    {
+      "chapter": 12,
+      "before": 5870,
+      "after": 5864,
+      "operations": 9,
+      "unique_paragraphs": 8
+    },
+    {
+      "chapter": 13,
+      "before": 4889,
+      "after": 4889,
+      "operations": 2,
+      "unique_paragraphs": 2
+    },
+    {
+      "chapter": 14,
+      "before": 5650,
+      "after": 5676,
+      "operations": 7,
+      "unique_paragraphs": 7
+    },
+    {
+      "chapter": 15,
+      "before": 5549,
+      "after": 5542,
+      "operations": 8,
+      "unique_paragraphs": 8
+    },
+    {
+      "chapter": 16,
+      "before": 6393,
+      "after": 6401,
+      "operations": 6,
+      "unique_paragraphs": 5
+    },
+    {
+      "chapter": 17,
+      "before": 5625,
+      "after": 5636,
+      "operations": 7,
+      "unique_paragraphs": 6
+    },
+    {
+      "chapter": 18,
+      "before": 7634,
+      "after": 7644,
+      "operations": 10,
+      "unique_paragraphs": 8
+    },
+    {
+      "chapter": 19,
+      "before": 7042,
+      "after": 7068,
+      "operations": 5,
+      "unique_paragraphs": 4
+    },
+    {
+      "chapter": 20,
+      "before": 6634,
+      "after": 6638,
+      "operations": 5,
+      "unique_paragraphs": 5
+    },
+    {
+      "chapter": 21,
+      "before": 6043,
+      "after": 6038,
+      "operations": 3,
+      "unique_paragraphs": 3
+    },
+    {
+      "chapter": 22,
+      "before": 6353,
+      "after": 6356,
+      "operations": 7,
+      "unique_paragraphs": 6
+    },
+    {
+      "chapter": 23,
+      "before": 8370,
+      "after": 8365,
+      "operations": 10,
+      "unique_paragraphs": 7
+    },
+    {
+      "chapter": 24,
+      "before": 7145,
+      "after": 7145,
+      "operations": 8,
+      "unique_paragraphs": 8
+    },
+    {
+      "chapter": 25,
+      "before": 7175,
+      "after": 7177,
+      "operations": 17,
+      "unique_paragraphs": 16
+    },
+    {
+      "chapter": 26,
+      "before": 5878,
+      "after": 5865,
+      "operations": 20,
+      "unique_paragraphs": 19
+    },
+    {
+      "chapter": 27,
+      "before": 6435,
+      "after": 6411,
+      "operations": 13,
+      "unique_paragraphs": 13
+    },
+    {
+      "chapter": 28,
+      "before": 4915,
+      "after": 4863,
+      "operations": 10,
+      "unique_paragraphs": 9
+    },
+    {
+      "chapter": 29,
+      "before": 4779,
+      "after": 4770,
+      "operations": 10,
+      "unique_paragraphs": 10
+    },
+    {
+      "chapter": 30,
+      "before": 5303,
+      "after": 5262,
+      "operations": 20,
+      "unique_paragraphs": 20
+    },
+    {
+      "chapter": 31,
+      "before": 6001,
+      "after": 5961,
+      "operations": 21,
+      "unique_paragraphs": 16
+    },
+    {
+      "chapter": 32,
+      "before": 5835,
+      "after": 5857,
+      "operations": 30,
+      "unique_paragraphs": 28
+    },
+    {
+      "chapter": 33,
+      "before": 7029,
+      "after": 6942,
+      "operations": 48,
+      "unique_paragraphs": 48
+    },
+    {
+      "chapter": 34,
+      "before": 5160,
+      "after": 5132,
+      "operations": 15,
+      "unique_paragraphs": 14
+    },
+    {
+      "chapter": 35,
+      "before": 6378,
+      "after": 6324,
+      "operations": 53,
+      "unique_paragraphs": 50
+    }
+  ]
+}

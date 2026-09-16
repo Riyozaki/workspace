@@ -1,0 +1,4 @@
+Markdown==3.10.3
+pillow==12.3.0
+pyphen==0.18.1
+reportlab==5.0.1
