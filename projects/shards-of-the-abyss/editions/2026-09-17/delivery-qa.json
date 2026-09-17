@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "chapters": 35,
+  "operations": 1163,
+  "distinct_source_paragraphs": 1090,
+  "exact_pairs": 70,
+  "output_hashes_equal": true,
+  "ledger_replay_equal": true,
+  "published_base_hashes_equal": true,
+  "scope": "Mechanical integrity only; not independent literary proofreading or office pagination."
+}

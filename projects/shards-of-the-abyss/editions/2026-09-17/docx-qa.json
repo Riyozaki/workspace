@@ -1,0 +1,22 @@
+{
+  "status": "pass",
+  "chapters": 35,
+  "body_paragraphs_including_headings_and_scene_breaks": 17770,
+  "exact_paragraph_text_and_order_equal": true,
+  "bold_and_italic_runs_equal": true,
+  "internal_contents_links": 35,
+  "bookmarks": 35,
+  "sections": 2,
+  "page_size_mm": [
+    210,
+    297
+  ],
+  "body_font": "Times New Roman",
+  "body_pt": 12,
+  "body_line_spacing": 1.15,
+  "language": "ru-RU",
+  "external_links": [],
+  "package_relationships_checked": 15,
+  "docx_sha256": "1a583c170137c9cc6d6a0723a72a76c245a8e64712c2a5cd2b9dd5134a8c237b",
+  "scope": "ZIP integrity, XML parseability, package relationships, selected OOXML element order, full paragraph text and inline emphasis, headings, bookmarks, internal links and manuscript styles. Not full XSD validation, grammar certification, or visual pagination review in Word/LibreOffice. Fonts are not embedded; pagination depends on reader software and installed fonts."
+}

@@ -1,0 +1,44 @@
+{
+  "pages": 1036,
+  "bookmarks": 35,
+  "toc_links": 70,
+  "blank_pages": [],
+  "outside_page": [],
+  "source_letters": 1098790,
+  "pdf_letters": 1098790,
+  "nonwhitespace_text_equal_except_hyphens_and_asterisks": true,
+  "letter_sequence_equal": true,
+  "first_difference": null,
+  "used_fonts": [
+    "DejaVuSerif",
+    "DejaVuSerif-Bold",
+    "DejaVuSerif-Italic"
+  ],
+  "fonts": [
+    {
+      "name": "Helvetica",
+      "type": "Type1",
+      "extension": "n/a",
+      "embedded_bytes": 0
+    },
+    {
+      "name": "AAAAAA+DejaVuSerif",
+      "type": "TrueType",
+      "extension": "ttf",
+      "embedded_bytes": 40764
+    },
+    {
+      "name": "AAAAAA+DejaVuSerif-Bold",
+      "type": "TrueType",
+      "extension": "ttf",
+      "embedded_bytes": 29128
+    },
+    {
+      "name": "AAAAAA+DejaVuSerif-Italic",
+      "type": "TrueType",
+      "extension": "ttf",
+      "embedded_bytes": 26576
+    }
+  ],
+  "scope": "Checks full Cyrillic/Latin letter sequence excluding page furniture; not punctuation equality, grammar, or literary quality."
+}

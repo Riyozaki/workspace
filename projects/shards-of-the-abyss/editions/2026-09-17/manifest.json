@@ -1,0 +1,258 @@
+{
+  "edition": "2026-09-17",
+  "status": "second-pass-delivered",
+  "base_commit": "690c7bb07b41ef6077f83cc89e0e69bd74911dc7",
+  "chapters": [
+    {
+      "chapter": 1,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/01.md",
+      "source_sha256": "25c10f36630f74792301800289cbe61141e6ad4cfe147a112992b9aec45cc2c8",
+      "file": "chapters/01.md",
+      "output_sha256": "77623161d09cc706f39519463a5a6e4fd0dbf6a07b7c841d05eb1469970912c2"
+    },
+    {
+      "chapter": 2,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/02.md",
+      "source_sha256": "dbc12f434ddaab5aa8d39059d05335cd0e75d12ff393664e4850cd4163f20697",
+      "file": "chapters/02.md",
+      "output_sha256": "5db4c4c2ea283404df2afe657327d64b95d92cb582f6838e69059680747b4f8f"
+    },
+    {
+      "chapter": 3,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/03.md",
+      "source_sha256": "2f0140d62f7f6f8aaf01add482a722a5206c6c43792775f8ae26069185f97813",
+      "file": "chapters/03.md",
+      "output_sha256": "fbc068fda80b945ff60925fcab0faaa1e51db5d934f3ab14c18cd17019a8f0a7"
+    },
+    {
+      "chapter": 4,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/04.md",
+      "source_sha256": "66f8c1fd323b6a4ef0a987174e1d0cd4f539430c15662ed49116e909f506608d",
+      "file": "chapters/04.md",
+      "output_sha256": "c06966322b14138006d68797c2b49dbf3495019ac4a9439ea9070d01b3fd9042"
+    },
+    {
+      "chapter": 5,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/05.md",
+      "source_sha256": "56a1e5dd76f6bc4bf70dbe7c4e1994fb93775e0c488850b18ac269cb548d05b9",
+      "file": "chapters/05.md",
+      "output_sha256": "f02e10d28743d6ca9fab3f187c69c1c37a0d6ba3ebcadac80f25cd6b958bb898"
+    },
+    {
+      "chapter": 6,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/06.md",
+      "source_sha256": "b7663489a6ce09638f04aabb543ea3b9ec9635c8a269393a74a384f0401b9586",
+      "file": "chapters/06.md",
+      "output_sha256": "755f460abc49eb1ec4e0e9257f79de3e5159bf18eda613a82f0d19b006dc0ef5"
+    },
+    {
+      "chapter": 7,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/07.md",
+      "source_sha256": "919dd03c8f2a309dcec058f306f4cd611d2ed5f0640b6949dad5469541e67296",
+      "file": "chapters/07.md",
+      "output_sha256": "318a2849aa88edc3a333ca3aca04a0c4bb7070366522df585e3131ac52b78a3e"
+    },
+    {
+      "chapter": 8,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/08.md",
+      "source_sha256": "b8893e8cc5e52f61bc2f7994c76e0e2ee44af6f46d0105cfb9c5f455e4090ec0",
+      "file": "chapters/08.md",
+      "output_sha256": "094fe769dbb86c2735afc217de9ce617abb9039337321e253be3374b9c2b25dc"
+    },
+    {
+      "chapter": 9,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/09.md",
+      "source_sha256": "593ee9b796fedc6d2f271b2e61e7f3cd8a771ef010ede356e90b958a52455f71",
+      "file": "chapters/09.md",
+      "output_sha256": "36fe7b2bbfe342a8e5658f21ae6f66a49b4df91fb02639ad38caf5e6cc3e607b"
+    },
+    {
+      "chapter": 10,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/10.md",
+      "source_sha256": "73769d20ab47d9b8678606ffe45c978c815d21dbc1363c992df4be77533048a5",
+      "file": "chapters/10.md",
+      "output_sha256": "054c106c46d90bbad1d4a2601bb91017cb5d716cea9a1367e8b8eb353a17b78c"
+    },
+    {
+      "chapter": 11,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/11.md",
+      "source_sha256": "db9a48b8c3c62c54d43e6e62f37be87cb0b1878218dd446646299ca083d2c0dd",
+      "file": "chapters/11.md",
+      "output_sha256": "c1bf74fd346d2968b2e2126a217d612ac72a44c7147a416019b362bbb59fcd8f"
+    },
+    {
+      "chapter": 12,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/12.md",
+      "source_sha256": "950c0f228c560c85bd20c442db206476fe775f30ae39509692bd97980fdbec1b",
+      "file": "chapters/12.md",
+      "output_sha256": "916c783c3d3ec7d127669b7d91c46e20d5f51e4c41d5bc33762a0c80aafe3326"
+    },
+    {
+      "chapter": 13,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/13.md",
+      "source_sha256": "c184c8e1f7202c12f6558f007638b1378190c798c06974c3638002cbbaa62e4b",
+      "file": "chapters/13.md",
+      "output_sha256": "94894172cabc32d30fbc80cfe4a836babfb8da9e829d9283efb3a182ac5a0229"
+    },
+    {
+      "chapter": 14,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/14.md",
+      "source_sha256": "cbe63761a82dc31043333ea082b6a2939ebe914101f7fc0e4e66c1556e5b1ba7",
+      "file": "chapters/14.md",
+      "output_sha256": "a6d2d38c08d078fcb1672a8add28111da280fb72e9f8d64e77c639cfafeaf212"
+    },
+    {
+      "chapter": 15,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/15.md",
+      "source_sha256": "979c5b00a2b5abb259f17a5c5ae3b68786984bc40752d3313558c3035a3ddbf7",
+      "file": "chapters/15.md",
+      "output_sha256": "8bfcc437287ece65db6866f1cff398e839bc9b76679c3ba3491775bb48eb8239"
+    },
+    {
+      "chapter": 16,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/16.md",
+      "source_sha256": "d3758210ebce2fdb5049c19f75681093ff950c165230f465b99669aeacae0c70",
+      "file": "chapters/16.md",
+      "output_sha256": "2dea0fe3c41b713d2ca0c9a21bbe1fa8498c7f17ee5d6e4c66e83feccbd0c547"
+    },
+    {
+      "chapter": 17,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/17.md",
+      "source_sha256": "a9a4be00ece7840eab04a5f245fe23fa9b1af9da9ab43dbce03c1687dc18ccb3",
+      "file": "chapters/17.md",
+      "output_sha256": "4d0546e93d8379c04e4c28b25adb0c935c6e9015eab8d6e5eee6e8f7cbc121ae"
+    },
+    {
+      "chapter": 18,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/18.md",
+      "source_sha256": "3f75b9325ed61361dcf760a66d0c7a790cce4579ef830998ff41fc7d80593c59",
+      "file": "chapters/18.md",
+      "output_sha256": "94dbdb0c9011f185d65ec07fb0ecc94bd80cdcbb31f510453183fa6e9ec270f5"
+    },
+    {
+      "chapter": 19,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/19.md",
+      "source_sha256": "a24c4c65b6070799d1cb4dcc9cc567e40c434ec592e7c6832187f70bac83f62e",
+      "file": "chapters/19.md",
+      "output_sha256": "e091522e3f180db7c13050761d8a9c7bf595196b6fc4748a3571832d95196a47"
+    },
+    {
+      "chapter": 20,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/20.md",
+      "source_sha256": "3e947d9fa8520caa520fe0d979eb994fc33dc8de40f10afae106d2a5520a4124",
+      "file": "chapters/20.md",
+      "output_sha256": "d68d50d3a4873ea5d7eb1c701d60aa7cc06493da45ae025cd1f7a9ec224a7799"
+    },
+    {
+      "chapter": 21,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/21.md",
+      "source_sha256": "1a75deeb9ec59fd8b794b68ed1b1dbf2dd6b3f10d93e5b6d4e682449d1347396",
+      "file": "chapters/21.md",
+      "output_sha256": "513f0a53235bfd45932797581465e4e50fd7fe44764f719edb28ee21575b59dc"
+    },
+    {
+      "chapter": 22,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/22.md",
+      "source_sha256": "36091e10264bd045080035bb3a7226525ea95fbb28faafa447997ecd9a0b8aa6",
+      "file": "chapters/22.md",
+      "output_sha256": "73fa39bca1cafa71bdec999165b9597485d8d842fb89ae4612e3ff52a4cc9923"
+    },
+    {
+      "chapter": 23,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/23.md",
+      "source_sha256": "cb9ba774ddac966c61a1c8c6f59381eb1e0d205ac0d528dfe473cbc8aad40eb4",
+      "file": "chapters/23.md",
+      "output_sha256": "d233253dd6806f9474ce55189a675df5b7155a7ad37895a2208030dedad6566c"
+    },
+    {
+      "chapter": 24,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/24.md",
+      "source_sha256": "c9d197ab30d3d7a151c6955a441f520694c66c2b90263badf32d04576c036025",
+      "file": "chapters/24.md",
+      "output_sha256": "043bfc207509f3f89db0d57f12133c520ceeedc8dc927bc13a284afb7871e622"
+    },
+    {
+      "chapter": 25,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/25.md",
+      "source_sha256": "df8ef027cf4b75ed420a07543ebefa75e1c0e643ef681b61bec4bb66c8ddc8e5",
+      "file": "chapters/25.md",
+      "output_sha256": "e0536bfe8ee28ca9f58069e199c19cd622fda8594e8a05173367f9190789092f"
+    },
+    {
+      "chapter": 26,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/26.md",
+      "source_sha256": "845971c20b0a5bff0fd4a399718c868536343d873854b2a5773ca3a0159f0fd5",
+      "file": "chapters/26.md",
+      "output_sha256": "6646d88c66cd4cee7d9a1dff8ff26be237bd435108e183383f789bcd0a3c0839"
+    },
+    {
+      "chapter": 27,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/27.md",
+      "source_sha256": "88fe63968c59f0bb3836aea22016cb5e0dd48502f2f26929fb3bec2cc7536cf9",
+      "file": "chapters/27.md",
+      "output_sha256": "5e29660f46b5923bd532969aaea9d60e283ced3eea7ea9b219163079f86176fa"
+    },
+    {
+      "chapter": 28,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/28.md",
+      "source_sha256": "ccdd66c6242c11f123a810e687bd2fc150b2897d3f4cff7899d06938e2288930",
+      "file": "chapters/28.md",
+      "output_sha256": "7cd6ee0c31d872d29b19725135f2f881306e595509af25a8bbf8f46cd4aecdc6"
+    },
+    {
+      "chapter": 29,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/29.md",
+      "source_sha256": "ab4d09874f09fa1abc40a37244a84eaa09a0ed12de9c58803bbc1f87dcbcdeef",
+      "file": "chapters/29.md",
+      "output_sha256": "b68fe759e1ca55e74c02794a522f1fcb9a458980eda32d7ce2198b0632619da1"
+    },
+    {
+      "chapter": 30,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/30.md",
+      "source_sha256": "9a2aac0367cef0729429fef64c8355356134fdd0327011e6f262432543aaa78c",
+      "file": "chapters/30.md",
+      "output_sha256": "55512b850cc3e9c0123d3c97dc33f1b093a77335bbb74676be700b2124352867"
+    },
+    {
+      "chapter": 31,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/31.md",
+      "source_sha256": "3a10f86be2062a28969d786fab8d6ef65ce35f624fefae34469faa4c254881f9",
+      "file": "chapters/31.md",
+      "output_sha256": "07efe682e75de4b9f6936e4ee17f32ee819ac053fb194a64ed59df062981142e"
+    },
+    {
+      "chapter": 32,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/32.md",
+      "source_sha256": "816e7995acddbfd32fad37315ca3fa585a4d7cd4d89c7136cc7785f815751461",
+      "file": "chapters/32.md",
+      "output_sha256": "0f169c42822029a6d50b182248aa89154c1a23c50f329cb65617bf27569be7c0"
+    },
+    {
+      "chapter": 33,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/33.md",
+      "source_sha256": "5bbe1f429d048eea4b9909cce07bb68284e67799d1e2d00b0cd8e9093752afb9",
+      "file": "chapters/33.md",
+      "output_sha256": "2ccececcd2b9c99830f72b6af7c89a535e05c4e54113e532f12eb4a85544a032"
+    },
+    {
+      "chapter": 34,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/34.md",
+      "source_sha256": "034adf3c6a32cc60a5b6fc6d61b37900b589fad4677abe54275b1c2b65140a85",
+      "file": "chapters/34.md",
+      "output_sha256": "2cd52e668bff5ca8280af09f8187d21b75690c35f7d12e5e5fad525965bbf9bd"
+    },
+    {
+      "chapter": 35,
+      "source": "projects/shards-of-the-abyss/editions/2026-09-16/chapters/35.md",
+      "source_sha256": "4568bcc3f160e0956503858dfaa64525031d5b06d737a3e23e1c6279ffe538b1",
+      "file": "chapters/35.md",
+      "output_sha256": "9b642fc4f66a3ebd0abaf3c1ff4508e075cbb0ccb445095b04f0e100ee7144b3"
+    }
+  ],
+  "operations": 1163,
+  "outputs": {
+    "book-edited.md": "94a326a6346591656bb134b31236486434faed3d18905b559c016a10fb601716",
+    "shards-of-the-abyss.docx": "1a583c170137c9cc6d6a0723a72a76c245a8e64712c2a5cd2b9dd5134a8c237b",
+    "shards-of-the-abyss-edited.pdf": "6f303b0359ffa7a9e32e322a779a34e230ce6f527c3fd67023a508a137ee1455"
+  }
+}

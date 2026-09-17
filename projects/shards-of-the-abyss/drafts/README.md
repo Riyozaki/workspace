@@ -1,48 +1,50 @@
 # Читать текущую редакторскую сборку
 
-Единственный реестр текущих файлов. **Последний полный пакет — редакция16.09.2026, все35глав.** Это читаемая редакторская сборка; окончательное повторное литературное чтение после правок ещё не завершено.
+Единственный реестр текущих файлов. **Последний полный пакет — вторая редакция17.09.2026, выданная18.09, все35глав первой книги.**
 
-**[Вся книга в Markdown](../editions/2026-09-16/book-edited.md)** · **[PDF](../editions/2026-09-16/shards-of-the-abyss-edited.pdf)**
+**[DOCX](../editions/2026-09-17/shards-of-the-abyss.docx)** · **[PDF](../editions/2026-09-17/shards-of-the-abyss-edited.pdf)** · **[Вся книга в Markdown](../editions/2026-09-17/book-edited.md)**
 
-[Что изменено, источники и границы проверки](../editions/2026-09-16/completion.md) · [Точные пары](../editions/2026-09-16/before-after.md) · [Текущее состояние](../../../NOW.md).
+[Что изменено и границы проверки](../editions/2026-09-17/completion.md) · [70точных пар](../editions/2026-09-17/before-after.md) · [Первый пакет16.09](../editions/2026-09-16/README.md) · [Текущее состояние](../../../NOW.md).
+
+Техническая целостность проверена. Отдельная полная последовательная корректура всего окончательного текста и постраничный просмотр DOCX в Word не заявлены завершёнными; подробности — в передаче.
 
 ## Текущие главы1–35
 
-- [Глава 1](../editions/2026-09-16/chapters/01.md)
-- [Глава 2](../editions/2026-09-16/chapters/02.md)
-- [Глава 3](../editions/2026-09-16/chapters/03.md)
-- [Глава 4](../editions/2026-09-16/chapters/04.md)
-- [Глава 5](../editions/2026-09-16/chapters/05.md)
-- [Глава 6](../editions/2026-09-16/chapters/06.md)
-- [Глава 7](../editions/2026-09-16/chapters/07.md)
-- [Глава 8](../editions/2026-09-16/chapters/08.md)
-- [Глава 9](../editions/2026-09-16/chapters/09.md)
-- [Глава 10](../editions/2026-09-16/chapters/10.md)
-- [Глава 11](../editions/2026-09-16/chapters/11.md)
-- [Глава 12](../editions/2026-09-16/chapters/12.md)
-- [Глава 13](../editions/2026-09-16/chapters/13.md)
-- [Глава 14](../editions/2026-09-16/chapters/14.md)
-- [Глава 15](../editions/2026-09-16/chapters/15.md)
-- [Глава 16](../editions/2026-09-16/chapters/16.md)
-- [Глава 17](../editions/2026-09-16/chapters/17.md)
-- [Глава 18](../editions/2026-09-16/chapters/18.md)
-- [Глава 19](../editions/2026-09-16/chapters/19.md)
-- [Глава 20](../editions/2026-09-16/chapters/20.md)
-- [Глава 21](../editions/2026-09-16/chapters/21.md)
-- [Глава 22](../editions/2026-09-16/chapters/22.md)
-- [Глава 23](../editions/2026-09-16/chapters/23.md)
-- [Глава 24](../editions/2026-09-16/chapters/24.md)
-- [Глава 25](../editions/2026-09-16/chapters/25.md)
-- [Глава 26](../editions/2026-09-16/chapters/26.md)
-- [Глава 27](../editions/2026-09-16/chapters/27.md)
-- [Глава 28](../editions/2026-09-16/chapters/28.md)
-- [Глава 29](../editions/2026-09-16/chapters/29.md)
-- [Глава 30](../editions/2026-09-16/chapters/30.md)
-- [Глава 31](../editions/2026-09-16/chapters/31.md)
-- [Глава 32](../editions/2026-09-16/chapters/32.md)
-- [Глава 33](../editions/2026-09-16/chapters/33.md)
-- [Глава 34](../editions/2026-09-16/chapters/34.md)
-- [Глава 35](../editions/2026-09-16/chapters/35.md)
+- [Глава 1](../editions/2026-09-17/chapters/01.md)
+- [Глава 2](../editions/2026-09-17/chapters/02.md)
+- [Глава 3](../editions/2026-09-17/chapters/03.md)
+- [Глава 4](../editions/2026-09-17/chapters/04.md)
+- [Глава 5](../editions/2026-09-17/chapters/05.md)
+- [Глава 6](../editions/2026-09-17/chapters/06.md)
+- [Глава 7](../editions/2026-09-17/chapters/07.md)
+- [Глава 8](../editions/2026-09-17/chapters/08.md)
+- [Глава 9](../editions/2026-09-17/chapters/09.md)
+- [Глава 10](../editions/2026-09-17/chapters/10.md)
+- [Глава 11](../editions/2026-09-17/chapters/11.md)
+- [Глава 12](../editions/2026-09-17/chapters/12.md)
+- [Глава 13](../editions/2026-09-17/chapters/13.md)
+- [Глава 14](../editions/2026-09-17/chapters/14.md)
+- [Глава 15](../editions/2026-09-17/chapters/15.md)
+- [Глава 16](../editions/2026-09-17/chapters/16.md)
+- [Глава 17](../editions/2026-09-17/chapters/17.md)
+- [Глава 18](../editions/2026-09-17/chapters/18.md)
+- [Глава 19](../editions/2026-09-17/chapters/19.md)
+- [Глава 20](../editions/2026-09-17/chapters/20.md)
+- [Глава 21](../editions/2026-09-17/chapters/21.md)
+- [Глава 22](../editions/2026-09-17/chapters/22.md)
+- [Глава 23](../editions/2026-09-17/chapters/23.md)
+- [Глава 24](../editions/2026-09-17/chapters/24.md)
+- [Глава 25](../editions/2026-09-17/chapters/25.md)
+- [Глава 26](../editions/2026-09-17/chapters/26.md)
+- [Глава 27](../editions/2026-09-17/chapters/27.md)
+- [Глава 28](../editions/2026-09-17/chapters/28.md)
+- [Глава 29](../editions/2026-09-17/chapters/29.md)
+- [Глава 30](../editions/2026-09-17/chapters/30.md)
+- [Глава 31](../editions/2026-09-17/chapters/31.md)
+- [Глава 32](../editions/2026-09-17/chapters/32.md)
+- [Глава 33](../editions/2026-09-17/chapters/33.md)
+- [Глава 34](../editions/2026-09-17/chapters/34.md)
+- [Глава 35](../editions/2026-09-17/chapters/35.md)
 
 ## Архив прежнего реестра
 
