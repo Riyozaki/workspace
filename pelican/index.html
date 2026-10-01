@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Пеликан на велосипеде — SVG</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; padding: 48px 20px 80px;
+    background: radial-gradient(1200px 600px at 70% -10%, #17323d 0%, #0d1b21 60%);
+    color: #e8eef1; font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    display: flex; flex-direction: column; align-items: center; gap: 40px;
+  }
+  header { text-align: center; max-width: 720px; }
+  h1 { font-size: clamp(28px, 5vw, 44px); margin: 0 0 8px; letter-spacing: -0.02em; }
+  header p { color: #9fb4bd; margin: 0; }
+  .cards { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); width: 100%; max-width: 1100px; }
+  .card {
+    background: #12262e; border: 1px solid #24424d; border-radius: 18px;
+    padding: 18px; display: flex; flex-direction: column; gap: 14px;
+    box-shadow: 0 18px 40px rgba(0,0,0,.35);
+  }
+  .frame { border-radius: 12px; overflow: hidden; border: 1px solid #24424d; }
+  .frame img { display: block; width: 100%; height: auto; }
+  .frame.checker {
+    background:
+      linear-gradient(45deg, #1b3540 25%, transparent 25%, transparent 75%, #1b3540 75%),
+      linear-gradient(45deg, #1b3540 25%, #10222a 25%, #10222a 75%, #1b3540 75%);
+    background-size: 24px 24px; background-position: 0 0, 12px 12px;
+  }
+  .card h2 { margin: 0; font-size: 18px; }
+  .card p { margin: 0; color: #9fb4bd; font-size: 14px; }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  a.btn {
+    text-decoration: none; color: #06272b; background: #7fd1c0; font-weight: 600;
+    padding: 9px 14px; border-radius: 10px; font-size: 14px;
+  }
+  a.btn.ghost { background: transparent; color: #7fd1c0; border: 1px solid #2c5561; }
+  footer { color: #6d8892; font-size: 13px; }
+  code { background: #0b171c; padding: 2px 6px; border-radius: 6px; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>🚲 Пеликан на велосипеде</h1>
+    <p>Ручной вектор (без генеративных моделей): один SVG, собранный скриптом
+       <code>build_svg.py</code> — спицы и геометрия рамы считаются кодом,
+       перья и клюв нарисованы кривыми Безье.</p>
+  </header>
+
+  <div class="cards">
+    <section class="card">
+      <div class="frame"><img src="pelican-on-bicycle.svg" alt="Пеликан на велосипеде, сцена с фоном"></div>
+      <h2>Сцена с фоном</h2>
+      <p>Дорога, солнце, линии скорости и тень — готовая иллюстрация.</p>
+      <div class="actions">
+        <a class="btn" href="pelican-on-bicycle.svg" download>Скачать SVG</a>
+        <a class="btn ghost" href="pelican-on-bicycle.svg" target="_blank">Открыть как есть</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="frame checker"><img src="pelican-on-bicycle.transparent.svg" alt="Пеликан на велосипеде, прозрачный фон"></div>
+      <h2>Прозрачная версия</h2>
+      <p>Только пеликан и велосипед — для вставки куда угодно (фон — прозрачный).</p>
+      <div class="actions">
+        <a class="btn" href="pelican-on-bicycle.transparent.svg" download>Скачать SVG</a>
+        <a class="btn ghost" href="pelican-on-bicycle.transparent.svg" target="_blank">Открыть как есть</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>viewBox 1000×700 · масштабируется без потерь · регенерация: <code>python3 build_svg.py</code></footer>
+</body>
+</html>
