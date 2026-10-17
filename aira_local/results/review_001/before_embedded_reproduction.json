@@ -1,0 +1,21 @@
+{
+  "tested_at_utc": "2026-10-17T19:59:10.208Z",
+  "commit": "0cc469fb4b1bbc426e56e9539959352ecf7e01b2",
+  "scope": "Reproduction in an embedded sandbox without allow-forms, not a claim about inspecting the user browser flags",
+  "iframe_sandbox": "allow-scripts allow-same-origin",
+  "click": {
+    "messages": 0,
+    "prompt": "Посчитай 2+2",
+    "disabled": false
+  },
+  "enter": {
+    "messages": 0,
+    "prompt": "Посчитай 2+2"
+  },
+  "chat_requests": [],
+  "console": [
+    "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+    "Blocked form submission to '' because the form's frame is sandboxed and the 'allow-forms' permission is not set.",
+    "Blocked form submission to '' because the form's frame is sandboxed and the 'allow-forms' permission is not set."
+  ]
+}

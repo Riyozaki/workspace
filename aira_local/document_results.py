@@ -8,6 +8,7 @@ def j(p):return json.loads((ROOT/p).read_text())
 
 
 def main():
+ if (ROOT/'results/review_001/report.md').exists():raise SystemExit('Historical v0.1 renderer: review_001/report.md is maintained separately; original evidence must not be overwritten.')
  model=j('model_manifest.json');r=j('results/router_ablation.json');runtime=j('results/runtime_api_probes.json');browser=j('results/browser_checks.json');s=r['deployed_holdout'];train=browser['full_training_result'];testtext=(ROOT/'results/tests.txt').read_text();n=re.search(r'(\d+) passed',testtext).group(1)
  report=f'''# AIra Local Lab — первый работающий веб-прототип
 

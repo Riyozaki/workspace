@@ -91,10 +91,11 @@ def verify(require_tracked: bool = False):
                 raise RuntimeError(f"Latest delivery sealed file mismatch: {name}")
             expected_files.add(path)
             checked += 1
-        browser = read_json(delivery_root / "results/browser_checks.json")
+        verification = delivery.get("verification", {})
+        browser = read_json(delivery_root / verification.get("browser_checks", "results/browser_checks.json"))
         if not browser["all_required_checks_pass"]:
             raise RuntimeError("Latest prototype browser checks did not pass")
-        smoke = read_json(delivery_root / "results/model_smoke.json")
+        smoke = read_json(delivery_root / verification.get("model_smoke", "results/model_smoke.json"))
         if not smoke["actual_inference"]:
             raise RuntimeError("Latest prototype lacks executed real-model inference")
         # This is a completeness/integrity gate, NOT a demand to hide negative

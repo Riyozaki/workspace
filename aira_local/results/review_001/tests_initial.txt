@@ -1,0 +1,40 @@
+........................F...................................             [100%]
+=================================== FAILURES ===================================
+_ test_single_complete_expression_preserves_sign_and_operands[\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u0441\u0447\u0438\u0442\u0430\u0439: 144/12-12] _
+
+prompt = 'Пожалуйста, посчитай: 144/12', value = 12
+
+    @pytest.mark.parametrize('prompt,value',[
+     ('Посчитай -3+5',2),('-3*7',-21),('Сколько будет −3 × 7?',-21),
+     ('Calculate 1e3 + 2',1002),('Вычисли 8 ÷ 2',4),('What is (2+3)*4?',20),
+     ('42',42),('Пожалуйста, посчитай: 144/12',12),('Дай результат: (12+8)*3',60),
+     ('Мне нужен результат выражения -4+2',-2),
+    ])
+    def test_single_complete_expression_preserves_sign_and_operands(prompt,value):
+>    assert calculate(extract_expression(prompt))['value']==value
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+aira_local/tests/test_review_tools.py:13: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+text = 'Пожалуйста, посчитай: 144/12'
+
+    def extract_expression(text):
+     # Parse one complete expression after an explicit command. Never pick the
+     # longest numeric substring: that silently dropped unary minus/other operands.
+     if not isinstance(text,str):raise CalculatorError('Нужна строка выражения')
+     t=text.strip().translate(str.maketrans({'−':'-','–':'-','×':'*','÷':'/'}))
+>    if ',' in t:raise CalculatorError('Для десятичных чисел используйте точку; запятые неоднозначны.')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    aira_local.tools.CalculatorError: Для десятичных чисел используйте точку; запятые неоднозначны.
+
+aira_local/tools.py:46: CalculatorError
+=============================== warnings summary ===============================
+.venv/lib/python3.11/site-packages/starlette/testclient.py:37
+  /home/user/workspace/.venv/lib/python3.11/site-packages/starlette/testclient.py:37: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED aira_local/tests/test_review_tools.py::test_single_complete_expression_preserves_sign_and_operands[\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u0441\u0447\u0438\u0442\u0430\u0439: 144/12-12]
+1 failed, 59 passed, 1 warning in 1.75s

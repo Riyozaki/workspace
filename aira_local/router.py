@@ -5,7 +5,7 @@ No answers or tool expressions are stored in learned weights. Uncertain inputs
 abstain to the actual pretrained language model.
 """
 from __future__ import annotations
-import hashlib,json,re,time
+import hashlib,json,os,re,tempfile,time
 from pathlib import Path
 import numpy as np
 
@@ -34,7 +34,11 @@ class BudgetRouter:
  def __init__(self,kind='linear',seed=0,threshold=.9,params=None):
   if kind not in ('linear','loop'):raise ValueError(kind)
   self.kind=kind;self.seed=seed;self.threshold=threshold;r=np.random.default_rng(seed)
-  if params is not None:self.p={k:np.asarray(v,dtype=np.float32) for k,v in params.items()}
+  if params is not None:
+   self.p={k:np.asarray(v,dtype=np.float32) for k,v in params.items()}
+   shapes={'w':(DIM,3),'b':(3,)} if kind=='linear' else {'w':(DIM,24),'b':(24,),'r':(24,24),'c':(24,),'o':(24,3),'d':(3,)}
+   if set(self.p)!=set(shapes) or any(self.p[k].shape!=v or not np.isfinite(self.p[k]).all() for k,v in shapes.items()):raise ValueError('Malformed router checkpoint parameters')
+   if not np.isfinite(threshold) or not 0<=threshold<=1.01:raise ValueError('Malformed router threshold')
   elif kind=='linear':self.p={'w':r.normal(0,.03,(DIM,3)).astype(np.float32),'b':np.zeros(3,dtype=np.float32)}
   else:self.p={'w':r.normal(0,.07,(DIM,24)).astype(np.float32),'b':np.zeros(24,dtype=np.float32),'r':r.normal(0,.02,(24,24)).astype(np.float32),'c':np.zeros(24,dtype=np.float32),'o':r.normal(0,.07,(24,3)).astype(np.float32),'d':np.zeros(3,dtype=np.float32)}
  @property
@@ -74,10 +78,22 @@ class BudgetRouter:
   accepted=intent!='chat' and score>=self.threshold
   return {'predicted':intent,'selected':intent if accepted else 'chat','score':score,'threshold':self.threshold,'accepted_fast_path':accepted,'scores':{l:float(p[j]) for j,l in enumerate(LABELS)},'elapsed_ms':1000*(time.perf_counter()-t),'kind':self.kind,'parameters':self.parameters,'score_is_calibrated_probability':False}
  def save(self,path,metadata=None):
-  Path(path).parent.mkdir(parents=True,exist_ok=True);Path(path).write_text(json.dumps({'kind':self.kind,'seed':self.seed,'threshold':self.threshold,'dimension':DIM,'labels':LABELS,'params':{k:v.tolist() for k,v in self.p.items()},'metadata':metadata or {}},ensure_ascii=False,separators=(',',':'))+'\n')
+  path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+  payload=json.dumps({'kind':self.kind,'seed':self.seed,'threshold':self.threshold,'dimension':DIM,'labels':LABELS,'params':{k:v.tolist() for k,v in self.p.items()},'metadata':metadata or {}},ensure_ascii=False,separators=(',',':'))+'\n'
+  tmp=None
+  try:
+   with tempfile.NamedTemporaryFile(mode='w',encoding='utf-8',dir=path.parent,prefix=path.name+'.',suffix='.tmp',delete=False) as stream:
+    tmp=Path(stream.name);stream.write(payload);stream.flush();os.fsync(stream.fileno())
+   tmp.replace(path)
+  finally:
+   if tmp is not None and tmp.exists():tmp.unlink()
  @classmethod
  def load(cls,path):
-  d=json.loads(Path(path).read_text());return cls(d['kind'],d['seed'],d['threshold'],d['params'])
+  path=Path(path)
+  if path.stat().st_size>2000000:raise ValueError('Router checkpoint exceeds size budget')
+  d=json.loads(path.read_text())
+  if d.get('dimension')!=DIM or tuple(d.get('labels',()))!=LABELS:raise ValueError('Incompatible router checkpoint schema')
+  return cls(d['kind'],d['seed'],d['threshold'],d['params'])
 
 
 def metrics(model,rows):

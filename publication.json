@@ -22,10 +22,10 @@
     "reason": "Root README is now a latest-study navigation index. The original README is preserved byte-for-byte; original study seals, numerical sources, reports and measured results were not rewritten."
   },
   "latest_delivery": {
-    "id": "aira-local-lab-001",
+    "id": "aira-local-lab-002",
     "kind": "interactive-prototype",
     "root": "aira_local",
-    "seal": "aira_local/results/delivery_sha256.json",
+    "seal": "aira_local/results/review_001/delivery_sha256.json",
     "required": [
       "README.md",
       "report.md",
@@ -50,9 +50,33 @@
       "results/browser_checks.json",
       "results/tests.txt",
       "setup.sh",
-      "run.sh"
+      "run.sh",
+      "jobs.py",
+      "static/transport.js",
+      "browser_review.cjs",
+      "results/review_001/report.md",
+      "results/review_001/before_embedded_reproduction.json",
+      "results/review_001/browser_checks.json",
+      "results/review_001/tests_backend.txt",
+      "results/review_001/transport_tests.txt",
+      "results/review_001/model_smoke.json",
+      "results/review_001/runtime_api_probes.json",
+      "results/review_001/historical_measurements_check.json"
     ],
-    "scope": "Real pretrained LM web prototype plus a tiny intent-router/Babysit pilot. Negative router/quality findings preserved; not a new frontier model or speedup claim."
+    "scope": "Reviewed v0.2 prototype: iframe-safe sending, visible connection/protocol failures, producer-owned lifecycle and cancel/recovery regressions. No new model-quality or speedup claim.",
+    "version": "0.2.0",
+    "verification": {
+      "browser_checks": "results/review_001/browser_checks.json",
+      "model_smoke": "results/review_001/model_smoke.json"
+    }
   },
-  "latest_research_study": "competition50x"
+  "latest_research_study": "competition50x",
+  "delivery_history": [
+    {
+      "id": "aira-local-lab-001",
+      "commit": "0cc469fb4b1bbc426e56e9539959352ecf7e01b2",
+      "seal": "aira_local/results/delivery_sha256.json",
+      "scope": "Initial prototype snapshot; verify its sealed source against that historical Git commit, not the current corrected implementation. Original measured data/logs remain in place."
+    }
+  ]
 }

@@ -39,12 +39,19 @@ def calculate(expression):
 
 
 def extract_expression(text):
- # Strict arithmetic fragment, not arbitrary code or natural-language math.
- if re.search(r'\b(__\w+|import|eval|exec|open)\b',text,re.I):raise CalculatorError('Код не исполняется')
- candidates=re.findall(r'[\d(][\d\s.()+*/%\-]*',text)
- candidates=[c.strip().rstrip(' .') for c in candidates if any(op in c for op in '+-*/%')]
- if not candidates:raise CalculatorError('Не нашёл выражение. Например: «Посчитай (12+8)*3».')
- return max(candidates,key=len)
+ # Parse one complete expression after an explicit command. Never pick the
+ # longest numeric substring: that silently dropped unary minus/other operands.
+ if not isinstance(text,str):raise CalculatorError('Нужна строка выражения')
+ t=text.strip().translate(str.maketrans({'−':'-','–':'-','×':'*','÷':'/'}))
+ if re.search(r'\b(?:__\w+|import|eval|exec|open)\b',t,re.I):raise CalculatorError('Код не исполняется')
+ prefix=r'^(?:(?:пожалуйста[, ]+)?(?:посчитай|вычисли|сосчитай(?: пожалуйста)?|сколько будет|дай результат|мне нужен результат выражения)|please work out|i need the value of|calculate|compute|evaluate|what is)\b\s*[:=]?\s*'
+ t=re.sub(prefix,'',t,flags=re.I).strip().rstrip(' ?=')
+ if ',' in t:raise CalculatorError('Для десятичных чисел используйте точку; запятые неоднозначны.')
+ if not t:raise CalculatorError('Введите выражение, например: «Посчитай (-3+5)*2».')
+ try:calculate(t)
+ except CalculatorError as exc:
+  raise CalculatorError(str(exc)+' Используйте одно выражение, без дополнительного текста.') from exc
+ return t
 
 
 def search_notes(query,notes):

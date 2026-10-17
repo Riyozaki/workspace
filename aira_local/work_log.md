@@ -81,3 +81,33 @@ frontier parity. Preserve all prior frozen studies and published evidence.
   New setup-run metadata is written only to ignored artifacts/setup_run.json.
 - Frozen historical research inputs/outputs were not modified. This work is an
   interactive engineering delivery, explicitly separate from their speedups.
+
+# v0.2 review — user could not send or receive messages
+
+- Baseline snapshot:0cc469fb4b1bbc426e56e9539959352ecf7e01b2. No model training
+  or architecture-quality claim is part of this review. Original ML measurements,
+  router checkpoint/data and v0.1 test/probe outputs are preserved.
+- Reproduced exactly matching UI symptoms in sandbox iframe without allow-forms:
+  native button/Enter submit blocked,0POST requests,0message bubbles, draft unchanged.
+  User's actual browser flags were not directly inspected. Standalone v0.1 browser
+  checks did not cover this embedding mode; that test coverage was insufficient.
+- Replaced native submission with direct JS fetch. Added visible connection/model
+  errors and retry, transactional conversation history/draft restoration, bounded
+  fetches and SSE parsing, IME handling, no-store/versioned assets.
+- Refactored SSE around a bounded per-request producer job. Cleanup and model-gate
+  release no longer depend on the browser starting/finishing stream consumption.
+  Real abort-after-start and next request were tested, along with normal cancel.
+- Review found calculator unary-sign loss and ambiguous-substring extraction;
+  fixed by parsing one complete explicit expression. Unicode operators supported,
+  unsupported multiple-expression/text/comma inputs rejected rather than changed.
+- Hardened total body-read timeout, optional archive/router handling, thread-safe
+  model loading and checksum verification, atomic checkpoint persistence and limits.
+  Native cancellation remains cooperative; this is not production isolation/auth.
+- Preserved an initial new-parser test failure (comma in polite command prefix),
+  then fixed it. Final backend65tests and transport10tests pass. Injected HTML/network/
+  malformed/truncated response tests are explicitly transport fixtures, not fake LM.
+- New browser regression runs a REAL backend inside sandbox iframe, covers click,
+  Enter, actual LM tokens/tools, cancel/disconnect recovery, manual teacher job,
+  mobile and connection failures. Historical results are not overwritten.
+- Versioned delivery metadata/seal is in results/review_001, with original v0.1
+  source seal tied to its Git commit. GP/SVM frozen studies remain unchanged.

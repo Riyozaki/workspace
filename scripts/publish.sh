@@ -16,6 +16,7 @@ python3 scripts/verify_publication.py --require-tracked
 git -c core.whitespace=cr-at-eol diff --cached --check -- . \
   ':(exclude)competition50x/references/**' \
   ':(exclude)competition50x/results/**' \
+  ':(exclude)aira_local/results/**' \
   ':(exclude)competition50x/versions/**' \
   ':(exclude)research/archive/**'
 if ! git diff --cached --quiet; then

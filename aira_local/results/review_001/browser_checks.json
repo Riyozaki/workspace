@@ -1,0 +1,42 @@
+{
+  "tested_at_utc": "2026-10-17T20:33:42.478Z",
+  "browser": "HeadlessChrome/133.0.6943.0",
+  "scope": "Real local backend embedded with sandbox allow-scripts allow-same-origin; user external proxy flags not directly inspected",
+  "iframe_sandbox": "allow-scripts allow-same-origin",
+  "checks": {
+    "ready_in_embedded_preview": true,
+    "click_sends_inside_no_forms_iframe": true,
+    "enter_sends_inside_no_forms_iframe": true,
+    "ime_enter_does_not_accidentally_send": true,
+    "real_model_response_in_embedded_preview": {
+      "generated_tokens": 17,
+      "text": "The CPU (Central Processing Unit) is the brain of a computer that executes instructions."
+    },
+    "local_notes_work": true,
+    "notes_not_sent_in_model_or_calculator": true,
+    "reconnect_recovers": true,
+    "send_after_transport_failures": true,
+    "real_context_overflow_is_visible_and_does_not_poison_history": true,
+    "real_disconnect_releases_model_gate_and_next_send_works": true,
+    "cancel_releases_client_and_server": true,
+    "send_after_cancel_works": true,
+    "all_six_historical_control_runs_visible": true,
+    "actual_teacher_feedback_job_finished": {
+      "job_id": "9484038771e141c78cd404b83ec6c962",
+      "promoted": false,
+      "language_model_weights_changed": false,
+      "independent_holdout_evaluated": false
+    },
+    "mobile_no_horizontal_overflow": true
+  },
+  "fault_injection_tests": {
+    "status_network_error_visible_and_draft_kept": true,
+    "wrong_origin_html_visible": true,
+    "post_failure_restores_draft_without_poisoning_history": true,
+    "truncated_stream_releases_ui_and_preserves_history": true,
+    "stop_before_first_response_restores_draft": true
+  },
+  "browser_errors": [],
+  "blocked_form_errors": [],
+  "all_required_checks_pass": true
+}

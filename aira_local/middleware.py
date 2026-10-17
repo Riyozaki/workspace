@@ -4,7 +4,7 @@ from starlette.responses import JSONResponse
 
 
 class BodyLimitMiddleware:
- def __init__(self,app,max_bytes=131072):self.app=app;self.max_bytes=max_bytes
+ def __init__(self,app,max_bytes=131072,read_timeout=10.):self.app=app;self.max_bytes=max_bytes;self.read_timeout=read_timeout
  async def __call__(self,scope,receive,send):
   if scope['type']!='http' or scope.get('method') not in ('POST','PUT','PATCH'):
    return await self.app(scope,receive,send)
@@ -14,9 +14,11 @@ class BodyLimitMiddleware:
     return await JSONResponse({'detail':'Request exceeds the prototype input budget'},413)(scope,receive,send)
   except ValueError:
    return await JSONResponse({'detail':'Invalid content length'},400)(scope,receive,send)
-  parts=[];size=0
+  parts=[];size=0;deadline=asyncio.get_running_loop().time()+self.read_timeout
   while True:
-   try:message=await asyncio.wait_for(receive(),timeout=10.)
+   remaining=deadline-asyncio.get_running_loop().time()
+   if remaining<=0:return await JSONResponse({'detail':'Request body timeout'},408)(scope,receive,send)
+   try:message=await asyncio.wait_for(receive(),timeout=remaining)
    except asyncio.TimeoutError:return await JSONResponse({'detail':'Request body timeout'},408)(scope,receive,send)
    if message['type']=='http.disconnect':return
    chunk=message.get('body',b'');size+=len(chunk)
@@ -29,3 +31,14 @@ class BodyLimitMiddleware:
    if not delivered:delivered=True;return {'type':'http.request','body':body,'more_body':False}
    return await receive()
   await self.app(scope,bounded_receive,send)
+
+
+class NoStoreHeaders:
+ def __init__(self,app,version):self.app=app;self.version=version
+ async def __call__(self,scope,receive,send):
+  async def response_send(message):
+   if message['type']=='http.response.start' and (scope.get('path')=='/' or scope.get('path','').startswith(('/api/','/static/'))):
+    headers=[(k,v) for k,v in message.get('headers',[]) if k.lower() not in (b'cache-control',b'x-aira-version')]
+    headers.extend([(b'cache-control',b'no-store'),(b'x-aira-version',self.version.encode())]);message={**message,'headers':headers}
+   await send(message)
+  await self.app(scope,receive,response_send)
