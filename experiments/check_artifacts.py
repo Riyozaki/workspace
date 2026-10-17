@@ -63,6 +63,23 @@ def main():
     mean_gap = sum(gaps) / len(gaps)
     if abs(mean_gap - summ["gap_pp"]["mean"]) > 1e-9:
         fail(f"gap mismatch: {mean_gap} vs {summ['gap_pp']['mean']}")
+    # 6) extra timing seeds + combined speedup consistency
+    ex_path = RES / "timings_extra.csv"
+    if ex_path.exists():
+        ex = list(csv.DictReader(open(ex_path)))
+        for r in ex:
+            if int(r["seed"]) not in seeds:
+                fail(f"extra timing seed {r['seed']} has no quality results")
+        by = {(int(r["seed"]), r["name"]): float(r["p2_ms_per_item"])
+              for r in tm if int(r["batch"]) == 1024}
+        base = [by[(sd, "teacher")] / by[(sd, f"distillprune_{chosen.replace('-', 'x')}")]
+                for sd in timing_seeds]
+        combined = base + [float(r["p2_speedup"]) for r in ex]
+        m = sum(combined) / len(combined)
+        got = summ["speedup_batch1024_P2_all_seeds"]["mean"]
+        if abs(m - got) > 1e-9:
+            fail(f"combined speedup mismatch: {m} vs {got}")
+        print(f"combined P2 batch1024 speedup: {m:.3f}x over n={len(combined)} seeds")
     print(f"checks OK: {len(rows)} evaluated models, {len(tm)} timing rows, "
           f"mean gap {mean_gap:.3f} pp, speedup b1024 {summ['speedup']['batch1024_P2'][0]:.2f}x")
 
