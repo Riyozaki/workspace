@@ -143,6 +143,15 @@ def main():
                        "P2_preprocessing_free_ceiling": p2_ceiling,
                        "share_of_P1_accounted_by_preprocessing": r["student_pre_ms"] /
                            (r["student_fwd_ms"] + r["student_pre_ms"])})
+    # extra seeds measured only at batch 1024 (same code path)
+    extra_p2 = []
+    ex_path = RES / "timings_extra.csv"
+    if ex_path.exists():
+        ex = list(csv.DictReader(open(ex_path)))
+        extra_p2 = [float(r["p2_speedup"]) for r in ex]
+        extra_p1 = [float(r["p1_speedup"]) for r in ex]
+    combined = [r["p2_speedup"] for r in timing_rows if r["batch"] == 1024] + extra_p2
+    comb_stats = mean_ci(combined) if combined else (float("nan"),) * 3 + (0,)
     summary = {
         "chosen_width": chosen, "n_seeds": gn, "seeds": seeds,
         "baseline_test_acc": {"mean": tm, "sd": tsd, "ci95": th},
@@ -151,6 +160,9 @@ def main():
         "speedup": {"batch1024_P2": s1024_p2, "batch1024_P1": s1024_p1,
                     "batch256_P2": s256_p2, "batch1_P2": s1_p2,
                     "forward_only_batch1024": s1024_f},
+        "speedup_batch1024_P2_all_seeds": {"mean": comb_stats[0], "sd": comb_stats[1],
+                                           "ci95": comb_stats[2], "n": comb_stats[3],
+                                           "seeds": [r["seed"] for r in timing_rows if r["batch"] == 1024] + [3, 4][:len(extra_p2)]},
         "flops_ratio": method[seeds[0]]["flops_ratio_vs_teacher"],
         "ablations_test_acc": abl_summary,
         "amdahl": amdahl,
@@ -169,6 +181,8 @@ def main():
                     ("P2 batch 256", s256_p2), ("P2 batch 1", s1_p2),
                     ("forward only b1024", s1024_f)):
         print(f"{name:20s}: {v[0]:.2f}x  sd {v[1]:.2f}  ci95 ±{v[2]:.2f}  (n={v[3]})")
+    print(f"P2 batch 1024, all seeds: {comb_stats[0]:.2f}x sd {comb_stats[1]:.2f} "
+          f"ci95 ±{comb_stats[2]:.2f} (n={comb_stats[3]})")
     print("\n=== AMDAHL (batch 1024, measured components) ===")
     for a in amdahl:
         print(f"seed {a['seed']}: P1 measured {a['measured_P1_speedup']:.2f}x "
