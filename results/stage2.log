@@ -1,0 +1,113 @@
+seed 0
+  prune_only 0.5838
+  epoch  1/30  ce=0.476  val_acc=0.8776  t=1.1s
+  epoch  2/30  ce=0.310  val_acc=0.8806  t=2.2s
+  epoch  3/30  ce=0.265  val_acc=0.8898  t=3.3s
+  epoch  4/30  ce=0.236  val_acc=0.8904  t=4.4s
+  epoch  5/30  ce=0.214  val_acc=0.8918  t=5.4s
+  epoch  6/30  ce=0.199  val_acc=0.8904  t=6.6s
+  epoch  7/30  ce=0.186  val_acc=0.8904  t=7.7s
+  epoch  8/30  ce=0.176  val_acc=0.8924  t=8.9s
+  epoch  9/30  ce=0.166  val_acc=0.8914  t=10.0s
+  epoch 10/30  ce=0.159  val_acc=0.8960  t=11.1s
+  epoch 11/30  ce=0.151  val_acc=0.8962  t=12.3s
+  epoch 12/30  ce=0.145  val_acc=0.8986  t=13.3s
+  epoch 13/30  ce=0.140  val_acc=0.8984  t=14.4s
+  epoch 14/30  ce=0.136  val_acc=0.8972  t=15.5s
+  epoch 15/30  ce=0.131  val_acc=0.8972  t=16.6s
+  epoch 16/30  ce=0.127  val_acc=0.8986  t=17.6s
+  epoch 17/30  ce=0.123  val_acc=0.8968  t=18.7s
+  epoch 18/30  ce=0.120  val_acc=0.8990  t=19.9s
+  epoch 19/30  ce=0.117  val_acc=0.8984  t=20.9s
+  epoch 20/30  ce=0.115  val_acc=0.8984  t=22.0s
+  epoch 21/30  ce=0.112  val_acc=0.8984  t=23.1s
+  epoch 22/30  ce=0.110  val_acc=0.8992  t=24.3s
+  epoch 23/30  ce=0.108  val_acc=0.8974  t=25.4s
+  epoch 24/30  ce=0.107  val_acc=0.8980  t=26.5s
+  epoch 25/30  ce=0.106  val_acc=0.8990  t=27.5s
+  epoch 26/30  ce=0.105  val_acc=0.8980  t=28.6s
+  epoch 27/30  ce=0.104  val_acc=0.9000  t=29.6s
+  epoch 28/30  ce=0.103  val_acc=0.8992  t=30.7s
+  epoch 29/30  ce=0.103  val_acc=0.8986  t=31.8s
+  epoch 30/30  ce=0.102  val_acc=0.8992  t=32.8s
+  randomprune 0.8992
+seed 1
+  prune_only 0.5382
+  epoch  1/30  ce=0.475  val_acc=0.8752  t=1.2s
+  epoch  2/30  ce=0.303  val_acc=0.8862  t=2.3s
+  epoch  3/30  ce=0.258  val_acc=0.8882  t=3.5s
+  epoch  4/30  ce=0.228  val_acc=0.8908  t=4.7s
+  epoch  5/30  ce=0.209  val_acc=0.8982  t=5.8s
+  epoch  6/30  ce=0.194  val_acc=0.8914  t=7.0s
+  epoch  7/30  ce=0.183  val_acc=0.8928  t=8.3s
+  epoch  8/30  ce=0.171  val_acc=0.8944  t=9.4s
+  epoch  9/30  ce=0.163  val_acc=0.8956  t=10.6s
+  epoch 10/30  ce=0.155  val_acc=0.8944  t=11.8s
+  epoch 11/30  ce=0.150  val_acc=0.8958  t=12.9s
+  epoch 12/30  ce=0.143  val_acc=0.8960  t=14.1s
+  epoch 13/30  ce=0.139  val_acc=0.8990  t=15.2s
+  epoch 14/30  ce=0.134  val_acc=0.9002  t=16.3s
+  epoch 15/30  ce=0.130  val_acc=0.8974  t=17.4s
+  epoch 16/30  ce=0.125  val_acc=0.8982  t=18.6s
+  epoch 17/30  ce=0.122  val_acc=0.8982  t=19.8s
+  epoch 18/30  ce=0.120  val_acc=0.9004  t=21.0s
+  epoch 19/30  ce=0.117  val_acc=0.9008  t=22.1s
+  epoch 20/30  ce=0.114  val_acc=0.8980  t=23.2s
+  epoch 21/30  ce=0.112  val_acc=0.8982  t=24.3s
+  epoch 22/30  ce=0.110  val_acc=0.8978  t=25.5s
+  epoch 23/30  ce=0.108  val_acc=0.8980  t=26.6s
+  epoch 24/30  ce=0.106  val_acc=0.8982  t=27.7s
+  epoch 25/30  ce=0.105  val_acc=0.8986  t=28.8s
+  epoch 26/30  ce=0.104  val_acc=0.8994  t=29.9s
+  epoch 27/30  ce=0.103  val_acc=0.8994  t=31.0s
+  epoch 28/30  ce=0.103  val_acc=0.8998  t=32.1s
+  epoch 29/30  ce=0.102  val_acc=0.8996  t=33.2s
+  epoch 30/30  ce=0.102  val_acc=0.8992  t=34.3s
+  randomprune 0.8992
+seed 2
+  prune_only 0.5184
+  epoch  1/30  ce=0.484  val_acc=0.8766  t=1.1s
+  epoch  2/30  ce=0.306  val_acc=0.8828  t=2.4s
+  epoch  3/30  ce=0.259  val_acc=0.8816  t=3.6s
+  epoch  4/30  ce=0.230  val_acc=0.8894  t=4.7s
+  epoch  5/30  ce=0.209  val_acc=0.8920  t=5.9s
+  epoch  6/30  ce=0.195  val_acc=0.8924  t=7.1s
+  epoch  7/30  ce=0.182  val_acc=0.8890  t=8.4s
+  epoch  8/30  ce=0.172  val_acc=0.8940  t=9.6s
+  epoch  9/30  ce=0.163  val_acc=0.8950  t=10.8s
+  epoch 10/30  ce=0.155  val_acc=0.8968  t=11.9s
+  epoch 11/30  ce=0.150  val_acc=0.8944  t=13.4s
+  epoch 12/30  ce=0.143  val_acc=0.8978  t=14.6s
+  epoch 13/30  ce=0.138  val_acc=0.8978  t=15.8s
+  epoch 14/30  ce=0.133  val_acc=0.8958  t=17.0s
+  epoch 15/30  ce=0.129  val_acc=0.8946  t=18.2s
+  epoch 16/30  ce=0.125  val_acc=0.8972  t=19.4s
+  epoch 17/30  ce=0.121  val_acc=0.8958  t=20.6s
+  epoch 18/30  ce=0.119  val_acc=0.8948  t=22.0s
+  epoch 19/30  ce=0.116  val_acc=0.8964  t=23.3s
+  epoch 20/30  ce=0.113  val_acc=0.8962  t=24.7s
+  epoch 21/30  ce=0.111  val_acc=0.8956  t=26.0s
+  epoch 22/30  ce=0.109  val_acc=0.8970  t=27.2s
+  epoch 23/30  ce=0.107  val_acc=0.8972  t=28.4s
+  epoch 24/30  ce=0.106  val_acc=0.8956  t=29.8s
+  epoch 25/30  ce=0.104  val_acc=0.8978  t=31.0s
+  epoch 26/30  ce=0.103  val_acc=0.8968  t=32.2s
+  epoch 27/30  ce=0.103  val_acc=0.8962  t=33.3s
+  epoch 28/30  ce=0.102  val_acc=0.8970  t=34.5s
+  epoch 29/30  ce=0.101  val_acc=0.8974  t=35.8s
+  epoch 30/30  ce=0.101  val_acc=0.8978  t=36.9s
+  randomprune 0.8978
+done
+wrote /home/user/workspace/results/test_metrics.csv (32 models)
+selected width: 160-96
+seed 0: teacher 0.9038 -> student 0.8936 (gap +1.02 pp, 13.1x FLOPs)
+seed 1: teacher 0.9008 -> student 0.8954 (gap +0.54 pp, 13.1x FLOPs)
+seed 2: teacher 0.9009 -> student 0.8971 (gap +0.38 pp, 13.1x FLOPs)
+mean gap +0.65 pp, sd 0.33
+benchmarking 6 models; chosen width 160-96
+Traceback (most recent call last):
+  File "/home/user/workspace/experiments/bench.py", line 159, in <module>
+    main()
+  File "/home/user/workspace/experiments/bench.py", line 116, in main
+    raise RuntimeError(f"folded pipeline mismatch for {meta['name']}: {agree}")
+RuntimeError: folded pipeline mismatch for distillprune_160x96: 0.8388671875

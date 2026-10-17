@@ -1,0 +1,20 @@
+benchmarking 6 models; chosen width 160-96
+batch=   1 distillprune_160x96              P1=0.0256 P2=0.0198 ms/item  pre=0.004 fwd=0.017 ms
+batch=   1 teacher                          P1=0.1872 P2=0.1778 ms/item  pre=0.005 fwd=0.181 ms
+batch=   1 distillprune_160x96              P1=0.0257 P2=0.0209 ms/item  pre=0.005 fwd=0.017 ms
+batch=   1 teacher                          P1=0.1985 P2=0.1937 ms/item  pre=0.009 fwd=0.205 ms
+batch=   1 distillprune_160x96              P1=0.0249 P2=0.0195 ms/item  pre=0.005 fwd=0.017 ms
+batch=   1 teacher                          P1=0.1666 P2=0.1683 ms/item  pre=0.007 fwd=0.150 ms
+batch= 256 distillprune_160x96              P1=0.0030 P2=0.0024 ms/item  pre=0.125 fwd=0.521 ms
+batch= 256 teacher                          P1=0.0277 P2=0.0302 ms/item  pre=0.128 fwd=7.571 ms
+batch= 256 distillprune_160x96              P1=0.0031 P2=0.0026 ms/item  pre=0.129 fwd=0.532 ms
+batch= 256 teacher                          P1=0.0277 P2=0.0265 ms/item  pre=0.125 fwd=5.847 ms
+batch= 256 distillprune_160x96              P1=0.0029 P2=0.0024 ms/item  pre=0.128 fwd=0.517 ms
+batch= 256 teacher                          P1=0.0259 P2=0.0257 ms/item  pre=0.134 fwd=5.864 ms
+batch=1024 distillprune_160x96              P1=0.0032 P2=0.0022 ms/item  pre=0.608 fwd=2.109 ms
+batch=1024 teacher                          P1=0.0221 P2=0.0220 ms/item  pre=0.636 fwd=21.354 ms
+batch=1024 distillprune_160x96              P1=0.0033 P2=0.0022 ms/item  pre=0.616 fwd=1.847 ms
+batch=1024 teacher                          P1=0.0230 P2=0.0227 ms/item  pre=0.618 fwd=21.718 ms
+batch=1024 distillprune_160x96              P1=0.0032 P2=0.0022 ms/item  pre=0.611 fwd=1.867 ms
+batch=1024 teacher                          P1=0.0228 P2=0.0221 ms/item  pre=0.643 fwd=21.803 ms
+wrote /home/user/workspace/results/timings.csv

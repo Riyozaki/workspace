@@ -1,0 +1,75 @@
+{'x_train': (55000, 784), 'y_train': (55000,), 'x_val': (5000, 784), 'y_val': (5000,), 'x_test': (10000, 784), 'y_test': (10000,), 'x_test_raw': (10000, 784), 'mean': (), 'std': ()}
+
+=== lr=0.0005 dropout=0.0 ===
+  epoch  1/15  ce=0.449  val_acc=0.8724  t=13.5s
+  epoch  2/15  ce=0.316  val_acc=0.8694  t=26.5s
+  epoch  3/15  ce=0.273  val_acc=0.8782  t=39.0s
+  epoch  4/15  ce=0.236  val_acc=0.8848  t=50.8s
+  epoch  5/15  ce=0.205  val_acc=0.8884  t=62.4s
+  epoch  6/15  ce=0.178  val_acc=0.8916  t=74.7s
+  epoch  7/15  ce=0.151  val_acc=0.8908  t=86.6s
+  epoch  8/15  ce=0.127  val_acc=0.8994  t=98.2s
+  epoch  9/15  ce=0.104  val_acc=0.8984  t=109.5s
+  epoch 10/15  ce=0.084  val_acc=0.8982  t=121.0s
+  epoch 11/15  ce=0.068  val_acc=0.9016  t=132.6s
+  epoch 12/15  ce=0.056  val_acc=0.8986  t=144.2s
+  epoch 13/15  ce=0.047  val_acc=0.9000  t=156.0s
+  epoch 14/15  ce=0.042  val_acc=0.9008  t=168.2s
+  epoch 15/15  ce=0.039  val_acc=0.9014  t=180.2s
+{"lr": 0.0005, "dropout": 0.0, "val_acc": 0.9014, "val_f1": 0.9005013600742997, "val_ece": 0.04999639108777046, "train_wall_s": 180.223534953, "per_epoch_s": 12.0149023302, "val_curve": [0.8724, 0.8694, 0.8782, 0.8848, 0.8884, 0.8916, 0.8908, 0.8994, 0.8984, 0.8982, 0.9016, 0.8986, 0.9, 0.9008, 0.9014]}
+
+=== lr=0.0005 dropout=0.2 ===
+  epoch  1/15  ce=0.500  val_acc=0.8654  t=12.9s
+  epoch  2/15  ce=0.358  val_acc=0.8694  t=26.0s
+  epoch  3/15  ce=0.318  val_acc=0.8796  t=39.4s
+  epoch  4/15  ce=0.288  val_acc=0.8860  t=53.0s
+  epoch  5/15  ce=0.263  val_acc=0.8858  t=66.1s
+  epoch  6/15  ce=0.241  val_acc=0.8918  t=78.8s
+  epoch  7/15  ce=0.220  val_acc=0.8948  t=91.4s
+  epoch  8/15  ce=0.198  val_acc=0.8964  t=104.4s
+  epoch  9/15  ce=0.180  val_acc=0.8988  t=117.3s
+  epoch 10/15  ce=0.163  val_acc=0.9006  t=129.7s
+  epoch 11/15  ce=0.147  val_acc=0.8986  t=143.6s
+  epoch 12/15  ce=0.133  val_acc=0.9048  t=156.9s
+  epoch 13/15  ce=0.125  val_acc=0.9016  t=170.3s
+  epoch 14/15  ce=0.118  val_acc=0.9032  t=183.2s
+  epoch 15/15  ce=0.115  val_acc=0.9030  t=195.7s
+{"lr": 0.0005, "dropout": 0.2, "val_acc": 0.903, "val_f1": 0.9019301902155519, "val_ece": 0.03225656082034111, "train_wall_s": 195.72430122599997, "per_epoch_s": 13.048286748399997, "val_curve": [0.8654, 0.8694, 0.8796, 0.886, 0.8858, 0.8918, 0.8948, 0.8964, 0.8988, 0.9006, 0.8986, 0.9048, 0.9016, 0.9032, 0.903]}
+
+=== lr=0.001 dropout=0.0 ===
+  epoch  1/15  ce=0.465  val_acc=0.8664  t=12.3s
+  epoch  2/15  ce=0.327  val_acc=0.8556  t=24.8s
+  epoch  3/15  ce=0.289  val_acc=0.8762  t=37.6s
+  epoch  4/15  ce=0.254  val_acc=0.8794  t=50.4s
+  epoch  5/15  ce=0.230  val_acc=0.8864  t=63.1s
+  epoch  6/15  ce=0.204  val_acc=0.8898  t=75.8s
+  epoch  7/15  ce=0.178  val_acc=0.8934  t=88.9s
+  epoch  8/15  ce=0.150  val_acc=0.8914  t=103.1s
+  epoch  9/15  ce=0.127  val_acc=0.8990  t=117.6s
+  epoch 10/15  ce=0.103  val_acc=0.8976  t=131.5s
+  epoch 11/15  ce=0.084  val_acc=0.8996  t=145.0s
+  epoch 12/15  ce=0.068  val_acc=0.8964  t=158.8s
+  epoch 13/15  ce=0.056  val_acc=0.8996  t=172.2s
+  epoch 14/15  ce=0.049  val_acc=0.9030  t=185.4s
+  epoch 15/15  ce=0.045  val_acc=0.9016  t=198.9s
+{"lr": 0.001, "dropout": 0.0, "val_acc": 0.9016, "val_f1": 0.9006700724955042, "val_ece": 0.05166677194237709, "train_wall_s": 198.884971338, "per_epoch_s": 13.2589980892, "val_curve": [0.8664, 0.8556, 0.8762, 0.8794, 0.8864, 0.8898, 0.8934, 0.8914, 0.899, 0.8976, 0.8996, 0.8964, 0.8996, 0.903, 0.9016]}
+
+=== lr=0.001 dropout=0.2 ===
+  epoch  1/15  ce=0.509  val_acc=0.8598  t=12.7s
+  epoch  2/15  ce=0.367  val_acc=0.8650  t=25.9s
+  epoch  3/15  ce=0.329  val_acc=0.8722  t=39.7s
+  epoch  4/15  ce=0.302  val_acc=0.8782  t=53.8s
+  epoch  5/15  ce=0.282  val_acc=0.8830  t=68.2s
+  epoch  6/15  ce=0.262  val_acc=0.8800  t=82.2s
+  epoch  7/15  ce=0.239  val_acc=0.8906  t=96.7s
+  epoch  8/15  ce=0.217  val_acc=0.8918  t=110.6s
+  epoch  9/15  ce=0.199  val_acc=0.8964  t=123.9s
+  epoch 10/15  ce=0.177  val_acc=0.8988  t=137.7s
+  epoch 11/15  ce=0.159  val_acc=0.8996  t=151.3s
+  epoch 12/15  ce=0.143  val_acc=0.9016  t=165.2s
+  epoch 13/15  ce=0.132  val_acc=0.9030  t=179.1s
+  epoch 14/15  ce=0.123  val_acc=0.9034  t=192.8s
+  epoch 15/15  ce=0.121  val_acc=0.9034  t=206.9s
+{"lr": 0.001, "dropout": 0.2, "val_acc": 0.9034, "val_f1": 0.9021331377927402, "val_ece": 0.03483429925441742, "train_wall_s": 206.9484481190001, "per_epoch_s": 13.796563207933339, "val_curve": [0.8598, 0.865, 0.8722, 0.8782, 0.883, 0.88, 0.8906, 0.8918, 0.8964, 0.8988, 0.8996, 0.9016, 0.903, 0.9034, 0.9034]}
+
+BEST: {"lr": 0.001, "dropout": 0.2, "val_acc": 0.9034, "val_f1": 0.9021331377927402, "val_ece": 0.03483429925441742, "train_wall_s": 206.9484481190001, "per_epoch_s": 13.796563207933339, "val_curve": [0.8598, 0.865, 0.8722, 0.8782, 0.883, 0.88, 0.8906, 0.8918, 0.8964, 0.8988, 0.8996, 0.9016, 0.903, 0.9034, 0.9034]}

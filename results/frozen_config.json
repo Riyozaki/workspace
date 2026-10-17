@@ -1,0 +1,7 @@
+{
+  "lr": 0.001,
+  "dropout": 0.2,
+  "student_lr": 0.001,
+  "source": "results/phase1_grid.json (validation only)",
+  "frozen_at": "2026-10-17T12:31:44Z"
+}

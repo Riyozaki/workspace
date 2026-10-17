@@ -1,0 +1,38 @@
+{
+  "chosen_width": "160-96",
+  "reason": "smallest width with val gap <= 0.5pp and >=10x FLOPs",
+  "by_width": {
+    "96-64": {
+      "mean_val_gap_pp": 0.9333333333333341,
+      "max_val_gap_pp": 1.1800000000000033,
+      "n": 3,
+      "flops_ratio": 22.689547581903277
+    },
+    "128-64": {
+      "mean_val_gap_pp": 0.726666666666668,
+      "max_val_gap_pp": 0.9400000000000075,
+      "n": 3,
+      "flops_ratio": 17.050410316529895
+    },
+    "160-96": {
+      "mean_val_gap_pp": 0.4933333333333345,
+      "max_val_gap_pp": 0.6200000000000094,
+      "n": 3,
+      "flops_ratio": 13.132279909706547
+    },
+    "192-128": {
+      "mean_val_gap_pp": 0.3066666666666662,
+      "max_val_gap_pp": 0.36000000000000476,
+      "n": 3,
+      "flops_ratio": 10.554426705370101
+    },
+    "224-160": {
+      "mean_val_gap_pp": 0.1999999999999965,
+      "max_val_gap_pp": 0.28000000000000247,
+      "n": 3,
+      "flops_ratio": 8.737759086812856
+    }
+  },
+  "selection_data": "validation split only",
+  "n_seeds": 3
+}
