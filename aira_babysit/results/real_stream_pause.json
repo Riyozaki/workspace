@@ -1,0 +1,10 @@
+{
+  "scope": "Test instrumentation requests pause at the first real HTTP stream checkpoint; native student/API is NOT mocked",
+  "run_id": "eb9659a9b44c416e",
+  "paused_inside_real_stream": true,
+  "committed_before_pause": 0,
+  "unique_committed_after_resume": 2,
+  "final_status": "WAITING_TRAINING",
+  "training_executed": false,
+  "all_checks_pass": true
+}

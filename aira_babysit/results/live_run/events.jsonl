@@ -1,0 +1,33 @@
+{"kind":"created","payload":{"config":{"budget_seconds":3600,"checkpoint_every":1,"max_examples":12,"max_new_tokens":48,"max_train_steps":100,"seed":20261017,"student_model_sha256":"b179c9523d0e6a0f98a330c7562b682750a6f8c8c15e5bc70ea373728110db53","student_url":"http://127.0.0.1:8000","teacher":"verified_offline","training_backend":"kaggle_handoff"},"spec_sha256":"ac2d5b99f707f623ad7ce049ddecc8f6fa803d77a29a35c8da22339cb2600f98"},"run_id":"f270246ca9e74222","seq":53,"utc_unix":1792272995.122478}
+{"kind":"state","payload":{"error":null,"status":"COLLECTING"},"run_id":"f270246ca9e74222","seq":54,"utc_unix":1792272995.2638266}
+{"kind":"student_attempt_start","payload":{"task_id":"train-00000"},"run_id":"f270246ca9e74222","seq":55,"utc_unix":1792272995.26815}
+{"kind":"episode_committed","payload":{"student_pass":false,"task_id":"train-00000"},"run_id":"f270246ca9e74222","seq":56,"utc_unix":1792272996.2555516}
+{"kind":"control_requested","payload":{"action":"pause"},"run_id":"f270246ca9e74222","seq":57,"utc_unix":1792272996.4009666}
+{"kind":"state","payload":{"error":null,"status":"PAUSED"},"run_id":"f270246ca9e74222","seq":58,"utc_unix":1792272996.4228585}
+{"kind":"control_requested","payload":{"action":"resume"},"run_id":"f270246ca9e74222","seq":59,"utc_unix":1792272996.7912886}
+{"kind":"state","payload":{"error":null,"status":"COLLECTING"},"run_id":"f270246ca9e74222","seq":60,"utc_unix":1792272996.8433836}
+{"kind":"student_attempt_start","payload":{"task_id":"train-00001"},"run_id":"f270246ca9e74222","seq":61,"utc_unix":1792272996.8513691}
+{"kind":"episode_committed","payload":{"student_pass":false,"task_id":"train-00001"},"run_id":"f270246ca9e74222","seq":62,"utc_unix":1792272997.9499943}
+{"kind":"student_attempt_start","payload":{"task_id":"train-00002"},"run_id":"f270246ca9e74222","seq":63,"utc_unix":1792272998.1665618}
+{"kind":"episode_committed","payload":{"student_pass":false,"task_id":"train-00002"},"run_id":"f270246ca9e74222","seq":64,"utc_unix":1792272999.0757887}
+{"kind":"student_attempt_start","payload":{"task_id":"train-00003"},"run_id":"f270246ca9e74222","seq":65,"utc_unix":1792272999.2924347}
+{"kind":"episode_committed","payload":{"student_pass":false,"task_id":"train-00003"},"run_id":"f270246ca9e74222","seq":66,"utc_unix":1792273000.4891996}
+{"kind":"student_attempt_start","payload":{"task_id":"train-00004"},"run_id":"f270246ca9e74222","seq":67,"utc_unix":1792273000.7092764}
+{"kind":"episode_committed","payload":{"student_pass":false,"task_id":"train-00004"},"run_id":"f270246ca9e74222","seq":68,"utc_unix":1792273001.610749}
+{"kind":"student_attempt_start","payload":{"task_id":"train-00005"},"run_id":"f270246ca9e74222","seq":69,"utc_unix":1792273001.8296673}
+{"kind":"episode_committed","payload":{"student_pass":false,"task_id":"train-00005"},"run_id":"f270246ca9e74222","seq":70,"utc_unix":1792273003.1162732}
+{"kind":"student_attempt_start","payload":{"task_id":"train-00006"},"run_id":"f270246ca9e74222","seq":71,"utc_unix":1792273003.3345912}
+{"kind":"episode_committed","payload":{"student_pass":false,"task_id":"train-00006"},"run_id":"f270246ca9e74222","seq":72,"utc_unix":1792273004.532502}
+{"kind":"student_attempt_start","payload":{"task_id":"train-00007"},"run_id":"f270246ca9e74222","seq":73,"utc_unix":1792273004.7497413}
+{"kind":"episode_committed","payload":{"student_pass":false,"task_id":"train-00007"},"run_id":"f270246ca9e74222","seq":74,"utc_unix":1792273005.8818185}
+{"kind":"student_attempt_start","payload":{"task_id":"train-00008"},"run_id":"f270246ca9e74222","seq":75,"utc_unix":1792273006.099926}
+{"kind":"episode_committed","payload":{"student_pass":false,"task_id":"train-00008"},"run_id":"f270246ca9e74222","seq":76,"utc_unix":1792273007.5328991}
+{"kind":"student_attempt_start","payload":{"task_id":"train-00009"},"run_id":"f270246ca9e74222","seq":77,"utc_unix":1792273007.7508388}
+{"kind":"episode_committed","payload":{"student_pass":false,"task_id":"train-00009"},"run_id":"f270246ca9e74222","seq":78,"utc_unix":1792273008.5515633}
+{"kind":"student_attempt_start","payload":{"task_id":"train-00010"},"run_id":"f270246ca9e74222","seq":79,"utc_unix":1792273008.769228}
+{"kind":"episode_committed","payload":{"student_pass":false,"task_id":"train-00010"},"run_id":"f270246ca9e74222","seq":80,"utc_unix":1792273009.3366592}
+{"kind":"student_attempt_start","payload":{"task_id":"train-00011"},"run_id":"f270246ca9e74222","seq":81,"utc_unix":1792273009.5569556}
+{"kind":"episode_committed","payload":{"student_pass":false,"task_id":"train-00011"},"run_id":"f270246ca9e74222","seq":82,"utc_unix":1792273010.494311}
+{"kind":"state","payload":{"error":null,"status":"PACKAGING"},"run_id":"f270246ca9e74222","seq":83,"utc_unix":1792273010.713463}
+{"kind":"state","payload":{"error":"Real training backend/checkpoint not available locally. GGUF inference is not SFT.","status":"WAITING_TRAINING"},"run_id":"f270246ca9e74222","seq":84,"utc_unix":1792273010.7310252}
+{"kind":"training_handoff_ready","payload":{"bundle_bytes":12218,"bundle_sha256":"495698e56425408ae6f6555ff0b79200dd354639a3bc945e7bdcd5824f984bda","learning_cycle_complete":false,"notebook_sha256":"b09b6bed7c494146ac9dbc9b3b726dd94b66e02ecb9c9b68df01488cffd96e9d","promotion_performed":false,"reason":"Real training backend/checkpoint not available locally. GGUF inference is not SFT.","run_id":"f270246ca9e74222","status":"WAITING_TRAINING","student_calls_committed":12,"student_failures":12,"student_passes":0,"train_records":12,"training_executed":false},"run_id":"f270246ca9e74222","seq":85,"utc_unix":1792273010.7329137}

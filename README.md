@@ -1,5 +1,31 @@
 # AIra — текущий локальный прототип и архив исследований
 
+## Новый компонент: AI Babysit Auto Runs
+
+**Рабочий автономный data-worker и панель управления — не уже замкнутый цикл обучения.**
+
+- **[Описание/команды](aira_babysit/README.md)**, **[фактический статус](aira_babysit/results/report.md)**.
+- [Контракт автономной сессии](aira_babysit/AUTONOMOUS_SESSION.md), [протокол](aira_babysit/PROTOCOL.md).
+- [Реальные browser/worker проверки](aira_babysit/results/browser_checks.json), [smoke](aira_babysit/results/live_smoke.json).
+
+```bash
+# Student server должен уже работать: bash aira_local/run.sh
+bash aira_babysit/run.sh
+# Либо один автономный запуск с верхним бюджетом час:
+.venv/bin/python -m aira_babysit run --budget-seconds 3600 --max-examples 128
+```
+
+В Arena: **Live Preview → AI Babysit — Auto Runs**, порт8001. Чат остаётся на8000.
+Бюджет, pause/stop/resume, SQLite checkpoints, frozen hashes и real student calls
+проверены. Реальный12-example run был приостановлен после1 committed записи,
+возобновлён без duplicate commits и завершил data-phase в **WAITING_TRAINING**.
+
+Текущий учитель — узкая проверяемая синтетика, **не сильный API-учитель и не текущий чат**.
+Пакет/точно-hashed Kaggle notebook создаются, но GPU-тренировка здесь не запускалась.
+`training_executed=false`, `learning_cycle_complete=false`; candidate evaluation,
+импорт/promotion и повторные учебные раунды ещё не реализованы. Worker прекращает
+работу, если нет следующего backend, а не симулирует «работал час».
+
 ## Актуальная работа: AIra Local Lab v0.2
 
 **Работающий веб-прототип с настоящей маленькой языковой моделью на CPU. Это ещё не новая языковая архитектура AIra и не агент уровня сильной облачной модели.**

@@ -1,0 +1,7 @@
+{
+  "bundle_valid": true,
+  "train_records": 12,
+  "development_records": 6,
+  "training_executed": false,
+  "gpu_run_verified": false
+}

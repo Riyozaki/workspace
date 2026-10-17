@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: LF stream survives arbitrary byte-decoded text chunk boundaries
+ok 1 - LF stream survives arbitrary byte-decoded text chunk boundaries
+  ---
+  duration_ms: 1.777389
+  type: 'test'
+  ...
+# Subtest: CRLF separators split across chunks and final frame without delimiter
+ok 2 - CRLF separators split across chunks and final frame without delimiter
+  ---
+  duration_ms: 0.302749
+  type: 'test'
+  ...
+# Subtest: SSE heartbeats and multi-line JSON data
+ok 3 - SSE heartbeats and multi-line JSON data
+  ---
+  duration_ms: 0.288324
+  type: 'test'
+  ...
+# Subtest: Malformed/truncated JSON produces a visible protocol error
+ok 4 - Malformed/truncated JSON produces a visible protocol error
+  ---
+  duration_ms: 0.49336
+  type: 'test'
+  ...
+# Subtest: One event cannot grow without a bound
+ok 5 - One event cannot grow without a bound
+  ---
+  duration_ms: 12.911471
+  type: 'test'
+  ...
+# Subtest: Malformed event shape is rejected
+ok 6 - Malformed event shape is rejected
+  ---
+  duration_ms: 0.174064
+  type: 'test'
+  ...
+# Subtest: HTML returned instead of JSON is not swallowed
+ok 7 - HTML returned instead of JSON is not swallowed
+  ---
+  duration_ms: 20.378705
+  type: 'test'
+  ...
+# Subtest: JSON HTTP errors retain the useful explanation
+ok 8 - JSON HTTP errors retain the useful explanation
+  ---
+  duration_ms: 1.123229
+  type: 'test'
+  ...
+# Subtest: JSON fetch has a real abort timeout
+ok 9 - JSON fetch has a real abort timeout
+  ---
+  duration_ms: 20.421323
+  type: 'test'
+  ...
+# Subtest: Sending is not dependent on iframe allow-forms
+ok 10 - Sending is not dependent on iframe allow-forms
+  ---
+  duration_ms: 0.854224
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 106.696795

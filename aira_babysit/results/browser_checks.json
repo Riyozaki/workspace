@@ -1,0 +1,20 @@
+{
+  "observed_utc": "2026-10-17T21:36:34.962Z",
+  "scope": "Real dashboard and real SmolLM student data collection; no training/model-quality claim",
+  "checks": {
+    "real_pause_mid_collection": true,
+    "resume_finishes_data_phase": true,
+    "not_faking_training": true,
+    "bundle_and_exact_hash_notebook_ready": true,
+    "holdout_not_exported": true,
+    "mobile_no_horizontal_overflow": true
+  },
+  "run_id": "f270246ca9e74222",
+  "committed_at_pause": 1,
+  "final_status": "WAITING_TRAINING",
+  "active_seconds": 15.143745475001197,
+  "bundle_sha256": "495698e56425408ae6f6555ff0b79200dd354639a3bc945e7bdcd5824f984bda",
+  "bundle_bytes": 12218,
+  "browser_errors": [],
+  "all_required_checks_pass": true
+}

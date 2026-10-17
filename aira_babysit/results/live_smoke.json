@@ -1,0 +1,19 @@
+{
+  "actual_inference": true,
+  "real_student": "SmolLM2-135M-Instruct.Q4_1",
+  "run_id": "f270246ca9e74222",
+  "completed_unique_task_ids": 12,
+  "student_attempt_start_events": 12,
+  "teacher_targets_verified": 12,
+  "student_passes_on_training_tasks": 0,
+  "training_executed": false,
+  "learning_cycle_complete": false,
+  "production_promoted": false,
+  "status": "WAITING_TRAINING",
+  "active_worker_wall_seconds": 15.143745475001197,
+  "pause_and_resume_real": true,
+  "bundle_contains_holdout": false,
+  "gpu_training_tested": false,
+  "actual_strong_teacher_connected": false,
+  "scope": "Real data-phase integration only, not model-quality improvement or a complete learning loop."
+}
