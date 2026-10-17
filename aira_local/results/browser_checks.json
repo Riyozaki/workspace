@@ -1,0 +1,96 @@
+{
+  "tested_at_utc": "2026-10-17T19:39:36.525Z",
+  "browser": "HeadlessChrome/133.0.6943.0",
+  "real_model_ready": true,
+  "calculator_result_attributed": true,
+  "actual_streamed_model_text": "A CPU (Central Processing Unit) is the brain of a computer, responsible for executing instructions and managing data.",
+  "model_tokens_shown": true,
+  "real_notes_retrieval": true,
+  "notes_not_sent_to_plain_model": true,
+  "explicit_note_requests_include_notes": true,
+  "all_six_control_runs_visible": true,
+  "actual_router_training": "Обучено: 180 шагов за 0.057 с\nDevelopment accuracy: 80.6% → 72.2%\nКандидат ОТКЛОНЁН: регрессия на development. Предыдущие веса сохранены.\nВеса SmolLM2 НЕ изменены. Независимый test новых весов НЕ выполнен.\nРезультат кандидата на исправленных УЧЕБНЫХ примерах:\n• chat → notes (эталон: notes)",
+  "no_lm_finetuning_claim": true,
+  "training_job_id": "1a19b12ad66a43208635e9bda0507e20",
+  "candidate_promoted": false,
+  "development_regression_guard_visible": true,
+  "full_training_result": {
+    "status": "done",
+    "job_id": "1a19b12ad66a43208635e9bda0507e20",
+    "started_unix": 1792265979.0438771,
+    "fit": {
+      "steps": 180,
+      "train_seconds": 0.05705872399994405,
+      "last_batch_loss": 0.023545558698475362,
+      "parameters": 12987,
+      "kind": "loop",
+      "seed": 0
+    },
+    "before_development": {
+      "n": 36,
+      "accuracy": 0.8055555555555556,
+      "macro_f1": 0.7874762808349146,
+      "fast_path_coverage": 0.3611111111111111,
+      "fast_path_precision": 1,
+      "wrong_fast_paths": 0,
+      "threshold": 0.6,
+      "parameters": 12987
+    },
+    "development": {
+      "n": 36,
+      "accuracy": 0.7222222222222222,
+      "macro_f1": 0.6638655462184874,
+      "fast_path_coverage": 0.3611111111111111,
+      "fast_path_precision": 1,
+      "wrong_fast_paths": 0,
+      "threshold": 0.6,
+      "parameters": 12987
+    },
+    "promoted": false,
+    "promotion_reason": "development regression: previous router retained",
+    "feedback_results": [
+      {
+        "prompt": "Проверь мою локальную тетрадь: бюджет памяти",
+        "expected": "notes",
+        "before": {
+          "predicted": "chat",
+          "selected": "chat",
+          "score": 0.9742525815963745,
+          "threshold": 0.6,
+          "accepted_fast_path": false,
+          "scores": {
+            "chat": 0.9742525815963745,
+            "calculator": 0.0063233752734959126,
+            "notes": 0.01942407339811325
+          },
+          "elapsed_ms": 0.25357300000905525,
+          "kind": "loop",
+          "parameters": 12987,
+          "score_is_calibrated_probability": false
+        },
+        "after": {
+          "predicted": "notes",
+          "selected": "notes",
+          "score": 0.9971094727516174,
+          "threshold": 0.6,
+          "accepted_fast_path": true,
+          "scores": {
+            "chat": 0.0018078053835779428,
+            "calculator": 0.0010827882215380669,
+            "notes": 0.9971094727516174
+          },
+          "elapsed_ms": 0.17483399960838142,
+          "kind": "loop",
+          "parameters": 12987,
+          "score_is_calibrated_probability": false
+        }
+      }
+    ],
+    "language_model_weights_changed": false,
+    "independent_holdout_evaluated": false
+  },
+  "cancel_acknowledged": true,
+  "mobile_no_horizontal_overflow": true,
+  "browser_errors": [],
+  "all_required_checks_pass": true
+}

@@ -1,0 +1,67 @@
+{
+  "scope": "Observed live development regression BEFORE adding promotion guard; NOT an independent holdout result",
+  "training": {
+    "status": "done",
+    "job_id": "6bdd9b6eb4844f3588e95b7d5629f447",
+    "started_unix": 1792264717.5790172,
+    "fit": {
+      "steps": 180,
+      "train_seconds": 0.07179547799978536,
+      "last_batch_loss": 0.023545558698475362,
+      "parameters": 12987,
+      "kind": "loop",
+      "seed": 0
+    },
+    "development": {
+      "n": 36,
+      "accuracy": 0.7222222222222222,
+      "macro_f1": 0.6638655462184874,
+      "fast_path_coverage": 0.3611111111111111,
+      "fast_path_precision": 1.0,
+      "wrong_fast_paths": 0,
+      "threshold": 0.6,
+      "parameters": 12987
+    },
+    "feedback_results": [
+      {
+        "prompt": "Проверь мою локальную тетрадь: бюджет памяти",
+        "expected": "notes",
+        "before": {
+          "predicted": "chat",
+          "selected": "chat",
+          "score": 0.9742525815963745,
+          "threshold": 0.6,
+          "accepted_fast_path": false,
+          "scores": {
+            "chat": 0.9742525815963745,
+            "calculator": 0.0063233752734959126,
+            "notes": 0.01942407339811325
+          },
+          "elapsed_ms": 0.34860899995692307,
+          "kind": "loop",
+          "parameters": 12987,
+          "score_is_calibrated_probability": false
+        },
+        "after": {
+          "predicted": "notes",
+          "selected": "notes",
+          "score": 0.9971094727516174,
+          "threshold": 0.6,
+          "accepted_fast_path": true,
+          "scores": {
+            "chat": 0.0018078053835779428,
+            "calculator": 0.0010827882215380669,
+            "notes": 0.9971094727516174
+          },
+          "elapsed_ms": 0.18104899982063216,
+          "kind": "loop",
+          "parameters": 12987,
+          "score_is_calibrated_probability": false
+        }
+      }
+    ],
+    "language_model_weights_changed": false,
+    "independent_holdout_evaluated": false
+  },
+  "decision": "Keep negative result; add explicit development non-regression guard before promoting feedback-trained router. This is an engineering safety fix, not a retroactive preregistration."
+}

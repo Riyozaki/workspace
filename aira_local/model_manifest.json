@@ -1,0 +1,16 @@
+{
+  "model_id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+  "parameters_nominal": 135000000,
+  "quantization": "Q4_1",
+  "license": "Apache-2.0",
+  "distribution": "llm-smollm2==0.1.2",
+  "publisher_repository": "https://github.com/simonw/llm-smollm2",
+  "upstream_quantized_revision": "QuantFactory/SmolLM2-135M-Instruct-GGUF@ab810cf68114990406fdf996510dd3d3c6adbdf5",
+  "download_url": "https://files.pythonhosted.org/packages/06/be/9df8343f073e455d94f4acda2c211e84dec4d2879ee959c8dfbaa40d7d1b/llm_smollm2-0.1.2-py3-none-any.whl",
+  "distribution_sha256": "bcc81830d10ce7d9e76640cad826a4b79ed3e4547c78a0be5c4f2fb0e2448c70",
+  "gguf_sha256": "b179c9523d0e6a0f98a330c7562b682750a6f8c8c15e5bc70ea373728110db53",
+  "gguf_bytes": 98362432,
+  "setup_seconds": 10.827642861999948,
+  "role": "Unmodified pretrained control model; NOT an AIra-trained language model",
+  "runtime_network_required": false
+}

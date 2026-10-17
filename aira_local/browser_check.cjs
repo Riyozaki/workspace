@@ -1,0 +1,53 @@
+// Optional real-browser smoke; npm test deps live outside Git under artifacts/.
+const fs=require('node:fs/promises');
+const path=require('node:path');
+const puppeteer=require('../artifacts/aira_browser/node_modules/puppeteer-core');
+const chromium=require('../artifacts/aira_browser/node_modules/@sparticuz/chromium');
+(async()=>{
+ const root=path.resolve(__dirname,'..');const shots=path.join(root,'artifacts/aira_browser/shots');await fs.mkdir(shots,{recursive:true});
+ const lambdaFS=require('../artifacts/aira_browser/node_modules/@sparticuz/chromium/build/lambdafs').default;
+ const nativeLibs=await lambdaFS.inflate(path.join(root,'artifacts/aira_browser/node_modules/@sparticuz/chromium/bin/al2023.tar.br'));
+ const env={...process.env,LD_LIBRARY_PATH:path.join(nativeLibs,'lib')+':'+(process.env.LD_LIBRARY_PATH||''),FONTCONFIG_PATH:'/tmp/fonts'};
+ const browser=await puppeteer.launch({args:chromium.args,defaultViewport:{width:1440,height:960},executablePath:await chromium.executablePath(),headless:true,env});
+ const page=await browser.newPage();const errors=[];const requests=[];page.on('pageerror',e=>errors.push(String(e)));
+ page.on('request',r=>{if(r.url().endsWith('/api/chat')&&r.method()==='POST'){try{const body=JSON.parse(r.postData());requests.push({mode:body.mode,notes_count:body.notes?.length||0});}catch{}}});
+ const checks={tested_at_utc:new Date().toISOString(),browser:await browser.version()};
+ try{
+  await page.goto('http://127.0.0.1:8000',{waitUntil:'networkidle2'});
+  await page.waitForFunction(()=>document.querySelector('#model-status').textContent.includes('Готова'),{timeout:15000});
+  await page.screenshot({path:path.join(shots,'desktop.png'),fullPage:true});checks.real_model_ready=true;
+  await page.click('#modes button[data-mode="calculator"]');await page.type('#prompt','Посчитай (18+7)*4');await page.click('#send');
+  await page.waitForFunction(()=>document.querySelector('#messages .message.assistant .bubble')?.textContent.includes('100'));
+  checks.calculator_result_attributed=(await page.$eval('#messages .message.assistant .message-label',e=>e.textContent)).includes('ИНСТРУМЕНТ');
+  await page.click('#clear');await page.click('#modes button[data-mode="model"]');await page.type('#prompt','Explain what a CPU does in one sentence.');await page.click('#send');
+  await page.waitForFunction(()=>!document.querySelector('#prompt').disabled,{timeout:25000});
+  const modelText=await page.$eval('#messages .message.assistant .bubble',e=>e.textContent);checks.actual_streamed_model_text=modelText;checks.model_tokens_shown=await page.$eval('#tokens',e=>e.textContent!=='—'&&e.textContent!=='инструмент');
+  await page.click('#clear');await page.click('#modes button[data-mode="notes"]');await page.type('#prompt','Найди в заметках план обучения');await page.click('#send');
+  await page.waitForFunction(()=>!document.querySelector('#prompt').disabled);
+  checks.real_notes_retrieval=await page.$eval('#messages .message.assistant .bubble',e=>e.textContent.includes('Kaggle'));
+  checks.notes_not_sent_to_plain_model=requests.filter(r=>r.mode==='model'||r.mode==='calculator').every(r=>r.notes_count===0);
+  checks.explicit_note_requests_include_notes=requests.some(r=>r.mode==='notes'&&r.notes_count>0);
+  await page.click('.nav[data-tab="lab"]');await page.waitForSelector('#ablation-rows tr');
+  checks.all_six_control_runs_visible=(await page.$$('#ablation-rows tr')).length===6;
+  await page.click('#inspect');await page.waitForFunction(()=>document.querySelector('#prediction').textContent.includes('Прогноз:'));
+  const beforeCount=await page.$eval('#feedback-count',e=>Number(e.textContent));
+  await page.click('#add-correction');await page.waitForFunction(n=>Number(document.querySelector('#feedback-count').textContent)===n+1,{},beforeCount);
+  const trainingResponse=page.waitForResponse(r=>r.url().endsWith('/api/lab/train')&&r.request().method()==='POST');
+  await page.click('#train-router');const job=await(await trainingResponse).json();
+  await page.waitForFunction(id=>{const e=document.querySelector('#training-result');return e.dataset.jobId===id&&e.dataset.status==='done';},{timeout:20000},job.job_id);
+  checks.actual_router_training=await page.$eval('#training-result',e=>e.textContent);checks.no_lm_finetuning_claim=checks.actual_router_training.includes('НЕ изменены');
+  const labState=await page.evaluate(async()=> (await fetch('/api/lab')).json());
+  checks.training_job_id=labState.training.job_id;checks.candidate_promoted=labState.training.promoted;
+  checks.development_regression_guard_visible=labState.training.promoted===true||checks.actual_router_training.includes('ОТКЛОНЁН');
+  checks.full_training_result=labState.training;
+  await page.screenshot({path:path.join(shots,'babysit.png'),fullPage:true});
+  await page.click('.nav[data-tab="chat"]');await page.click('#clear');await page.click('#modes button[data-mode="model"]');await page.type('#prompt','Write a long story about a small robot learning to garden.');await page.select('#max-tokens','160');await page.click('#send');
+  await page.waitForFunction(()=>state.requestId!==null);await page.click('#stop');await page.waitForFunction(()=>!document.querySelector('#prompt').disabled,{timeout:10000});
+  checks.cancel_acknowledged=await page.$eval('#messages .message.assistant .message-stats',e=>e.textContent.includes('остановлено'));
+  await page.setViewport({width:390,height:844});await page.screenshot({path:path.join(shots,'mobile.png'),fullPage:true});
+  checks.mobile_no_horizontal_overflow=await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1);
+  checks.browser_errors=errors;checks.all_required_checks_pass=checks.real_model_ready&&checks.calculator_result_attributed&&checks.real_notes_retrieval&&checks.notes_not_sent_to_plain_model&&checks.explicit_note_requests_include_notes&&checks.model_tokens_shown&&checks.all_six_control_runs_visible&&checks.no_lm_finetuning_claim&&checks.development_regression_guard_visible&&checks.cancel_acknowledged&&checks.mobile_no_horizontal_overflow&&errors.length===0;
+  await fs.writeFile(path.join(__dirname,'results/browser_checks.json'),JSON.stringify(checks,null,2)+'\n');console.log(JSON.stringify(checks,null,2));
+  if(!checks.all_required_checks_pass)process.exitCode=1;
+ }finally{await browser.close();}
+})().catch(e=>{console.error(e);process.exit(1);});

@@ -1,0 +1,9 @@
+{
+  "fresh_model_download_executed": true,
+  "model_sha256_matches_published": true,
+  "published_manifest_not_overwritten": true,
+  "original_setup_seconds": 10.827642861999948,
+  "fresh_download_seconds": 1.9495571819998077,
+  "fresh_gguf_bytes": 98362432,
+  "scope": "fresh model extraction/download, not a second fresh compiler/dependency installation"
+}

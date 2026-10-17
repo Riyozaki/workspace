@@ -1,0 +1,232 @@
+{
+  "scope": "SYNTHETIC INTENT ROUTER ONLY. No LM fine-tuning or new-language-architecture claim.",
+  "all_runs": [
+    {
+      "kind": "linear",
+      "seed": 0,
+      "fit": {
+        "steps": 450,
+        "train_seconds": 0.037025564999908056,
+        "last_batch_loss": 0.1844193920493126,
+        "parameters": 1539,
+        "kind": "linear",
+        "seed": 0
+      },
+      "development": {
+        "n": 36,
+        "accuracy": 0.8333333333333334,
+        "macro_f1": 0.8222222222222223,
+        "fast_path_coverage": 0.3055555555555556,
+        "fast_path_precision": 1.0,
+        "wrong_fast_paths": 0,
+        "threshold": 0.6,
+        "parameters": 1539
+      },
+      "holdout": {
+        "n": 36,
+        "accuracy": 0.5277777777777778,
+        "macro_f1": 0.442002442002442,
+        "fast_path_coverage": 0.027777777777777776,
+        "fast_path_precision": 1.0,
+        "wrong_fast_paths": 0,
+        "threshold": 0.6,
+        "parameters": 1539
+      }
+    },
+    {
+      "kind": "linear",
+      "seed": 1,
+      "fit": {
+        "steps": 450,
+        "train_seconds": 0.03690686899994944,
+        "last_batch_loss": 0.16994396460056305,
+        "parameters": 1539,
+        "kind": "linear",
+        "seed": 1
+      },
+      "development": {
+        "n": 36,
+        "accuracy": 0.8333333333333334,
+        "macro_f1": 0.8222222222222223,
+        "fast_path_coverage": 0.3333333333333333,
+        "fast_path_precision": 1.0,
+        "wrong_fast_paths": 0,
+        "threshold": 0.6,
+        "parameters": 1539
+      },
+      "holdout": {
+        "n": 36,
+        "accuracy": 0.6111111111111112,
+        "macro_f1": 0.5092592592592592,
+        "fast_path_coverage": 0.08333333333333333,
+        "fast_path_precision": 1.0,
+        "wrong_fast_paths": 0,
+        "threshold": 0.6,
+        "parameters": 1539
+      }
+    },
+    {
+      "kind": "linear",
+      "seed": 2,
+      "fit": {
+        "steps": 450,
+        "train_seconds": 0.03795006600000761,
+        "last_batch_loss": 0.17154895043373108,
+        "parameters": 1539,
+        "kind": "linear",
+        "seed": 2
+      },
+      "development": {
+        "n": 36,
+        "accuracy": 0.8333333333333334,
+        "macro_f1": 0.8222222222222223,
+        "fast_path_coverage": 0.3333333333333333,
+        "fast_path_precision": 1.0,
+        "wrong_fast_paths": 0,
+        "threshold": 0.6,
+        "parameters": 1539
+      },
+      "holdout": {
+        "n": 36,
+        "accuracy": 0.5555555555555556,
+        "macro_f1": 0.4657097288676237,
+        "fast_path_coverage": 0.05555555555555555,
+        "fast_path_precision": 1.0,
+        "wrong_fast_paths": 0,
+        "threshold": 0.6,
+        "parameters": 1539
+      }
+    },
+    {
+      "kind": "loop",
+      "seed": 0,
+      "fit": {
+        "steps": 450,
+        "train_seconds": 0.11190868900007445,
+        "last_batch_loss": 0.02985487696900964,
+        "parameters": 12987,
+        "kind": "loop",
+        "seed": 0
+      },
+      "development": {
+        "n": 36,
+        "accuracy": 0.8055555555555556,
+        "macro_f1": 0.7874762808349146,
+        "fast_path_coverage": 0.3611111111111111,
+        "fast_path_precision": 1.0,
+        "wrong_fast_paths": 0,
+        "threshold": 0.6,
+        "parameters": 12987
+      },
+      "holdout": {
+        "n": 36,
+        "accuracy": 0.4444444444444444,
+        "macro_f1": 0.3597883597883598,
+        "fast_path_coverage": 0.16666666666666666,
+        "fast_path_precision": 0.8333333333333334,
+        "wrong_fast_paths": 1,
+        "threshold": 0.6,
+        "parameters": 12987
+      }
+    },
+    {
+      "kind": "loop",
+      "seed": 1,
+      "fit": {
+        "steps": 450,
+        "train_seconds": 0.10996924100004435,
+        "last_batch_loss": 0.025006715504452586,
+        "parameters": 12987,
+        "kind": "loop",
+        "seed": 1
+      },
+      "development": {
+        "n": 36,
+        "accuracy": 0.7777777777777778,
+        "macro_f1": 0.75,
+        "fast_path_coverage": 0.3888888888888889,
+        "fast_path_precision": 1.0,
+        "wrong_fast_paths": 0,
+        "threshold": 0.6,
+        "parameters": 12987
+      },
+      "holdout": {
+        "n": 36,
+        "accuracy": 0.4166666666666667,
+        "macro_f1": 0.3111111111111111,
+        "fast_path_coverage": 0.05555555555555555,
+        "fast_path_precision": 1.0,
+        "wrong_fast_paths": 0,
+        "threshold": 0.6,
+        "parameters": 12987
+      }
+    },
+    {
+      "kind": "loop",
+      "seed": 2,
+      "fit": {
+        "steps": 450,
+        "train_seconds": 0.11167554999997265,
+        "last_batch_loss": 0.09399004102125763,
+        "parameters": 12987,
+        "kind": "loop",
+        "seed": 2
+      },
+      "development": {
+        "n": 36,
+        "accuracy": 0.7222222222222222,
+        "macro_f1": 0.725407268170426,
+        "fast_path_coverage": 0.3333333333333333,
+        "fast_path_precision": 1.0,
+        "wrong_fast_paths": 0,
+        "threshold": 0.9,
+        "parameters": 12987
+      },
+      "holdout": {
+        "n": 36,
+        "accuracy": 0.5555555555555556,
+        "macro_f1": 0.4657097288676237,
+        "fast_path_coverage": 0.1111111111111111,
+        "fast_path_precision": 0.75,
+        "wrong_fast_paths": 1,
+        "threshold": 0.9,
+        "parameters": 12987
+      }
+    }
+  ],
+  "selection": {
+    "kind": "loop",
+    "seed": 0,
+    "threshold": 0.6,
+    "rule": "largest development mean fast-path coverage after >=98% development precision gate; macroF1 then smaller model; fixed deploy seed0, not best seed",
+    "family_development_means": {
+      "linear": {
+        "accuracy": 0.8333333333333334,
+        "macro_f1": 0.8222222222222223,
+        "fast_path_coverage": 0.324074074074074
+      },
+      "loop": {
+        "accuracy": 0.7685185185185186,
+        "macro_f1": 0.7542945163351136,
+        "fast_path_coverage": 0.3611111111111111
+      }
+    },
+    "dataset_sha256": "f28573e0c349c94fa2fb375ff162908b3ef9f080ab9aff0b97093a3aaf95cc35",
+    "selected_at_unix": 1792263373.6870666
+  },
+  "deployed_holdout": {
+    "n": 36,
+    "accuracy": 0.4444444444444444,
+    "macro_f1": 0.3597883597883598,
+    "fast_path_coverage": 0.16666666666666666,
+    "fast_path_precision": 0.8333333333333334,
+    "wrong_fast_paths": 1,
+    "threshold": 0.6,
+    "parameters": 12987
+  },
+  "total_training_seconds": 0.7237405270000181,
+  "loop_beats_linear_development_macro_f1": false,
+  "hardware_threads": 1,
+  "training_steps_per_run": 450,
+  "known_limits": "Small authored family split; softmax scores not calibrated probabilities. Repeated feedback will not produce a new blind holdout."
+}

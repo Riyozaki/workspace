@@ -23,7 +23,8 @@ def sha256(path: Path) -> str:
 
 def verify(require_tracked: bool = False):
     config = read_json(ROOT / "publication.json")
-    latest = ROOT / config["latest_study"]
+    research_root = config.get("latest_research_study") or config["latest_study"]
+    latest = ROOT / research_root
     expected_files = {
         ROOT / "README.md", ROOT / "AGENTS.md", ROOT / "publication.json",
         ROOT / "scripts/verify_publication.py", ROOT / "scripts/publish.sh",
@@ -74,6 +75,30 @@ def verify(require_tracked: bool = False):
     expected_files.add(latest / "results/deadline_proof.json")
     if min(proof["elapsed_seconds"], proof["elapsed_monotonic_seconds"]) < 5400:
         raise RuntimeError("Latest final report predates the real deadline")
+    delivery = config.get("latest_delivery")
+    if delivery:
+        delivery_root = ROOT / delivery["root"]
+        for name in delivery["required"]:
+            path = delivery_root / name
+            if not path.is_file():
+                raise RuntimeError(f"Latest delivery missing: {path}")
+            expected_files.add(path)
+        delivery_seal = ROOT / delivery["seal"]
+        expected_files.add(delivery_seal)
+        for name, expected in read_json(delivery_seal).items():
+            path = delivery_root / name
+            if not path.is_file() or sha256(path) != expected:
+                raise RuntimeError(f"Latest delivery sealed file mismatch: {name}")
+            expected_files.add(path)
+            checked += 1
+        browser = read_json(delivery_root / "results/browser_checks.json")
+        if not browser["all_required_checks_pass"]:
+            raise RuntimeError("Latest prototype browser checks did not pass")
+        smoke = read_json(delivery_root / "results/model_smoke.json")
+        if not smoke["actual_inference"]:
+            raise RuntimeError("Latest prototype lacks executed real-model inference")
+        # This is a completeness/integrity gate, NOT a demand to hide negative
+        # research findings or manufacture a passing capability benchmark.
     if require_tracked:
         tracked = set(subprocess.check_output(
             ["git", "ls-files", "-z"], cwd=ROOT
@@ -86,10 +111,14 @@ def verify(require_tracked: bool = False):
             if staged != path.read_bytes():
                 raise RuntimeError(f"Staged bytes differ from verified working file: {name}")
         untracked = subprocess.check_output([
-            "git", "ls-files", "--others", "--exclude-standard", "--", config["latest_study"]
+            "git", "ls-files", "--others", "--exclude-standard", "--", research_root
         ], cwd=ROOT, text=True).strip()
         if untracked:
             raise RuntimeError("Latest study still has untracked files:\n" + untracked)
+        if delivery:
+            untracked_delivery = subprocess.check_output(["git", "ls-files", "--others", "--exclude-standard", "--", delivery["root"]], cwd=ROOT, text=True).strip()
+            if untracked_delivery:
+                raise RuntimeError("Latest prototype still has untracked files:\n" + untracked_delivery)
     return checked
 
 
@@ -98,7 +127,7 @@ def main():
     parser.add_argument("--require-tracked", action="store_true")
     args = parser.parse_args()
     count = verify(args.require_tracked)
-    print(f"Publication checks passed: {count} sealed files; latest study complete;")
+    print(f"Publication checks passed: {count} sealed files; historical studies and latest delivery complete;")
     print("frozen protocol/evaluator unchanged; primary CSV and deadline consistent.")
     if args.require_tracked:
         print("All checked delivery files are staged/tracked with identical bytes.")

@@ -1,0 +1,193 @@
+{
+  "observed_utc": "2026-10-17T19:39:46.635639+00:00",
+  "scope": "Engineering API probes. Same available public pretrained model. Not an independent language/agent benchmark, not a speedup comparison.",
+  "idle_window_seconds": 3.1447408379999615,
+  "idle_sample_interrupted": false,
+  "idle_process_rss_bytes": 217747456,
+  "idle_sampled_cpu_percent_total_capacity": 0.0,
+  "peak_sampled_process_rss_bytes": 217747456,
+  "native_inference_threads": 1,
+  "logical_cpu_affinity": [
+    0,
+    1
+  ],
+  "gpu_layers": 0,
+  "energy_joules": null,
+  "raw_cases": [
+    {
+      "mode": "model",
+      "prompt": "Explain what a CPU does in one sentence.",
+      "answer": "A CPU (Central Processing Unit) is the brain of a computer, responsible for executing instructions and managing data.",
+      "client_http_wall_seconds": 0.678558730000077,
+      "metrics": {
+        "id": "ed86b070ce3149b488ee6e7d49e2e7f8",
+        "mode": "model",
+        "used": "model",
+        "request_seconds": 0.6766866230000232,
+        "server_first_content_seconds": 0.3532881860000998,
+        "generated_tokens": 22,
+        "cpu_seconds_process": 0.6800000000000002,
+        "cpu_percent_total_capacity_average": 50.244823592439836,
+        "rss_bytes_at_end": 217747456,
+        "energy_joules": null,
+        "model_metrics": {
+          "generated_tokens": 22,
+          "generation_seconds": 0.6730395539998426,
+          "generation_tokens_per_second": 32.68752908986556,
+          "first_native_token_seconds": 0.35186338399989836,
+          "first_content_seconds": 0.35193871299998136,
+          "prompt_tokens": 58,
+          "cancelled": false,
+          "dropped_history_messages": 0
+        },
+        "cancelled": false,
+        "error": null,
+        "answer_content_stored": false
+      },
+      "judgment": "not independently scored; raw answer preserved"
+    },
+    {
+      "mode": "model",
+      "prompt": "What is the capital of France? Answer briefly.",
+      "answer": "Le Grand Paris is the capital of France.",
+      "client_http_wall_seconds": 0.5500180969997928,
+      "metrics": {
+        "id": "8b1a2dd00e0849a292a4501b6a2a6f13",
+        "mode": "model",
+        "used": "model",
+        "request_seconds": 0.5474617240001862,
+        "server_first_content_seconds": 0.3684978690002936,
+        "generated_tokens": 9,
+        "cpu_seconds_process": 0.54,
+        "cpu_percent_total_capacity_average": 49.31851637538557,
+        "rss_bytes_at_end": 217747456,
+        "energy_joules": null,
+        "model_metrics": {
+          "generated_tokens": 9,
+          "generation_seconds": 0.5436681549999776,
+          "generation_tokens_per_second": 16.554215870893472,
+          "first_native_token_seconds": 0.36709762800001045,
+          "first_content_seconds": 0.36712349900017216,
+          "prompt_tokens": 59,
+          "cancelled": false,
+          "dropped_history_messages": 0
+        },
+        "cancelled": false,
+        "error": null,
+        "answer_content_stored": false
+      },
+      "judgment": "not independently scored; raw answer preserved"
+    },
+    {
+      "mode": "model",
+      "prompt": "Reply with exactly the word ready.",
+      "answer": "I'm ready to assist you. What's your request?",
+      "client_http_wall_seconds": 0.5859059540002818,
+      "metrics": {
+        "id": "a06ecc94a6e3492c9492d763e935bed7",
+        "mode": "model",
+        "used": "model",
+        "request_seconds": 0.5838135569997576,
+        "server_first_content_seconds": 0.37761873699992066,
+        "generated_tokens": 12,
+        "cpu_seconds_process": 0.5899999999999999,
+        "cpu_percent_total_capacity_average": 50.52983036502567,
+        "rss_bytes_at_end": 217747456,
+        "energy_joules": null,
+        "model_metrics": {
+          "generated_tokens": 12,
+          "generation_seconds": 0.5799012280003808,
+          "generation_tokens_per_second": 20.69317914945357,
+          "first_native_token_seconds": 0.3759345130001748,
+          "first_content_seconds": 0.37596255800008294,
+          "prompt_tokens": 57,
+          "cancelled": false,
+          "dropped_history_messages": 0
+        },
+        "cancelled": false,
+        "error": null,
+        "answer_content_stored": false
+      },
+      "judgment": "not independently scored; raw answer preserved"
+    },
+    {
+      "mode": "model",
+      "prompt": "Привет! Кто ты?",
+      "answer": "Привет! Кто ты?",
+      "client_http_wall_seconds": 0.6249523709998357,
+      "metrics": {
+        "id": "1b318682009744aa9b96a93e9f6350ff",
+        "mode": "model",
+        "used": "model",
+        "request_seconds": 0.6228916630002459,
+        "server_first_content_seconds": 0.385080637000101,
+        "generated_tokens": 13,
+        "cpu_seconds_process": 0.6200000000000001,
+        "cpu_percent_total_capacity_average": 49.76788395382291,
+        "rss_bytes_at_end": 217747456,
+        "energy_joules": null,
+        "model_metrics": {
+          "generated_tokens": 13,
+          "generation_seconds": 0.6190365209999982,
+          "generation_tokens_per_second": 21.000376486672646,
+          "first_native_token_seconds": 0.36413921299981666,
+          "first_content_seconds": 0.3834722530000363,
+          "prompt_tokens": 62,
+          "cancelled": false,
+          "dropped_history_messages": 0
+        },
+        "cancelled": false,
+        "error": null,
+        "answer_content_stored": false
+      },
+      "judgment": "not independently scored; raw answer preserved"
+    },
+    {
+      "mode": "calculator",
+      "prompt": "Посчитай (18+7)*4",
+      "answer": "(18+7)*4 = 100",
+      "client_http_wall_seconds": 0.0032773549996818474,
+      "metrics": {
+        "id": "1a76a63cc4204139b7aa1f089440f9f7",
+        "mode": "calculator",
+        "used": "calculator",
+        "request_seconds": 0.001404186999934609,
+        "server_first_content_seconds": 0.0012934110000060173,
+        "generated_tokens": 0,
+        "cpu_seconds_process": 0.0,
+        "cpu_percent_total_capacity_average": null,
+        "rss_bytes_at_end": 217747456,
+        "energy_joules": null,
+        "model_metrics": {},
+        "cancelled": false,
+        "error": null,
+        "answer_content_stored": false
+      },
+      "judgment": "not independently scored; raw answer preserved"
+    },
+    {
+      "mode": "notes",
+      "prompt": "Найди в заметках план обучения",
+      "answer": "[План обучения]\nБольшое обучение позже на Kaggle. Сейчас проверяется локальный прототип.",
+      "client_http_wall_seconds": 0.002826935000030062,
+      "metrics": {
+        "id": "17bb66bf0eb644279688f8f2cae5399a",
+        "mode": "notes",
+        "used": "notes",
+        "request_seconds": 0.0013857330000064394,
+        "server_first_content_seconds": 0.001187468999887642,
+        "generated_tokens": 0,
+        "cpu_seconds_process": 0.0,
+        "cpu_percent_total_capacity_average": null,
+        "rss_bytes_at_end": 217747456,
+        "energy_joules": null,
+        "model_metrics": {},
+        "cancelled": false,
+        "error": null,
+        "answer_content_stored": false
+      },
+      "judgment": "not independently scored; raw answer preserved"
+    }
+  ],
+  "privacy_metrics_no_answer_text": true
+}

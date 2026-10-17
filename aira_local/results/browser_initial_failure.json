@@ -1,0 +1,5 @@
+{
+  "status": "resolved",
+  "initial_error": "Chromium could not load libnss3/libnspr shared libraries on the minimal container",
+  "resolution": "Extracted the native libraries already shipped in the pinned @sparticuz/chromium npm package; browser test supplies explicit LD_LIBRARY_PATH. No application bypass or external browser service."
+}

@@ -1,0 +1,43 @@
+{
+  "idle_rss_mib": 207.66015625,
+  "peak_rss_mib": 207.66015625,
+  "all_real_requests_completed": true,
+  "cases": [
+    {
+      "mode": "model",
+      "answer": "A CPU (Central Processing Unit) is the brain of a computer, responsible for executing instructions and managing data.",
+      "client_seconds": 0.678558730000077,
+      "tokens": 22
+    },
+    {
+      "mode": "model",
+      "answer": "Le Grand Paris is the capital of France.",
+      "client_seconds": 0.5500180969997928,
+      "tokens": 9
+    },
+    {
+      "mode": "model",
+      "answer": "I'm ready to assist you. What's your request?",
+      "client_seconds": 0.5859059540002818,
+      "tokens": 12
+    },
+    {
+      "mode": "model",
+      "answer": "Привет! Кто ты?",
+      "client_seconds": 0.6249523709998357,
+      "tokens": 13
+    },
+    {
+      "mode": "calculator",
+      "answer": "(18+7)*4 = 100",
+      "client_seconds": 0.0032773549996818474,
+      "tokens": 0
+    },
+    {
+      "mode": "notes",
+      "answer": "[План обучения]\nБольшое обучение позже на Kaggle. Сейчас проверяется локальный прототип.",
+      "client_seconds": 0.002826935000030062,
+      "tokens": 0
+    }
+  ]
+}

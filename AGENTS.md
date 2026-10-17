@@ -8,7 +8,8 @@ work only or forbids commit/push:
 
 1. Work only on the branch fixed by the active Arena session/developer instructions.
    Never create/switch/push another branch and never force-push.
-2. Keep the root README and publication.json pointing to the actual latest study.
+2. Keep the root README and publication.json pointing to the actual latest delivery
+   (latest_delivery) and separately identify historical research (latest_research_study).
    Label older experiments as historical; do not merge their performance claims.
 3. Preserve frozen protocols, evaluators, numerical sources, raw measurements,
    failed attempts and published study seals. If navigation replaces a historically

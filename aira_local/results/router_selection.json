@@ -1,0 +1,20 @@
+{
+  "kind": "loop",
+  "seed": 0,
+  "threshold": 0.6,
+  "rule": "largest development mean fast-path coverage after >=98% development precision gate; macroF1 then smaller model; fixed deploy seed0, not best seed",
+  "family_development_means": {
+    "linear": {
+      "accuracy": 0.8333333333333334,
+      "macro_f1": 0.8222222222222223,
+      "fast_path_coverage": 0.324074074074074
+    },
+    "loop": {
+      "accuracy": 0.7685185185185186,
+      "macro_f1": 0.7542945163351136,
+      "fast_path_coverage": 0.3611111111111111
+    }
+  },
+  "dataset_sha256": "f28573e0c349c94fa2fb375ff162908b3ef9f080ab9aff0b97093a3aaf95cc35",
+  "selected_at_unix": 1792263373.6870666
+}

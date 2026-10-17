@@ -1,6 +1,5 @@
 {
-  "schema_version": 1,
-  "latest_study": "competition50x",
+  "schema_version": 2,
   "studies": [
     {
       "id": "stage1_gp_historical",
@@ -21,5 +20,39 @@
     "stage1_original_commit": "c526490855c6fd6ac45d35cec49e65cf7472cf37",
     "archived_readme_sha256": "9f491a8954e3e1f418f567009822638ac302361bd1291ff8744d305946e3e215",
     "reason": "Root README is now a latest-study navigation index. The original README is preserved byte-for-byte; original study seals, numerical sources, reports and measured results were not rewritten."
-  }
+  },
+  "latest_delivery": {
+    "id": "aira-local-lab-001",
+    "kind": "interactive-prototype",
+    "root": "aira_local",
+    "seal": "aira_local/results/delivery_sha256.json",
+    "required": [
+      "README.md",
+      "report.md",
+      "research.md",
+      "PLAN.md",
+      "work_log.md",
+      "model_manifest.json",
+      "app.py",
+      "engine.py",
+      "router.py",
+      "guard.py",
+      "tools.py",
+      "static/index.html",
+      "static/style.css",
+      "static/app.js",
+      "models/budget_router.json",
+      "data/router_pilot.jsonl",
+      "data/babysit_seed.jsonl",
+      "results/router_ablation.json",
+      "results/model_smoke.json",
+      "results/runtime_api_probes.json",
+      "results/browser_checks.json",
+      "results/tests.txt",
+      "setup.sh",
+      "run.sh"
+    ],
+    "scope": "Real pretrained LM web prototype plus a tiny intent-router/Babysit pilot. Negative router/quality findings preserved; not a new frontier model or speedup claim."
+  },
+  "latest_research_study": "competition50x"
 }

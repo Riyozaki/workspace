@@ -1,0 +1,11 @@
+{
+  "scope": "small authored synthetic intent-routing pilot, not language capability or real user distribution",
+  "split_unit": "prompt template/family",
+  "counts": {
+    "train": 144,
+    "development": 36,
+    "holdout": 36
+  },
+  "sha256": "f28573e0c349c94fa2fb375ff162908b3ef9f080ab9aff0b97093a3aaf95cc35",
+  "holdout_used_for_training": false
+}

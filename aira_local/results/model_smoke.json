@@ -1,0 +1,52 @@
+{
+  "model": "SmolLM2-135M-Instruct.Q4_1",
+  "actual_inference": true,
+  "load_seconds": 0.20911423300003662,
+  "rss_bytes": 187064320,
+  "native_threads": 1,
+  "n_ctx": 1024,
+  "gpu_layers": 0,
+  "runtime_system_info": "CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | LLAMAFILE = 1 | OPENMP = 1 | AARCH64_REPACK = 1 | ",
+  "responses": [
+    {
+      "type": "model_end",
+      "text": "Le Grand Paris is the capital of France.",
+      "generated_tokens": 9,
+      "generation_seconds": 0.5350256230000241,
+      "generation_tokens_per_second": 16.821624260787218,
+      "first_native_token_seconds": 0.3592443559999765,
+      "first_content_seconds": 0.35933350899995276,
+      "prompt_tokens": 59,
+      "cancelled": false,
+      "dropped_history_messages": 0,
+      "prompt": "What is the capital of France? Answer briefly."
+    },
+    {
+      "type": "model_end",
+      "text": "A CPU (Central Processing Unit) is the brain of a computer, responsible for executing instructions and managing data.",
+      "generated_tokens": 22,
+      "generation_seconds": 0.5357977599999231,
+      "generation_tokens_per_second": 41.06026871034914,
+      "first_native_token_seconds": 0.10046005999993213,
+      "first_content_seconds": 0.10049119299992526,
+      "prompt_tokens": 58,
+      "cancelled": false,
+      "dropped_history_messages": 0,
+      "prompt": "Explain what a CPU does in one sentence."
+    },
+    {
+      "type": "model_end",
+      "text": "Привет! Кто ты?",
+      "generated_tokens": 13,
+      "generation_seconds": 0.37191716400002406,
+      "generation_tokens_per_second": 34.95402003011391,
+      "first_native_token_seconds": 0.12036709900007736,
+      "first_content_seconds": 0.13924281800007066,
+      "prompt_tokens": 62,
+      "cancelled": false,
+      "dropped_history_messages": 0,
+      "prompt": "Привет! Кто ты?"
+    }
+  ],
+  "scope": "Engineering smoke, NOT a language benchmark or proof of Russian/agent quality"
+}

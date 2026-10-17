@@ -1,54 +1,67 @@
-# Исследования ускорения ML — актуальный цикл и архив
+# AIra — текущий локальный прототип и архив исследований
 
-## Актуальный последний цикл: Fashion-MNIST / RBF-SVM
+## Актуальная работа: AIra Local Lab
 
-**Основной измеренный результат: 45,7854× на полном инференсе предобученной модели. Цель ≥50× не достигнута.**
+**Работающий веб-прототип с настоящей маленькой языковой моделью на CPU. Это ещё не новая языковая архитектура AIra и не агент уровня сильной облачной модели.**
 
-- Пять полных пар: **20,273905 → 0,442803 с** в среднем; описательный парный bootstrap 95% **[43,8068; 47,7887]**.
-- Holdout accuracy: **89,72% у обоих**; совпадение предсказаний **100%**. Фиксированные допуски выполнены.
-- Baseline — самый быстрый из трёх действительно измеренных готовых референсов, выбранный до оптимизации. Это не утверждение о глобально лучшем SVM engine.
-- Это **инференс**, не ускорение обучения+инференса. Проверка на собственном изолированном split публичного dataset, **не внешняя сертификация и не официальный рейтинг**.
-- Полная команда воспроизведения реально выполнена с новым скачиванием данных, обучением модели, всеми референсами, тестами и повторными holdout-запусками. Они не подменяют исходные пять первичных пар.
+- Предобученная **SmolLM2-135M-Instruct Q4_1** через llama.cpp: реальная потоковая генерация, один native inference thread, без GPU/стороннего модельного API.
+- В выполненных HTTP-пробах RSS веб-процесса — около **208 MiB**. Это наблюдение в Arena backend, не гарантия для другого устройства, не вся память системы и не измерение энергии.
+- Калькулятор и поиск по переданным заметкам подписаны отдельно: их результаты не приписываются языковой модели.
+- Пилот **AI Babysit** действительно обучает маленький intent-router. При ухудшении development новые веса отклоняются. Веса языковой SmolLM2 пока не дообучались.
+- **Отрицательные результаты сохранены:** слабый русский/факты/формат у 135M модели, плохое обобщение роутера, отсутствие преимущества recurrent-router над линейным контролем. Автоматическая маршрутизация экспериментальная и выключена по умолчанию.
 
-### Открыть для проверки
-
-| Материал последнего цикла | Путь |
-|---|---|
-| **Актуальный отчёт** | **[competition50x/report.md](competition50x/report.md)** |
-| Описание и запуск | [competition50x/README.md](competition50x/README.md) |
-| Первичные пять пар | [competition50x/results.csv](competition50x/results.csv) |
-| Рабочий журнал | [competition50x/work_log.md](competition50x/work_log.md) |
-| Контрольные точки 30/60/85 минут | [competition50x/checkpoints.md](competition50x/checkpoints.md) |
-| Протокол и evaluator | [protocol.md](competition50x/protocol.md), [eval.py](competition50x/eval.py), [первичная фиксация SHA-256](competition50x/protocol_frozen.json) |
-| Основной код | [inference.py](competition50x/inference.py), [u8gemm.c](competition50x/u8gemm.c), [harness.py](competition50x/harness.py) |
-| Независимый пересчёт результатов | [integrity_audit.json](competition50x/results/integrity_audit.json) |
-| Доказательства полного свежего воспроизведения | [index](competition50x/results/fresh_reproduction_index.json), [steps](competition50x/results/fresh_reproduction_steps.json), [log](competition50x/results/fresh_reproduction.log) |
-
-Воспроизведение последнего цикла из корня репозитория:
+### Запуск и проверка
 
 ```bash
-bash competition50x/reproduce.sh
+bash aira_local/setup.sh
+bash aira_local/run.sh
 ```
 
-Требования и ограничения ISA/toolchain приведены в README последнего цикла. Крупные исходные данные, модели, временные сборки и виртуальное окружение не хранятся в Git; команда создаёт их заново. Код, отчёты, CSV, сырые JSON замеров, логи, неудачные попытки и доказательства воспроизведения включены в репозиторий.
+В Arena откройте **Live Preview → AIra Local Lab**, порт8000. На своём компьютере после запуска откройте `http://localhost:8000`. Preview выполняет модель в CPU-песочнице Arena, **не в браузере пользователя**. Во время генерации внешний модельный API не используется; setup скачивает pinned GGUF из PyPI с проверкой SHA-256.
 
-## Первый цикл: Kronecker-GP — исторические материалы
+| Материал актуального прототипа | Путь |
+|---|---|
+| Описание и команды | **[aira_local/README.md](aira_local/README.md)** |
+| Что реально получилось и что не получилось | **[aira_local/report.md](aira_local/report.md)** |
+| Расчёты и границы вывода | [research.md](aira_local/research.md), [PLAN.md](aira_local/PLAN.md) |
+| Реальные LM/API-пробы | [runtime_api_probes.json](aira_local/results/runtime_api_probes.json), [model_smoke.json](aira_local/results/model_smoke.json) |
+| Все шесть запусков своей маленькой модели | [router_ablation.json](aira_local/results/router_ablation.json) |
+| Browser-проверка реального обучения/rollback/cancel | [browser_checks.json](aira_local/results/browser_checks.json) |
+| Исходники | [app.py](aira_local/app.py), [engine.py](aira_local/engine.py), [router.py](aira_local/router.py), [guard.py](aira_local/guard.py) |
+| Данные учителя | [router_pilot.jsonl](aira_local/data/router_pilot.jsonl), [SFT seed JSONL](aira_local/data/babysit_seed.jsonl) |
+| Происхождение весов / лицензии | [model_manifest.json](aira_local/model_manifest.json), [THIRD_PARTY.md](aira_local/THIRD_PARTY.md) |
+| Журнал | [aira_local/work_log.md](aira_local/work_log.md) |
 
-**Это не последний цикл.** Корневые файлы [report.md](report.md), [results.csv](results.csv), [work_log.md](work_log.md), код [tensor_gp/](tensor_gp/) и команда `bash reproduce.sh` относятся к первому GP-исследованию.
+Реально выполнены Python tests и desktop/mobile browser checks. Подробности/ограничения в README прототипа. Большой Kaggle language-model trainer пока не реализован и не запускался. Запуск маленькой модели не доказывает, что при масштабировании будет достигнуто желаемое качество.
 
-Его результат ограничен полной обучающей декартовой сеткой, подходящим ядром и скалярным шумом. Преимущество перед специализированными `linear_operator`/GPyTorch не измерено. Второе исследование не устраняет эти ограничения и не используется для пересчёта старых результатов.
+## Историческое исследование: Fashion-MNIST / RBF-SVM
 
-Численные исходники, первичные измерения, отчёт и контрольные суммы первого цикла **не переписаны**. Исходный корневой README сохранён побайтно в [архивной копии](research/archive/README.stage1.original.txt); этот `.txt` — документ для проверки исторического SHA, а не навигационная страница. Полный исторический снимок доступен в [коммите c526490](https://github.com/Riyozaki/workspace/tree/c526490855c6fd6ac45d35cec49e65cf7472cf37).
+Это **отдельный завершённый эксперимент**, не результат текущего языкового прототипа и не его ускорение.
 
-## Проверка комплектности и публикация
+- [Описание](competition50x/README.md), [отчёт](competition50x/report.md).
+- [Пять первичных пар](competition50x/results.csv), [журнал](competition50x/work_log.md), [checkpoints](competition50x/checkpoints.md).
+- [Протокол](competition50x/protocol.md), [eval.py](competition50x/eval.py), [исходная фиксация](competition50x/protocol_frozen.json).
+- [Полное свежee воспроизведение](competition50x/results/fresh_reproduction_index.json).
 
-[publication.json](publication.json) явно указывает актуальный цикл и расположение исторических запечатанных документов. Перенаправление старого SHA корневого README в его побайтный архив описано там; ожидаемые SHA старого исследования не менялись.
+Его единственный первичный результат —45,7854× на полном инференсе конкретной предобученной SVM, качество сохранено на локальном holdout. Порог50× не достигнут. Он не доказывает ускорения LLM/обучения и не даёт кредита текущему AIra Local Lab.
+
+## Первый цикл: Kronecker-GP — архив
+
+Корневые [report.md](report.md), [results.csv](results.csv), [work_log.md](work_log.md), код [tensor_gp/](tensor_gp/) и команда `bash reproduce.sh` относятся **к первому GP-исследованию**, а не к текущему приложению.
+
+Нужны полная обучающая декартова сетка, подходящее ядро и скалярный шум. Преимущество перед специализированными linear_operator/GPyTorch не измерено. Более поздние эксперименты не устраняют эти ограничения и не пересчитывают старые результаты.
+
+Численные исходники, отчёт, первичные измерения и ожидаемые SHA обоих исторических исследований **не переписаны**. Изначальный корневой README сохранён побайтно в [архивной копии](research/archive/README.stage1.original.txt); исторический снимок — [c526490](https://github.com/Riyozaki/workspace/tree/c526490855c6fd6ac45d35cec49e65cf7472cf37).
+
+## Комплектность и публикация
+
+[publication.json](publication.json) разделяет **latest_delivery** (прототип) и **latest_research_study** (последнее отдельное исследование). Там же описан архивный путь исходного README для проверки его исторического SHA.
 
 ```bash
 python3 scripts/verify_publication.py
-bash scripts/publish.sh "Publish verified research updates"
+bash scripts/publish.sh "Publish verified AIra updates"
 ```
 
-Проверка использует только стандартную библиотеку: контролирует запечатанные файлы обоих циклов, неизменность frozen evaluator/source, первичные CSV и комплектность актуального цикла. Скрипт публикации добавляет все неигнорируемые изменения, проверяет staged-файлы, коммитит, пушит рабочую ветку и подтверждает совпадение локального и удалённого SHA и чистоту рабочего дерева. Это контроль доставки файлов, **не независимая научная верификация**.
+Проверка использует стандартную библиотеку: проверяет запечатанные файлы исторических исследований, payload актуального приложения, frozen evaluator/source и первичные CSV. Она не превращает отрицательные результаты прототипа в положительные и не является внешней научной сертификацией.
 
-Правило завершения работы зафиксировано в [AGENTS.md](AGENTS.md): не сообщать о доставке до успешного push и проверки удалённого коммита.
+Скрипт публикации добавляет все неигнорируемые изменения, проверяет staged bytes, коммитит, пушит только рабочую ветку и подтверждает совпадение remote/local SHA и чистоту дерева. Правило доставки — [AGENTS.md](AGENTS.md). Крупные веса/corpora/runtime/cache остаются вне Git и создаются setup-командой.
