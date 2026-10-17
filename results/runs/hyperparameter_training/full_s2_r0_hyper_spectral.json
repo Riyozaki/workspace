@@ -1,0 +1,330 @@
+{
+  "method": "hyper_spectral",
+  "case": "hyperparameter_training",
+  "seed": 2,
+  "repeat": 0,
+  "threads": 2,
+  "n_train": 4096,
+  "n_test": 512,
+  "axes": [
+    64,
+    64
+  ],
+  "theta": [
+    0.20209081184285924,
+    -1.9562296216249933,
+    -1.9407976800956694,
+    -5.988183664227927
+  ],
+  "noise_variance": 0.002508215677167828,
+  "quality": {
+    "rmse": 0.04877232916285555,
+    "latent_rmse": 0.009006877399820978,
+    "nll": -1.6002687877239368,
+    "coverage_95": 0.94921875,
+    "min_latent_variance": 6.197979084121563e-05,
+    "max_latent_variance": 0.000226811920042147
+  },
+  "stages": {
+    "load_s": 0.0013375399998949433,
+    "preprocess_s": 4.837500000576256e-05,
+    "fit_total_s": 0.022436288999870158,
+    "predict_total_s": 0.09067388900029982,
+    "metrics_s": 0.00014683600011267117,
+    "prediction_output_s": 0.0005215709998083184
+  },
+  "optimizer_success": true,
+  "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+  "optimizer_iterations": 18,
+  "optimizer_nfev": 22,
+  "optimizer_njev": 22,
+  "final_negative_lml": -6037.130558531198,
+  "optimizer_history": [
+    {
+      "theta": [
+        0.0,
+        -1.7147984280919266,
+        -1.4696759700589417,
+        -5.991464547107982
+      ],
+      "negative_lml": -1709.382342965373,
+      "gradient_inf_norm": 31521.506642703036
+    },
+    {
+      "theta": [
+        2.302585092994046,
+        -3.912023005428146,
+        -3.912023005428146,
+        -2.3025850929940455
+      ],
+      "negative_lml": 4378.912816583428,
+      "gradient_inf_norm": 3612.0369225121945
+    },
+    {
+      "theta": [
+        0.761759003693889,
+        -2.4417012513647833,
+        -2.277672100146969,
+        -4.771080924256153
+      ],
+      "negative_lml": -4758.813543376476,
+      "gradient_inf_norm": 1353.165893526443
+    },
+    {
+      "theta": [
+        0.697745673193409,
+        -2.3981055968263894,
+        -2.247618832241369,
+        -4.914968412483995
+      ],
+      "negative_lml": -4987.521940900444,
+      "gradient_inf_norm": 1268.867500777356
+    },
+    {
+      "theta": [
+        0.44169235119148864,
+        -2.2237229786728134,
+        -2.1274057606189687,
+        -5.490518365395365
+      ],
+      "negative_lml": -5724.384546849455,
+      "gradient_inf_norm": 763.3747753396399
+    },
+    {
+      "theta": [
+        -0.06118995268422228,
+        -1.7862876960607277,
+        -1.878172075764293,
+        -6.497413707990232
+      ],
+      "negative_lml": -5613.557256698188,
+      "gradient_inf_norm": 1329.6657136641838
+    },
+    {
+      "theta": [
+        0.19308791636303452,
+        -2.007472873290938,
+        -2.0041948246087338,
+        -5.988286224093106
+      ],
+      "negative_lml": -6028.888385694005,
+      "gradient_inf_norm": 139.01233245454247
+    },
+    {
+      "theta": [
+        0.14681870590809987,
+        -1.9417737404374842,
+        -1.970817476682267,
+        -6.025539869689221
+      ],
+      "negative_lml": -6035.333372053048,
+      "gradient_inf_norm": 75.55712068515265
+    },
+    {
+      "theta": [
+        0.153984521487644,
+        -1.9474800435581774,
+        -1.9676497905863248,
+        -5.998567311874647
+      ],
+      "negative_lml": -6036.722625550685,
+      "gradient_inf_norm": 25.57037684577739
+    },
+    {
+      "theta": [
+        0.15372268032307262,
+        -1.9494710567887472,
+        -1.9577739993207097,
+        -5.986943556332847
+      ],
+      "negative_lml": -6037.012937687612,
+      "gradient_inf_norm": 9.915095693539456
+    },
+    {
+      "theta": [
+        0.15399541977081557,
+        -1.95502216792012,
+        -1.95173813850071,
+        -5.985519640994292
+      ],
+      "negative_lml": -6037.082128368318,
+      "gradient_inf_norm": 5.186512261343182
+    },
+    {
+      "theta": [
+        0.15417520542640997,
+        -1.9606727102631492,
+        -1.9455242353881739,
+        -5.987700449937401
+      ],
+      "negative_lml": -6037.115187945448,
+      "gradient_inf_norm": 0.905511680000106
+    },
+    {
+      "theta": [
+        0.15496611424729287,
+        -1.9609203527477215,
+        -1.9453391390290558,
+        -5.988080675882564
+      ],
+      "negative_lml": -6037.1158797553635,
+      "gradient_inf_norm": 0.5765441439740548
+    },
+    {
+      "theta": [
+        0.15695988442167474,
+        -1.9610006985450739,
+        -1.9450469681503955,
+        -5.9885472045036945
+      ],
+      "negative_lml": -6037.116851252093,
+      "gradient_inf_norm": 0.762119285373539
+    },
+    {
+      "theta": [
+        0.16165596740614674,
+        -1.960824235211906,
+        -1.9445027417559713,
+        -5.989056572035665
+      ],
+      "negative_lml": -6037.118664925292,
+      "gradient_inf_norm": 1.7633930386049779
+    },
+    {
+      "theta": [
+        0.17337524731561085,
+        -1.9599416992310086,
+        -1.9432665294725788,
+        -5.989605324223346
+      ],
+      "negative_lml": -6037.122516422671,
+      "gradient_inf_norm": 2.8361302698272843
+    },
+    {
+      "theta": [
+        0.19056818959954644,
+        -1.9582132184936487,
+        -1.9415860200295891,
+        -5.9895709943075195
+      ],
+      "negative_lml": -6037.127297530858,
+      "gradient_inf_norm": 2.7511820809065726
+    },
+    {
+      "theta": [
+        0.20230772880709932,
+        -1.9568377585936683,
+        -1.940416354408682,
+        -5.98822813932766
+      ],
+      "negative_lml": -6037.130333826197,
+      "gradient_inf_norm": 0.732760364131309
+    },
+    {
+      "theta": [
+        0.20265659326867222,
+        -1.9561060558370553,
+        -1.9406404976687708,
+        -5.988243438030918
+      ],
+      "negative_lml": -6037.130529867727,
+      "gradient_inf_norm": 0.2798638532142945
+    },
+    {
+      "theta": [
+        0.20222484315674097,
+        -1.9562106360257587,
+        -1.9408058374014654,
+        -5.9881829819319625
+      ],
+      "negative_lml": -6037.130558106306,
+      "gradient_inf_norm": 0.03312259875451673
+    },
+    {
+      "theta": [
+        0.2021097440279735,
+        -1.956228449890207,
+        -1.9407961011016985,
+        -5.98818452145484
+      ],
+      "negative_lml": -6037.130558527515,
+      "gradient_inf_norm": 0.0018887316186441082
+    },
+    {
+      "theta": [
+        0.20209081184285924,
+        -1.9562296216249933,
+        -1.9407976800956694,
+        -5.988183664227927
+      ],
+      "negative_lml": -6037.130558531198,
+      "gradient_inf_norm": 0.00021397892082364238
+    }
+  ],
+  "warnings": [],
+  "model_state_bytes": 131072,
+  "min_raw_variance": 6.197979084121563e-05,
+  "peak_rss_bytes": 82456576,
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3"
+  },
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+      "version": "0.3.29",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+      "version": "0.3.28",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    }
+  ],
+  "affinity": [
+    0,
+    1
+  ],
+  "pipeline_s": 0.11589842300008968,
+  "worker_s": 0.3952920270003233,
+  "status": "ok",
+  "run_id": "hyperparameter_training/full_s2_r0_hyper_spectral",
+  "cold_wall_s": 0.47010225599979094,
+  "prediction_file": "artifacts/predictions/hyperparameter_training/full_s2_r0_hyper_spectral.npz",
+  "prediction_sha256": "33485e3511b2f4bd2740e585353864460800e87a3a02c04d162da13d7324c140",
+  "source_sha256": {
+    "__init__.py": "d4c7502c0f136f87230bc5a1229d2eeddbb57c51700fffbf672f79e4addf4983",
+    "audits.py": "d6913105e9751e56ea501b3bc7ab1bf65cded07ccdc65a4aed293707152ef38c",
+    "benchmark.py": "827cff3b72ad2f3f317afdd4ff71c60959766bab9ad4dd244be267cb0bbac3df",
+    "clock.py": "eb06d41a29b40d9de3bf20c60471040c2c907caa57a302355e4ea9c349ed5ff7",
+    "data.py": "fd3ab63a9a432711047c9d8d347e8b307b6ff623d863e47c6c8a9d978c2a8362",
+    "dense.py": "8e142bfd7b82514031e4d16f9480169d95d49b0ec4bdd61f7fd89715c4fd79cf",
+    "dense_fortran.py": "2b7d5f907e953aaffea2af6ab0c3cff04d681bbc9a42f9545bae444742f299cc",
+    "experiments.py": "f97a3a99e39539f524c0768a09baa50b3366808a3261748f0a1bde842efd963d",
+    "external_audit.py": "ef891cc04d5b7d9f8bfab82827a8189287254e56f436c32fd1f3d081716672b1",
+    "external_data.py": "3f5841916b2fb6eb8fa94eadc5ed52cdf35085866e0ff097591dad943b39d6cb",
+    "hyper_audit.py": "9d90675b315ea7d6e9fb9c15af8b48a3009060a00174073142ece04fcae19be5",
+    "hyperparameters.py": "56116e6f070d80125e694fa02cdfa463b1632703d6b9c089fd531cb8f6aeea96",
+    "kernels.py": "dbc7e48a6273f2899f0ed449f9e5d3b57b95e7cb9b5e10b7d7ef8c553ffeac0c",
+    "masked.py": "3957d460099dfcbcaa2053ae86808ba73a1e70ee58020233235b7e7980237860",
+    "masked_audit.py": "7cf18308bb3f7b7c1492e71e6ef3561740be7e89a7dc85d6aae7989a36191387",
+    "metrics.py": "74b0540ea6337f3c5cfbea2fa869d3f204e8593ec9212b8f5a19eea7115a49b2",
+    "run_external.py": "aff1b24b980eccb4a0ca5b6a9a44156dac732c9545e6fe529819077c43fec957",
+    "run_hyper.py": "69fd4ce17560c170b1d7ef733b1ddc259918f5528157a888b34066b967cadd82",
+    "run_masked.py": "2743d65fa03744d55e7978dd6774d7bf5130aebf8c5ec17ea59af8999d71b2ac",
+    "run_numpy.py": "e5ea4640ba33e11d95281e03f0a7d037647ca0bb9556d830b3826494ddd34411",
+    "run_one.py": "cb6fbd9671206a69d05740fc11f1b9d71b216b2b9a3973774968987deca15e70",
+    "spectral.py": "9521ee279d8ff28ba49f1fa24868b42033e5f9e11a010c59a4257f30c13b782c",
+    "spectral_numpy.py": "1cc878753b8f0658e349c9c322b3d469b1a1bfde63a4c15d5cd58166be2e7aeb"
+  }
+}

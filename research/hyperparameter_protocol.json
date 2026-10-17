@@ -1,0 +1,18 @@
+{
+  "status": "frozen_before_any_hyperparameter_fit_or_objective_measurement",
+  "scope": "Separate exploratory full hyperparameter-training extension of the same tensor identity; does not replace the primary baseline or results",
+  "models": ["hyper_dense", "hyper_spectral"],
+  "baseline": "scikit-learn GaussianProcessRegressor, ConstantKernel * anisotropic RBF + WhiteKernel, alpha=0, no normalize_y beyond common training-only centering, no restarts; optimizer uses identical scipy.optimize.minimize callback/settings",
+  "method": "Exact full-rank tensor log marginal likelihood and analytic gradients, same optimizer/bounds/initialization, final full-rank tensor posterior",
+  "initial_theta_log": "log([1.0,0.18,0.23,0.0025]), order signal variance, lengthscale x, lengthscale y, observation noise variance",
+  "bounds_untransformed": [[0.01,10.0],[0.02,1.0],[0.02,1.0],[0.0001,0.1]],
+  "optimizer": {"method":"L-BFGS-B","maxiter":80,"maxfun":120,"maxls":30,"ftol":1e-11,"gtol":1e-7},
+  "pilot": {"axes":[16,16],"test_size":128,"seeds":[0],"repetitions":1},
+  "full": {"axes":[64,64],"test_size":512,"seeds":[0,1,2,3,4],"repetitions":2},
+  "data_and_quality": "same latent function, noise-generating distribution, independent test seed and frozen quality tolerances as primary. Learned noise variance used for each model's predictive NLL. No tuning using test values.",
+  "timing": "cold subprocess including imports, input, centering, all optimizer evaluations and rejected line searches, final refit, all posterior mean/variance predictions, metrics and output",
+  "timeout_seconds_per_method":600,
+  "completion_policy": "Do not start a full case if its timeout would overlap research minute 83; preserve any unstarted plan in an unfinished file. Incomplete studies never count as a confirmed result.",
+  "gradient_validation": "Compare objective and full analytic gradient against independent sklearn GPR and finite differences on small grids before timing; fixed tolerances atol=2e-5, rtol=2e-6 for validation gradients, not a modification of the primary held-out quality rule",
+  "all_attempts_retained":true
+}

@@ -1,0 +1,172 @@
+{
+  "(16, 16)": {
+    "n_pairs": 6,
+    "n_dataset_seeds": 3,
+    "primary_speedup_ratio_of_sums": 1.0319957301201688,
+    "primary_speedup_cluster_bootstrap_95ci": [
+      0.9793544828179194,
+      1.0751389745606696
+    ],
+    "bootstrap_clusters": "dataset seed, keeping repetitions together",
+    "bootstrap_replicates": 10000,
+    "baseline_cold_mean_s": 0.274250474833309,
+    "method_cold_mean_s": 0.26574768366665086,
+    "baseline_cold_min_max_s": [
+      0.25734012899999925,
+      0.30161941799997294
+    ],
+    "method_cold_min_max_s": [
+      0.2349621409999827,
+      0.29070567999997365
+    ],
+    "paired_speedup_min_max": [
+      0.8880023366727451,
+      1.2343206325538207
+    ],
+    "secondary_inprocess_speedup_ratio_of_sums": 1.9640336476143037,
+    "baseline_rmse_mean": 0.13529148941615524,
+    "method_rmse_mean": 0.13529148941615743,
+    "max_abs_mean_diff": 1.5440426714974365e-13,
+    "max_abs_variance_diff": 3.774758283725532e-15,
+    "max_abs_nll_diff": 5.859757123971576e-13,
+    "all_quality_checks_pass": true,
+    "baseline_peak_rss_max_bytes": 66449408,
+    "method_peak_rss_max_bytes": 62312448
+  },
+  "(32, 32)": {
+    "n_pairs": 6,
+    "n_dataset_seeds": 3,
+    "primary_speedup_ratio_of_sums": 1.2226281451055931,
+    "primary_speedup_cluster_bootstrap_95ci": [
+      1.1400391914117651,
+      1.27984356184817
+    ],
+    "bootstrap_clusters": "dataset seed, keeping repetitions together",
+    "bootstrap_replicates": 10000,
+    "baseline_cold_mean_s": 0.3366379558333013,
+    "method_cold_mean_s": 0.27533960933332463,
+    "baseline_cold_min_max_s": [
+      0.27578498499997295,
+      0.3642394559999502
+    ],
+    "method_cold_min_max_s": [
+      0.2395940830000427,
+      0.3138080070000342
+    ],
+    "paired_speedup_min_max": [
+      1.0198538487613587,
+      1.5128653072784441
+    ],
+    "secondary_inprocess_speedup_ratio_of_sums": 6.205603029526854,
+    "baseline_rmse_mean": 0.08852766786919558,
+    "method_rmse_mean": 0.08852766786919208,
+    "max_abs_mean_diff": 5.793143742494067e-13,
+    "max_abs_variance_diff": 3.3306690738754696e-15,
+    "max_abs_nll_diff": 2.795541576006144e-13,
+    "all_quality_checks_pass": true,
+    "baseline_peak_rss_max_bytes": 82530304,
+    "method_peak_rss_max_bytes": 63184896
+  },
+  "(64, 64)": {
+    "n_pairs": 6,
+    "n_dataset_seeds": 3,
+    "primary_speedup_ratio_of_sums": 3.4727502103462515,
+    "primary_speedup_cluster_bootstrap_95ci": [
+      3.250361663158585,
+      3.878197233187535
+    ],
+    "bootstrap_clusters": "dataset seed, keeping repetitions together",
+    "bootstrap_replicates": 10000,
+    "baseline_cold_mean_s": 0.9506707968333595,
+    "method_cold_mean_s": 0.2737515626666891,
+    "baseline_cold_min_max_s": [
+      0.901168795999979,
+      1.0636747830000104
+    ],
+    "method_cold_min_max_s": [
+      0.24653998100006902,
+      0.29064180299997133
+    ],
+    "paired_speedup_min_max": [
+      3.1643517673888963,
+      4.314410906844811
+    ],
+    "secondary_inprocess_speedup_ratio_of_sums": 87.53435878466303,
+    "baseline_rmse_mean": 0.06326929148773447,
+    "method_rmse_mean": 0.06326929148773423,
+    "max_abs_mean_diff": 1.2611023336717153e-12,
+    "max_abs_variance_diff": 5.773159728050814e-15,
+    "max_abs_nll_diff": 4.0589753780295723e-13,
+    "all_quality_checks_pass": true,
+    "baseline_peak_rss_max_bytes": 329109504,
+    "method_peak_rss_max_bytes": 65544192
+  },
+  "(128, 64)": {
+    "n_pairs": 6,
+    "n_dataset_seeds": 3,
+    "primary_speedup_ratio_of_sums": 14.007401341274909,
+    "primary_speedup_cluster_bootstrap_95ci": [
+      11.83513699952281,
+      15.646250047563976
+    ],
+    "bootstrap_clusters": "dataset seed, keeping repetitions together",
+    "bootstrap_replicates": 10000,
+    "baseline_cold_mean_s": 3.828310972500011,
+    "method_cold_mean_s": 0.2733062956666572,
+    "baseline_cold_min_max_s": [
+      3.7103966720000017,
+      3.9154181950000293
+    ],
+    "method_cold_min_max_s": [
+      0.23861829700001636,
+      0.34934985999996115
+    ],
+    "paired_speedup_min_max": [
+      10.620862055019613,
+      15.733958372855955
+    ],
+    "secondary_inprocess_speedup_ratio_of_sums": 148.3481552863391,
+    "baseline_rmse_mean": 0.05652698541594863,
+    "method_rmse_mean": 0.05652698541592319,
+    "max_abs_mean_diff": 2.5464630404314903e-12,
+    "max_abs_variance_diff": 8.215650382226158e-15,
+    "max_abs_nll_diff": 8.664180484174722e-13,
+    "all_quality_checks_pass": true,
+    "baseline_peak_rss_max_bytes": 1134714880,
+    "method_peak_rss_max_bytes": 67612672
+  },
+  "(128, 96)": {
+    "n_pairs": 6,
+    "n_dataset_seeds": 3,
+    "primary_speedup_ratio_of_sums": 28.218266111340647,
+    "primary_speedup_cluster_bootstrap_95ci": [
+      24.23027862016081,
+      31.60583840365757
+    ],
+    "bootstrap_clusters": "dataset seed, keeping repetitions together",
+    "bootstrap_replicates": 10000,
+    "baseline_cold_mean_s": 9.137984399000024,
+    "method_cold_mean_s": 0.32383224266665894,
+    "baseline_cold_min_max_s": [
+      8.86600718200009,
+      9.542284301999985
+    ],
+    "method_cold_min_max_s": [
+      0.24038015399992219,
+      0.40187928500006365
+    ],
+    "paired_speedup_min_max": [
+      22.709559730103017,
+      39.696639440554954
+    ],
+    "secondary_inprocess_speedup_ratio_of_sums": 108.54563517657067,
+    "baseline_rmse_mean": 0.05372598554339492,
+    "method_rmse_mean": 0.053725985543385556,
+    "max_abs_mean_diff": 2.9488633757068783e-12,
+    "max_abs_variance_diff": 1.0880185641326534e-14,
+    "max_abs_nll_diff": 8.180123245438153e-13,
+    "all_quality_checks_pass": true,
+    "baseline_peak_rss_max_bytes": 2477023232,
+    "method_peak_rss_max_bytes": 68042752
+  }
+}

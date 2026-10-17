@@ -1,0 +1,340 @@
+{
+  "method": "hyper_dense",
+  "case": "hyperparameter_training",
+  "seed": 2,
+  "repeat": 1,
+  "threads": 2,
+  "n_train": 4096,
+  "n_test": 512,
+  "axes": [
+    64,
+    64
+  ],
+  "theta": [
+    0.202090811870247,
+    -1.9562296216218749,
+    -1.9407976800936961,
+    -5.988183664228099
+  ],
+  "noise_variance": 0.0025082156771673984,
+  "quality": {
+    "rmse": 0.04877232916286773,
+    "latent_rmse": 0.009006877399811894,
+    "nll": -1.6002687877237236,
+    "coverage_95": 0.94921875,
+    "min_latent_variance": 6.197979084145242e-05,
+    "max_latent_variance": 0.00022681192004504877
+  },
+  "stages": {
+    "load_s": 0.001498260000062146,
+    "preprocess_s": 5.355499979486922e-05,
+    "fit_total_s": 107.80473833299993,
+    "predict_total_s": 0.22757613500016305,
+    "metrics_s": 0.00013653399992108461,
+    "prediction_output_s": 0.0006416720002562215
+  },
+  "optimizer_success": true,
+  "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+  "optimizer_iterations": 18,
+  "optimizer_nfev": 22,
+  "optimizer_njev": 22,
+  "final_negative_lml": -6037.1305585321425,
+  "optimizer_history": [
+    {
+      "theta": [
+        0.0,
+        -1.7147984280919266,
+        -1.4696759700589417,
+        -5.991464547107982
+      ],
+      "negative_lml": -1709.3823429662662,
+      "gradient_inf_norm": 31521.50664269775
+    },
+    {
+      "theta": [
+        2.302585092994046,
+        -3.912023005428146,
+        -3.912023005428146,
+        -2.3025850929940455
+      ],
+      "negative_lml": 4378.912816583427,
+      "gradient_inf_norm": 3612.0369225121813
+    },
+    {
+      "theta": [
+        0.7617590036938775,
+        -2.4417012513647722,
+        -2.2776721001469564,
+        -4.771080924256172
+      ],
+      "negative_lml": -4758.81354337638,
+      "gradient_inf_norm": 1353.165893526329
+    },
+    {
+      "theta": [
+        0.6977456731933906,
+        -2.3981055968263796,
+        -2.2476188322413506,
+        -4.9149684124840265
+      ],
+      "negative_lml": -4987.521940900431,
+      "gradient_inf_norm": 1268.8675007773204
+    },
+    {
+      "theta": [
+        0.44169235119144323,
+        -2.223722978672809,
+        -2.1274057606189274,
+        -5.490518365395446
+      ],
+      "negative_lml": -5724.3845468494055,
+      "gradient_inf_norm": 763.3747753395189
+    },
+    {
+      "theta": [
+        -0.06118995268439631,
+        -1.7862876960606486,
+        -1.8781720757643554,
+        -6.497413707990272
+      ],
+      "negative_lml": -5613.557256699141,
+      "gradient_inf_norm": 1329.6657136618073
+    },
+    {
+      "theta": [
+        0.19308791636273653,
+        -2.0074728732907325,
+        -2.0041948246086503,
+        -5.988286224093546
+      ],
+      "negative_lml": -6028.888385694214,
+      "gradient_inf_norm": 139.01233245394909
+    },
+    {
+      "theta": [
+        0.14681870590825555,
+        -1.9417737404373134,
+        -1.9708174766824698,
+        -6.025539869689267
+      ],
+      "negative_lml": -6035.333372053894,
+      "gradient_inf_norm": 75.55712068353647
+    },
+    {
+      "theta": [
+        0.15398452148800149,
+        -1.9474800435579542,
+        -1.9676497905863706,
+        -5.99856731187505
+      ],
+      "negative_lml": -6036.72262555103,
+      "gradient_inf_norm": 25.570376845583816
+    },
+    {
+      "theta": [
+        0.15372268032395262,
+        -1.9494710567886755,
+        -1.9577739993206889,
+        -5.986943556333127
+      ],
+      "negative_lml": -6037.012937687976,
+      "gradient_inf_norm": 9.915095693686654
+    },
+    {
+      "theta": [
+        0.1539954197721432,
+        -1.9550221679201083,
+        -1.9517381385005783,
+        -5.985519640994622
+      ],
+      "negative_lml": -6037.082128369266,
+      "gradient_inf_norm": 5.186512261575993
+    },
+    {
+      "theta": [
+        0.15417520542878857,
+        -1.9606727102622135,
+        -1.9455242353881788,
+        -5.987700449938446
+      ],
+      "negative_lml": -6037.115187945719,
+      "gradient_inf_norm": 0.9055116786135695
+    },
+    {
+      "theta": [
+        0.1549661142502519,
+        -1.9609203527467944,
+        -1.945339139029388,
+        -5.988080675882849
+      ],
+      "negative_lml": -6037.1158797552725,
+      "gradient_inf_norm": 0.576544143725755
+    },
+    {
+      "theta": [
+        0.1569598844247807,
+        -1.961000698545119,
+        -1.9450469681501499,
+        -5.988547204502108
+      ],
+      "negative_lml": -6037.116851252427,
+      "gradient_inf_norm": 0.7621192816187408
+    },
+    {
+      "theta": [
+        0.16165596746009325,
+        -1.9608242352119492,
+        -1.9445027417483498,
+        -5.989056572040622
+      ],
+      "negative_lml": -6037.118664925345,
+      "gradient_inf_norm": 1.7633930482696258
+    },
+    {
+      "theta": [
+        0.1733752472398403,
+        -1.9599416992383756,
+        -1.9432665294808358,
+        -5.989605324220387
+      ],
+      "negative_lml": -6037.122516422136,
+      "gradient_inf_norm": 2.8361302650123177
+    },
+    {
+      "theta": [
+        0.19056818954737284,
+        -1.958213218500045,
+        -1.9415860200342372,
+        -5.989570994300479
+      ],
+      "negative_lml": -6037.127297530316,
+      "gradient_inf_norm": 2.751182067835867
+    },
+    {
+      "theta": [
+        0.20230772872345845,
+        -1.9568377585479126,
+        -1.940416354416315,
+        -5.988228139355391
+      ],
+      "negative_lml": -6037.130333826228,
+      "gradient_inf_norm": 0.7327602654115042
+    },
+    {
+      "theta": [
+        0.2026565931761248,
+        -1.9561060558635235,
+        -1.9406404976943186,
+        -5.988243438026149
+      ],
+      "negative_lml": -6037.13052986705,
+      "gradient_inf_norm": 0.2798638006372892
+    },
+    {
+      "theta": [
+        0.20222484313132005,
+        -1.9562106360255647,
+        -1.940805837414881,
+        -5.988182981925841
+      ],
+      "negative_lml": -6037.1305581057695,
+      "gradient_inf_norm": 0.03312261708349862
+    },
+    {
+      "theta": [
+        0.20210974398870016,
+        -1.9562284498945022,
+        -1.940796101105204,
+        -5.988184521454448
+      ],
+      "negative_lml": -6037.1305585277605,
+      "gradient_inf_norm": 0.0018887302483448498
+    },
+    {
+      "theta": [
+        0.20209081187024697,
+        -1.9562296216218749,
+        -1.9407976800936961,
+        -5.988183664228099
+      ],
+      "negative_lml": -6037.1305585321425,
+      "gradient_inf_norm": 0.00021397735749639768
+    }
+  ],
+  "warnings": [],
+  "model_state_bytes": 134250496,
+  "min_raw_variance": 6.197979084145242e-05,
+  "peak_rss_bytes": 1740980224,
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3"
+  },
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+      "version": "0.3.29",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+      "version": "0.3.28",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "num_threads": 2,
+      "prefix": "libgomp",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scikit_learn.libs/libgomp-a34b3233.so.1.0.0",
+      "version": null
+    }
+  ],
+  "affinity": [
+    0,
+    1
+  ],
+  "pipeline_s": 108.03711412700022,
+  "worker_s": 108.29101142499985,
+  "status": "ok",
+  "run_id": "hyperparameter_training/full_s2_r1_hyper_dense",
+  "cold_wall_s": 108.41955720999977,
+  "prediction_file": "artifacts/predictions/hyperparameter_training/full_s2_r1_hyper_dense.npz",
+  "prediction_sha256": "d8dc8ac63ab1f24624260d0279bf6ab8f83fa4a4c39e9fc6ad7623100e92e2f0",
+  "source_sha256": {
+    "__init__.py": "d4c7502c0f136f87230bc5a1229d2eeddbb57c51700fffbf672f79e4addf4983",
+    "audits.py": "d6913105e9751e56ea501b3bc7ab1bf65cded07ccdc65a4aed293707152ef38c",
+    "benchmark.py": "827cff3b72ad2f3f317afdd4ff71c60959766bab9ad4dd244be267cb0bbac3df",
+    "clock.py": "05f9be6ad46001d34674af940c527bc2b4ebe004c9d6d3a8c3cce08b50f32f03",
+    "data.py": "fd3ab63a9a432711047c9d8d347e8b307b6ff623d863e47c6c8a9d978c2a8362",
+    "dense.py": "8e142bfd7b82514031e4d16f9480169d95d49b0ec4bdd61f7fd89715c4fd79cf",
+    "dense_fortran.py": "2b7d5f907e953aaffea2af6ab0c3cff04d681bbc9a42f9545bae444742f299cc",
+    "environment.py": "6caa770d8eca272e14b577023aa4164b53abbcf602231dc6d8949eb2e757db0b",
+    "experiments.py": "f97a3a99e39539f524c0768a09baa50b3366808a3261748f0a1bde842efd963d",
+    "external_audit.py": "ef891cc04d5b7d9f8bfab82827a8189287254e56f436c32fd1f3d081716672b1",
+    "external_data.py": "3f5841916b2fb6eb8fa94eadc5ed52cdf35085866e0ff097591dad943b39d6cb",
+    "hyper_audit.py": "9d90675b315ea7d6e9fb9c15af8b48a3009060a00174073142ece04fcae19be5",
+    "hyperparameters.py": "56116e6f070d80125e694fa02cdfa463b1632703d6b9c089fd531cb8f6aeea96",
+    "kernels.py": "dbc7e48a6273f2899f0ed449f9e5d3b57b95e7cb9b5e10b7d7ef8c553ffeac0c",
+    "masked.py": "3957d460099dfcbcaa2053ae86808ba73a1e70ee58020233235b7e7980237860",
+    "masked_audit.py": "7cf18308bb3f7b7c1492e71e6ef3561740be7e89a7dc85d6aae7989a36191387",
+    "metrics.py": "74b0540ea6337f3c5cfbea2fa869d3f204e8593ec9212b8f5a19eea7115a49b2",
+    "reproduce.py": "591e9ff671c4c523742de50b709194d936930f6125dd24a692a7da19e037ef4a",
+    "run_external.py": "aff1b24b980eccb4a0ca5b6a9a44156dac732c9545e6fe529819077c43fec957",
+    "run_hyper.py": "69fd4ce17560c170b1d7ef733b1ddc259918f5528157a888b34066b967cadd82",
+    "run_masked.py": "2743d65fa03744d55e7978dd6774d7bf5130aebf8c5ec17ea59af8999d71b2ac",
+    "run_numpy.py": "e5ea4640ba33e11d95281e03f0a7d037647ca0bb9556d830b3826494ddd34411",
+    "run_one.py": "cb6fbd9671206a69d05740fc11f1b9d71b216b2b9a3973774968987deca15e70",
+    "spectral.py": "9521ee279d8ff28ba49f1fa24868b42033e5f9e11a010c59a4257f30c13b782c",
+    "spectral_numpy.py": "1cc878753b8f0658e349c9c322b3d469b1a1bfde63a4c15d5cd58166be2e7aeb"
+  }
+}

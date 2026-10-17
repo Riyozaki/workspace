@@ -1,0 +1,14 @@
+[
+  {
+    "name": "sklearn_gpr",
+    "url": "https://github.com/scikit-learn/scikit-learn/blob/1.7.2/sklearn/gaussian_process/_gpr.py",
+    "git_blob_sha": "d56e7735be787eaf2b1aaeaac0fce228651b2eb6",
+    "bytes": 28314
+  },
+  {
+    "name": "kronecker_added_diag",
+    "url": "https://github.com/cornellius-gp/linear_operator/blob/main/linear_operator/operators/kronecker_product_added_diag_linear_operator.py",
+    "git_blob_sha": "e1685f7400646cb9bc193d6702b16ab048c29a7c",
+    "bytes": 16308
+  }
+]

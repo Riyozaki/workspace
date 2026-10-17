@@ -1,0 +1,14 @@
+{
+  "status":"frozen_before_robustness_measurements",
+  "scope":"Numerical conditioning stress test, not pooled with primary",
+  "axes":[128,64],"test_size":512,"seeds":[0,1,2],
+  "model_noise_variances":[0.1,0.0025,0.000001,1e-10,1e-14,1e-16],
+  "lengthscale_pairs":[[0.03,0.03],[0.18,0.23],[1.0,1.0]],
+  "generative_observation_noise_std":0.05,
+  "methods":["dense_fortran","spectral_numpy"],
+  "quality":"All original RMSE and mean/variance/NLL guardrails unchanged. Unstable/failed cases are not claimed as lossless speedups.",
+  "no_adaptive_jitter_or_spectrum_clipping":true,
+  "randomized_plan_seed":8765,
+  "timeout_seconds_per_method":60,
+  "research_cutoff_minute":82
+}

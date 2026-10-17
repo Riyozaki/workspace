@@ -1,0 +1,152 @@
+[
+  {
+    "seed": 3,
+    "repeat": 2,
+    "order": [
+      "spectral_numpy",
+      "dense",
+      "dense_fortran",
+      "spectral"
+    ]
+  },
+  {
+    "seed": 3,
+    "repeat": 1,
+    "order": [
+      "dense_fortran",
+      "dense",
+      "spectral_numpy",
+      "spectral"
+    ]
+  },
+  {
+    "seed": 4,
+    "repeat": 1,
+    "order": [
+      "spectral_numpy",
+      "dense_fortran",
+      "dense",
+      "spectral"
+    ]
+  },
+  {
+    "seed": 1,
+    "repeat": 2,
+    "order": [
+      "dense",
+      "dense_fortran",
+      "spectral_numpy",
+      "spectral"
+    ]
+  },
+  {
+    "seed": 1,
+    "repeat": 1,
+    "order": [
+      "dense",
+      "spectral",
+      "spectral_numpy",
+      "dense_fortran"
+    ]
+  },
+  {
+    "seed": 4,
+    "repeat": 2,
+    "order": [
+      "spectral_numpy",
+      "spectral",
+      "dense",
+      "dense_fortran"
+    ]
+  },
+  {
+    "seed": 3,
+    "repeat": 0,
+    "order": [
+      "dense",
+      "spectral_numpy",
+      "spectral",
+      "dense_fortran"
+    ]
+  },
+  {
+    "seed": 2,
+    "repeat": 0,
+    "order": [
+      "dense_fortran",
+      "dense",
+      "spectral",
+      "spectral_numpy"
+    ]
+  },
+  {
+    "seed": 1,
+    "repeat": 0,
+    "order": [
+      "spectral",
+      "dense",
+      "dense_fortran",
+      "spectral_numpy"
+    ]
+  },
+  {
+    "seed": 0,
+    "repeat": 2,
+    "order": [
+      "dense",
+      "spectral_numpy",
+      "spectral",
+      "dense_fortran"
+    ]
+  },
+  {
+    "seed": 2,
+    "repeat": 1,
+    "order": [
+      "spectral",
+      "dense",
+      "dense_fortran",
+      "spectral_numpy"
+    ]
+  },
+  {
+    "seed": 4,
+    "repeat": 0,
+    "order": [
+      "dense",
+      "dense_fortran",
+      "spectral_numpy",
+      "spectral"
+    ]
+  },
+  {
+    "seed": 0,
+    "repeat": 1,
+    "order": [
+      "spectral",
+      "spectral_numpy",
+      "dense",
+      "dense_fortran"
+    ]
+  },
+  {
+    "seed": 2,
+    "repeat": 2,
+    "order": [
+      "dense_fortran",
+      "spectral",
+      "spectral_numpy",
+      "dense"
+    ]
+  },
+  {
+    "seed": 0,
+    "repeat": 0,
+    "order": [
+      "spectral",
+      "spectral_numpy",
+      "dense",
+      "dense_fortran"
+    ]
+  }
+]

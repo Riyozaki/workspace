@@ -1,0 +1,70 @@
+{
+  "pilot": {
+    "n_pairs": 1,
+    "n_dataset_seeds": 1,
+    "primary_speedup_ratio_of_sums": 3.1457836322388357,
+    "primary_speedup_cluster_bootstrap_95ci": [
+      3.1457836322388357,
+      3.1457836322388357
+    ],
+    "bootstrap_clusters": "dataset seed, keeping repetitions together",
+    "bootstrap_replicates": 10000,
+    "baseline_cold_mean_s": 1.0384403749999365,
+    "method_cold_mean_s": 0.33010546699961196,
+    "baseline_cold_min_max_s": [
+      1.0384403749999365,
+      1.0384403749999365
+    ],
+    "method_cold_min_max_s": [
+      0.33010546699961196,
+      0.33010546699961196
+    ],
+    "paired_speedup_min_max": [
+      3.1457836322388357,
+      3.1457836322388357
+    ],
+    "secondary_inprocess_speedup_ratio_of_sums": 49.490049970857825,
+    "baseline_rmse_mean": 0.054551879062330104,
+    "method_rmse_mean": 0.05455187906232974,
+    "max_abs_mean_diff": 2.7533531010703882e-14,
+    "max_abs_variance_diff": 1.248567221834307e-15,
+    "max_abs_nll_diff": 8.881784197001252e-16,
+    "all_quality_checks_pass": true,
+    "baseline_peak_rss_max_bytes": 122974208,
+    "method_peak_rss_max_bytes": 79073280
+  },
+  "full": {
+    "n_pairs": 10,
+    "n_dataset_seeds": 5,
+    "primary_speedup_ratio_of_sums": 276.7792569916533,
+    "primary_speedup_cluster_bootstrap_95ci": [
+      258.0354826240122,
+      302.36386536078743
+    ],
+    "bootstrap_clusters": "dataset seed, keeping repetitions together",
+    "bootstrap_replicates": 10000,
+    "baseline_cold_mean_s": 110.09307353469998,
+    "method_cold_mean_s": 0.39776490019994526,
+    "baseline_cold_min_max_s": [
+      103.02418571499993,
+      116.42991298000015
+    ],
+    "method_cold_min_max_s": [
+      0.32558341799995105,
+      0.47010225599979094
+    ],
+    "paired_speedup_min_max": [
+      226.53836964153442,
+      353.6654194809681
+    ],
+    "secondary_inprocess_speedup_ratio_of_sums": 1697.0528189839686,
+    "baseline_rmse_mean": 0.04959432587742102,
+    "method_rmse_mean": 0.0495943258774204,
+    "max_abs_mean_diff": 1.2637668689308157e-12,
+    "max_abs_variance_diff": 7.601124590861374e-15,
+    "max_abs_nll_diff": 2.1316282072803006e-13,
+    "all_quality_checks_pass": true,
+    "baseline_peak_rss_max_bytes": 1741225984,
+    "method_peak_rss_max_bytes": 82513920
+  }
+}

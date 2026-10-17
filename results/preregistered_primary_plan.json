@@ -1,0 +1,187 @@
+{
+  "label": "preregistered_primary",
+  "fixtures": {
+    "0": {
+      "path": "/home/user/workspace/artifacts/datasets/seed_0.npz",
+      "sha256": "96870af4869f627619d43389a6814c9d42af41added0d4fe0c07ff039f14636a",
+      "axis_sizes": [
+        128,
+        64
+      ],
+      "train_size": 8192,
+      "test_size": 512,
+      "seed": 0,
+      "noise_std": 0.05
+    },
+    "1": {
+      "path": "/home/user/workspace/artifacts/datasets/seed_1.npz",
+      "sha256": "7592b8085262a55c975c2dcf62217d58ff375718fdb2a158a64051a227c03591",
+      "axis_sizes": [
+        128,
+        64
+      ],
+      "train_size": 8192,
+      "test_size": 512,
+      "seed": 1,
+      "noise_std": 0.05
+    },
+    "2": {
+      "path": "/home/user/workspace/artifacts/datasets/seed_2.npz",
+      "sha256": "8c7c3ba5c6c9cc645690c813f7742803cec650559c089ab76175bc792c9bd579",
+      "axis_sizes": [
+        128,
+        64
+      ],
+      "train_size": 8192,
+      "test_size": 512,
+      "seed": 2,
+      "noise_std": 0.05
+    },
+    "3": {
+      "path": "/home/user/workspace/artifacts/datasets/seed_3.npz",
+      "sha256": "399730d603227c06bae95e93ef597aa6ac04803f374f338da9daee3053f39133",
+      "axis_sizes": [
+        128,
+        64
+      ],
+      "train_size": 8192,
+      "test_size": 512,
+      "seed": 3,
+      "noise_std": 0.05
+    },
+    "4": {
+      "path": "/home/user/workspace/artifacts/datasets/seed_4.npz",
+      "sha256": "c4ac8ee01a4602455d99b9266435a6a492b3f591f8feb287abebabb8e255937a",
+      "axis_sizes": [
+        128,
+        64
+      ],
+      "train_size": 8192,
+      "test_size": 512,
+      "seed": 4,
+      "noise_std": 0.05
+    }
+  },
+  "plan": [
+    {
+      "seed": 2,
+      "repeat": 2,
+      "order": [
+        "dense",
+        "spectral"
+      ]
+    },
+    {
+      "seed": 4,
+      "repeat": 1,
+      "order": [
+        "spectral",
+        "dense"
+      ]
+    },
+    {
+      "seed": 3,
+      "repeat": 2,
+      "order": [
+        "spectral",
+        "dense"
+      ]
+    },
+    {
+      "seed": 2,
+      "repeat": 0,
+      "order": [
+        "dense",
+        "spectral"
+      ]
+    },
+    {
+      "seed": 1,
+      "repeat": 0,
+      "order": [
+        "spectral",
+        "dense"
+      ]
+    },
+    {
+      "seed": 3,
+      "repeat": 0,
+      "order": [
+        "spectral",
+        "dense"
+      ]
+    },
+    {
+      "seed": 4,
+      "repeat": 2,
+      "order": [
+        "dense",
+        "spectral"
+      ]
+    },
+    {
+      "seed": 1,
+      "repeat": 2,
+      "order": [
+        "dense",
+        "spectral"
+      ]
+    },
+    {
+      "seed": 4,
+      "repeat": 0,
+      "order": [
+        "dense",
+        "spectral"
+      ]
+    },
+    {
+      "seed": 0,
+      "repeat": 1,
+      "order": [
+        "dense",
+        "spectral"
+      ]
+    },
+    {
+      "seed": 3,
+      "repeat": 1,
+      "order": [
+        "spectral",
+        "dense"
+      ]
+    },
+    {
+      "seed": 0,
+      "repeat": 2,
+      "order": [
+        "spectral",
+        "dense"
+      ]
+    },
+    {
+      "seed": 2,
+      "repeat": 1,
+      "order": [
+        "spectral",
+        "dense"
+      ]
+    },
+    {
+      "seed": 0,
+      "repeat": 0,
+      "order": [
+        "dense",
+        "spectral"
+      ]
+    },
+    {
+      "seed": 1,
+      "repeat": 1,
+      "order": [
+        "spectral",
+        "dense"
+      ]
+    }
+  ]
+}

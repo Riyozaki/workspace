@@ -1,0 +1,79 @@
+{
+  "method": "spectral",
+  "case": "scaling",
+  "seed": 2,
+  "repeat": 0,
+  "threads": 2,
+  "n_train": 1024,
+  "n_test": 512,
+  "axes": [
+    32,
+    32
+  ],
+  "lengthscales": [
+    0.18,
+    0.23
+  ],
+  "noise_variance": 0.0025,
+  "quality": {
+    "rmse": 0.08778640268237818,
+    "latent_rmse": 0.07492881990624314,
+    "nll": -0.590804119404132,
+    "coverage_95": 0.708984375,
+    "min_latent_variance": 0.00011869334600234094,
+    "max_latent_variance": 0.0003746089798656316
+  },
+  "stages": {
+    "load_s": 0.0012876379998942866,
+    "preprocess_s": 4.809899996871536e-05,
+    "fit_total_s": 0.0006212260000211245,
+    "predict_total_s": 0.02116872900000999,
+    "metrics_s": 0.00022338499991292338,
+    "prediction_output_s": 0.0003755159999627722,
+    "fit_kernel_s": 7.667900001706585e-05,
+    "fit_factor_s": 0.0004677580000134185,
+    "fit_solve_s": 4.428900001585134e-05,
+    "predict_cross_s": 0.020379973999979484,
+    "predict_mean_s": 0.00037519099998917227,
+    "predict_variance_s": 0.00032970400002341194
+  },
+  "model_state_bytes": 32768,
+  "min_raw_variance": 0.00011869334600234094,
+  "peak_rss_bytes": 62791680,
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3"
+  },
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+      "version": "0.3.29",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+      "version": "0.3.28",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    }
+  ],
+  "affinity": [
+    0,
+    1
+  ],
+  "pipeline_s": 0.024384218000022884,
+  "worker_s": 0.21816086399996948,
+  "status": "ok",
+  "run_id": "scaling/32x32_s2_r0_spectral",
+  "cold_wall_s": 0.26534594699990066,
+  "prediction_file": "artifacts/predictions/scaling/32x32_s2_r0_spectral.npz"
+}

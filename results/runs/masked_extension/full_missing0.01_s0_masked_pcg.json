@@ -1,0 +1,8 @@
+{
+  "status": "aborted",
+  "run_id": "masked_extension/full_missing0.01_s0_masked_pcg",
+  "reason": "Stopped after detecting extension artifact name collision; prediction validation invalidated",
+  "utc": "2026-10-17T14:20:18.383255+00:00",
+  "measurement_valid": false,
+  "invalidation_reason": "Decimal run-ID collision; posterior guard comparison invalid"
+}

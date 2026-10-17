@@ -1,0 +1,87 @@
+{
+  "method": "masked_dense",
+  "case": "masked_extension_fixed",
+  "seed": 4,
+  "repeat": 0,
+  "threads": 2,
+  "n_train": 4096,
+  "grid_size": 8192,
+  "n_test": 512,
+  "axes": [
+    128,
+    64
+  ],
+  "missing_fraction": 0.5,
+  "lengthscales": [
+    0.18,
+    0.23
+  ],
+  "noise_variance": 0.0025,
+  "quality": {
+    "rmse": 0.061485137383235106,
+    "latent_rmse": 0.04169368347638635,
+    "nll": -1.3242325947873064,
+    "coverage_95": 0.884765625,
+    "min_latent_variance": 3.0133280362276693e-05,
+    "max_latent_variance": 0.0002525921801301845
+  },
+  "observed_sha256": "105fd58451a4e7ae67e703225608950826348b27126d1e2321c212fd0972ffa0",
+  "stages": {
+    "load_s": 0.0014045979996808455,
+    "preprocess_s": 0.00032599199994365335,
+    "fit_total_s": 0.5287569070001155,
+    "predict_total_s": 0.1876239270000042,
+    "metrics_s": 0.00029043299991826643,
+    "prediction_output_s": 0.000623245000042516,
+    "fit_kernel_s": 0.2812479119997988,
+    "fit_factor_s": 0.231168603000242,
+    "fit_solve_s": 0.016322470999966754,
+    "predict_cross_s": 0.01952358300013657,
+    "predict_mean_s": 0.014290338000137126,
+    "predict_variance_s": 0.15334390499992878
+  },
+  "model_state_bytes": 134250496,
+  "min_raw_variance": 3.0133280362276693e-05,
+  "peak_rss_bytes": 261533696,
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3"
+  },
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+      "version": "0.3.29",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+      "version": "0.3.28",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    }
+  ],
+  "affinity": [
+    0,
+    1
+  ],
+  "cg_iterations": [],
+  "cg_relative_residuals": [],
+  "cg_rtol": 1e-11,
+  "cg_maxiter": 2000,
+  "pipeline_s": 0.7199771769996914,
+  "worker_s": 0.9277706580000995,
+  "status": "ok",
+  "run_id": "masked_extension_fixed/full_missing0.5_s4_masked_dense",
+  "cold_wall_s": 0.9810347399998136,
+  "prediction_file": "artifacts/predictions/masked_extension_fixed/full_missing0.5_s4_masked_dense.npz",
+  "prediction_sha256": "61c9b90db1abeac1cc2a8113530324ffc8c54ac8aff5fb67f54f002da13a9c38"
+}

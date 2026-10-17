@@ -1,0 +1,138 @@
+{
+  "dense__vs__spectral": {
+    "n_pairs": 15,
+    "n_dataset_seeds": 5,
+    "primary_speedup_ratio_of_sums": 11.799941040199613,
+    "primary_speedup_cluster_bootstrap_95ci": [
+      10.977062997504001,
+      12.675461359700705
+    ],
+    "bootstrap_clusters": "dataset seed, keeping repetitions together",
+    "bootstrap_replicates": 10000,
+    "baseline_cold_mean_s": 3.7325592354666544,
+    "method_cold_mean_s": 0.31632015980001144,
+    "baseline_cold_min_max_s": [
+      3.611314787000083,
+      3.9051268949999667
+    ],
+    "method_cold_min_max_s": [
+      0.241809547999992,
+      0.39780132500004584
+    ],
+    "paired_speedup_min_max": [
+      9.186851798443767,
+      15.552253767911886
+    ],
+    "secondary_inprocess_speedup_ratio_of_sums": 61.068107178459016,
+    "baseline_rmse_mean": 0.0566866543362479,
+    "method_rmse_mean": 0.056686654336235785,
+    "max_abs_mean_diff": 2.5464630404314903e-12,
+    "max_abs_variance_diff": 8.215650382226158e-15,
+    "max_abs_nll_diff": 1.3091749906379846e-12,
+    "all_quality_checks_pass": true,
+    "baseline_peak_rss_max_bytes": 1134714880,
+    "method_peak_rss_max_bytes": 67604480
+  },
+  "dense_fortran__vs__spectral": {
+    "n_pairs": 15,
+    "n_dataset_seeds": 5,
+    "primary_speedup_ratio_of_sums": 11.09408433642682,
+    "primary_speedup_cluster_bootstrap_95ci": [
+      10.405067730843703,
+      11.87459287432177
+    ],
+    "bootstrap_clusters": "dataset seed, keeping repetitions together",
+    "bootstrap_replicates": 10000,
+    "baseline_cold_mean_s": 3.5092825301333352,
+    "method_cold_mean_s": 0.31632015980001144,
+    "baseline_cold_min_max_s": [
+      3.337142254000014,
+      3.61660171799997
+    ],
+    "method_cold_min_max_s": [
+      0.241809547999992,
+      0.39780132500004584
+    ],
+    "paired_speedup_min_max": [
+      8.812799781397246,
+      14.481634426611249
+    ],
+    "secondary_inprocess_speedup_ratio_of_sums": 57.164170670130794,
+    "baseline_rmse_mean": 0.0566866543362479,
+    "method_rmse_mean": 0.056686654336235785,
+    "max_abs_mean_diff": 2.5464630404314903e-12,
+    "max_abs_variance_diff": 8.215650382226158e-15,
+    "max_abs_nll_diff": 1.3091749906379846e-12,
+    "all_quality_checks_pass": true,
+    "baseline_peak_rss_max_bytes": 691847168,
+    "method_peak_rss_max_bytes": 67604480
+  },
+  "dense__vs__spectral_numpy": {
+    "n_pairs": 15,
+    "n_dataset_seeds": 5,
+    "primary_speedup_ratio_of_sums": 32.26042134412159,
+    "primary_speedup_cluster_bootstrap_95ci": [
+      31.552882389582486,
+      33.01351314747561
+    ],
+    "bootstrap_clusters": "dataset seed, keeping repetitions together",
+    "bootstrap_replicates": 10000,
+    "baseline_cold_mean_s": 3.7325592354666544,
+    "method_cold_mean_s": 0.11570088299999194,
+    "baseline_cold_min_max_s": [
+      3.611314787000083,
+      3.9051268949999667
+    ],
+    "method_cold_min_max_s": [
+      0.10750879199997598,
+      0.12998875300002055
+    ],
+    "paired_speedup_min_max": [
+      28.362455642600338,
+      34.51274926786389
+    ],
+    "secondary_inprocess_speedup_ratio_of_sums": 370.2550103336395,
+    "baseline_rmse_mean": 0.0566866543362479,
+    "method_rmse_mean": 0.056686654336239664,
+    "max_abs_mean_diff": 2.2971624602519114e-12,
+    "max_abs_variance_diff": 8.659739592076221e-15,
+    "max_abs_nll_diff": 9.521272659185342e-13,
+    "all_quality_checks_pass": true,
+    "baseline_peak_rss_max_bytes": 1134714880,
+    "method_peak_rss_max_bytes": 39051264
+  },
+  "dense_fortran__vs__spectral_numpy": {
+    "n_pairs": 15,
+    "n_dataset_seeds": 5,
+    "primary_speedup_ratio_of_sums": 30.330646051625894,
+    "primary_speedup_cluster_bootstrap_95ci": [
+      29.611153931568246,
+      31.091754974657743
+    ],
+    "bootstrap_clusters": "dataset seed, keeping repetitions together",
+    "bootstrap_replicates": 10000,
+    "baseline_cold_mean_s": 3.5092825301333352,
+    "method_cold_mean_s": 0.11570088299999194,
+    "baseline_cold_min_max_s": [
+      3.337142254000014,
+      3.61660171799997
+    ],
+    "method_cold_min_max_s": [
+      0.10750879199997598,
+      0.12998875300002055
+    ],
+    "paired_speedup_min_max": [
+      27.65703578216126,
+      33.48268624413719
+    ],
+    "secondary_inprocess_speedup_ratio_of_sums": 346.5855023200883,
+    "baseline_rmse_mean": 0.0566866543362479,
+    "method_rmse_mean": 0.056686654336239664,
+    "max_abs_mean_diff": 2.2971624602519114e-12,
+    "max_abs_variance_diff": 8.659739592076221e-15,
+    "max_abs_nll_diff": 9.521272659185342e-13,
+    "all_quality_checks_pass": true,
+    "baseline_peak_rss_max_bytes": 691847168,
+    "method_peak_rss_max_bytes": 39051264
+  }
+}

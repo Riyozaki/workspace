@@ -1,0 +1,93 @@
+{
+  "n_pairs": 180,
+  "n_images": 12,
+  "cold_speedup_ratio_of_sums": 22.51142353484571,
+  "cold_speedup_image_cluster_bootstrap_95ci": [
+    22.15639717117273,
+    22.91405481608664
+  ],
+  "baseline_cold_mean_s": 3.7927595045944775,
+  "method_cold_mean_s": 0.16848154887777836,
+  "baseline_rmse_mean": 0.14715508575001393,
+  "method_rmse_mean": 0.14715508575008004,
+  "all_quality_checks_pass": true,
+  "max_abs_mean_diff": 3.683031657431002e-11,
+  "max_abs_variance_diff": 9.547918011776346e-15,
+  "per_image": {
+    "01.png": {
+      "n_pairs": 15,
+      "speedup": 22.80202310704884,
+      "baseline_rmse_mean": 0.14144969864775503,
+      "quality_pass": true
+    },
+    "02.png": {
+      "n_pairs": 15,
+      "speedup": 24.142829719792875,
+      "baseline_rmse_mean": 0.11512260852719627,
+      "quality_pass": true
+    },
+    "03.png": {
+      "n_pairs": 15,
+      "speedup": 22.76657319059005,
+      "baseline_rmse_mean": 0.1617819607118229,
+      "quality_pass": true
+    },
+    "04.png": {
+      "n_pairs": 15,
+      "speedup": 22.746782717095158,
+      "baseline_rmse_mean": 0.14733439830105102,
+      "quality_pass": true
+    },
+    "05.png": {
+      "n_pairs": 15,
+      "speedup": 22.195334074616575,
+      "baseline_rmse_mean": 0.19008234719380165,
+      "quality_pass": true
+    },
+    "06.png": {
+      "n_pairs": 15,
+      "speedup": 23.211739929101224,
+      "baseline_rmse_mean": 0.1461095343440273,
+      "quality_pass": true
+    },
+    "07.png": {
+      "n_pairs": 15,
+      "speedup": 22.140749583563494,
+      "baseline_rmse_mean": 0.17751407990307386,
+      "quality_pass": true
+    },
+    "08.png": {
+      "n_pairs": 15,
+      "speedup": 21.974537036222536,
+      "baseline_rmse_mean": 0.1383644179726837,
+      "quality_pass": true
+    },
+    "09.png": {
+      "n_pairs": 15,
+      "speedup": 21.63035724245055,
+      "baseline_rmse_mean": 0.15605633459972626,
+      "quality_pass": true
+    },
+    "10.png": {
+      "n_pairs": 15,
+      "speedup": 22.080024464213665,
+      "baseline_rmse_mean": 0.12892509389929446,
+      "quality_pass": true
+    },
+    "11.png": {
+      "n_pairs": 15,
+      "speedup": 21.818423145573913,
+      "baseline_rmse_mean": 0.13622764718430297,
+      "quality_pass": true
+    },
+    "12.png": {
+      "n_pairs": 15,
+      "speedup": 22.774307960610177,
+      "baseline_rmse_mean": 0.12689290771543127,
+      "quality_pass": true
+    }
+  },
+  "planned_pairs": 180,
+  "failed_pairs": 0,
+  "complete": true
+}

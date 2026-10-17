@@ -1,0 +1,111 @@
+{
+  "method": "dense_fortran",
+  "case": "late_stability",
+  "seed": 106,
+  "repeat": 0,
+  "threads": 2,
+  "n_train": 8192,
+  "n_test": 512,
+  "axes": [
+    128,
+    64
+  ],
+  "lengthscales": [
+    0.18,
+    0.23
+  ],
+  "noise_variance": 0.0025,
+  "quality": {
+    "rmse": 0.05772751468969259,
+    "latent_rmse": 0.029084966812730085,
+    "nll": -1.4120164434397893,
+    "coverage_95": 0.908203125,
+    "min_latent_variance": 1.706050540950521e-05,
+    "max_latent_variance": 9.4207955740222e-05
+  },
+  "stages": {
+    "load_s": 0.0013604929999928572,
+    "preprocess_s": 4.8958000661514234e-05,
+    "fit_total_s": 3.05264884799999,
+    "predict_total_s": 0.39250227299999096,
+    "metrics_s": 0.00024353699973289622,
+    "prediction_output_s": 0.00047703100062790327,
+    "fit_kernel_s": 1.4558043039996846,
+    "fit_factor_s": 1.5151669020006011,
+    "fit_solve_s": 0.08165353299955314,
+    "predict_cross_s": 0.018875459999435407,
+    "predict_mean_s": 0.0015549120007563033,
+    "predict_variance_s": 0.37167343399960373
+  },
+  "model_state_bytes": 536936448,
+  "min_raw_variance": 1.706050540950521e-05,
+  "peak_rss_bytes": 691699712,
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3"
+  },
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+      "version": "0.3.29",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+      "version": "0.3.28",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    }
+  ],
+  "affinity": [
+    0,
+    1
+  ],
+  "pipeline_s": 3.4480672669997148,
+  "worker_s": 3.638819995999256,
+  "status": "ok",
+  "run_id": "late_stability/s106_dense_fortran",
+  "cold_wall_s": 3.6898138599999584,
+  "prediction_file": "artifacts/predictions/late_stability/s106_dense_fortran.npz",
+  "prediction_sha256": "67a73f99ee999ca13f161e423c15b639ee37eebb5e49d7b58374cb9b437b80b5",
+  "source_sha256": {
+    "__init__.py": "d4c7502c0f136f87230bc5a1229d2eeddbb57c51700fffbf672f79e4addf4983",
+    "audits.py": "d6913105e9751e56ea501b3bc7ab1bf65cded07ccdc65a4aed293707152ef38c",
+    "benchmark.py": "827cff3b72ad2f3f317afdd4ff71c60959766bab9ad4dd244be267cb0bbac3df",
+    "clock.py": "05f9be6ad46001d34674af940c527bc2b4ebe004c9d6d3a8c3cce08b50f32f03",
+    "data.py": "fd3ab63a9a432711047c9d8d347e8b307b6ff623d863e47c6c8a9d978c2a8362",
+    "dense.py": "8e142bfd7b82514031e4d16f9480169d95d49b0ec4bdd61f7fd89715c4fd79cf",
+    "dense_fortran.py": "2b7d5f907e953aaffea2af6ab0c3cff04d681bbc9a42f9545bae444742f299cc",
+    "environment.py": "6caa770d8eca272e14b577023aa4164b53abbcf602231dc6d8949eb2e757db0b",
+    "experiments.py": "f97a3a99e39539f524c0768a09baa50b3366808a3261748f0a1bde842efd963d",
+    "external_audit.py": "ef891cc04d5b7d9f8bfab82827a8189287254e56f436c32fd1f3d081716672b1",
+    "external_data.py": "3f5841916b2fb6eb8fa94eadc5ed52cdf35085866e0ff097591dad943b39d6cb",
+    "hyper_audit.py": "9d90675b315ea7d6e9fb9c15af8b48a3009060a00174073142ece04fcae19be5",
+    "hyperparameters.py": "56116e6f070d80125e694fa02cdfa463b1632703d6b9c089fd531cb8f6aeea96",
+    "integrity.py": "26467d61c3f857468b6c3acade5e59581a85ea7ad33d21c1329257e10f556b26",
+    "kernels.py": "dbc7e48a6273f2899f0ed449f9e5d3b57b95e7cb9b5e10b7d7ef8c553ffeac0c",
+    "late_audit.py": "f21ff52c9b0a9f94de4ec5702a09a29fa43541bdb9d0a6291100e11e3633e520",
+    "masked.py": "3957d460099dfcbcaa2053ae86808ba73a1e70ee58020233235b7e7980237860",
+    "masked_audit.py": "7cf18308bb3f7b7c1492e71e6ef3561740be7e89a7dc85d6aae7989a36191387",
+    "metrics.py": "74b0540ea6337f3c5cfbea2fa869d3f204e8593ec9212b8f5a19eea7115a49b2",
+    "publication.py": "ecd6bb85e6b33047bfe39fb995ed674548ea3ba2342079d637646d37dc8d83a8",
+    "reproduce.py": "4946d960754032ed0ea81b9bc42bba825670dc7c91ba35dcea29d1c6c4024dde",
+    "robustness.py": "fa9f5fbee1f875575662041234eb4d928d412e365efcbb19d139dc090c97eb5c",
+    "run_external.py": "aff1b24b980eccb4a0ca5b6a9a44156dac732c9545e6fe529819077c43fec957",
+    "run_hyper.py": "69fd4ce17560c170b1d7ef733b1ddc259918f5528157a888b34066b967cadd82",
+    "run_masked.py": "2743d65fa03744d55e7978dd6774d7bf5130aebf8c5ec17ea59af8999d71b2ac",
+    "run_numpy.py": "e5ea4640ba33e11d95281e03f0a7d037647ca0bb9556d830b3826494ddd34411",
+    "run_one.py": "cb6fbd9671206a69d05740fc11f1b9d71b216b2b9a3973774968987deca15e70",
+    "spectral.py": "9521ee279d8ff28ba49f1fa24868b42033e5f9e11a010c59a4257f30c13b782c",
+    "spectral_numpy.py": "1cc878753b8f0658e349c9c322b3d469b1a1bfde63a4c15d5cd58166be2e7aeb"
+  }
+}

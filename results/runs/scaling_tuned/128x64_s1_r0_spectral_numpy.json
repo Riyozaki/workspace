@@ -1,0 +1,70 @@
+{
+  "method": "spectral_numpy",
+  "case": "scaling_tuned",
+  "seed": 1,
+  "repeat": 0,
+  "threads": 2,
+  "n_train": 8192,
+  "n_test": 512,
+  "axes": [
+    128,
+    64
+  ],
+  "lengthscales": [
+    0.18,
+    0.23
+  ],
+  "noise_variance": 0.0025,
+  "quality": {
+    "rmse": 0.05484781121994505,
+    "latent_rmse": 0.03092278784238368,
+    "nll": -1.4770697389580005,
+    "coverage_95": 0.921875,
+    "min_latent_variance": 1.7048531463004224e-05,
+    "max_latent_variance": 0.00017818671066527347
+  },
+  "stages": {
+    "load_s": 0.002363668000043617,
+    "preprocess_s": 5.643100007546309e-05,
+    "fit_total_s": 0.002404726000122537,
+    "predict_total_s": 0.003044341000077111,
+    "metrics_s": 0.00012914400008412485,
+    "prediction_output_s": 0.00036990700004935206,
+    "fit_kernel_s": 0.000247086999934254,
+    "fit_factor_s": 0.001905006000015419,
+    "fit_solve_s": 0.00020477399993978906,
+    "predict_cross_s": 0.0015954350001265993,
+    "predict_mean_s": 0.0004846379999889905,
+    "predict_variance_s": 0.000872066000056293
+  },
+  "model_state_bytes": 294912,
+  "min_raw_variance": 1.7048531463004224e-05,
+  "peak_rss_bytes": 39030784,
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "not imported"
+  },
+  "scipy_loaded": false,
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+      "version": "0.3.29",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    }
+  ],
+  "affinity": [
+    0,
+    1
+  ],
+  "pipeline_s": 0.008642466000083004,
+  "worker_s": 0.09356907800020053,
+  "status": "ok",
+  "run_id": "scaling_tuned/128x64_s1_r0_spectral_numpy",
+  "cold_wall_s": 0.1210284829999182,
+  "prediction_file": "artifacts/predictions/scaling_tuned/128x64_s1_r0_spectral_numpy.npz"
+}

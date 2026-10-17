@@ -1,0 +1,10 @@
+{
+  "status":"frozen_before_late_audit_results",
+  "purpose":"Use remaining research time to test temporal stability and new independent seeds, without pooling into or changing the primary result",
+  "candidate_seeds":"100 through 399, in increasing order, no selection by quality or speed",
+  "axes":[128,64],"test_size":512,"methods":["dense_fortran","spectral_numpy"],"threads":2,
+  "quality":"original frozen RMSE, pointwise mean/variance and NLL criteria",
+  "order":"counterbalanced by seed parity",
+  "time_policy":"Start full pairs only before elapsed 5360 s; record every attempted/failed run and all unstarted seeds. Then spend remaining time on independently seeded matrix-free solve residual probes until BOTH wall and monotonic clocks reach 5400 s. No sleep/time fabrication.",
+  "residual_probe":{"rng_seed":987654,"relative_residual_tolerance":1e-8,"definition":"norm(Kx@reshape(alpha)@Ky.T + noise*reshape(alpha) - rhs) / norm(rhs), float64, rhs standard-normal; spectral solve recomputed for every vector","claim":"algebraic validation only, NOT a new end-to-end speedup"}
+}

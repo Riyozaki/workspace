@@ -1,0 +1,16 @@
+{
+  "scope": "masked_extension only",
+  "all_old_quality_guard_results_invalid": true,
+  "reason": "Decimal run IDs collapsed by with_suffix; files overwritten",
+  "aborted_runs": [
+    {
+      "status": "aborted",
+      "run_id": "masked_extension/full_missing0.01_s0_masked_pcg",
+      "reason": "Stopped after detecting extension artifact name collision; prediction validation invalidated",
+      "utc": "2026-10-17T14:20:18.383255+00:00"
+    }
+  ],
+  "primary_affected": false,
+  "four_way_affected": false,
+  "scaling_affected": false
+}

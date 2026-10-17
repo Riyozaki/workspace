@@ -1,0 +1,58 @@
+{
+  "tag": "20261017T151424",
+  "output": "/home/user/workspace/artifacts/reproduction_check",
+  "all": false,
+  "steps": [
+    {
+      "name": "environment",
+      "command": [
+        "/home/user/workspace/.venv/bin/python",
+        "-m",
+        "tensor_gp.environment",
+        "--output",
+        "/home/user/workspace/artifacts/reproduction_check/environment.json"
+      ],
+      "returncode": 0,
+      "duration_s": 0.12396938799975032
+    },
+    {
+      "name": "tests",
+      "command": [
+        "/home/user/workspace/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests"
+      ],
+      "returncode": 0,
+      "duration_s": 3.21800537099989
+    },
+    {
+      "name": "primary",
+      "command": [
+        "/home/user/workspace/.venv/bin/python",
+        "-m",
+        "tensor_gp.benchmark",
+        "--label",
+        "primary_20261017T151424",
+        "--csv",
+        "/home/user/workspace/artifacts/reproduction_check/results.csv"
+      ],
+      "returncode": 0,
+      "duration_s": 60.386151360999975
+    },
+    {
+      "name": "four_way",
+      "command": [
+        "/home/user/workspace/.venv/bin/python",
+        "-m",
+        "tensor_gp.audits",
+        "four-way",
+        "--label",
+        "fourway_20261017T151424"
+      ],
+      "returncode": 0,
+      "duration_s": 120.45885933800037
+    }
+  ]
+}

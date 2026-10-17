@@ -1,0 +1,9 @@
+{
+  "probes": 119914,
+  "max_relative_residual": 6.420548400254966e-11,
+  "tolerance": 1e-08,
+  "failed_probes": 0,
+  "all_pass": true,
+  "elapsed_end_seconds": 5400.000089843,
+  "interpretation": "algebraic validation only; no new system speedup claimed"
+}

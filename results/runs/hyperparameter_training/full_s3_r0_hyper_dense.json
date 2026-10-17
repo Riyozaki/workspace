@@ -1,0 +1,328 @@
+{
+  "method": "hyper_dense",
+  "case": "hyperparameter_training",
+  "seed": 3,
+  "repeat": 0,
+  "threads": 2,
+  "n_train": 4096,
+  "n_test": 512,
+  "axes": [
+    64,
+    64
+  ],
+  "theta": [
+    -0.20670469732991378,
+    -2.02392606365292,
+    -2.002057660073519,
+    -5.9876146775987
+  ],
+  "noise_variance": 0.0025096432244404976,
+  "quality": {
+    "rmse": 0.04924162275312336,
+    "latent_rmse": 0.00820427404057406,
+    "nll": -1.590744733697008,
+    "coverage_95": 0.958984375,
+    "min_latent_variance": 6.731776281884878e-05,
+    "max_latent_variance": 0.00033479045626702737
+  },
+  "stages": {
+    "load_s": 0.001578820000304404,
+    "preprocess_s": 8.919499987314339e-05,
+    "fit_total_s": 102.38159527800008,
+    "predict_total_s": 0.21025234099988666,
+    "metrics_s": 0.00013806099968860508,
+    "prediction_output_s": 0.0005816829998366302
+  },
+  "optimizer_success": true,
+  "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+  "optimizer_iterations": 16,
+  "optimizer_nfev": 21,
+  "optimizer_njev": 21,
+  "final_negative_lml": -6027.305960073389,
+  "optimizer_history": [
+    {
+      "theta": [
+        0.0,
+        -1.7147984280919266,
+        -1.4696759700589417,
+        -5.991464547107982
+      ],
+      "negative_lml": -1661.0707375665588,
+      "gradient_inf_norm": 31733.063465075647
+    },
+    {
+      "theta": [
+        2.302585092994046,
+        -3.912023005428146,
+        -3.912023005428146,
+        -2.3025850929940455
+      ],
+      "negative_lml": 4379.170337671137,
+      "gradient_inf_norm": 3612.403458989001
+    },
+    {
+      "theta": [
+        0.7623375314435873,
+        -2.4422533071364354,
+        -2.278285743281658,
+        -4.770154088094488
+      ],
+      "negative_lml": -4760.72795096626,
+      "gradient_inf_norm": 1358.0166328376251
+    },
+    {
+      "theta": [
+        0.6988609242568445,
+        -2.3994367345091203,
+        -2.2484440502751637,
+        -4.91301068138904
+      ],
+      "negative_lml": -4987.769076022412,
+      "gradient_inf_norm": 1274.5665276770062
+    },
+    {
+      "theta": [
+        0.44495449550987354,
+        -2.22817044399986,
+        -2.129077278249187,
+        -5.484437054567249
+      ],
+      "negative_lml": -5720.505310627357,
+      "gradient_inf_norm": 774.8754832795266
+    },
+    {
+      "theta": [
+        -0.056532976989226214,
+        -1.8009649470698916,
+        -1.8881093952779249,
+        -6.500022902048571
+      ],
+      "negative_lml": -5605.057011473311,
+      "gradient_inf_norm": 1359.3726668305885
+    },
+    {
+      "theta": [
+        0.1996846245969171,
+        -2.0192307539151653,
+        -2.0112235634674365,
+        -5.981144596375717
+      ],
+      "negative_lml": -6021.705940856655,
+      "gradient_inf_norm": 102.45662885129603
+    },
+    {
+      "theta": [
+        0.16013109696973926,
+        -1.9734261693971222,
+        -1.9862313702656078,
+        -6.015889112391152
+      ],
+      "negative_lml": -6025.352716738365,
+      "gradient_inf_norm": 57.54759655407456
+    },
+    {
+      "theta": [
+        0.16095433503954634,
+        -1.9749015577668485,
+        -1.9834338217816023,
+        -5.99745603692719
+      ],
+      "negative_lml": -6026.115193163127,
+      "gradient_inf_norm": 20.587224382085758
+    },
+    {
+      "theta": [
+        0.15518585410218755,
+        -1.9752974094689457,
+        -1.976023145473779,
+        -5.9865100856669455
+      ],
+      "negative_lml": -6026.338264049171,
+      "gradient_inf_norm": 5.965408806245472
+    },
+    {
+      "theta": [
+        0.1508897042606046,
+        -1.9788001964218882,
+        -1.9721563189993248,
+        -5.985207280385463
+      ],
+      "negative_lml": -6026.386471669892,
+      "gradient_inf_norm": 5.434215983333369
+    },
+    {
+      "theta": [
+        0.13646203244119057,
+        -1.988522744966115,
+        -1.9646366662922292,
+        -5.9855998507916395
+      ],
+      "negative_lml": -6026.466615635343,
+      "gradient_inf_norm": 5.26523310834954
+    },
+    {
+      "theta": [
+        0.11823068371981252,
+        -1.9936813703216305,
+        -1.9630878452438572,
+        -5.9862459782618815
+      ],
+      "negative_lml": -6026.532188895224,
+      "gradient_inf_norm": 7.534176967867977
+    },
+    {
+      "theta": [
+        0.010922300840241483,
+        -2.013641143486621,
+        -1.9650405471267842,
+        -5.98823966555297
+      ],
+      "negative_lml": -6026.82901328214,
+      "gradient_inf_norm": 13.271786657029352
+    },
+    {
+      "theta": [
+        -0.12079883279029449,
+        -2.0280833415409725,
+        -1.9778455599296747,
+        -5.988335775375439
+      ],
+      "negative_lml": -6027.113733048014,
+      "gradient_inf_norm": 13.194683016822642
+    },
+    {
+      "theta": [
+        -0.20808169604160837,
+        -2.03789232983423,
+        -2.0092190781766845,
+        -5.9782174538349855
+      ],
+      "negative_lml": -6026.946534771594,
+      "gradient_inf_norm": 26.375967814197733
+    },
+    {
+      "theta": [
+        -0.15183504260667377,
+        -2.0315712406246607,
+        -1.989001416402767,
+        -5.984737882975702
+      ],
+      "negative_lml": -6027.189312546459,
+      "gradient_inf_norm": 12.697401890563821
+    },
+    {
+      "theta": [
+        -0.22073256494923948,
+        -2.0288388830520394,
+        -2.000880344877046,
+        -5.987383260171948
+      ],
+      "negative_lml": -6027.298599163987,
+      "gradient_inf_norm": 2.629017164247526
+    },
+    {
+      "theta": [
+        -0.20946601818892702,
+        -2.0245347457504854,
+        -2.0020390737265106,
+        -5.987676390305417
+      ],
+      "negative_lml": -6027.305842075868,
+      "gradient_inf_norm": 0.1866867711084942
+    },
+    {
+      "theta": [
+        -0.2067113869110679,
+        -2.023928194073904,
+        -2.0020558851851966,
+        -5.987617807809272
+      ],
+      "negative_lml": -6027.3059600622055,
+      "gradient_inf_norm": 0.005387931893679865
+    },
+    {
+      "theta": [
+        -0.20670469732991376,
+        -2.02392606365292,
+        -2.002057660073519,
+        -5.9876146775987
+      ],
+      "negative_lml": -6027.305960073389,
+      "gradient_inf_norm": 0.0007774898100848526
+    }
+  ],
+  "warnings": [],
+  "model_state_bytes": 134250496,
+  "min_raw_variance": 6.731776281884878e-05,
+  "peak_rss_bytes": 1741090816,
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3"
+  },
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+      "version": "0.3.29",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+      "version": "0.3.28",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "num_threads": 2,
+      "prefix": "libgomp",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scikit_learn.libs/libgomp-a34b3233.so.1.0.0",
+      "version": null
+    }
+  ],
+  "affinity": [
+    0,
+    1
+  ],
+  "pipeline_s": 102.59661875599977,
+  "worker_s": 102.92543856900011,
+  "status": "ok",
+  "run_id": "hyperparameter_training/full_s3_r0_hyper_dense",
+  "cold_wall_s": 103.02418571499993,
+  "prediction_file": "artifacts/predictions/hyperparameter_training/full_s3_r0_hyper_dense.npz",
+  "prediction_sha256": "6ac9804c44d83dc0719af25084c3d4fcb71b4124571d8889d7609b5e8b7042ec",
+  "source_sha256": {
+    "__init__.py": "d4c7502c0f136f87230bc5a1229d2eeddbb57c51700fffbf672f79e4addf4983",
+    "audits.py": "d6913105e9751e56ea501b3bc7ab1bf65cded07ccdc65a4aed293707152ef38c",
+    "benchmark.py": "827cff3b72ad2f3f317afdd4ff71c60959766bab9ad4dd244be267cb0bbac3df",
+    "clock.py": "eb06d41a29b40d9de3bf20c60471040c2c907caa57a302355e4ea9c349ed5ff7",
+    "data.py": "fd3ab63a9a432711047c9d8d347e8b307b6ff623d863e47c6c8a9d978c2a8362",
+    "dense.py": "8e142bfd7b82514031e4d16f9480169d95d49b0ec4bdd61f7fd89715c4fd79cf",
+    "dense_fortran.py": "2b7d5f907e953aaffea2af6ab0c3cff04d681bbc9a42f9545bae444742f299cc",
+    "experiments.py": "f97a3a99e39539f524c0768a09baa50b3366808a3261748f0a1bde842efd963d",
+    "external_audit.py": "ef891cc04d5b7d9f8bfab82827a8189287254e56f436c32fd1f3d081716672b1",
+    "external_data.py": "3f5841916b2fb6eb8fa94eadc5ed52cdf35085866e0ff097591dad943b39d6cb",
+    "hyper_audit.py": "9d90675b315ea7d6e9fb9c15af8b48a3009060a00174073142ece04fcae19be5",
+    "hyperparameters.py": "56116e6f070d80125e694fa02cdfa463b1632703d6b9c089fd531cb8f6aeea96",
+    "kernels.py": "dbc7e48a6273f2899f0ed449f9e5d3b57b95e7cb9b5e10b7d7ef8c553ffeac0c",
+    "masked.py": "3957d460099dfcbcaa2053ae86808ba73a1e70ee58020233235b7e7980237860",
+    "masked_audit.py": "7cf18308bb3f7b7c1492e71e6ef3561740be7e89a7dc85d6aae7989a36191387",
+    "metrics.py": "74b0540ea6337f3c5cfbea2fa869d3f204e8593ec9212b8f5a19eea7115a49b2",
+    "run_external.py": "aff1b24b980eccb4a0ca5b6a9a44156dac732c9545e6fe529819077c43fec957",
+    "run_hyper.py": "69fd4ce17560c170b1d7ef733b1ddc259918f5528157a888b34066b967cadd82",
+    "run_masked.py": "2743d65fa03744d55e7978dd6774d7bf5130aebf8c5ec17ea59af8999d71b2ac",
+    "run_numpy.py": "e5ea4640ba33e11d95281e03f0a7d037647ca0bb9556d830b3826494ddd34411",
+    "run_one.py": "cb6fbd9671206a69d05740fc11f1b9d71b216b2b9a3973774968987deca15e70",
+    "spectral.py": "9521ee279d8ff28ba49f1fa24868b42033e5f9e11a010c59a4257f30c13b782c",
+    "spectral_numpy.py": "1cc878753b8f0658e349c9c322b3d469b1a1bfde63a4c15d5cd58166be2e7aeb"
+  }
+}

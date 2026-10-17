@@ -1,0 +1,79 @@
+{
+  "method": "dense_fortran",
+  "case": "scaling_tuned",
+  "seed": 1,
+  "repeat": 0,
+  "threads": 2,
+  "n_train": 12288,
+  "n_test": 512,
+  "axes": [
+    128,
+    96
+  ],
+  "lengthscales": [
+    0.18,
+    0.23
+  ],
+  "noise_variance": 0.0025,
+  "quality": {
+    "rmse": 0.052601382665804726,
+    "latent_rmse": 0.025252010056508987,
+    "nll": -1.5243813611797594,
+    "coverage_95": 0.9375,
+    "min_latent_variance": 1.1671019178205455e-05,
+    "max_latent_variance": 0.00013190900329795863
+  },
+  "stages": {
+    "load_s": 0.001532072999907541,
+    "preprocess_s": 5.4854999916642555e-05,
+    "fit_total_s": 7.0260494350000045,
+    "predict_total_s": 0.723528559999977,
+    "metrics_s": 0.0002673270000741468,
+    "prediction_output_s": 0.0005224760000146489,
+    "fit_kernel_s": 2.061243202000014,
+    "fit_factor_s": 4.703962721999915,
+    "fit_solve_s": 0.2608152570001039,
+    "predict_cross_s": 0.02671295300001475,
+    "predict_mean_s": 0.0026230159999158786,
+    "predict_variance_s": 0.693752927000105
+  },
+  "model_state_bytes": 1208057856,
+  "min_raw_variance": 1.1671019178205455e-05,
+  "peak_rss_bytes": 1408749568,
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3"
+  },
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+      "version": "0.3.29",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+      "version": "0.3.28",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    }
+  ],
+  "affinity": [
+    0,
+    1
+  ],
+  "pipeline_s": 7.752769924999939,
+  "worker_s": 7.943671859999995,
+  "status": "ok",
+  "run_id": "scaling_tuned/128x96_s1_r0_dense_fortran",
+  "cold_wall_s": 8.010734279999951,
+  "prediction_file": "artifacts/predictions/scaling_tuned/128x96_s1_r0_dense_fortran.npz"
+}

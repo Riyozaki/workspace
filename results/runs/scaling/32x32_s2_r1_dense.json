@@ -1,0 +1,79 @@
+{
+  "method": "dense",
+  "case": "scaling",
+  "seed": 2,
+  "repeat": 1,
+  "threads": 2,
+  "n_train": 1024,
+  "n_test": 512,
+  "axes": [
+    32,
+    32
+  ],
+  "lengthscales": [
+    0.18,
+    0.23
+  ],
+  "noise_variance": 0.0025,
+  "quality": {
+    "rmse": 0.08778640268238593,
+    "latent_rmse": 0.07492881990625079,
+    "nll": -0.5908041194038899,
+    "coverage_95": 0.708984375,
+    "min_latent_variance": 0.00011869334600134174,
+    "max_latent_variance": 0.0003746089798646324
+  },
+  "stages": {
+    "load_s": 0.0016952080000010028,
+    "preprocess_s": 6.1006999999335676e-05,
+    "fit_total_s": 0.023038649999989502,
+    "predict_total_s": 0.030286335999903713,
+    "metrics_s": 0.0003238240000200676,
+    "prediction_output_s": 0.0005139520000057018,
+    "fit_kernel_s": 0.012350602999958937,
+    "fit_factor_s": 0.009633646999986922,
+    "fit_solve_s": 0.001040980000084346,
+    "predict_cross_s": 0.0018019679999952132,
+    "predict_mean_s": 0.010074605999989217,
+    "predict_variance_s": 0.01839415100005226
+  },
+  "model_state_bytes": 8396800,
+  "min_raw_variance": 0.00011869334600134174,
+  "peak_rss_bytes": 82288640,
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3"
+  },
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+      "version": "0.3.29",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+      "version": "0.3.28",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    }
+  ],
+  "affinity": [
+    0,
+    1
+  ],
+  "pipeline_s": 0.05649397299998782,
+  "worker_s": 0.2639318450000019,
+  "status": "ok",
+  "run_id": "scaling/32x32_s2_r1_dense",
+  "cold_wall_s": 0.3354011190000392,
+  "prediction_file": "artifacts/predictions/scaling/32x32_s2_r1_dense.npz"
+}

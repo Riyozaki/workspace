@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_measurement",
+  "task": "Exact Gaussian-process regression, full train-and-predict pipeline with posterior mean and latent variance",
+  "primary_case": {"axis_sizes": [128, 64], "train_size": 8192, "test_size": 512},
+  "data": {
+    "source": "declared synthetic spatial regression, not a real-world or general neural-network benchmark",
+    "training_inputs": "complete Cartesian product of linspace(0,1,n_i), endpoint included, C-order flattening",
+    "latent_function": "sin(2*pi*x)*cos(2*pi*y) + 0.4*sin(5*pi*(x+y)) + 0.25*exp(-((x-0.68)^2+(y-0.31)^2)/(2*0.08^2))",
+    "observation_noise_std": 0.05,
+    "training_noise_seed": "seed",
+    "test_seed": "10000+seed, independent continuous-uniform test coordinates and independent observation noise",
+    "seeds": [0, 1, 2, 3, 4],
+    "normalization": "subtract training-target mean only; identical baseline and method"
+  },
+  "kernel": {"type": "separable_squared_exponential", "signal_variance": 1.0, "lengthscales": [0.18, 0.23], "noise_variance": 0.0025, "dtype": "float64", "hyperparameters": "fixed in advance; no search or test tuning"},
+  "baseline": {
+    "name": "dense_cholesky",
+    "fit": "build the exact dense covariance from Kronecker kernel factors, add noise variance, SciPy LAPACK Cholesky and cho_solve; no inverse",
+    "predict": "cross covariance, dense mean GEMV and one batched solve_triangular for all test points, variance via squared triangular solutions",
+    "threads": 2,
+    "same_eigensystem_or_lowrank_shortcuts": false
+  },
+  "method": {"name": "tensor_spectral", "fit": "full per-axis float64 symmetric eigendecomposition, tensor transform, exact division by eigenvalue products plus noise", "predict": "off-grid tensor contractions for mean and exact latent variance; no low-rank truncation", "threads": 2},
+  "quality": {
+    "primary_metric": "RMSE against held-out noisy test targets",
+    "noninferiority_absolute_tolerance": 0.0000001,
+    "paired_guardrails": {"max_abs_mean_difference": 0.000001, "max_abs_latent_variance_difference": 0.000001, "max_abs_predictive_nll_difference": 0.000001},
+    "pass_rule": "method RMSE <= paired dense RMSE + tolerance AND all guardrails pass for every primary seed and repetition",
+    "test_predictions_must_be_finite": true,
+    "all_seeds_reported": true
+  },
+  "timing": {
+    "primary": "cold subprocess wall-clock from spawn through exit, including interpreter startup, numerical imports, input NPZ load, training-only centering, kernel construction, fit, off-grid mean+variance prediction, test metrics and prediction output NPZ+JSON serialization",
+    "secondary": "internal load-to-output pipeline clock and per-stage times; explicitly exclude interpreter/import time only in this secondary metric",
+    "excluded_once_per_experiment": "dependency installation, deterministic fixture generation, reference validation and report aggregation; shared by baseline and method",
+    "repetitions_per_seed": 3,
+    "total_primary_paired_runs": 15,
+    "pair_order": "balanced deterministic randomized order from seed 20261017, no overlapping timed processes",
+    "speedup": "sum of all baseline cold wall times divided by sum of all method cold wall times, with every run retained",
+    "uncertainty": "paired cluster bootstrap resampling the five dataset seeds, 10000 replicates, percentile 95% interval; also report raw min/max and median"
+  },
+  "additional_checks": [
+    "small-grid independent scikit-learn GaussianProcessRegressor reference with optimizer=None and identical hyperparameters",
+    "grid-size scaling including smaller problems where startup may dominate",
+    "single-thread versus two-thread audit",
+    "query-count and variance-versus-mean-only ablations, labeled separately",
+    "noise/conditioning, lengthscale and missing-grid robustness studies, not pooled with primary results",
+    "tensor residual and nonnegative variance tests"
+  ],
+  "honesty": {
+    "not_a_new_mathematical_discovery": true,
+    "no_claim_for_arbitrary_neural_networks_or_unstructured_inputs": true,
+    "no_quality_or_baseline_changes_after_results": true,
+    "theoretical_and_measured_numbers_separate": true,
+    "primary_if_resources_fail": "report failure; do not silently replace primary size or endpoint"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "method": "spectral",
+  "case": "audit_four_way",
+  "seed": 2,
+  "repeat": 1,
+  "threads": 2,
+  "n_train": 8192,
+  "n_test": 512,
+  "axes": [
+    128,
+    64
+  ],
+  "lengthscales": [
+    0.18,
+    0.23
+  ],
+  "noise_variance": 0.0025,
+  "quality": {
+    "rmse": 0.05644991300368053,
+    "latent_rmse": 0.030538292843874344,
+    "nll": -1.4410578331411852,
+    "coverage_95": 0.91796875,
+    "min_latent_variance": 1.702851359441926e-05,
+    "max_latent_variance": 8.806520760284986e-05
+  },
+  "stages": {
+    "load_s": 0.0013409910000063974,
+    "preprocess_s": 4.892800006928155e-05,
+    "fit_total_s": 0.0022498179999956847,
+    "predict_total_s": 0.0032366240000101243,
+    "metrics_s": 0.00014700500003073103,
+    "prediction_output_s": 0.0003397839999479402,
+    "fit_kernel_s": 0.00024063099999693804,
+    "fit_factor_s": 0.0017275149999704809,
+    "fit_solve_s": 0.00024883699995825737,
+    "predict_cross_s": 0.001773584000034134,
+    "predict_mean_s": 0.0005294490000551377,
+    "predict_variance_s": 0.0008506149999902846
+  },
+  "model_state_bytes": 294912,
+  "min_raw_variance": 1.702851359441926e-05,
+  "peak_rss_bytes": 67223552,
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3"
+  },
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+      "version": "0.3.29",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+      "version": "0.3.28",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    }
+  ],
+  "affinity": [
+    0,
+    1
+  ],
+  "pipeline_s": 0.007998577999956069,
+  "worker_s": 0.19601006899995355,
+  "status": "ok",
+  "run_id": "audit_four_way/s2_r1_spectral",
+  "cold_wall_s": 0.241809547999992,
+  "prediction_file": "artifacts/predictions/audit_four_way/s2_r1_spectral.npz"
+}

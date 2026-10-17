@@ -1,0 +1,1622 @@
+[
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/12.png",
+    "seed": 3,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/03.png",
+    "seed": 1,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/07.png",
+    "seed": 4,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/07.png",
+    "seed": 2,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/11.png",
+    "seed": 4,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/10.png",
+    "seed": 4,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/04.png",
+    "seed": 2,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/06.png",
+    "seed": 4,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/04.png",
+    "seed": 4,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/04.png",
+    "seed": 4,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/07.png",
+    "seed": 1,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/03.png",
+    "seed": 4,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/10.png",
+    "seed": 4,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/10.png",
+    "seed": 2,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/05.png",
+    "seed": 1,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/09.png",
+    "seed": 0,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/10.png",
+    "seed": 0,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/07.png",
+    "seed": 3,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/08.png",
+    "seed": 4,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/07.png",
+    "seed": 3,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/03.png",
+    "seed": 3,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/08.png",
+    "seed": 4,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/12.png",
+    "seed": 4,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/06.png",
+    "seed": 2,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/01.png",
+    "seed": 1,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/04.png",
+    "seed": 1,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/06.png",
+    "seed": 4,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/05.png",
+    "seed": 0,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/03.png",
+    "seed": 3,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/06.png",
+    "seed": 3,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/09.png",
+    "seed": 2,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/10.png",
+    "seed": 1,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/05.png",
+    "seed": 4,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/08.png",
+    "seed": 0,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/02.png",
+    "seed": 0,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/07.png",
+    "seed": 2,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/08.png",
+    "seed": 0,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/07.png",
+    "seed": 3,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/11.png",
+    "seed": 0,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/11.png",
+    "seed": 0,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/11.png",
+    "seed": 3,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/04.png",
+    "seed": 3,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/03.png",
+    "seed": 2,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/11.png",
+    "seed": 1,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/03.png",
+    "seed": 2,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/08.png",
+    "seed": 4,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/06.png",
+    "seed": 1,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/09.png",
+    "seed": 3,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/08.png",
+    "seed": 0,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/08.png",
+    "seed": 3,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/02.png",
+    "seed": 0,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/02.png",
+    "seed": 1,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/12.png",
+    "seed": 2,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/05.png",
+    "seed": 3,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/02.png",
+    "seed": 3,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/12.png",
+    "seed": 4,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/07.png",
+    "seed": 0,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/07.png",
+    "seed": 1,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/10.png",
+    "seed": 3,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/06.png",
+    "seed": 0,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/12.png",
+    "seed": 3,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/09.png",
+    "seed": 0,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/06.png",
+    "seed": 2,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/09.png",
+    "seed": 4,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/10.png",
+    "seed": 3,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/03.png",
+    "seed": 2,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/09.png",
+    "seed": 2,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/04.png",
+    "seed": 2,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/01.png",
+    "seed": 2,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/04.png",
+    "seed": 1,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/03.png",
+    "seed": 0,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/10.png",
+    "seed": 2,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/05.png",
+    "seed": 3,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/03.png",
+    "seed": 4,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/08.png",
+    "seed": 2,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/01.png",
+    "seed": 3,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/02.png",
+    "seed": 3,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/11.png",
+    "seed": 3,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/12.png",
+    "seed": 0,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/12.png",
+    "seed": 1,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/10.png",
+    "seed": 1,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/02.png",
+    "seed": 2,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/10.png",
+    "seed": 4,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/09.png",
+    "seed": 0,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/06.png",
+    "seed": 3,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/03.png",
+    "seed": 0,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/05.png",
+    "seed": 2,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/12.png",
+    "seed": 0,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/08.png",
+    "seed": 3,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/09.png",
+    "seed": 1,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/04.png",
+    "seed": 0,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/06.png",
+    "seed": 1,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/01.png",
+    "seed": 1,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/05.png",
+    "seed": 4,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/03.png",
+    "seed": 1,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/04.png",
+    "seed": 1,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/10.png",
+    "seed": 0,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/01.png",
+    "seed": 4,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/07.png",
+    "seed": 0,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/06.png",
+    "seed": 4,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/08.png",
+    "seed": 1,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/06.png",
+    "seed": 1,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/11.png",
+    "seed": 4,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/11.png",
+    "seed": 2,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/05.png",
+    "seed": 2,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/08.png",
+    "seed": 1,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/11.png",
+    "seed": 2,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/04.png",
+    "seed": 3,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/05.png",
+    "seed": 1,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/06.png",
+    "seed": 0,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/01.png",
+    "seed": 0,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/07.png",
+    "seed": 4,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/03.png",
+    "seed": 0,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/09.png",
+    "seed": 1,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/02.png",
+    "seed": 2,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/01.png",
+    "seed": 4,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/10.png",
+    "seed": 3,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/08.png",
+    "seed": 1,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/12.png",
+    "seed": 2,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/05.png",
+    "seed": 0,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/12.png",
+    "seed": 0,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/01.png",
+    "seed": 0,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/01.png",
+    "seed": 1,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/11.png",
+    "seed": 1,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/07.png",
+    "seed": 4,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/04.png",
+    "seed": 2,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/07.png",
+    "seed": 0,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/10.png",
+    "seed": 1,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/04.png",
+    "seed": 3,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/09.png",
+    "seed": 4,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/11.png",
+    "seed": 0,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/12.png",
+    "seed": 2,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/05.png",
+    "seed": 3,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/02.png",
+    "seed": 4,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/05.png",
+    "seed": 0,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/05.png",
+    "seed": 1,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/11.png",
+    "seed": 3,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/06.png",
+    "seed": 2,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/09.png",
+    "seed": 3,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/11.png",
+    "seed": 1,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/06.png",
+    "seed": 0,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/06.png",
+    "seed": 3,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/12.png",
+    "seed": 1,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/02.png",
+    "seed": 1,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/02.png",
+    "seed": 2,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/11.png",
+    "seed": 2,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/02.png",
+    "seed": 3,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/12.png",
+    "seed": 3,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/02.png",
+    "seed": 4,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/01.png",
+    "seed": 3,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/10.png",
+    "seed": 2,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/09.png",
+    "seed": 4,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/03.png",
+    "seed": 3,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/09.png",
+    "seed": 3,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/08.png",
+    "seed": 3,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/08.png",
+    "seed": 2,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/09.png",
+    "seed": 2,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/08.png",
+    "seed": 2,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/02.png",
+    "seed": 0,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/04.png",
+    "seed": 0,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/01.png",
+    "seed": 3,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/07.png",
+    "seed": 1,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/07.png",
+    "seed": 2,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/03.png",
+    "seed": 1,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/10.png",
+    "seed": 0,
+    "repeat": 0,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/01.png",
+    "seed": 2,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/04.png",
+    "seed": 0,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/09.png",
+    "seed": 1,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/11.png",
+    "seed": 4,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/04.png",
+    "seed": 4,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/02.png",
+    "seed": 4,
+    "repeat": 2,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/12.png",
+    "seed": 4,
+    "repeat": 1,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/05.png",
+    "seed": 2,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/01.png",
+    "seed": 4,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/02.png",
+    "seed": 1,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/12.png",
+    "seed": 1,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/01.png",
+    "seed": 0,
+    "repeat": 0,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/03.png",
+    "seed": 4,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/01.png",
+    "seed": 2,
+    "repeat": 1,
+    "order": [
+      "image_dense",
+      "image_spectral"
+    ]
+  },
+  {
+    "image": "/home/user/workspace/artifacts/corpora/set12/05.png",
+    "seed": 4,
+    "repeat": 2,
+    "order": [
+      "image_spectral",
+      "image_dense"
+    ]
+  }
+]

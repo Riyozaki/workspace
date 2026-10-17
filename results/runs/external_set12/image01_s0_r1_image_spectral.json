@@ -1,0 +1,108 @@
+{
+  "method": "image_spectral",
+  "case": "external_set12",
+  "seed": 0,
+  "repeat": 1,
+  "threads": 2,
+  "n_train": 8192,
+  "n_test": 512,
+  "axes": [
+    128,
+    64
+  ],
+  "noise_variance": 0.0025,
+  "lengthscales": [
+    0.18,
+    0.23
+  ],
+  "image": "01.png",
+  "image_shape": [
+    256,
+    256
+  ],
+  "source_sha256": {
+    "__init__.py": "d4c7502c0f136f87230bc5a1229d2eeddbb57c51700fffbf672f79e4addf4983",
+    "audits.py": "d6913105e9751e56ea501b3bc7ab1bf65cded07ccdc65a4aed293707152ef38c",
+    "benchmark.py": "827cff3b72ad2f3f317afdd4ff71c60959766bab9ad4dd244be267cb0bbac3df",
+    "clock.py": "05f9be6ad46001d34674af940c527bc2b4ebe004c9d6d3a8c3cce08b50f32f03",
+    "data.py": "fd3ab63a9a432711047c9d8d347e8b307b6ff623d863e47c6c8a9d978c2a8362",
+    "dense.py": "8e142bfd7b82514031e4d16f9480169d95d49b0ec4bdd61f7fd89715c4fd79cf",
+    "dense_fortran.py": "2b7d5f907e953aaffea2af6ab0c3cff04d681bbc9a42f9545bae444742f299cc",
+    "environment.py": "6caa770d8eca272e14b577023aa4164b53abbcf602231dc6d8949eb2e757db0b",
+    "experiments.py": "f97a3a99e39539f524c0768a09baa50b3366808a3261748f0a1bde842efd963d",
+    "external_audit.py": "ef891cc04d5b7d9f8bfab82827a8189287254e56f436c32fd1f3d081716672b1",
+    "external_data.py": "3f5841916b2fb6eb8fa94eadc5ed52cdf35085866e0ff097591dad943b39d6cb",
+    "hyper_audit.py": "9d90675b315ea7d6e9fb9c15af8b48a3009060a00174073142ece04fcae19be5",
+    "hyperparameters.py": "56116e6f070d80125e694fa02cdfa463b1632703d6b9c089fd531cb8f6aeea96",
+    "integrity.py": "26467d61c3f857468b6c3acade5e59581a85ea7ad33d21c1329257e10f556b26",
+    "kernels.py": "dbc7e48a6273f2899f0ed449f9e5d3b57b95e7cb9b5e10b7d7ef8c553ffeac0c",
+    "masked.py": "3957d460099dfcbcaa2053ae86808ba73a1e70ee58020233235b7e7980237860",
+    "masked_audit.py": "7cf18308bb3f7b7c1492e71e6ef3561740be7e89a7dc85d6aae7989a36191387",
+    "metrics.py": "74b0540ea6337f3c5cfbea2fa869d3f204e8593ec9212b8f5a19eea7115a49b2",
+    "reproduce.py": "4946d960754032ed0ea81b9bc42bba825670dc7c91ba35dcea29d1c6c4024dde",
+    "robustness.py": "fa9f5fbee1f875575662041234eb4d928d412e365efcbb19d139dc090c97eb5c",
+    "run_external.py": "aff1b24b980eccb4a0ca5b6a9a44156dac732c9545e6fe529819077c43fec957",
+    "run_hyper.py": "69fd4ce17560c170b1d7ef733b1ddc259918f5528157a888b34066b967cadd82",
+    "run_masked.py": "2743d65fa03744d55e7978dd6774d7bf5130aebf8c5ec17ea59af8999d71b2ac",
+    "run_numpy.py": "e5ea4640ba33e11d95281e03f0a7d037647ca0bb9556d830b3826494ddd34411",
+    "run_one.py": "cb6fbd9671206a69d05740fc11f1b9d71b216b2b9a3973774968987deca15e70",
+    "spectral.py": "9521ee279d8ff28ba49f1fa24868b42033e5f9e11a010c59a4257f30c13b782c",
+    "spectral_numpy.py": "1cc878753b8f0658e349c9c322b3d469b1a1bfde63a4c15d5cd58166be2e7aeb"
+  },
+  "train_pixel_indices_sha256": "86696f7e6e6445a687551396d8e5f254919472af36aaf79c9244f6ee0da67aa0",
+  "test_pixel_indices_sha256": "16bb6661b71ddd67354847e4b0f5e35fb4067215630acedef6bdd1842689ce31",
+  "test_train_overlap_count": 0,
+  "quality": {
+    "rmse": 0.15058799193275513,
+    "latent_rmse": 0.1431978913309169,
+    "nll": 2.4269335386871997,
+    "coverage_95": 0.677734375,
+    "min_latent_variance": 1.707300348774421e-05,
+    "max_latent_variance": 0.00010320964870991212
+  },
+  "stages": {
+    "decode_and_dataset_s": 0.02553846299997531,
+    "preprocess_s": 8.213599994633114e-05,
+    "model_init_and_import_s": 0.00028316199995970237,
+    "fit_total_s": 0.0020518230003290228,
+    "predict_total_s": 0.002960764999897947,
+    "metrics_s": 0.00013644000000567758,
+    "prediction_output_s": 0.0012245429998074542,
+    "fit_kernel_s": 0.0001332140000158688,
+    "fit_factor_s": 0.0017007489996103686,
+    "fit_solve_s": 0.00018073000001095352,
+    "predict_cross_s": 0.0015288390000023355,
+    "predict_mean_s": 0.0005267520000415971,
+    "predict_variance_s": 0.0008109229997899092
+  },
+  "model_state_bytes": 294912,
+  "min_raw_variance": 1.707300348774421e-05,
+  "peak_rss_bytes": 48939008,
+  "versions": {
+    "numpy": "2.2.6"
+  },
+  "scipy_loaded": false,
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+      "version": "0.3.29",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    }
+  ],
+  "affinity": [
+    0,
+    1
+  ],
+  "pipeline_s": 0.033566068000254745,
+  "worker_s": 0.12159881599973232,
+  "status": "ok",
+  "run_id": "external_set12/image01_s0_r1_image_spectral",
+  "cold_wall_s": 0.15753733699966688,
+  "prediction_file": "artifacts/predictions/external_set12/image01_s0_r1_image_spectral.npz",
+  "prediction_sha256": "93fbe16b26d14f9a192dd19f9be872562bde8038839ead095fc6288f188d8111"
+}

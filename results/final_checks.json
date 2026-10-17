@@ -1,0 +1,15 @@
+{
+  "deadline_verified": true,
+  "all_links_resolve": true,
+  "deliverable_hashes_verified": true,
+  "primary_15_pairs_unchanged": true,
+  "external_180_pairs_complete": true,
+  "integrity_audit_pass": true,
+  "late_quality_pass": true,
+  "residual_audit_pass": true,
+  "full_all_reproduction_integration_tested": false,
+  "short_one_command_reproduction_tested": true,
+  "strict_total_90_minute_budget_met": false,
+  "numerical_workload_ended_seconds": 5400.000089843,
+  "final_gate_elapsed_seconds": 5470.527269124985
+}

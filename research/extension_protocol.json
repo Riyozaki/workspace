@@ -1,0 +1,15 @@
+{
+  "status": "frozen_before_masked_solver_measurements",
+  "scope": "Exploratory extension, separate from primary complete-grid claim",
+  "methods": ["masked_dense", "masked_pcg"],
+  "full_endpoint": "load, choose independently random observed training subset, center observed targets, fit, all 512 off-grid posterior means and latent variances, metric computation, prediction output, including process startup and imports",
+  "full_cases": {"axes": [128, 64], "query_count": 512, "missing_fractions": [0.01, 0.1, 0.3, 0.5], "seeds": [0, 1, 2, 3, 4], "repetitions": 1},
+  "pilot": {"axes": [32, 32], "query_count": 64, "missing_fractions": [0.0, 0.1, 0.5], "seed": 0},
+  "mask": "sorted choice without replacement, keep round(N*(1-fraction)), RNG seed 20000+dataset_seed; mask independent of targets and test data",
+  "cg": {"rtol": 1e-11, "atol": 0.0, "maxiter": 2000, "preconditioner": "observed restriction of exact full-grid inverse"},
+  "baseline": "blocked exact observed covariance construction in Fortran storage, LAPACK Cholesky, batched triangular prediction variance solve; no explicit inverse",
+  "quality": "same frozen primary tolerances from research/preregister.json, not relaxed",
+  "timeout_seconds_per_method": 180,
+  "resource_cutoff": "If the entire full-case plan cannot finish by experiment minute 75, stop between methods/cases, preserve unfinished/timeout records and report the incomplete plan; never silently omit failed cases.",
+  "mean_only": "if studied, label as a different endpoint, not evidence for the full mean+variance result"
+}

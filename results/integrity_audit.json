@@ -1,0 +1,52 @@
+{
+  "checks": [
+    "Original dense/kernel/data/metrics numerical source hashes match pre-baseline freeze",
+    "All 15 primary pairs, all quality guards, raw wall times and clustered bootstrap independently recomputed",
+    "All 30 original primary prediction SHA-256 seals still match",
+    "Validated 728 non-invalidated artifact hashes and 1522 recorded library thread limits; 7 historical invalidated runs retained"
+  ],
+  "raw_run_status_counts": {
+    "ok": 949,
+    "aborted": 1,
+    "failed": 30
+  },
+  "invalidated_historical_runs": 7,
+  "verified_prediction_hashes": 728,
+  "verified_threadpool_records": 1522,
+  "primary_pairs": 15,
+  "primary_summary_recomputed": {
+    "n_pairs": 15,
+    "n_dataset_seeds": 5,
+    "primary_speedup_ratio_of_sums": 11.540625408881278,
+    "primary_speedup_cluster_bootstrap_95ci": [
+      10.279576161375852,
+      12.88299165335229
+    ],
+    "bootstrap_clusters": "dataset seed, keeping repetitions together",
+    "bootstrap_replicates": 10000,
+    "baseline_cold_mean_s": 3.7342447011333357,
+    "method_cold_mean_s": 0.32357385920000376,
+    "baseline_cold_min_max_s": [
+      3.6067815820000533,
+      3.9741256529999873
+    ],
+    "method_cold_min_max_s": [
+      0.23930718500002968,
+      0.39782602299999326
+    ],
+    "paired_speedup_min_max": [
+      9.148713683729772,
+      15.688415878526623
+    ],
+    "secondary_inprocess_speedup_ratio_of_sums": 63.34310497218777,
+    "baseline_rmse_mean": 0.0566866543362479,
+    "method_rmse_mean": 0.05668665433623579,
+    "max_abs_mean_diff": 2.5464630404314903e-12,
+    "max_abs_variance_diff": 8.215650382226158e-15,
+    "max_abs_nll_diff": 1.3091749906379846e-12,
+    "all_quality_checks_pass": true,
+    "baseline_peak_rss_max_bytes": 1134878720,
+    "method_peak_rss_max_bytes": 67653632
+  },
+  "all_checks_pass": true
+}

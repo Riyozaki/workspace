@@ -1,0 +1,19 @@
+{
+  "status": "frozen_before_decoding_any_image_or_seeing_external_quality_results",
+  "purpose": "Independent natural-target check of the declared grid-GP use case, not a replacement for the primary synthetic data. All Set12 images, not hand-picked examples. The structural Cartesian assumption remains and this is not a standard image-super-resolution SOTA comparison.",
+  "corpus": "All PNG files in cszn/KAIR testsets/set12, pinned to the latest commit touching this path at protocol time; Git blob SHA and SHA256 for each file will be saved in research/external_corpus_manifest.json. No files selected by scores or timing.",
+  "preprocessing": "Decode grayscale PNG to float64 [0,1]. Training rows=round(linspace(0,H-1,128)), columns=round(linspace(0,W-1,64)); all 8192 pair combinations. Normalize coordinates by H-1,W-1. Add independent Gaussian noise std 0.05 to training luminance. Held-out 512 original pixel locations sampled uniformly WITHOUT replacement from pixels outside training grid, RNG 10000+seed; add independent std-0.05 observation noise. No training pixel is evaluated as test.",
+  "seeds": [0,1,2,3,4],
+  "repetitions_per_seed":3,
+  "axes":[128,64],
+  "test_size":512,
+  "kernel_and_quality": "exactly the primary frozen kernel, centering and RMSE/mean/variance/NLL tolerances; no external-test-driven tuning or hyperparameter optimization",
+  "baseline": "dense_fortran complete-grid GP, one-pass kernel construction and LAPACK, independently validated against original frozen dense",
+  "method": "NumPy-only full-rank tensor spectral GP, no truncation",
+  "endpoint": "fresh process from spawn to exit including imports, PNG decode, training/test selection and deterministic noise generation, centering, kernel/fit, all posterior mean+variance predictions, held-out metrics and output serialization",
+  "order": "fixed randomized image/seed/repeat plan, counterbalanced per pair, RNG seed 123456",
+  "inclusion": "Every corpus image and seed. If an image is too small or unavailable, log failure; do not replace it with a favorable image. Preserve any unfinished cases if budget is exhausted.",
+  "uncertainty": "ratio of summed cold times, 10000 bootstrap replicates clustered by image (not by duplicate timing repetitions or shared-image seeds)",
+  "caveat": "The dataset/task domain is still regular-grid spatial interpolation. This does NOT prove a data-agnostic 10x improvement, nor avoid that structural domain restriction. A strict requirement for unstructured data is not satisfied by this result.",
+  "time_cutoff_research_minute":80
+}

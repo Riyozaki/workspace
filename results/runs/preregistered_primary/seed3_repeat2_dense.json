@@ -1,0 +1,79 @@
+{
+  "method": "dense",
+  "case": "primary",
+  "seed": 3,
+  "repeat": 2,
+  "threads": 2,
+  "n_train": 8192,
+  "n_test": 512,
+  "axes": [
+    128,
+    64
+  ],
+  "lengthscales": [
+    0.18,
+    0.23
+  ],
+  "noise_variance": 0.0025,
+  "quality": {
+    "rmse": 0.058926524385968265,
+    "latent_rmse": 0.029678220912294967,
+    "nll": -1.3839517877897956,
+    "coverage_95": 0.916015625,
+    "min_latent_variance": 1.704073199915168e-05,
+    "max_latent_variance": 0.0001644388807368058
+  },
+  "stages": {
+    "load_s": 0.0014872429999286396,
+    "preprocess_s": 6.278699993345072e-05,
+    "fit_total_s": 3.2594689639998933,
+    "predict_total_s": 0.365270363000036,
+    "metrics_s": 0.00024885100003757543,
+    "prediction_output_s": 0.0005586849999872356,
+    "fit_kernel_s": 1.4206675279999672,
+    "fit_factor_s": 1.7232694620000757,
+    "fit_solve_s": 0.11550420800006123,
+    "predict_cross_s": 0.01894132399991122,
+    "predict_mean_s": 0.0013005859999566383,
+    "predict_variance_s": 0.3446180100000902
+  },
+  "model_state_bytes": 536936448,
+  "min_raw_variance": 1.704073199915168e-05,
+  "peak_rss_bytes": 1134710784,
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3"
+  },
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+      "version": "0.3.29",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+      "version": "0.3.28",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    }
+  ],
+  "affinity": [
+    0,
+    1
+  ],
+  "pipeline_s": 3.6277756869999394,
+  "worker_s": 3.85627063000004,
+  "status": "ok",
+  "run_id": "preregistered_primary/seed3_repeat2_dense",
+  "cold_wall_s": 3.906418772000052,
+  "prediction_file": "artifacts/predictions/preregistered_primary/seed3_repeat2_dense.npz"
+}
