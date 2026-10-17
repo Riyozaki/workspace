@@ -1,0 +1,12 @@
+{
+  "returncode": 0,
+  "full_reproduction_wall_seconds": 600.9391441219996,
+  "fresh_data_download": true,
+  "fresh_model_training": true,
+  "all_three_ready_references_remeasured": true,
+  "no_original_results_overwritten": true,
+  "work_directory": "/home/user/workspace/competition50x/artifacts/fresh_reproduction_check/work/competition50x",
+  "log": "/home/user/workspace/competition50x/artifacts/fresh_reproduction_check/reproduction.log",
+  "timing_scope": "inner fresh study subprocess wall only; excludes preceding pip dependency check and outer wrapper/source-copy setup",
+  "tested_shell_command": "bash competition50x/reproduce.sh --output competition50x/artifacts/fresh_reproduction_check"
+}

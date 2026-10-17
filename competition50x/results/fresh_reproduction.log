@@ -1,0 +1,317 @@
+{
+  "utc": "2026-10-17T16:59:15.592467+00:00",
+  "elapsed_seconds": 0.15148091316223145,
+  "elapsed_monotonic_seconds": 0.15148149599917815,
+  "stage": "Stage 2 \u2014 shared training and unmodified reference measurements",
+  "note": "Protocol/evaluator sealed before 600 s. Custom predictor not yet implemented. All 60k real training observations; reference-family calibration precedes any optimization.",
+  "remaining_seconds": 5399.848519086838
+}
+{"run_id": "baseline_onnx_r2", "status": "ok", "cold_seconds": 52.32730124899899, "accuracy": 0.9032}
+{"run_id": "baseline_threaded_r2", "status": "ok", "cold_seconds": 20.071554688000106, "accuracy": 0.9032}
+{"run_id": "baseline_native_r2", "status": "ok", "cold_seconds": 46.93954213299912, "accuracy": 0.9032}
+{"run_id": "baseline_onnx_r0", "status": "ok", "cold_seconds": 52.6091483149994, "accuracy": 0.9032}
+{"run_id": "baseline_onnx_r1", "status": "ok", "cold_seconds": 52.16399151099904, "accuracy": 0.9032}
+{"run_id": "baseline_native_r1", "status": "ok", "cold_seconds": 43.66644130699933, "accuracy": 0.9032}
+{"run_id": "baseline_threaded_r0", "status": "ok", "cold_seconds": 19.365580414998476, "accuracy": 0.9032}
+{"run_id": "baseline_native_r0", "status": "ok", "cold_seconds": 41.52503142900059, "accuracy": 0.9032}
+{"run_id": "baseline_threaded_r1", "status": "ok", "cold_seconds": 19.311282768001547, "accuracy": 0.9032}
+{
+  "selected_engine": "threaded",
+  "criterion": "minimum mean of all 3 pre-optimization cold validation runs among quality-eligible ready references",
+  "references": {
+    "native": {
+      "n_attempted": 3,
+      "n_completed": 3,
+      "mean_cold_seconds": 44.04367162299968,
+      "eligible": true,
+      "quality_checks": [
+        {
+          "n": 5000,
+          "baseline_accuracy": 0.9032,
+          "candidate_accuracy": 0.9032,
+          "accuracy_drop_absolute": 0.0,
+          "accuracy_tolerance_absolute": 0.001,
+          "label_agreement": 1.0,
+          "min_label_agreement": 0.999,
+          "quality_pass": true,
+          "baseline_run_id": "baseline_native_r1",
+          "method_run_id": "baseline_native_r2",
+          "baseline_engine": "native",
+          "method_engine": "native",
+          "block": 512,
+          "baseline_cold_seconds": 43.66644130699933,
+          "method_cold_seconds": 46.93954213299912,
+          "quality_comparison_seconds": 0.0027387059999455232,
+          "baseline_endpoint_seconds": 43.66918001299928,
+          "method_endpoint_seconds": 46.94228083899907,
+          "speedup": 0.9302739285884776
+        },
+        {
+          "n": 5000,
+          "baseline_accuracy": 0.9032,
+          "candidate_accuracy": 0.9032,
+          "accuracy_drop_absolute": 0.0,
+          "accuracy_tolerance_absolute": 0.001,
+          "label_agreement": 1.0,
+          "min_label_agreement": 0.999,
+          "quality_pass": true,
+          "baseline_run_id": "baseline_native_r2",
+          "method_run_id": "baseline_native_r1",
+          "baseline_engine": "native",
+          "method_engine": "native",
+          "block": 512,
+          "baseline_cold_seconds": 46.93954213299912,
+          "method_cold_seconds": 43.66644130699933,
+          "quality_comparison_seconds": 0.000850848000482074,
+          "baseline_endpoint_seconds": 46.940392980999604,
+          "method_endpoint_seconds": 43.667292154999814,
+          "speedup": 1.074955433791995
+        },
+        {
+          "n": 5000,
+          "baseline_accuracy": 0.9032,
+          "candidate_accuracy": 0.9032,
+          "accuracy_drop_absolute": 0.0,
+          "accuracy_tolerance_absolute": 0.001,
+          "label_agreement": 1.0,
+          "min_label_agreement": 0.999,
+          "quality_pass": true,
+          "baseline_run_id": "baseline_native_r2",
+          "method_run_id": "baseline_native_r0",
+          "baseline_engine": "native",
+          "method_engine": "native",
+          "block": 512,
+          "baseline_cold_seconds": 46.93954213299912,
+          "method_cold_seconds": 41.52503142900059,
+          "quality_comparison_seconds": 0.0008598290005465969,
+          "baseline_endpoint_seconds": 46.94040196199967,
+          "method_endpoint_seconds": 41.52589125800114,
+          "speedup": 1.1303887897398295
+        }
+      ]
+    },
+    "threaded": {
+      "n_attempted": 3,
+      "n_completed": 3,
+      "mean_cold_seconds": 19.582805957000044,
+      "eligible": true,
+      "quality_checks": [
+        {
+          "n": 5000,
+          "baseline_accuracy": 0.9032,
+          "candidate_accuracy": 0.9032,
+          "accuracy_drop_absolute": 0.0,
+          "accuracy_tolerance_absolute": 0.001,
+          "label_agreement": 1.0,
+          "min_label_agreement": 0.999,
+          "quality_pass": true,
+          "baseline_run_id": "baseline_native_r2",
+          "method_run_id": "baseline_threaded_r2",
+          "baseline_engine": "native",
+          "method_engine": "threaded",
+          "block": 512,
+          "baseline_cold_seconds": 46.93954213299912,
+          "method_cold_seconds": 20.071554688000106,
+          "quality_comparison_seconds": 0.00101288400037447,
+          "baseline_endpoint_seconds": 46.9405550169995,
+          "method_endpoint_seconds": 20.07256757200048,
+          "speedup": 2.3385426328058583
+        },
+        {
+          "n": 5000,
+          "baseline_accuracy": 0.9032,
+          "candidate_accuracy": 0.9032,
+          "accuracy_drop_absolute": 0.0,
+          "accuracy_tolerance_absolute": 0.001,
+          "label_agreement": 1.0,
+          "min_label_agreement": 0.999,
+          "quality_pass": true,
+          "baseline_run_id": "baseline_native_r2",
+          "method_run_id": "baseline_threaded_r0",
+          "baseline_engine": "native",
+          "method_engine": "threaded",
+          "block": 512,
+          "baseline_cold_seconds": 46.93954213299912,
+          "method_cold_seconds": 19.365580414998476,
+          "quality_comparison_seconds": 0.0007350890009547584,
+          "baseline_endpoint_seconds": 46.94027722200008,
+          "method_endpoint_seconds": 19.36631550399943,
+          "speedup": 2.423810415166799
+        },
+        {
+          "n": 5000,
+          "baseline_accuracy": 0.9032,
+          "candidate_accuracy": 0.9032,
+          "accuracy_drop_absolute": 0.0,
+          "accuracy_tolerance_absolute": 0.001,
+          "label_agreement": 1.0,
+          "min_label_agreement": 0.999,
+          "quality_pass": true,
+          "baseline_run_id": "baseline_native_r2",
+          "method_run_id": "baseline_threaded_r1",
+          "baseline_engine": "native",
+          "method_engine": "threaded",
+          "block": 512,
+          "baseline_cold_seconds": 46.93954213299912,
+          "method_cold_seconds": 19.311282768001547,
+          "quality_comparison_seconds": 0.0007597610001539579,
+          "baseline_endpoint_seconds": 46.940301893999276,
+          "method_endpoint_seconds": 19.3120425290017,
+          "speedup": 2.430623370029714
+        }
+      ]
+    },
+    "onnx": {
+      "n_attempted": 3,
+      "n_completed": 3,
+      "mean_cold_seconds": 52.36681369166581,
+      "eligible": true,
+      "quality_checks": [
+        {
+          "n": 5000,
+          "baseline_accuracy": 0.9032,
+          "candidate_accuracy": 0.9032,
+          "accuracy_drop_absolute": 0.0,
+          "accuracy_tolerance_absolute": 0.001,
+          "label_agreement": 1.0,
+          "min_label_agreement": 0.999,
+          "quality_pass": true,
+          "baseline_run_id": "baseline_native_r2",
+          "method_run_id": "baseline_onnx_r2",
+          "baseline_engine": "native",
+          "method_engine": "onnx",
+          "block": 512,
+          "baseline_cold_seconds": 46.93954213299912,
+          "method_cold_seconds": 52.32730124899899,
+          "quality_comparison_seconds": 0.000861660999362357,
+          "baseline_endpoint_seconds": 46.940403793998485,
+          "method_endpoint_seconds": 52.328162909998355,
+          "speedup": 0.89703901653749
+        },
+        {
+          "n": 5000,
+          "baseline_accuracy": 0.9032,
+          "candidate_accuracy": 0.9032,
+          "accuracy_drop_absolute": 0.0,
+          "accuracy_tolerance_absolute": 0.001,
+          "label_agreement": 1.0,
+          "min_label_agreement": 0.999,
+          "quality_pass": true,
+          "baseline_run_id": "baseline_native_r2",
+          "method_run_id": "baseline_onnx_r0",
+          "baseline_engine": "native",
+          "method_engine": "onnx",
+          "block": 512,
+          "baseline_cold_seconds": 46.93954213299912,
+          "method_cold_seconds": 52.6091483149994,
+          "quality_comparison_seconds": 0.0007899409993115114,
+          "baseline_endpoint_seconds": 46.940332073998434,
+          "method_endpoint_seconds": 52.60993825599871,
+          "speedup": 0.8922331717172503
+        },
+        {
+          "n": 5000,
+          "baseline_accuracy": 0.9032,
+          "candidate_accuracy": 0.9032,
+          "accuracy_drop_absolute": 0.0,
+          "accuracy_tolerance_absolute": 0.001,
+          "label_agreement": 1.0,
+          "min_label_agreement": 0.999,
+          "quality_pass": true,
+          "baseline_run_id": "baseline_native_r2",
+          "method_run_id": "baseline_onnx_r1",
+          "baseline_engine": "native",
+          "method_engine": "onnx",
+          "block": 512,
+          "baseline_cold_seconds": 46.93954213299912,
+          "method_cold_seconds": 52.16399151099904,
+          "quality_comparison_seconds": 0.0008703840012458386,
+          "baseline_endpoint_seconds": 46.94041251700037,
+          "method_endpoint_seconds": 52.164861895000286,
+          "speedup": 0.8998473457379046
+        }
+      ]
+    }
+  },
+  "selected_at_unix": 1792256846.428532
+}
+{
+  "compile_seconds": 0.5445153140008188,
+  "packing_seconds": 0.383469905000311,
+  "compile_command": [
+    "cc",
+    "-O3",
+    "-shared",
+    "-fPIC",
+    "-fopenmp",
+    "-mavx512vnni",
+    "-mavx512bw",
+    "-mavx512vl",
+    "/home/user/workspace/competition50x/artifacts/fresh_reproduction_check/work/competition50x/u8gemm.c",
+    "-o",
+    "/home/user/workspace/competition50x/artifacts/fresh_reproduction_check/work/competition50x/artifacts/libu8gemm.so",
+    "-lm"
+  ],
+  "compiler": "cc (Debian 12.2.0-14+deb12u1) 12.2.0",
+  "n_support": 18802,
+  "source_model_sha256": "fde87adcc6f1f241d579f4eecf0e0cfe835fa402f9c731744fd57ff363b3c900",
+  "compact_model_sha256": "798be2db4b8c220202054cf81b14416085c06b18ea62605e89e54d1b36ae0e5c",
+  "compact_bytes": 17236388,
+  "library_sha256": "42c1f5e7433a38a06317cad3cc6269fc99597cbe065318b691cc7a7a1cab903c",
+  "exact_uint8_roundtrip": true,
+  "scope": "one-time conversion/build, not hidden in per-request inference; non-amortized calculation reported separately"
+}
+............................                                             [100%]
+28 passed in 2.81s
+{
+  "utc": "2026-10-17T17:07:31.077111+00:00",
+  "elapsed_seconds": 495.6361222267151,
+  "elapsed_monotonic_seconds": 495.6361241229988,
+  "stage": "Stage 7 \u2014 frozen-candidate full holdout inference",
+  "note": "reproduction: fixed engine=compact, block=128, baseline=threaded; 5 paired fresh processes; no optimization after seeing holdout.",
+  "remaining_seconds": 4904.363877773285
+}
+{"run_id": "reproduction_threaded_r4", "status": "ok", "cold_seconds": 21.079298569000457, "accuracy": 0.8972}
+{"run_id": "reproduction_compact_r4", "status": "ok", "cold_seconds": 0.485882651000793, "accuracy": 0.8972}
+{"run_id": "reproduction_compact_r3", "status": "ok", "cold_seconds": 0.48259062000033737, "accuracy": 0.8972}
+{"run_id": "reproduction_threaded_r3", "status": "ok", "cold_seconds": 20.596782822000023, "accuracy": 0.8972}
+{"run_id": "reproduction_compact_r1", "status": "ok", "cold_seconds": 0.4277975549994153, "accuracy": 0.8972}
+{"run_id": "reproduction_threaded_r1", "status": "ok", "cold_seconds": 20.761841560000903, "accuracy": 0.8972}
+{"run_id": "reproduction_threaded_r0", "status": "ok", "cold_seconds": 20.539965750000192, "accuracy": 0.8972}
+{"run_id": "reproduction_compact_r0", "status": "ok", "cold_seconds": 0.4446381260004273, "accuracy": 0.8972}
+{"run_id": "reproduction_threaded_r2", "status": "ok", "cold_seconds": 18.921843510001054, "accuracy": 0.8972}
+{"run_id": "reproduction_compact_r2", "status": "ok", "cold_seconds": 0.4249630510003044, "accuracy": 0.8972}
+{
+  "n_pairs": 5,
+  "speedup_ratio_of_sums": 44.81597184724837,
+  "paired_bootstrap_95ci": [
+    43.138609518993604,
+    46.74681749901205
+  ],
+  "baseline_mean_seconds": 20.381555336401288,
+  "method_mean_seconds": 0.4547832948010182,
+  "baseline_range_seconds": [
+    18.922947401002602,
+    21.08209565800098
+  ],
+  "method_range_seconds": [
+    0.426066942001853,
+    0.48867974000131653
+  ],
+  "baseline_sd_seconds": 0.8420969596952783,
+  "method_sd_seconds": 0.029735758571816484,
+  "all_quality_pass": true,
+  "baseline_accuracy": 0.8972,
+  "candidate_accuracy": 0.8972,
+  "min_label_agreement": 1.0,
+  "statistical_scope": "timing variability on ONE fixed dataset; not independent data uncertainty",
+  "planned_pairs": 5,
+  "attempted_pairs": 5,
+  "failed_pairs": [],
+  "complete": true,
+  "baseline_engine": "threaded",
+  "method_engine": "compact",
+  "block": 128,
+  "scope": "SECONDARY reproduction; not pooled with primary"
+}
+FULL FRESH REPRODUCTION COMPLETED

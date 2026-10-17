@@ -1,0 +1,5 @@
+{
+  "status": "caught_before_holdout",
+  "error": "System python without NumPy used for freeze import; no method_frozen.json written; retried with venv interpreter",
+  "baseline_or_eval_changed": false
+}

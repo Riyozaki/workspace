@@ -1,0 +1,10 @@
+{
+  "engine": "threaded",
+  "n": 512,
+  "repeat": 0,
+  "cold_seconds": 2.6545593780010677,
+  "returncode": 0,
+  "stdout": "{\"engine\": \"threaded\", \"n\": 512, \"accuracy\": 0.876953125, \"internal_seconds\": 2.4828378210004303, \"peak_rss_bytes\": 245092352, \"threadpools\": [{\"user_api\": \"blas\", \"internal_api\": \"openblas\", \"num_threads\": 2, \"prefix\": \"libscipy_openblas\", \"filepath\": \"/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so\", \"version\": \"0.3.29\", \"threading_layer\": \"pthreads\", \"architecture\": \"SkylakeX\"}, {\"user_api\": \"blas\", \"internal_api\": \"openblas\", \"num_threads\": 2, \"prefix\": \"libscipy_openblas\", \"filepath\": \"/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so\", \"version\": \"0.3.28\", \"threading_layer\": \"pthreads\", \"architecture\": \"SkylakeX\"}, {\"user_api\": \"openmp\", \"internal_api\": \"openmp\", \"num_threads\": 2, \"prefix\": \"libgomp\", \"filepath\": \"/home/user/workspace/.venv/lib/python3.11/site-packages/scikit_learn.libs/libgomp-a34b3233.so.1.0.0\", \"version\": null}]}\n",
+  "stderr": "",
+  "prediction": "/home/user/workspace/competition50x/artifacts/batch_sweep/n512_r0_threaded.pred.npy"
+}

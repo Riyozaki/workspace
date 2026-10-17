@@ -1,0 +1,46 @@
+[
+  {
+    "name": "fresh_data_train_and_all_references",
+    "command": [
+      "/home/user/workspace/.venv/bin/python",
+      "-m",
+      "competition50x.baseline_study"
+    ],
+    "returncode": 0,
+    "duration_seconds": 490.95956157399996
+  },
+  {
+    "name": "compact_build",
+    "command": [
+      "/home/user/workspace/.venv/bin/python",
+      "-m",
+      "competition50x.build_compact"
+    ],
+    "returncode": 0,
+    "duration_seconds": 1.229902494000271
+  },
+  {
+    "name": "tests",
+    "command": [
+      "/home/user/workspace/.venv/bin/python",
+      "-m",
+      "pytest",
+      "competition50x/tests",
+      "-q"
+    ],
+    "returncode": 0,
+    "duration_seconds": 3.1162380589994427
+  },
+  {
+    "name": "five_holdout_pairs",
+    "command": [
+      "/home/user/workspace/.venv/bin/python",
+      "-m",
+      "competition50x.primary",
+      "--label",
+      "reproduction"
+    ],
+    "returncode": 0,
+    "duration_seconds": 105.57862118500088
+  }
+]

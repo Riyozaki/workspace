@@ -1,0 +1,8 @@
+{
+  "seed": 20261017,
+  "train_n": 60000,
+  "validation_n": 5000,
+  "holdout_n": 5000,
+  "indices_sha256": "816367f95f09d8425085ec2d5951bd073dc394f2de6202a4e8a5de9d8084f40b",
+  "disjoint": true
+}

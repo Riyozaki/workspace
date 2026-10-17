@@ -1,0 +1,42 @@
+[
+  {
+    "file": "libsvm.cpp",
+    "url": "https://api.github.com/repos/scikit-learn/scikit-learn/contents/sklearn/svm/src/libsvm/svm.cpp?ref=1.7.2",
+    "git_blob_sha1": "a6f191d6616c968e4e2a31e24a23536da329d873",
+    "sha256": "90e3d3246222f5e0ea4d1f71459fe5bb42b12fd7c35bbf7dfba8a7c6780bbbcf",
+    "bytes": 69105
+  },
+  {
+    "file": "ort_svm_classifier.cc",
+    "url": "https://api.github.com/repos/microsoft/onnxruntime/contents/onnxruntime/core/providers/cpu/ml/svm_classifier.cc?ref=v1.23.2",
+    "failure": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+    "file": "ort_svmclassifier.cc",
+    "url": "https://api.github.com/repos/microsoft/onnxruntime/contents/onnxruntime/core/providers/cpu/ml/svmclassifier.cc?ref=v1.23.2",
+    "git_blob_sha1": "4bfb0f673404a51bea153009548133a31d9e66bd",
+    "sha256": "18b0e8dec36695e45326b37173f31d148d12368929051bacaa09c2dcb11178cb",
+    "bytes": 16473
+  },
+  {
+    "file": "ort_svmregressor.cc",
+    "url": "https://api.github.com/repos/microsoft/onnxruntime/contents/onnxruntime/core/providers/cpu/ml/svmregressor.cc?ref=v1.23.2",
+    "git_blob_sha1": "48792be5ffdbd1763f870afd3e1ed7be0dab0304",
+    "sha256": "7c95bd2bd8c36edf38e2fddc26f8bd5355d353279bc8e99081f3d3a7faa82ad1",
+    "bytes": 4041
+  },
+  {
+    "file": "ort_svmclassifier.h",
+    "url": "https://api.github.com/repos/microsoft/onnxruntime/contents/onnxruntime/core/providers/cpu/ml/svmclassifier.h?ref=v1.23.2",
+    "git_blob_sha1": "e0303c10f670e4ae88cb40cd1c83729a72f9d1bf",
+    "sha256": "2b690e7eaed03765fca3d300b7d8b109e8eb0d4917d6e6a14a6b9b5d16a6970b",
+    "bytes": 4467
+  },
+  {
+    "file": "ort_ml_common.h",
+    "url": "https://api.github.com/repos/microsoft/onnxruntime/contents/onnxruntime/core/providers/cpu/ml/ml_common.h?ref=v1.23.2",
+    "git_blob_sha1": "731bd66882a1a2f778b37b179796c126717547cc",
+    "sha256": "fabd40f04a61f02a882c87d4056a4fb94a7f923cba6290a46ca84bcec8c0493f",
+    "bytes": 17529
+  }
+]

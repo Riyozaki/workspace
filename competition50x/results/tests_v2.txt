@@ -1,0 +1,41 @@
+............F.........                                                   [100%]
+=================================== FAILURES ===================================
+_____________________ test_fused_real_validation_agreement _____________________
+
+    def test_fused_real_validation_agreement():
+     from competition50x.data import load_split
+     from competition50x.inference import Compact
+     import joblib
+     model=joblib.load(ART/'model.joblib');x,_=load_split('validation');x=x[:33]
+>    pred,s=Compact(fused32=True).predict(np.rint(x*255.).astype(np.uint8),128,True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+competition50x/tests/test_fused_kernel.py:27: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <competition50x.inference.Compact object at 0x7f494dec0d90>
+x = array([[0, 0, 0, ..., 0, 0, 0],
+       [0, 0, 0, ..., 0, 0, 0],
+       [0, 0, 0, ..., 0, 0, 0],
+       ...,
+       [0, 0, 0, ..., 0, 0, 0],
+       [0, 0, 0, ..., 0, 0, 0],
+       [0, 0, 0, ..., 0, 0, 0]], shape=(33, 784), dtype=uint8)
+block = 128, return_scores = True
+
+    def predict(self,x,block=512,return_scores=False):
+        if x.dtype!=np.uint8 or x.ndim!=2 or x.shape[1]!=784:raise ValueError('Compact input must be original uint8 pixels')
+        x=np.ascontiguousarray(x);pred=[];all_scores=[]
+        self.profile={'integer_dot_seconds':0.,'distance_exp_seconds':0.,'decision_vote_seconds':0.}
+        for start in range(0,len(x),block):
+            xb=x[start:start+block];t0=time.perf_counter()
+            if self.fused32:
+                k32=np.empty((len(xb),self.nsv),dtype=np.float32)
+>               code=self.lib.u8_rbf(xb.ctypes.data,self.packed.ctypes.data,self.svnorm.ctypes.data,k32.ctypes.data,len(xb),self.nsv,self.d,self.gamma)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               ctypes.ArgumentError: argument 8: TypeError: Don't know how to convert parameter 8
+
+competition50x/inference.py:70: ArgumentError
+=========================== short test summary info ============================
+FAILED competition50x/tests/test_fused_kernel.py::test_fused_real_validation_agreement
+1 failed, 21 passed in 1.90s

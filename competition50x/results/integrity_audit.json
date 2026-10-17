@@ -1,0 +1,28 @@
+{
+  "all_checks_pass": true,
+  "frozen_protocol_and_evaluator_unchanged": true,
+  "fixed_seed_splits_independently_recomputed": true,
+  "all_four_raw_dataset_sha256_and_git_blob_sha1_verified": true,
+  "primary_pairs_independently_recomputed": 5,
+  "speedup_recomputed": 45.78538842463914,
+  "bootstrap_ci_recomputed": [
+    43.80683553253709,
+    47.788650010170265
+  ],
+  "verified_prediction_artifacts": 113,
+  "failed_worker_attempts_retained": [
+    {
+      "run_id": "component_diagnostic_fused_c16_b512",
+      "status": "failed"
+    }
+  ],
+  "first_holdout_after_method_freeze": true,
+  "content_duplicate_audit": {
+    "official_train_unique_images": 60000,
+    "official_test_exact_matches_train": 0,
+    "validation_exact_matches_train": 0,
+    "holdout_exact_matches_train": 0,
+    "validation_holdout_content_overlap_unique": 0
+  },
+  "scope": "local reproducibility/integrity, not external organizer verification"
+}

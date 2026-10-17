@@ -1,0 +1,88 @@
+{
+  "run_id": "component_diagnostic_fused_c16_b512_fixed",
+  "engine": "compact",
+  "split": "validation",
+  "block": 512,
+  "command": [
+    "/home/user/workspace/.venv/bin/python",
+    "-m",
+    "competition50x.candidate_worker",
+    "--engine",
+    "compact",
+    "--split",
+    "validation",
+    "--output",
+    "/home/user/workspace/competition50x/artifacts/runs/component_diagnostic_fused_c16_b512_fixed",
+    "--block",
+    "512"
+  ],
+  "eval_sha256": "2b03c78a6d6ffa33a1c1a90d022e4aeb231234cec9e9e9acd369e7ece94bf21c",
+  "source_sha256": {
+    "__init__.py": "ee74613bfab02f1aa00885d6d4678d5242825fbf27210de280503e38a4c6822d",
+    "eval.py": "2b03c78a6d6ffa33a1c1a90d022e4aeb231234cec9e9e9acd369e7ece94bf21c",
+    "clock.py": "ccda51cd1f0874ca3eb96c7d3a09528d95c972e88a5fa7023a43c9be833705ed",
+    "reference_worker.py": "22e1508ebbed8702cf57ba41d7b0315818fb782b2aad0b4b812a652a15b9ce46",
+    "data.py": "ed8d910758f4b2491b730183be7bb2ef96ece01a50ef10d01950cabc7eb950b6",
+    "prepare.py": "ac95f446403b332e9cd18db7fbfbf7ce34cfb1b14d2f2c77d5a642c50dd8616e",
+    "baseline_study.py": "53ca0cc232429f6ce372775ff38731e40e577e9051390488fe99076faf0cd5ee",
+    "monitor.py": "dfba21e5e84cc0309c0d7efde9b02625c44ce986bc0600070db6936a5a548853",
+    "harness.py": "b6e2fcd26955cc133bd19d86cc5a74870149cb6f9e3e190bf37f2d9264b47456",
+    "build_compact.py": "dd3d16f0a0ee58565b0ac2b149862857f1197d809dbe1097d4e90e55d436fc1d",
+    "candidate_worker.py": "af96f7d0b46404933376af2f8eac3c33543f0192ae91cc43f94968017aca0054",
+    "inference.py": "914a978b69c801c612c9e01a6237ad0a7b7124ab2e9fa412694c5252f87d022b",
+    "validation_study.py": "c3e4dcc52c59321a6d5d4fd1a893d2bc0f8023c8025be10eaba7658de34b74b7",
+    "generate_kernel.py": "99eb7645a1cf8f65fb3442512ec2d4d43980864f124892384471b7c64b4c8c87"
+  },
+  "affinity": [
+    0,
+    1
+  ],
+  "native_artifact_sha256": {
+    "u8gemm.c": "0d212872fb1472f74c810bc5556315c823a85fb26c4bc6ca6458932bf39873db",
+    "artifacts/libu8gemm.so": "6ac2bce25a66cf83e5297587efe5ee32d2d5098b2cc92584d3af9112ad423b50",
+    "artifacts/model_compact.npz": "21c19bd9a7a4200fb8b6f06d8aeb6d8b3be9041850121ba6b4a750cdc72d0b60"
+  },
+  "cold_seconds": 1.041460073000053,
+  "returncode": 0,
+  "stdout": "{\"engine\": \"compact\", \"split\": \"validation\", \"block\": 512, \"n\": 5000, \"accuracy\": 0.9032, \"read_preprocess_seconds\": 0.054442720000224654, \"load_model_predict_seconds\": 0.8637900230005471, \"internal_seconds\": 0.9215511879992846, \"peak_rss_bytes\": 257191936, \"threadpools\": [{\"user_api\": \"blas\", \"internal_api\": \"openblas\", \"num_threads\": 2, \"prefix\": \"libscipy_openblas\", \"filepath\": \"/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so\", \"version\": \"0.3.29\", \"threading_layer\": \"pthreads\", \"architecture\": \"SkylakeX\"}, {\"user_api\": \"openmp\", \"internal_api\": \"openmp\", \"num_threads\": 2, \"prefix\": \"libgomp\", \"filepath\": \"/usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0\", \"version\": null}], \"component_profile_secondary\": {\"integer_dot_seconds\": 0.459454725996693, \"distance_exp_seconds\": 0.22794053300276573, \"decision_vote_seconds\": 0.15879805400254554}}\n",
+  "stderr": "",
+  "status": "ok",
+  "metadata": {
+    "engine": "compact",
+    "split": "validation",
+    "block": 512,
+    "n": 5000,
+    "accuracy": 0.9032,
+    "read_preprocess_seconds": 0.054442720000224654,
+    "load_model_predict_seconds": 0.8637900230005471,
+    "internal_seconds": 0.9215511879992846,
+    "peak_rss_bytes": 257191936,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 2,
+        "prefix": "libscipy_openblas",
+        "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+        "version": "0.3.29",
+        "threading_layer": "pthreads",
+        "architecture": "SkylakeX"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 2,
+        "prefix": "libgomp",
+        "filepath": "/usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0",
+        "version": null
+      }
+    ],
+    "component_profile_secondary": {
+      "integer_dot_seconds": 0.459454725996693,
+      "distance_exp_seconds": 0.22794053300276573,
+      "decision_vote_seconds": 0.15879805400254554
+    }
+  },
+  "prediction_path": "competition50x/artifacts/runs/component_diagnostic_fused_c16_b512_fixed.pred.npy",
+  "prediction_sha256": "a3214b03ecb8d4bd1aa89cf2aa7c6c4bc34a86dc596dca658042fb91102a0868"
+}

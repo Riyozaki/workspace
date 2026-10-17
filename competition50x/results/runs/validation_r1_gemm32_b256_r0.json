@@ -1,0 +1,92 @@
+{
+  "run_id": "validation_r1_gemm32_b256_r0",
+  "engine": "gemm32",
+  "split": "validation",
+  "block": 256,
+  "command": [
+    "/home/user/workspace/.venv/bin/python",
+    "-m",
+    "competition50x.candidate_worker",
+    "--engine",
+    "gemm32",
+    "--split",
+    "validation",
+    "--output",
+    "/home/user/workspace/competition50x/artifacts/runs/validation_r1_gemm32_b256_r0",
+    "--block",
+    "256"
+  ],
+  "eval_sha256": "2b03c78a6d6ffa33a1c1a90d022e4aeb231234cec9e9e9acd369e7ece94bf21c",
+  "source_sha256": {
+    "__init__.py": "ee74613bfab02f1aa00885d6d4678d5242825fbf27210de280503e38a4c6822d",
+    "eval.py": "2b03c78a6d6ffa33a1c1a90d022e4aeb231234cec9e9e9acd369e7ece94bf21c",
+    "clock.py": "ccda51cd1f0874ca3eb96c7d3a09528d95c972e88a5fa7023a43c9be833705ed",
+    "reference_worker.py": "22e1508ebbed8702cf57ba41d7b0315818fb782b2aad0b4b812a652a15b9ce46",
+    "data.py": "ed8d910758f4b2491b730183be7bb2ef96ece01a50ef10d01950cabc7eb950b6",
+    "prepare.py": "ac95f446403b332e9cd18db7fbfbf7ce34cfb1b14d2f2c77d5a642c50dd8616e",
+    "baseline_study.py": "53ca0cc232429f6ce372775ff38731e40e577e9051390488fe99076faf0cd5ee",
+    "monitor.py": "dfba21e5e84cc0309c0d7efde9b02625c44ce986bc0600070db6936a5a548853",
+    "harness.py": "b6e2fcd26955cc133bd19d86cc5a74870149cb6f9e3e190bf37f2d9264b47456",
+    "build_compact.py": "643c9a23708004dfbd51f735895a275ef9ef5c12f14fc590dff630eeb2fb9686",
+    "candidate_worker.py": "7a722f064c04eb6537b35dd8fa0ec27664a63d98f7ae601d320fe69f5f39849b",
+    "inference.py": "ebaded698cfd6214d3e65014a05ebd2db832ac7346e2ccf68b9e0c9cced26311",
+    "validation_study.py": "c3e4dcc52c59321a6d5d4fd1a893d2bc0f8023c8025be10eaba7658de34b74b7"
+  },
+  "affinity": [
+    0,
+    1
+  ],
+  "native_artifact_sha256": {
+    "u8gemm.c": "0003619868f7aafd69165b43037b7dcf48bb5b58e3144f79bbe3a18315734d08",
+    "artifacts/libu8gemm.so": "e5637a332c1b0f4076119bef5e75212d3a04410710aa18dd5ff58259ba3291d8",
+    "artifacts/model_compact.npz": "21c19bd9a7a4200fb8b6f06d8aeb6d8b3be9041850121ba6b4a750cdc72d0b60"
+  },
+  "cold_seconds": 2.100218206000136,
+  "returncode": 0,
+  "stdout": "{\"engine\": \"gemm32\", \"split\": \"validation\", \"block\": 256, \"n\": 5000, \"accuracy\": 0.9032, \"read_preprocess_seconds\": 0.06941991500025324, \"load_model_predict_seconds\": 1.8225879799992981, \"internal_seconds\": 1.895398242999363, \"peak_rss_bytes\": 413253632, \"threadpools\": [{\"user_api\": \"blas\", \"internal_api\": \"openblas\", \"num_threads\": 2, \"prefix\": \"libscipy_openblas\", \"filepath\": \"/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so\", \"version\": \"0.3.29\", \"threading_layer\": \"pthreads\", \"architecture\": \"SkylakeX\"}, {\"user_api\": \"blas\", \"internal_api\": \"openblas\", \"num_threads\": 2, \"prefix\": \"libscipy_openblas\", \"filepath\": \"/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so\", \"version\": \"0.3.28\", \"threading_layer\": \"pthreads\", \"architecture\": \"SkylakeX\"}, {\"user_api\": \"openmp\", \"internal_api\": \"openmp\", \"num_threads\": 2, \"prefix\": \"libgomp\", \"filepath\": \"/home/user/workspace/.venv/lib/python3.11/site-packages/scikit_learn.libs/libgomp-a34b3233.so.1.0.0\", \"version\": null}]}\n",
+  "stderr": "",
+  "status": "ok",
+  "metadata": {
+    "engine": "gemm32",
+    "split": "validation",
+    "block": 256,
+    "n": 5000,
+    "accuracy": 0.9032,
+    "read_preprocess_seconds": 0.06941991500025324,
+    "load_model_predict_seconds": 1.8225879799992981,
+    "internal_seconds": 1.895398242999363,
+    "peak_rss_bytes": 413253632,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 2,
+        "prefix": "libscipy_openblas",
+        "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+        "version": "0.3.29",
+        "threading_layer": "pthreads",
+        "architecture": "SkylakeX"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 2,
+        "prefix": "libscipy_openblas",
+        "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+        "version": "0.3.28",
+        "threading_layer": "pthreads",
+        "architecture": "SkylakeX"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 2,
+        "prefix": "libgomp",
+        "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scikit_learn.libs/libgomp-a34b3233.so.1.0.0",
+        "version": null
+      }
+    ]
+  },
+  "prediction_path": "competition50x/artifacts/runs/validation_r1_gemm32_b256_r0.pred.npy",
+  "prediction_sha256": "a3214b03ecb8d4bd1aa89cf2aa7c6c4bc34a86dc596dca658042fb91102a0868"
+}

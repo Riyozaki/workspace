@@ -1,0 +1,34 @@
+{
+  "repo": "zalandoresearch/fashion-mnist",
+  "commit": "b2617bb6d3ffa2e429640350f613e3291e10b141",
+  "files": [
+    {
+      "name": "train-images-idx3-ubyte.gz",
+      "git_blob_sha1": "e6ee0e37929b03937517cd45e65f4e8ca9de720d",
+      "sha256": "3aede38d61863908ad78613f6a32ed271626dd12800ba2636569512369268a84",
+      "bytes": 26421880,
+      "api": "https://api.github.com/repos/zalandoresearch/fashion-mnist/git/blobs/e6ee0e37929b03937517cd45e65f4e8ca9de720d"
+    },
+    {
+      "name": "train-labels-idx1-ubyte.gz",
+      "git_blob_sha1": "9c4aae27b27439210af73e0803a54a74af5c8756",
+      "sha256": "a04f17134ac03560a47e3764e11b92fc97de4d1bfaf8ba1a3aa29af54cc90845",
+      "bytes": 29515,
+      "api": "https://api.github.com/repos/zalandoresearch/fashion-mnist/git/blobs/9c4aae27b27439210af73e0803a54a74af5c8756"
+    },
+    {
+      "name": "t10k-images-idx3-ubyte.gz",
+      "git_blob_sha1": "667844f10bb92ae415eddb04e718f3e702547007",
+      "sha256": "346e55b948d973a97e58d2351dde16a484bd415d4595297633bb08f03db6a073",
+      "bytes": 4422102,
+      "api": "https://api.github.com/repos/zalandoresearch/fashion-mnist/git/blobs/667844f10bb92ae415eddb04e718f3e702547007"
+    },
+    {
+      "name": "t10k-labels-idx1-ubyte.gz",
+      "git_blob_sha1": "abdddb89d6563f90ab89baf2970f67a1ffb9ad10",
+      "sha256": "67da17c76eaffca5446c3361aaab5c3cd6d1c2608764d35dfb1850b086bf8dd5",
+      "bytes": 5148,
+      "api": "https://api.github.com/repos/zalandoresearch/fashion-mnist/git/blobs/abdddb89d6563f90ab89baf2970f67a1ffb9ad10"
+    }
+  ]
+}

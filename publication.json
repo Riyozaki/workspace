@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "latest_study": "competition50x",
+  "studies": [
+    {
+      "id": "stage1_gp_historical",
+      "root": ".",
+      "seal": "results/deliverable_sha256.json",
+      "path_overrides": {
+        "README.md": "research/archive/README.stage1.original.txt"
+      }
+    },
+    {
+      "id": "stage2_fashion_mnist_latest",
+      "root": "competition50x",
+      "seal": "competition50x/results/deliverable_sha256.json",
+      "path_overrides": {}
+    }
+  ],
+  "documentation_history": {
+    "stage1_original_commit": "c526490855c6fd6ac45d35cec49e65cf7472cf37",
+    "archived_readme_sha256": "9f491a8954e3e1f418f567009822638ac302361bd1291ff8744d305946e3e215",
+    "reason": "Root README is now a latest-study navigation index. The original README is preserved byte-for-byte; original study seals, numerical sources, reports and measured results were not rewritten."
+  }
+}

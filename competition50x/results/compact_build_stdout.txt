@@ -1,0 +1,25 @@
+{
+  "compile_seconds": 1.5937285649997648,
+  "packing_seconds": 0.4358055980010249,
+  "compile_command": [
+    "cc",
+    "-O3",
+    "-shared",
+    "-fPIC",
+    "-fopenmp",
+    "-mavx512vnni",
+    "-mavx512bw",
+    "-mavx512vl",
+    "/home/user/workspace/competition50x/u8gemm.c",
+    "-o",
+    "/home/user/workspace/competition50x/artifacts/libu8gemm.so"
+  ],
+  "compiler": "cc (Debian 12.2.0-14+deb12u1) 12.2.0",
+  "n_support": 18802,
+  "source_model_sha256": "fde87adcc6f1f241d579f4eecf0e0cfe835fa402f9c731744fd57ff363b3c900",
+  "compact_model_sha256": "21c19bd9a7a4200fb8b6f06d8aeb6d8b3be9041850121ba6b4a750cdc72d0b60",
+  "compact_bytes": 21597538,
+  "library_sha256": "e5637a332c1b0f4076119bef5e75212d3a04410710aa18dd5ff58259ba3291d8",
+  "exact_uint8_roundtrip": true,
+  "scope": "one-time conversion/build, not hidden in per-request inference; non-amortized calculation reported separately"
+}

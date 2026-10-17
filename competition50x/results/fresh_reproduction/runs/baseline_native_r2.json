@@ -1,0 +1,92 @@
+{
+  "run_id": "baseline_native_r2",
+  "engine": "native",
+  "split": "validation",
+  "block": 512,
+  "command": [
+    "/home/user/workspace/.venv/bin/python",
+    "-m",
+    "competition50x.reference_worker",
+    "--engine",
+    "native",
+    "--split",
+    "validation",
+    "--output",
+    "/home/user/workspace/competition50x/artifacts/fresh_reproduction_check/work/competition50x/artifacts/runs/baseline_native_r2"
+  ],
+  "eval_sha256": "2b03c78a6d6ffa33a1c1a90d022e4aeb231234cec9e9e9acd369e7ece94bf21c",
+  "source_sha256": {
+    "__init__.py": "ee74613bfab02f1aa00885d6d4678d5242825fbf27210de280503e38a4c6822d",
+    "eval.py": "2b03c78a6d6ffa33a1c1a90d022e4aeb231234cec9e9e9acd369e7ece94bf21c",
+    "clock.py": "ccda51cd1f0874ca3eb96c7d3a09528d95c972e88a5fa7023a43c9be833705ed",
+    "reference_worker.py": "22e1508ebbed8702cf57ba41d7b0315818fb782b2aad0b4b812a652a15b9ce46",
+    "data.py": "ed8d910758f4b2491b730183be7bb2ef96ece01a50ef10d01950cabc7eb950b6",
+    "prepare.py": "ac95f446403b332e9cd18db7fbfbf7ce34cfb1b14d2f2c77d5a642c50dd8616e",
+    "baseline_study.py": "53ca0cc232429f6ce372775ff38731e40e577e9051390488fe99076faf0cd5ee",
+    "monitor.py": "dfba21e5e84cc0309c0d7efde9b02625c44ce986bc0600070db6936a5a548853",
+    "harness.py": "b6e2fcd26955cc133bd19d86cc5a74870149cb6f9e3e190bf37f2d9264b47456",
+    "build_compact.py": "3404a819c2b9e7d5c54929e508c725a62f31bb5b6e6b4c9e5c5865b9b3ebc422",
+    "candidate_worker.py": "917f73003c17db1ccf891b2ab8fe7717fec797d51b4dbb4d118bc7c017737713",
+    "inference.py": "c1d97c5492c929b04659e236669ff2c6e92c13470c7da8cf3fa188cc81f9b787",
+    "validation_study.py": "c3e4dcc52c59321a6d5d4fd1a893d2bc0f8023c8025be10eaba7658de34b74b7",
+    "generate_kernel.py": "ef253e0e5c8603ac0740715223decc103659f85e6d1c8473216c371bdc058ba5",
+    "paths.py": "b41825cf7517cf1ae4c37fe61be94a99405acd2eb543c9c00801c030fc7bf4f5",
+    "request_data.py": "c01611ee3cd727e1f6b7850e0b99f9f03e7fa1a1c994defd0e2c0abe3ace323c",
+    "primary.py": "b15d14c13f41d2d456387b7e01aa4d604b1418b3af25204f88097f27e61d1efe",
+    "reproduce.py": "b2ee5f4bf89bdd1acf2ff1fb7914559ef5f199b3e646cd43794fd367e56c9af2"
+  },
+  "affinity": [
+    0,
+    1
+  ],
+  "native_artifact_sha256": {
+    "u8gemm.c": "e5818c672864616ae51372920c4787f95e21d0de8e491a797a67338247c891be"
+  },
+  "cold_seconds": 46.93954213299912,
+  "returncode": 0,
+  "stdout": "{\"engine\": \"native\", \"split\": \"validation\", \"n\": 5000, \"accuracy\": 0.9032, \"read_preprocess_seconds\": 0.06938999500016507, \"load_model_predict_seconds\": 46.67560960999981, \"internal_seconds\": 46.74819149999894, \"peak_rss_bytes\": 272011264, \"threadpools\": [{\"user_api\": \"blas\", \"internal_api\": \"openblas\", \"num_threads\": 2, \"prefix\": \"libscipy_openblas\", \"filepath\": \"/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so\", \"version\": \"0.3.29\", \"threading_layer\": \"pthreads\", \"architecture\": \"SkylakeX\"}, {\"user_api\": \"blas\", \"internal_api\": \"openblas\", \"num_threads\": 2, \"prefix\": \"libscipy_openblas\", \"filepath\": \"/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so\", \"version\": \"0.3.28\", \"threading_layer\": \"pthreads\", \"architecture\": \"SkylakeX\"}, {\"user_api\": \"openmp\", \"internal_api\": \"openmp\", \"num_threads\": 2, \"prefix\": \"libgomp\", \"filepath\": \"/home/user/workspace/.venv/lib/python3.11/site-packages/scikit_learn.libs/libgomp-a34b3233.so.1.0.0\", \"version\": null}]}\n",
+  "stderr": "",
+  "status": "ok",
+  "metadata": {
+    "engine": "native",
+    "split": "validation",
+    "n": 5000,
+    "accuracy": 0.9032,
+    "read_preprocess_seconds": 0.06938999500016507,
+    "load_model_predict_seconds": 46.67560960999981,
+    "internal_seconds": 46.74819149999894,
+    "peak_rss_bytes": 272011264,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 2,
+        "prefix": "libscipy_openblas",
+        "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+        "version": "0.3.29",
+        "threading_layer": "pthreads",
+        "architecture": "SkylakeX"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 2,
+        "prefix": "libscipy_openblas",
+        "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+        "version": "0.3.28",
+        "threading_layer": "pthreads",
+        "architecture": "SkylakeX"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 2,
+        "prefix": "libgomp",
+        "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scikit_learn.libs/libgomp-a34b3233.so.1.0.0",
+        "version": null
+      }
+    ]
+  },
+  "prediction_path": "competition50x/artifacts/runs/baseline_native_r2.pred.npy",
+  "prediction_sha256": "a3214b03ecb8d4bd1aa89cf2aa7c6c4bc34a86dc596dca658042fb91102a0868"
+}

@@ -1,0 +1,133 @@
+{
+  "scope": "SECONDARY validation; not final holdout result",
+  "planned_runs": 15,
+  "completed_runs": 15,
+  "failures": [],
+  "groups": {
+    "compact:512": {
+      "n_pairs": 3,
+      "speedup_ratio_of_sums": 44.83711848479285,
+      "paired_bootstrap_95ci": [
+        44.15794192821706,
+        45.69778223371104
+      ],
+      "baseline_mean_seconds": 22.760194217000087,
+      "method_mean_seconds": 0.5076194676676096,
+      "baseline_range_seconds": [
+        22.75960280766564,
+        22.761351986667858
+      ],
+      "method_range_seconds": [
+        0.49804666100135364,
+        0.5154531890020735
+      ],
+      "baseline_sd_seconds": 0.0010027361646122845,
+      "method_sd_seconds": 0.008832616690619017,
+      "all_quality_pass": true,
+      "baseline_accuracy": 0.9032,
+      "candidate_accuracy": 0.9032,
+      "min_label_agreement": 1.0,
+      "statistical_scope": "timing variability on ONE fixed dataset; not independent data uncertainty"
+    },
+    "compact:2048": {
+      "n_pairs": 3,
+      "speedup_ratio_of_sums": 38.568978662552205,
+      "paired_bootstrap_95ci": [
+        36.27267965253202,
+        40.39940281571254
+      ],
+      "baseline_mean_seconds": 22.759644997333755,
+      "method_mean_seconds": 0.5901023513342807,
+      "baseline_range_seconds": [
+        22.75955778366703,
+        22.759762348666907
+      ],
+      "method_range_seconds": [
+        0.563365131001774,
+        0.6274573040009273
+      ],
+      "baseline_sd_seconds": 0.00010556002556218504,
+      "method_sd_seconds": 0.03333922374438144,
+      "all_quality_pass": true,
+      "baseline_accuracy": 0.9032,
+      "candidate_accuracy": 0.9032,
+      "min_label_agreement": 1.0,
+      "statistical_scope": "timing variability on ONE fixed dataset; not independent data uncertainty"
+    },
+    "compact:1024": {
+      "n_pairs": 3,
+      "speedup_ratio_of_sums": 44.27047221489994,
+      "paired_bootstrap_95ci": [
+        42.134947155411645,
+        45.67736739708229
+      ],
+      "baseline_mean_seconds": 22.759960927333243,
+      "method_mean_seconds": 0.5141115463338792,
+      "baseline_range_seconds": [
+        22.75968044366679,
+        22.76041741166743
+      ],
+      "method_range_seconds": [
+        0.49827040700074576,
+        0.5401790900014021
+      ],
+      "baseline_sd_seconds": 0.00039876388348536386,
+      "method_sd_seconds": 0.022749042549526963,
+      "all_quality_pass": true,
+      "baseline_accuracy": 0.9032,
+      "candidate_accuracy": 0.9032,
+      "min_label_agreement": 1.0,
+      "statistical_scope": "timing variability on ONE fixed dataset; not independent data uncertainty"
+    },
+    "compact:256": {
+      "n_pairs": 3,
+      "speedup_ratio_of_sums": 46.101886912243614,
+      "paired_bootstrap_95ci": [
+        45.68907312352621,
+        46.620479368757145
+      ],
+      "baseline_mean_seconds": 22.75979121533328,
+      "method_mean_seconds": 0.4936845916666546,
+      "baseline_range_seconds": [
+        22.759620913666065,
+        22.760111722667414
+      ],
+      "method_range_seconds": [
+        0.4881893370002217,
+        0.49814188500022283
+      ],
+      "baseline_sd_seconds": 0.0002777493037466655,
+      "method_sd_seconds": 0.005056809836198444,
+      "all_quality_pass": true,
+      "baseline_accuracy": 0.9032,
+      "candidate_accuracy": 0.9032,
+      "min_label_agreement": 1.0,
+      "statistical_scope": "timing variability on ONE fixed dataset; not independent data uncertainty"
+    },
+    "compact:128": {
+      "n_pairs": 3,
+      "speedup_ratio_of_sums": 45.383585285879775,
+      "paired_bootstrap_95ci": [
+        44.62783525205415,
+        46.64517992429099
+      ],
+      "baseline_mean_seconds": 22.759627699666755,
+      "method_mean_seconds": 0.5014947046668871,
+      "baseline_range_seconds": [
+        22.759609310667354,
+        22.75966330066664
+      ],
+      "method_range_seconds": [
+        0.4879305970007408,
+        0.509988063999117
+      ],
+      "baseline_sd_seconds": 3.0836986334453166e-05,
+      "method_sd_seconds": 0.011870860503583944,
+      "all_quality_pass": true,
+      "baseline_accuracy": 0.9032,
+      "candidate_accuracy": 0.9032,
+      "min_label_agreement": 1.0,
+      "statistical_scope": "timing variability on ONE fixed dataset; not independent data uncertainty"
+    }
+  }
+}

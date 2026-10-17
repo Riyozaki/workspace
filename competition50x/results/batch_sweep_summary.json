@@ -1,0 +1,158 @@
+{
+  "scope": "SECONDARY; fixed primary method/baseline, not best baseline per small batch",
+  "planned_pairs": 18,
+  "completed_pairs": 18,
+  "failures": [],
+  "groups": {
+    "128": {
+      "n_pairs": 3,
+      "speedup_ratio_of_sums": 7.337809450925029,
+      "paired_bootstrap_95ci": [
+        7.089849212429705,
+        7.761347986998987
+      ],
+      "baseline_mean_seconds": 1.3458499309999752,
+      "method_mean_seconds": 0.18341303900039443,
+      "baseline_range_seconds": [
+        1.2693714380002348,
+        1.4038392980000935
+      ],
+      "method_range_seconds": [
+        0.17578635300014867,
+        0.1980069330020342
+      ],
+      "baseline_sd_seconds": 0.06911430516476187,
+      "method_sd_seconds": 0.012642983603804328,
+      "all_quality_pass": true,
+      "baseline_accuracy": 0.875,
+      "candidate_accuracy": 0.875,
+      "min_label_agreement": 1.0,
+      "statistical_scope": "timing variability on ONE fixed dataset; not independent data uncertainty"
+    },
+    "5000": {
+      "n_pairs": 3,
+      "speedup_ratio_of_sums": 40.28853874854673,
+      "paired_bootstrap_95ci": [
+        37.608561761984745,
+        42.92158763564461
+      ],
+      "baseline_mean_seconds": 18.225452081332453,
+      "method_mean_seconds": 0.4523731226660554,
+      "baseline_range_seconds": [
+        16.553871608999543,
+        19.141452992000268
+      ],
+      "method_range_seconds": [
+        0.4401623150006344,
+        0.47099374999743304
+      ],
+      "baseline_sd_seconds": 1.449851616172324,
+      "method_sd_seconds": 0.016384708941663224,
+      "all_quality_pass": true,
+      "baseline_accuracy": 0.9032,
+      "candidate_accuracy": 0.9032,
+      "min_label_agreement": 1.0,
+      "statistical_scope": "timing variability on ONE fixed dataset; not independent data uncertainty"
+    },
+    "32": {
+      "n_pairs": 3,
+      "speedup_ratio_of_sums": 5.516918543635218,
+      "paired_bootstrap_95ci": [
+        4.870453804815521,
+        6.007243794160032
+      ],
+      "baseline_mean_seconds": 0.9879522326670364,
+      "method_mean_seconds": 0.1790768206659171,
+      "baseline_range_seconds": [
+        0.9288195860008273,
+        1.0363436879997607
+      ],
+      "method_range_seconds": [
+        0.1725156699994841,
+        0.19070493699837243
+      ],
+      "baseline_sd_seconds": 0.054560865289290994,
+      "method_sd_seconds": 0.010097918809571558,
+      "all_quality_pass": true,
+      "baseline_accuracy": 0.75,
+      "candidate_accuracy": 0.75,
+      "min_label_agreement": 1.0,
+      "statistical_scope": "timing variability on ONE fixed dataset; not independent data uncertainty"
+    },
+    "8": {
+      "n_pairs": 3,
+      "speedup_ratio_of_sums": 4.9077371388004405,
+      "paired_bootstrap_95ci": [
+        4.703772530461456,
+        5.038794163727827
+      ],
+      "baseline_mean_seconds": 0.8365781926671237,
+      "method_mean_seconds": 0.170461084000029,
+      "baseline_range_seconds": [
+        0.7946477300010883,
+        0.8749942740014376
+      ],
+      "method_range_seconds": [
+        0.16672492399993644,
+        0.1757199439998658
+      ],
+      "baseline_sd_seconds": 0.04028839709281791,
+      "method_sd_seconds": 0.004686849439303354,
+      "all_quality_pass": true,
+      "baseline_accuracy": 0.75,
+      "candidate_accuracy": 0.75,
+      "min_label_agreement": 1.0,
+      "statistical_scope": "timing variability on ONE fixed dataset; not independent data uncertainty"
+    },
+    "512": {
+      "n_pairs": 3,
+      "speedup_ratio_of_sums": 13.820748023398526,
+      "paired_bootstrap_95ci": [
+        13.15913655011219,
+        14.730060371497398
+      ],
+      "baseline_mean_seconds": 2.773869538666986,
+      "method_mean_seconds": 0.20070328566665316,
+      "baseline_range_seconds": [
+        2.6551036250002653,
+        2.9212830279993796
+      ],
+      "method_range_seconds": [
+        0.19832118500016804,
+        0.2020198390000587
+      ],
+      "baseline_sd_seconds": 0.13538235239085467,
+      "method_sd_seconds": 0.002066773739914823,
+      "all_quality_pass": true,
+      "baseline_accuracy": 0.876953125,
+      "candidate_accuracy": 0.876953125,
+      "min_label_agreement": 1.0,
+      "statistical_scope": "timing variability on ONE fixed dataset; not independent data uncertainty"
+    },
+    "2": {
+      "n_pairs": 3,
+      "speedup_ratio_of_sums": 4.676007881686363,
+      "paired_bootstrap_95ci": [
+        4.6040956502335275,
+        4.808229261255896
+      ],
+      "baseline_mean_seconds": 0.7890322056670508,
+      "method_mean_seconds": 0.16874056366699128,
+      "baseline_range_seconds": [
+        0.7739851520000229,
+        0.8098179979988345
+      ],
+      "method_range_seconds": [
+        0.16766864600140252,
+        0.1701297120016534
+      ],
+      "baseline_sd_seconds": 0.01859295711258454,
+      "method_sd_seconds": 0.001260828274368978,
+      "all_quality_pass": true,
+      "baseline_accuracy": 1.0,
+      "candidate_accuracy": 1.0,
+      "min_label_agreement": 1.0,
+      "statistical_scope": "timing variability on ONE fixed dataset; not independent data uncertainty"
+    }
+  }
+}

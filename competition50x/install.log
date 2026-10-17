@@ -1,0 +1,46 @@
+Requirement already satisfied: numpy==2.2.6 in ./.venv/lib/python3.11/site-packages (from -r competition50x/requirements.txt (line 1)) (2.2.6)
+Requirement already satisfied: scipy==1.15.3 in ./.venv/lib/python3.11/site-packages (from -r competition50x/requirements.txt (line 2)) (1.15.3)
+Requirement already satisfied: scikit-learn==1.7.2 in ./.venv/lib/python3.11/site-packages (from -r competition50x/requirements.txt (line 3)) (1.7.2)
+Requirement already satisfied: threadpoolctl==3.6.0 in ./.venv/lib/python3.11/site-packages (from -r competition50x/requirements.txt (line 4)) (3.6.0)
+Requirement already satisfied: psutil==7.1.0 in ./.venv/lib/python3.11/site-packages (from -r competition50x/requirements.txt (line 5)) (7.1.0)
+Requirement already satisfied: joblib==1.6.0 in ./.venv/lib/python3.11/site-packages (from -r competition50x/requirements.txt (line 6)) (1.6.0)
+Collecting onnx==1.19.1
+  Downloading onnx-1.19.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (18.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 62.9 MB/s eta 0:00:00
+Collecting onnxruntime==1.23.2
+  Downloading onnxruntime-1.23.2-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (17.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.4/17.4 MB 75.0 MB/s eta 0:00:00
+Collecting skl2onnx==1.19.1
+  Downloading skl2onnx-1.19.1-py3-none-any.whl (315 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 315.5/315.5 kB 52.1 MB/s eta 0:00:00
+Requirement already satisfied: pytest==8.4.2 in ./.venv/lib/python3.11/site-packages (from -r competition50x/requirements.txt (line 10)) (8.4.2)
+Requirement already satisfied: cloudpickle>=3.0 in ./.venv/lib/python3.11/site-packages (from joblib==1.6.0->-r competition50x/requirements.txt (line 6)) (3.1.2)
+Collecting protobuf>=4.25.1
+  Downloading protobuf-7.36.2-cp310-abi3-manylinux2014_x86_64.whl (343 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 343.2/343.2 kB 99.3 MB/s eta 0:00:00
+Collecting typing_extensions>=4.7.1
+  Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.6/45.6 kB 20.1 MB/s eta 0:00:00
+Collecting ml_dtypes>=0.5.0
+  Downloading ml_dtypes-0.6.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (412 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 412.0/412.0 kB 102.8 MB/s eta 0:00:00
+Collecting coloredlogs
+  Downloading coloredlogs-15.0.1-py2.py3-none-any.whl (46 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 46.0/46.0 kB 22.2 MB/s eta 0:00:00
+Collecting flatbuffers
+  Downloading flatbuffers-25.12.19-py2.py3-none-any.whl (26 kB)
+Requirement already satisfied: packaging in ./.venv/lib/python3.11/site-packages (from onnxruntime==1.23.2->-r competition50x/requirements.txt (line 8)) (26.3)
+Collecting sympy
+  Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 107.2 MB/s eta 0:00:00
+Requirement already satisfied: iniconfig>=1 in ./.venv/lib/python3.11/site-packages (from pytest==8.4.2->-r competition50x/requirements.txt (line 10)) (2.3.1)
+Requirement already satisfied: pluggy<2,>=1.5 in ./.venv/lib/python3.11/site-packages (from pytest==8.4.2->-r competition50x/requirements.txt (line 10)) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in ./.venv/lib/python3.11/site-packages (from pytest==8.4.2->-r competition50x/requirements.txt (line 10)) (2.21.0)
+Collecting humanfriendly>=9.1
+  Downloading humanfriendly-10.0-py2.py3-none-any.whl (86 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 86.8/86.8 kB 27.1 MB/s eta 0:00:00
+Collecting mpmath<1.4,>=1.1.0
+  Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 120.4 MB/s eta 0:00:00
+Installing collected packages: mpmath, flatbuffers, typing_extensions, sympy, protobuf, ml_dtypes, humanfriendly, onnx, coloredlogs, skl2onnx, onnxruntime
+Successfully installed coloredlogs-15.0.1 flatbuffers-25.12.19 humanfriendly-10.0 ml_dtypes-0.6.0 mpmath-1.3.0 onnx-1.19.1 onnxruntime-1.23.2 protobuf-7.36.2 skl2onnx-1.19.1 sympy-1.14.0 typing_extensions-4.16.0

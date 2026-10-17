@@ -1,0 +1,127 @@
+{
+  "scope": "shared model preparation, NOT a measured inference speedup",
+  "train_seconds": 133.71783007999966,
+  "params": {
+    "C": 10.0,
+    "kernel": "rbf",
+    "gamma": "scale",
+    "shrinking": true,
+    "probability": false,
+    "tol": 0.001,
+    "cache_size": 1536,
+    "max_iter": -1,
+    "decision_function_shape": "ovo",
+    "break_ties": false,
+    "random_state": 20261017
+  },
+  "n_train": 60000,
+  "gamma": 0.010234694240516045,
+  "n_support": [
+    2529,
+    425,
+    2879,
+    1883,
+    2839,
+    1163,
+    3942,
+    1215,
+    1034,
+    893
+  ],
+  "total_support": 18802,
+  "n_iter": [
+    2578,
+    7359,
+    9589,
+    3835,
+    701,
+    21534,
+    367,
+    3643,
+    403,
+    1656,
+    4475,
+    1657,
+    374,
+    2467,
+    204,
+    958,
+    276,
+    5318,
+    19857,
+    669,
+    21233,
+    335,
+    3314,
+    389,
+    7615,
+    456,
+    9441,
+    261,
+    2368,
+    338,
+    494,
+    17717,
+    231,
+    2500,
+    314,
+    755,
+    7722,
+    1928,
+    4047,
+    381,
+    4838,
+    411,
+    1296,
+    6660,
+    816
+  ],
+  "native_serialization_seconds": 0.10120039100002032,
+  "raw_export_seconds": 0.13648109800033126,
+  "artifacts": {
+    "model.joblib": {
+      "sha256": "482068cb8edd4fa96e6e5d7332cf5bba94b2c81e5f202af27f567b76c3728140",
+      "bytes": 120711643
+    },
+    "model_raw.npz": {
+      "sha256": "fde87adcc6f1f241d579f4eecf0e0cfe835fa402f9c731744fd57ff363b3c900",
+      "bytes": 119281828
+    },
+    "model.onnx": {
+      "sha256": "7ab51c17160a91c10be50ef0479d99b61db7495cdb48d9e4df6b8cf39d78e57e",
+      "bytes": 74550662
+    }
+  },
+  "onnx_export_seconds": 4.558814501000597,
+  "peak_rss_bytes": 994656256,
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+      "version": "0.3.29",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+      "version": "0.3.28",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "num_threads": 2,
+      "prefix": "libgomp",
+      "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scikit_learn.libs/libgomp-a34b3233.so.1.0.0",
+      "version": null
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "n_pairs": 5,
+  "speedup_ratio_of_sums": 45.78538842463914,
+  "paired_bootstrap_95ci": [
+    43.80683553253709,
+    47.788650010170265
+  ],
+  "baseline_mean_seconds": 20.273905345200184,
+  "method_mean_seconds": 0.4428029562001029,
+  "baseline_range_seconds": [
+    19.148717644999124,
+    21.437895059001676
+  ],
+  "method_range_seconds": [
+    0.43265897699893685,
+    0.45406294600070396
+  ],
+  "baseline_sd_seconds": 0.9752097178658471,
+  "method_sd_seconds": 0.007729213917780886,
+  "all_quality_pass": true,
+  "baseline_accuracy": 0.8972,
+  "candidate_accuracy": 0.8972,
+  "min_label_agreement": 1.0,
+  "statistical_scope": "timing variability on ONE fixed dataset; not independent data uncertainty",
+  "planned_pairs": 5,
+  "attempted_pairs": 5,
+  "failed_pairs": [],
+  "complete": true,
+  "baseline_engine": "threaded",
+  "method_engine": "compact",
+  "block": 128,
+  "scope": "PRIMARY local holdout only"
+}

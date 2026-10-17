@@ -1,0 +1,15 @@
+{
+  "maximum_pairs": 100,
+  "prefix_order": "0..99",
+  "start_cutoff_seconds": 5280,
+  "baseline_timeout": 45,
+  "method_timeout": 20,
+  "operator_rng_seed": 2026101717,
+  "operator_gates": {
+    "integer_exact": true,
+    "exp_rtol": 3e-06,
+    "exp_atol": 2e-07,
+    "float64_score_rtol_atol": 5e-10
+  },
+  "primary_not_changed_or_pooled": true
+}

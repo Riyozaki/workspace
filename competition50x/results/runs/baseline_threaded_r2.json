@@ -1,0 +1,80 @@
+{
+  "run_id": "baseline_threaded_r2",
+  "engine": "threaded",
+  "split": "validation",
+  "block": 512,
+  "command": [
+    "/home/user/workspace/.venv/bin/python",
+    "-m",
+    "competition50x.reference_worker",
+    "--engine",
+    "threaded",
+    "--split",
+    "validation",
+    "--output",
+    "/home/user/workspace/competition50x/artifacts/runs/baseline_threaded_r2"
+  ],
+  "eval_sha256": "2b03c78a6d6ffa33a1c1a90d022e4aeb231234cec9e9e9acd369e7ece94bf21c",
+  "source_sha256": {
+    "__init__.py": "ee74613bfab02f1aa00885d6d4678d5242825fbf27210de280503e38a4c6822d",
+    "eval.py": "2b03c78a6d6ffa33a1c1a90d022e4aeb231234cec9e9e9acd369e7ece94bf21c",
+    "clock.py": "ccda51cd1f0874ca3eb96c7d3a09528d95c972e88a5fa7023a43c9be833705ed",
+    "reference_worker.py": "22e1508ebbed8702cf57ba41d7b0315818fb782b2aad0b4b812a652a15b9ce46",
+    "data.py": "ed8d910758f4b2491b730183be7bb2ef96ece01a50ef10d01950cabc7eb950b6",
+    "prepare.py": "ac95f446403b332e9cd18db7fbfbf7ce34cfb1b14d2f2c77d5a642c50dd8616e",
+    "baseline_study.py": "12342fc78eace5596ec11885df3e3a74fbfc15379ee5a85e67f4737bc028f51f",
+    "monitor.py": "dfba21e5e84cc0309c0d7efde9b02625c44ce986bc0600070db6936a5a548853",
+    "harness.py": "e9860fa135528819ab959c6257f4ee23f3b1ff904ea23aead52c67293516425c"
+  },
+  "affinity": [
+    0,
+    1
+  ],
+  "cold_seconds": 22.14809780900032,
+  "returncode": 0,
+  "stdout": "{\"engine\": \"threaded\", \"split\": \"validation\", \"n\": 5000, \"accuracy\": 0.9032, \"read_preprocess_seconds\": 0.06591368699992017, \"load_model_predict_seconds\": 21.890922505000162, \"internal_seconds\": 21.960099226999773, \"peak_rss_bytes\": 272756736, \"threadpools\": [{\"user_api\": \"blas\", \"internal_api\": \"openblas\", \"num_threads\": 2, \"prefix\": \"libscipy_openblas\", \"filepath\": \"/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so\", \"version\": \"0.3.29\", \"threading_layer\": \"pthreads\", \"architecture\": \"SkylakeX\"}, {\"user_api\": \"blas\", \"internal_api\": \"openblas\", \"num_threads\": 2, \"prefix\": \"libscipy_openblas\", \"filepath\": \"/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so\", \"version\": \"0.3.28\", \"threading_layer\": \"pthreads\", \"architecture\": \"SkylakeX\"}, {\"user_api\": \"openmp\", \"internal_api\": \"openmp\", \"num_threads\": 2, \"prefix\": \"libgomp\", \"filepath\": \"/home/user/workspace/.venv/lib/python3.11/site-packages/scikit_learn.libs/libgomp-a34b3233.so.1.0.0\", \"version\": null}]}\n",
+  "stderr": "",
+  "status": "ok",
+  "metadata": {
+    "engine": "threaded",
+    "split": "validation",
+    "n": 5000,
+    "accuracy": 0.9032,
+    "read_preprocess_seconds": 0.06591368699992017,
+    "load_model_predict_seconds": 21.890922505000162,
+    "internal_seconds": 21.960099226999773,
+    "peak_rss_bytes": 272756736,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 2,
+        "prefix": "libscipy_openblas",
+        "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+        "version": "0.3.29",
+        "threading_layer": "pthreads",
+        "architecture": "SkylakeX"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 2,
+        "prefix": "libscipy_openblas",
+        "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+        "version": "0.3.28",
+        "threading_layer": "pthreads",
+        "architecture": "SkylakeX"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 2,
+        "prefix": "libgomp",
+        "filepath": "/home/user/workspace/.venv/lib/python3.11/site-packages/scikit_learn.libs/libgomp-a34b3233.so.1.0.0",
+        "version": null
+      }
+    ]
+  },
+  "prediction_path": "competition50x/artifacts/runs/baseline_threaded_r2.pred.npy",
+  "prediction_sha256": "a3214b03ecb8d4bd1aa89cf2aa7c6c4bc34a86dc596dca658042fb91102a0868"
+}

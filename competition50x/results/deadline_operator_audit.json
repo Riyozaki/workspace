@@ -1,0 +1,15 @@
+{
+  "probe_count": 109956,
+  "failed_probes": 0,
+  "first_failures": [],
+  "maxima": {
+    "integer_error": 0,
+    "exp_max_abs": 6.743995628610833e-08,
+    "exp_max_relative": 4.327957324452879e-07,
+    "mixed_score_max_abs": 3.552713678800501e-15
+  },
+  "all_pass": true,
+  "elapsed_end_seconds": 5400.0007533689995,
+  "scope": "random algebraic/memory-boundary validation only, NOT a system speedup",
+  "rng_seed": 2026101717
+}

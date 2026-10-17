@@ -1,0 +1,13 @@
+{
+  "stage": "frozen primary complete; secondary late validation",
+  "measured_speedup": 45.78538842463914,
+  "quality": {
+    "baseline_accuracy": 0.8972,
+    "method_accuracy": 0.8972,
+    "agreement": 1.0,
+    "all_gates": true
+  },
+  "secondary_late_pairs": 22,
+  "verification_probability_percent": 92,
+  "main_risk": "Primary remains ONE local public holdout, no external organizer verification, no guaranteed50x; late requests not pooled."
+}
