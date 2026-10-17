@@ -23,6 +23,11 @@ if [ ! -f data/fashion/train-images-idx3-ubyte.gz ]; then
 fi
 
 mkdir -p results
+# ---- 0) generated artifacts are re-created from scratch (committed copies live in git;
+#         restore with `git checkout results/` if you want the recorded ones back)
+rm -f results/runs.jsonl results/ablations.jsonl results/test_metrics.csv \
+      results/timings.csv results/timings_extra.csv results/summary.json \
+      results/results.csv results/selected_gaps.json results/exploratory_60ep.jsonl
 # ---- 1) baseline configuration grid (validation only). Skipped if frozen config exists.
 if [ ! -f results/frozen_config.json ]; then
   .venv/bin/python experiments/phase1_baseline_grid.py | tee results/phase1.log
@@ -53,3 +58,13 @@ fi
 # ---- 6) latency benchmark + aggregation
 .venv/bin/python experiments/bench.py
 .venv/bin/python experiments/analyze.py
+
+# ---- optional (used in the report, not part of the primary 3-seed pipeline):
+# extra quality seeds (CI narrowing)
+#   for s in 3 4; do .venv/bin/python experiments/train_all.py --seeds $s --skip-controls; done
+# extra latency seeds at batch 1024 (see README) then:
+#   .venv/bin/python experiments/analyze.py
+# post-hoc exploratory 60-epoch run:
+#   .venv/bin/python experiments/exploratory_60ep.py --seeds 0,1,2,3,4
+# consistency checks:
+#   .venv/bin/python experiments/check_artifacts.py
