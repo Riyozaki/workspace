@@ -82,6 +82,15 @@ def main():
                 "fold_agreement": ts["fold_argmax_agreement"],
                 "fold_maxdiff": ts["fold_maxabs_logit_diff"],
             })
+    # extra seeds measured only at batch 1024 (same code path)
+    extra_p2 = []
+    ex_path = RES / "timings_extra.csv"
+    if ex_path.exists():
+        ex = list(csv.DictReader(open(ex_path)))
+        extra_p2 = [float(r["p2_speedup"]) for r in ex]
+        extra_p1 = [float(r["p1_speedup"]) for r in ex]
+    combined = [r["p2_speedup"] for r in timing_rows if r["batch"] == 1024] + extra_p2
+    comb_stats = mean_ci(combined) if combined else (float("nan"),) * 3 + (0,)
     # ---------------- write results.csv (one row per configuration)
     out_rows = []
     out_rows.append({"row": "baseline_teacher", "n_runs": gn,
@@ -114,7 +123,10 @@ def main():
                      "speedup_batch1024_P1": s1024_p1[0], "speedup_batch1024_P1_sd": s1024_p1[1],
                      "speedup_batch256_P2": s256_p2[0], "speedup_batch1_P2": s1_p2[0],
                      "speedup_forward_only_batch1024": s1024_f[0],
-                     "gap_pp_mean": gm, "gap_pp_sd": gsd, "gap_pp_ci95": gh})
+                     "gap_pp_mean": gm, "gap_pp_sd": gsd, "gap_pp_ci95": gh,
+                     "speedup_n_runs_b1024": comb_stats[3],
+                     "speedup_b1024_P2_all_seeds": round(comb_stats[0], 4),
+                     "speedup_b1024_P2_all_seeds_ci95": round(comb_stats[2], 4)})
     keys = sorted({k for r in out_rows for k in r})
     with open(RES / "results.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=keys)
@@ -143,15 +155,6 @@ def main():
                        "P2_preprocessing_free_ceiling": p2_ceiling,
                        "share_of_P1_accounted_by_preprocessing": r["student_pre_ms"] /
                            (r["student_fwd_ms"] + r["student_pre_ms"])})
-    # extra seeds measured only at batch 1024 (same code path)
-    extra_p2 = []
-    ex_path = RES / "timings_extra.csv"
-    if ex_path.exists():
-        ex = list(csv.DictReader(open(ex_path)))
-        extra_p2 = [float(r["p2_speedup"]) for r in ex]
-        extra_p1 = [float(r["p1_speedup"]) for r in ex]
-    combined = [r["p2_speedup"] for r in timing_rows if r["batch"] == 1024] + extra_p2
-    comb_stats = mean_ci(combined) if combined else (float("nan"),) * 3 + (0,)
     summary = {
         "chosen_width": chosen, "n_seeds": gn, "seeds": seeds,
         "baseline_test_acc": {"mean": tm, "sd": tsd, "ci95": th},
