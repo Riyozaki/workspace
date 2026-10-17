@@ -72,6 +72,17 @@ inference: uint8 image -> cast fp32 -> student dense forward -> argmax
   новые сиды после просмотра n=5, чтобы не продолжать optional stopping;
 - контроли `hard/distill scratch` обучены на 2 ширинах сетки, а не на выбранной.
 
+### 4.1 Аудиторский след (mtimes файлов, UTC)
+
+| Файл | Время | Что доказывает |
+|---|---|---|
+| `PREREGISTRATION.md` | 12:14:44 | записан до первого обучения (phase1 стартовал 12:18) |
+| `results/frozen_config.json` | 12:31:47 | baseline-конфиг заморожен до основного прогона |
+| `results/selection.json` | 12:59:31 | ширина студента выбрана по validation **до** любого чтения test |
+| `results/test_metrics.csv` | 13:16:04 | единственный финальный проход по test (первый, n=3, был в 13:01 — тоже после selection) |
+| `results/timings.csv` | 13:04:49 | бенчмарк скорости |
+| `report.md` | 13:24 | отчёт — после всех чисел |
+
 ## 5. Результаты
 
 ### 5.1 Качество (официальный test, 10 000 изображений)
