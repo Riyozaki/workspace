@@ -10,7 +10,7 @@ break through the floor. Vanilla JavaScript + Canvas 2D. No build step, no runti
 cd echo-loop
 npm start            # http://localhost:3000 (binds 0.0.0.0)
 PORT=8080 npm start  # other port
-npm test             # 32 unit/integration tests (node:test)
+npm test             # 33 unit/integration tests (node:test)
 npm run bot          # heuristic bot through the real engine: node tools/bot.js [runs] [maxFloor]
 ```
 

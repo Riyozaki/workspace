@@ -266,7 +266,7 @@ function onFloorClear(G) {
     return;
   }
   G.status = 'relic';
-  // offers: 3 distinct relics; prefer ones not yet owned
+  // offers: 3 distinct relics chosen at random (owned relics can be offered again and stack)
   const pool = rshuffle(G.rng, RELICS.map((r) => r.id));
   G.offers = pool.slice(0, 3);
 }
