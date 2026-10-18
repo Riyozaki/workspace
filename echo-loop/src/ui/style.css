@@ -76,3 +76,6 @@ button.btn.primary { background: #3c2a7a; border-color: #9a7cff; }
 .relic-card .desc { color: #cfc8e8; font-size: 14px; line-height: 1.45; }
 .stats { font-family: var(--mono); color: #cfc8e8; margin: 18px 0; line-height: 1.8; }
 .stats b { color: var(--gold); }
+
+#minimap-wrap { margin-top: 10px; }
+#minimap { display: block; width: 100%; height: auto; image-rendering: pixelated; border: 1px solid var(--edge); border-radius: 6px; background: #05040a; }

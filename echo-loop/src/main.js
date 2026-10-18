@@ -4,6 +4,8 @@ import { nextStep } from './core/pathfind.js';
 import { RELICS, FLOOR_COUNT, modsOf, PLAYER_BASE } from './core/entities.js';
 import { Renderer, createView, consumeEvents } from './render/renderer.js';
 import { Sfx } from './audio.js';
+import { computeFov } from './core/fov.js';
+import { T } from './core/grid.js';
 
 const canvas = document.getElementById('game');
 const renderer = new Renderer(canvas);
@@ -252,12 +254,47 @@ function updateHud() {
         .join('')
     : '<div class="dim small">none yet. Die to create one.</div>';
   $('relic-list').textContent = G.relics.length ? G.relics.map((id) => RELICS.find((r) => r.id === id).name).join(' · ') : 'none';
+  drawMinimap();
   const logEl = $('log');
   logEl.innerHTML = G.log
     .slice(-6)
     .reverse()
     .map((l) => `<div class="entry">${escapeHtml(l)}</div>`)
     .join('');
+}
+
+/** Minimap: explored tiles, visible enemies, player, echoes, exit. Drawn on each state change. */
+function drawMinimap() {
+  const cv = $('minimap');
+  const ctx = cv.getContext('2d');
+  const m = G.map;
+  const k = Math.min(cv.width / m.w, cv.height / m.h);
+  const ox = Math.floor((cv.width - m.w * k) / 2);
+  const oy = Math.floor((cv.height - m.h * k) / 2);
+  ctx.fillStyle = '#05040a';
+  ctx.fillRect(0, 0, cv.width, cv.height);
+  const vis = computeFov(G, G.player.x, G.player.y, modsOf(G.relics).lantern);
+  for (let y = 0; y < m.h; y++)
+    for (let x = 0; x < m.w; x++) {
+      const i = y * m.w + x;
+      if (!G.explored[i]) continue;
+      const t = m.tiles[i];
+      if (t === T.WALL) ctx.fillStyle = vis[i] ? '#6b6585' : '#3a3550';
+      else if (t === T.EXIT) ctx.fillStyle = '#c49bff';
+      else if (t === T.DOOR) ctx.fillStyle = G.door.open ? '#78c8ff' : '#8a5a3c';
+      else if (t === T.PLATE) ctx.fillStyle = '#78ffc8';
+      else ctx.fillStyle = vis[i] ? '#4a4660' : '#2a2838';
+      ctx.fillRect(ox + x * k, oy + y * k, Math.ceil(k), Math.ceil(k));
+    }
+  const dot = (x, y, col, r = 2) => {
+    ctx.fillStyle = col;
+    ctx.beginPath();
+    ctx.arc(ox + (x + 0.5) * k, oy + (y + 0.5) * k, r, 0, Math.PI * 2);
+    ctx.fill();
+  };
+  for (const e of G.enemies) if (e.hp > 0 && vis[e.y * m.w + e.x]) dot(e.x, e.y, '#ff5566', 2);
+  for (const e of G.echoes) if (e.hp > 0) dot(e.x, e.y, '#66ccff', 2);
+  dot(G.player.x, G.player.y, '#ffffff', 2.6);
 }
 
 function escapeHtml(s) {
