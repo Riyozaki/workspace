@@ -70,3 +70,18 @@ test('bot clears floor 1 on most seeds (regression for generation + AI, not a ba
   for (let s = 0; s < 20; s++) if (playRun(5000 + s, 1).floorsCleared >= 1) cleared++;
   assert.ok(cleared >= 18, `cleared ${cleared}/20`);
 });
+
+test('puzzle: an echo triggers the plate, so the player can pass the gate alone', () => {
+  // corridor: plate at (2,1); gate at (5,1); the echo recorded "step right onto the plate" and then stays put
+  const G = arena(['##########', '#@_..+....#', '##########']);
+  G.echoes = [{ id: 9, path: [{ dx: 1, dy: 0 }, { wait: true }], cursor: 0, x: 1, y: 1, hp: 1 }];
+  act(G, { type: 'wait' }); // echo steps onto plate (turn 1)
+  assert.equal(G.echoes[0].x, 2);
+  assert.equal(G.door.open, true);
+  // plate triggers once on entry (not held); the gate stays open for 6 turns after it, which the player uses
+  for (let i = 0; i < 3; i++) act(G, { type: 'move', dx: 1, dy: 0 });
+  assert.equal(G.player.x, 4);
+  act(G, { type: 'move', dx: 1, dy: 0 });
+  assert.equal(G.player.x, 5, 'player stands in the gate');
+  assert.equal(G.status, 'playing');
+});
