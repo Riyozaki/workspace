@@ -1,0 +1,10 @@
+{
+  "name": "echo-loop-tools",
+  "private": true,
+  "type": "module",
+  "description": "Headless browser checks for Echo Loop (not needed to play the game)",
+  "dependencies": {
+    "@sparticuz/chromium": "131.0.0",
+    "puppeteer-core": "23.11.1"
+  }
+}

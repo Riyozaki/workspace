@@ -66,6 +66,8 @@ function startFloor(G, floor) {
   G.genEnemies = gen.enemies;
   G.genItems = gen.items;
   resetLife(G);
+  if (floor === 1) G.log.push('Tip: when you die, your life becomes an echo that replays your moves.');
+  if (G.gate) G.log.push('Gate ahead: step on the rune plate to open it for 6 turns. Echoes can hold it for you.');
 }
 
 /** Reset the world to the floor's initial state. Echoes persist and respawn at the start. */
