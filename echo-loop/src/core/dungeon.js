@@ -109,7 +109,7 @@ function tryGenerate(r, floor) {
   if (floor >= 2) weights.push(['sniper', 2]);
   if (floor >= 3) weights.push(['charger', 2]);
   const total = weights.reduce((s, [, w]) => s + w, 0);
-  const count = 3 + floor * 2;
+  const count = 2 + Math.floor(floor * 1.5);
   const occupied = new Set(special);
   if (plate) occupied.add(`${plate.x},${plate.y}`);
   if (gate) occupied.add(`${gate.x},${gate.y}`);

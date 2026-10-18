@@ -20,13 +20,13 @@ export const ENEMY_DEFS = {
 };
 
 export const RELICS = [
-  { id: 'second_echo', name: 'Second Echo', desc: 'Лимит эхо +1.' },
-  { id: 'iron_heart', name: 'Iron Heart', desc: 'Макс. HP +2 и сразу +2 HP.' },
-  { id: 'lantern', name: 'Lantern', desc: 'Радиус обзора +2.' },
-  { id: 'echo_edge', name: 'Echo Edge', desc: 'Эхо бьют на +1 урона.' },
-  { id: 'second_chance', name: 'Second Chance', desc: 'Осколков отмотки +1 за петлю.' },
-  { id: 'sharp_steel', name: 'Sharp Steel', desc: 'Твой урон +1.' },
-  { id: 'extra_loop', name: 'Extra Loop', desc: 'Попыток (петель) на этаж +1.' },
+  { id: 'second_echo', name: 'Second Echo', desc: 'Echo limit +1.' },
+  { id: 'iron_heart', name: 'Iron Heart', desc: 'Max HP +2 and heal 2 now.' },
+  { id: 'lantern', name: 'Lantern', desc: 'Vision radius +2.' },
+  { id: 'echo_edge', name: 'Echo Edge', desc: 'Echoes deal +1 damage.' },
+  { id: 'second_chance', name: 'Second Chance', desc: '+1 rewind shard per loop.' },
+  { id: 'sharp_steel', name: 'Sharp Steel', desc: 'Your damage +1.' },
+  { id: 'extra_loop', name: 'Extra Loop', desc: '+1 loop (attempt) per floor.' },
 ];
 
 export const FLOOR_COUNT = 5;

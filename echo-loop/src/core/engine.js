@@ -43,7 +43,7 @@ export function newRun(seed = Date.now() >>> 0) {
     player: null,
   };
   startFloor(G, 1);
-  G.log.push(`Floor ${G.floor}. Attempt 1/${mods(G).attempts}.`);
+  G.log.push(`Floor ${G.floor}. Loop 1/${mods(G).attempts}.`);
   return G;
 }
 
@@ -114,17 +114,17 @@ export function act(G, action) {
     if (!inBounds(G.map, nx, ny)) return G;
     const blocked = !isWalkable(G, nx, ny) && !enemyAt(G, nx, ny);
     if (blocked) {
-      G.log.push('Путь заблокирован.');
+      G.log.push('Path blocked.');
       return G; // bumping a wall costs nothing
     }
   }
   if (action.type === 'potion') {
     if (G.player.potions <= 0) {
-      G.log.push('Нет зелий.');
+      G.log.push('No potions.');
       return G;
     }
     if (G.player.hp >= G.player.maxHp) {
-      G.log.push('HP уже полное.');
+      G.log.push('HP is already full.');
       return G;
     }
   }
@@ -194,7 +194,7 @@ function stepUnit(G, unit, dx, dy, who) {
   const from = { x: unit.x, y: unit.y };
   unit.x = nx;
   unit.y = ny;
-  G.events.push({ type: 'move', unit: who, from, to: { x: nx, y: ny } });
+  G.events.push({ type: 'move', unit: who, id: unit.id ?? null, from, to: { x: nx, y: ny } });
   const t = tileAt(G.map, nx, ny);
   if (t === T.PLATE) {
     G.door.openUntil = G.turn + PLAYER_BASE.gateOpenTurns;
@@ -248,11 +248,11 @@ function endLife(G) {
   const budget = mods(G).attempts;
   if (G.attemptsUsed >= budget) {
     G.status = 'over';
-    G.log.push(`Петли исчерпаны на этаже ${G.floor}. Забег окончен.`);
+    G.log.push(`Loops exhausted on floor ${G.floor}. Run over.`);
     return;
   }
   resetLife(G);
-  G.log.push(`Петля ${G.attemptsUsed + 1}/${budget}: эхо #${G.echoes.length}.`);
+  G.log.push(`Loop ${G.attemptsUsed + 1}/${budget}: ${G.echoes.length} echo(es) with you.`);
   G.events.push({ type: 'loop_start', attempt: G.attemptsUsed + 1 });
 }
 
@@ -260,7 +260,7 @@ function onFloorClear(G) {
   G.clearedFloors++;
   if (G.floor >= FLOOR_COUNT) {
     G.status = 'won';
-    G.log.push('Этаж 5 пройден. Победа!');
+    G.log.push('Floor 5 cleared. Victory!');
     return;
   }
   G.status = 'relic';
@@ -276,14 +276,14 @@ export function chooseRelic(G, id) {
   G.offers = null;
   startFloor(G, G.floor + 1);
   if (id === 'iron_heart') G.player.hp = Math.min(G.player.maxHp, G.player.hp + 2);
-  G.log.push(`Этаж ${G.floor}. Попытка 1/${mods(G).attempts}.`);
+  G.log.push(`Floor ${G.floor}. Loop 1/${mods(G).attempts}.`);
   G.events = [{ type: 'floor', floor: G.floor }];
   return G;
 }
 
 function rewind(G) {
   if (G.player.shards <= 0 || G.history.length === 0) {
-    G.log.push('Нет осколков отмотки или истории.');
+    G.log.push('No rewind shards or history left.');
     return G;
   }
   const prev = G.history.pop();
@@ -293,7 +293,7 @@ function rewind(G) {
   G.record.length = recLen;
   G.player.shards = Math.max(0, G.player.shards - 1);
   G.events = [{ type: 'rewind' }];
-  G.log.push('Отмотка на 1 ход.');
+  G.log.push('Rewound one turn.');
   return G;
 }
 

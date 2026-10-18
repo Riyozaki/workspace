@@ -130,9 +130,12 @@ export function enemyTurn(G, e, ev) {
         const dy = Math.abs(seen.y - e.y);
         const aligned = dx === 0 || dy === 0;
         const d = dx + dy;
-        if (aligned && d <= 5) {
+        // reload: after a shot the sniper needs one turn before it can fire again
+        if (e.reload > 0) e.reload--;
+        else if (aligned && d <= 4) {
           hitUnit(G, seen, def.dmg, ev, 'sniper');
           ev.push({ type: 'shot', from: { x: e.x, y: e.y }, to: { x: seen.x, y: seen.y } });
+          e.reload = 1;
           return;
         }
         if (d <= 2) {

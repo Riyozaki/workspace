@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Echo Loop</title>
+  <link rel="stylesheet" href="src/ui/style.css" />
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="hud" class="hidden">
+    <div id="hud-left" class="panel">
+      <div class="row"><span class="label">FLOOR</span><span id="floor">1</span><span class="sep">/</span><span>5</span></div>
+      <div class="row"><span class="label">LOOP</span><span id="attempt">1</span><span class="sep">/</span><span id="attempts">6</span></div>
+      <div class="row hp"><span class="label">HP</span><span id="hp-bar"></span><span id="hp-num"></span></div>
+      <div class="row"><span class="label">REWIND</span><span id="shards">0</span><span class="dim"> (R)</span></div>
+      <div class="row"><span class="label">POTION</span><span id="potions">0</span><span class="dim"> (F)</span></div>
+      <div class="row dim small">seed <span id="seed"></span></div>
+    </div>
+    <div id="hud-right" class="panel">
+      <div class="label">ECHOES <span id="echo-count"></span></div>
+      <div id="echo-list"></div>
+      <div class="label" style="margin-top:10px">RELICS</div>
+      <div id="relic-list" class="small"></div>
+    </div>
+    <div id="log" class="panel"></div>
+    <div id="help" class="panel small dim">WASD/arrows move &amp; attack · Space wait · R rewind · F potion · M sound · Esc pause</div>
+  </div>
+
+  <div id="banner" class="hidden"></div>
+
+  <div id="screen" class="screen"></div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

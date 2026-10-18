@@ -70,7 +70,7 @@ export function playRun(seed, maxFloor = 5, maxTicks = 20000) {
 }
 
 // CLI
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (typeof process !== 'undefined' && process.argv[1] && import.meta.url === `file://${process.argv[1]}`) {
   const runs = Number(process.argv[2] ?? 50);
   const maxFloor = Number(process.argv[3] ?? 5);
   let wins = 0;
