@@ -1,0 +1,14 @@
+{
+  "name": "echo-loop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Echo Loop — turn-based time-loop roguelike (vanilla JS + Canvas, no build step)",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/*.test.js",
+    "bot": "node tools/bot.js",
+    "shots": "node tools/shots.mjs"
+  },
+  "engines": { "node": ">=18" }
+}
