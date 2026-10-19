@@ -244,7 +244,9 @@ export class ProjectStore {
    */
   updateSource(sceneId, sourceId, patch) {
     for (const key of /** @type {const} */ (['x', 'y', 'w', 'h'])) {
-      if (key in patch && (patch[key] === '' || patch[key] === null || !Number.isFinite(Number(patch[key])))) {
+      /** @type {unknown} */
+      const v = patch[key];
+      if (key in patch && (v === '' || v === null || !Number.isFinite(Number(v)))) {
         // An empty or non-numeric field must not silently become 0.
         throw new ModelError(`Поле «${key}» должно быть числом.`);
       }
