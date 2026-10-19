@@ -1,25 +1,27 @@
 // Browser UI. Talks to the JSON API only; no business rules live here.
 import { bindingFromEvent } from '/shared/hotkeys.js';
 const $ = (sel) => document.querySelector(sel);
-const state = { project: null, selectedId: null, status: null, bindings: {}, busy: false };
+const state = { project: null, selectedId: null, status: null, bindings: {}, dirty: false };
 
 /** Sends a command and updates state. Errors are shown to the user, not thrown. */
 async function call(type, args = {}) {
-  state.busy = true;
   try {
     const res = await fetch('/api/command', {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type, args }),
     });
     const body = await res.json().catch(() => ({ error: 'Сервер вернул непонятный ответ.' }));
-    if (!res.ok) { say(body.error || `Ошибка ${res.status}`, true); return null; }
+    if (!res.ok) {
+      say(body.error || `Ошибка ${res.status}`, true);
+      // Redraw from the stored project so a rejected edit does not leave a wrong value in a field.
+      render();
+      return null;
+    }
     if (body.project) { state.project = body.project; render(); }
     say('');
     return body.result ?? {};
   } catch {
     say('Нет связи с сервером. Проверьте, что Studio запущен.', true);
     return null;
-  } finally {
-    state.busy = false;
   }
 }
 
