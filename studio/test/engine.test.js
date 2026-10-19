@@ -92,3 +92,22 @@ test('preview is a JPEG downscaled to at most 640 px wide and keeps the aspect r
   assert.equal(img.width, 640);
   assert.equal(img.height, 360);
 });
+
+test('switching scenes while running keeps frames flowing and prepares the new scene', async (t) => {
+  const { engine, store } = await makeEngine();
+  t.after(() => engine.shutdown());
+  const first = store.activeScene().id;
+  const second = store.addScene('Вторая');
+  store.addSource(second, { kind: 'color', color: '#ff0000', x: 0, y: 0, w: 320, h: 180 });
+  engine.start();
+  await sleep(120);
+  const before = engine.stats.frames;
+  store.setActiveScene(second);
+  for (let i = 0; i < 50 && engine.preparedSceneId !== second; i++) await sleep(20);
+  assert.equal(engine.preparedSceneId, second, 'new scene was not prepared');
+  await sleep(120);
+  assert.ok(engine.stats.frames > before + 2, 'frames stopped after the switch');
+  const px = engine.readRgba(engine.ensureCompositor());
+  assert.deepEqual([px[0], px[1], px[2]], [255, 0, 0], 'frame does not show the new scene');
+  store.setActiveScene(first);
+});

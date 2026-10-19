@@ -30,6 +30,12 @@ export function createAppServer({ ctx, publicDir }) {
         return res.end(jpg);
       }
       if (req.method === 'POST' && url.pathname === '/api/command') {
+        // Only application/json is accepted. Browsers cannot send that type cross-origin
+        // without a CORS preflight, which this server never grants; a form posted as
+        // text/plain could otherwise drive commands from any web page the user visits.
+        if (!/^application\/json\b/i.test(req.headers['content-type'] ?? '')) {
+          return sendJson(res, 415, { error: 'Запросы к API должны быть в формате application/json.', code: 'bad-content-type' });
+        }
         const body = await readJson(req);
         if (typeof body.type !== 'string') return sendJson(res, 400, { error: 'Нет поля type.', code: 'bad-request' });
         try {

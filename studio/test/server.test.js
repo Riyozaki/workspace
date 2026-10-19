@@ -92,3 +92,13 @@ test('unsupported methods are rejected', async () => {
   const res = await fetch(`${base}/api/project`, { method: 'DELETE' });
   assert.equal(res.status, 405);
 });
+
+test('a text/plain form post (cross-site CSRF shape) is refused before any command runs', async () => {
+  const res = await fetch(`${base}/api/command`, {
+    method: 'POST', headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify({ type: 'record.start', args: { format: 'mp4' } }),
+  });
+  assert.equal(res.status, 415);
+  assert.equal((await res.json()).code, 'bad-content-type');
+  assert.equal(engine.recorder, null, 'no recording may have started');
+});
