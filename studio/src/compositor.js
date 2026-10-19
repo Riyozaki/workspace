@@ -1,6 +1,5 @@
 // @ts-check
-import { createCanvas, Image, loadImage } from '@napi-rs/canvas';
-import { readFileSync } from 'node:fs';
+import { createCanvas, loadImage } from '@napi-rs/canvas';
 
 /** @typedef {import('./model.js').Scene} Scene
  *  @typedef {import('./model.js').Source} Source */
@@ -31,6 +30,8 @@ export class Compositor {
     this.layers = new Map();
     /** @type {string[]} */
     this.warnings = [];
+    /** @type {Map<string, any>} baseline: images decoded for the current frame */
+    this.frameImages = new Map();
   }
 
   /**
@@ -88,18 +89,8 @@ export class Compositor {
    */
   drawItem(item, g) {
     if (item.kind === 'image') {
-      let img;
-      if (this.cache) {
-        img = this.images.get(item.path ?? '');
-      } else if (item.path) {
-        // Baseline: decode from disk on every frame.
-        img = null;
-        try {
-          img = loadImageSync(item.path);
-        } catch {
-          img = null;
-        }
-      }
+      // In baseline mode the image was already decoded for this frame by renderAsync.
+      const img = this.cache ? this.images.get(item.path ?? '') : this.frameImages.get(item.path ?? '');
       if (img) g.drawImage(img, item.x, item.y, item.w, item.h);
       return;
     }
@@ -118,6 +109,7 @@ export class Compositor {
 
   /**
    * Renders the scene and returns the output canvas (valid until the next call).
+   * Synchronous: uses only prepared data (cache mode).
    * @param {Scene} scene
    * @returns {any}
    */
@@ -132,6 +124,27 @@ export class Compositor {
     return this.out;
   }
 
+  /**
+   * Renders one frame for either mode. In baseline mode every image file is
+   * read and decoded again for this frame (the per-frame cost being measured);
+   * in cache mode this is identical to `render`.
+   * @param {Scene} scene
+   * @returns {Promise<any>}
+   */
+  async renderAsync(scene) {
+    if (this.cache) return this.render(scene);
+    this.frameImages = new Map();
+    for (const item of scene.items) {
+      if (!item.visible || item.kind !== 'image' || !item.path || this.frameImages.has(item.path)) continue;
+      try {
+        this.frameImages.set(item.path, await loadImage(item.path));
+      } catch {
+        this.frameImages.set(item.path, null);
+      }
+    }
+    return this.render(scene);
+  }
+
   /** Drops cached layers that no longer correspond to any source (bounded memory). */
   pruneLayers(scenes) {
     const live = new Set();
@@ -143,15 +156,4 @@ export class Compositor {
   encodeJpeg(quality = 80) {
     return this.out.toBuffer('image/jpeg', quality);
   }
-}
-
-/**
- * Baseline-only synchronous decode: reads the file and decodes it on the spot,
- * which is the per-frame cost the naive design pays.
- * @param {string} path
- */
-function loadImageSync(path) {
-  const img = new Image();
-  img.src = readFileSync(path);
-  return img;
 }

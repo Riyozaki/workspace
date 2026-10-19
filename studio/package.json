@@ -7,7 +7,7 @@
   "bin": { "studio": "bin/studio.js" },
   "scripts": {
     "start": "node bin/studio.js",
-    "test": "node --test test/",
+    "test": "node --test test/*.test.js",
     "bench": "node bench/bench.mjs",
     "check": "node --check src/*.js bin/*.js public/app.js"
   },

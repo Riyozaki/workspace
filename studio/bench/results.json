@@ -1,0 +1,29 @@
+{
+  "env": {
+    "node": "v22.22.3",
+    "platform": "linux",
+    "cpus": 2,
+    "imageBytes": 1707565
+  },
+  "frames": 300,
+  "baseline": {
+    "meanMs": 38.37808885333332,
+    "p50Ms": 37.900244999998904,
+    "p95Ms": 43.36885499999994,
+    "sustainableFps": 26.05653459768738
+  },
+  "cached": {
+    "meanMs": 8.438250683333347,
+    "p50Ms": 8.022388999999748,
+    "p95Ms": 10.398887999999715,
+    "sustainableFps": 118.50797487862398
+  },
+  "speedupMean": 4.548109589720424,
+  "encode": {
+    "seconds": 10,
+    "wallSeconds": 10.004776548,
+    "framesWritten": 300,
+    "framesDropped": 0,
+    "outputBytes": 4755838
+  }
+}

@@ -79,11 +79,18 @@ export class Engine {
     if (!this.running) return;
     const due = this.t0 + this.tickIndex * this.intervalMs;
     const wait = Math.max(0, due - performance.now());
-    this.timer = setTimeout(() => this.tick(due), wait);
+    this.timer = setTimeout(() => {
+      // A failing frame must not stop the clock: record the error and keep going.
+      this.tick(due).catch((err) => {
+        this.lastError = `Ошибка при отрисовке кадра: ${/** @type {Error} */ (err).message}`;
+        this.stats.errors = (this.stats.errors ?? 0) + 1;
+        this.scheduleNext();
+      });
+    }, wait);
   }
 
   /** @param {number} due */
-  tick(due) {
+  async tick(due) {
     const now = performance.now();
     if (now - due > this.intervalMs) this.stats.late += 1;
     this.tickIndex += 1;
@@ -95,7 +102,7 @@ export class Engine {
       this.prepareActiveScene().finally(() => { this.preparing = false; });
     }
     const t = performance.now();
-    comp.render(scene);
+    await comp.renderAsync(scene);
     const renderMs = performance.now() - t;
     this.stats.renderMsLast = renderMs;
     this.stats.renderMsTotal += renderMs;
