@@ -1,6 +1,8 @@
 // @ts-check
 import { Compositor } from './compositor.js';
 import { FrameEncoder, EncoderError } from './encoder.js';
+import { VideoDecoder } from './media.js';
+import { createCanvas, ImageData } from '@napi-rs/canvas';
 
 /**
  * Output frame clock. Drives the compositor at the canvas FPS, feeds the
@@ -27,6 +29,8 @@ export class Engine {
     this.recorder = null;
     /** @type {FrameEncoder|null} */
     this.stream = null;
+    /** @type {Map<string, {decoder: VideoDecoder, key: string, canvas: any, seq: number}>} */
+    this.decoders = new Map();
     /** @type {Buffer|null} */
     this.preview = null;
     this.previewAt = 0;
@@ -59,6 +63,41 @@ export class Engine {
     await comp.prepare(scene);
     comp.pruneLayers(this.store.project.scenes);
     this.preparedSceneId = scene.id;
+  }
+
+  /**
+   * Keeps one decoder per video source of the active scene, restarts it when
+   * the source's file or size changes, and stops decoders no longer in use.
+   * @param {import('./model.js').Scene} scene
+   * @param {any} comp
+   */
+  syncVideo(scene, comp) {
+    const { fps } = this.store.project.canvas;
+    const wanted = new Set();
+    for (const item of scene.items) {
+      if (item.kind !== 'video' || !item.path) continue;
+      wanted.add(item.id);
+      const key = `${item.path}|${item.w}x${item.h}|${fps}`;
+      let entry = this.decoders.get(item.id);
+      if (!entry || entry.key !== key) {
+        entry?.decoder.stop();
+        const decoder = new VideoDecoder({ ffmpegPath: this.ffmpegPath, path: item.path, width: item.w, height: item.h, fps });
+        entry = { decoder, key, canvas: createCanvas(item.w, item.h), seq: -1 };
+        this.decoders.set(item.id, entry);
+        decoder.start();
+      }
+      if (entry.decoder.latest && entry.seq !== entry.decoder.seq) {
+        const ctx = entry.canvas.getContext('2d');
+        const data = new Uint8ClampedArray(entry.decoder.latest.buffer, entry.decoder.latest.byteOffset, entry.decoder.latest.byteLength);
+        ctx.putImageData(new ImageData(data, item.w, item.h), 0, 0);
+        entry.seq = entry.decoder.seq;
+        comp.videoFrames.set(item.id, entry.canvas);
+      }
+      if (entry.decoder.error && this.lastError !== entry.decoder.error) this.lastError = entry.decoder.error;
+    }
+    for (const [id, entry] of this.decoders) {
+      if (!wanted.has(id)) { entry.decoder.stop(); this.decoders.delete(id); comp.videoFrames.delete(id); }
+    }
   }
 
   /** Starts the frame clock. Idempotent. */
@@ -102,6 +141,7 @@ export class Engine {
       this.prepareActiveScene().finally(() => { this.preparing = false; });
     }
     const t = performance.now();
+    this.syncVideo(scene, comp);
     await comp.renderAsync(scene);
     const renderMs = performance.now() - t;
     this.stats.renderMsLast = renderMs;
@@ -135,6 +175,8 @@ export class Engine {
   /** Stops the frame clock and all outputs (finalising files). */
   async shutdown() {
     this.running = false;
+    for (const entry of this.decoders.values()) entry.decoder.stop();
+    this.decoders.clear();
     if (this.timer) clearTimeout(this.timer);
     await this.stopRecording().catch(() => {});
     await this.stopStream().catch(() => {});

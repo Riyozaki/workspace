@@ -80,7 +80,7 @@ function renderSources() {
       <button type="button" class="up" aria-label="Выше по слоям">▲</button>
       <button type="button" class="down" aria-label="Ниже по слоям">▼</button>
       <button type="button" class="del" aria-label="Удалить источник">✕</button>`;
-    const label = { color: 'цвет', text: 'текст', image: 'изображение' }[it.kind];
+    const label = { color: 'цвет', text: 'текст', image: 'изображение', video: 'видео' }[it.kind];
     li.querySelector('.name').textContent = `${it.name} (${label})`;
     const vis = li.querySelector('.vis');
     vis.textContent = it.visible ? '👁' : '—';
@@ -108,7 +108,7 @@ function renderProps() {
   ];
   if (it.kind === 'color') fields.push(['color', 'Цвет', 'color', it.color]);
   if (it.kind === 'text') fields.push(['text', 'Текст', 'text', it.text ?? ''], ['color', 'Цвет текста', 'color', it.color]);
-  if (it.kind === 'image') fields.push(['path', 'Путь к файлу', 'text', it.path ?? '']);
+  if (it.kind === 'image' || it.kind === 'video') fields.push(['path', 'Путь к файлу', 'text', it.path ?? '']);
   const nodes = fields.map(([key, label, type, value]) => {
     const l = document.createElement('label');
     l.textContent = label;
@@ -197,7 +197,7 @@ $('#add-source').addEventListener('submit', async (e) => {
   const args = { kind, name: $('#src-name').value.trim() || undefined, sceneId: activeScene().id };
   if (kind === 'color') args.color = value.trim() || '#336699';
   if (kind === 'text') args.text = value || 'Текст';
-  if (kind === 'image') args.path = $('#src-path').value.trim();
+  if (kind === 'image' || kind === 'video') args.path = $('#src-path').value.trim();
   const r = await call('source.add', args);
   if (r?.id) { state.selectedId = r.id; $('#add-source').reset(); render(); say('Источник добавлен.'); }
 });

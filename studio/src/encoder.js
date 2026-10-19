@@ -78,7 +78,13 @@ export class FrameEncoder {
   start() {
     const { ffmpegPath, output } = this.cfg;
     // Only local file outputs need a directory; rtmp:// URLs do not.
-    if (!/^[a-z][a-z0-9+.-]*:\/\//i.test(output)) mkdirSync(dirname(output), { recursive: true });
+    if (!/^[a-z][a-z0-9+.-]*:\/\//i.test(output)) {
+      try {
+        mkdirSync(dirname(output), { recursive: true });
+      } catch (err) {
+        throw new EncoderError(`Не удалось создать папку для записи «${dirname(output)}»: ${/** @type {Error} */ (err).message}`, { code: 'output-dir' });
+      }
+    }
     const args = buildFfmpegArgs(this.cfg);
     const proc = spawn(ffmpegPath, args, { stdio: ['pipe', 'ignore', 'pipe'] });
     this.proc = proc;
@@ -126,6 +132,17 @@ export class FrameEncoder {
       else this.framesWritten += 1;
     });
     return true;
+  }
+
+  /**
+   * Resolves once the encoder has room for another frame. Live clocks do not
+   * need this (they drop when behind); offline writers (tests, batch jobs) use it to pace.
+   * @returns {Promise<void>}
+   */
+  async waitForCapacity() {
+    while (this.pending >= this.maxPending && !this.exited) {
+      await new Promise((r) => setTimeout(r, 2));
+    }
   }
 
   /**

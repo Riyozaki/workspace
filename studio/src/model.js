@@ -16,7 +16,7 @@ export const SCHEMA_VERSION = 2;
 export const MAX_SOURCES_PER_SCENE = 64;
 export const MAX_UNDO = 200;
 
-const KINDS = new Set(['color', 'image', 'text']);
+const KINDS = new Set(['color', 'image', 'text', 'video']);
 
 export class ModelError extends Error {
   /** @param {string} message */

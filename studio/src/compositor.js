@@ -30,6 +30,8 @@ export class Compositor {
     this.layers = new Map();
     /** @type {string[]} */
     this.warnings = [];
+    /** @type {Map<string, any>} video source id -> canvas holding its current frame */
+    this.videoFrames = new Map();
     /** @type {Map<string, any>} baseline: images decoded for the current frame */
     this.frameImages = new Map();
   }
@@ -88,6 +90,11 @@ export class Compositor {
    * @param {any} g
    */
   drawItem(item, g) {
+    if (item.kind === 'video') {
+      const frame = this.videoFrames.get(item.id);
+      if (frame) g.drawImage(frame, item.x, item.y, item.w, item.h);
+      return;
+    }
     if (item.kind === 'image') {
       // In baseline mode the image was already decoded for this frame by renderAsync.
       const img = this.cache ? this.images.get(item.path ?? '') : this.frameImages.get(item.path ?? '');

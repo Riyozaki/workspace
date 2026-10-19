@@ -32,8 +32,9 @@ export async function dispatch(ctx, type, args = {}) {
       case 'scene.remove': store.removeScene(String(args.sceneId)); return {};
       case 'source.add': {
         const kind = args.kind;
-        if (!['color', 'image', 'text'].includes(kind)) throw new CommandError('Неизвестный тип источника.');
+        if (!['color', 'image', 'text', 'video'].includes(kind)) throw new CommandError('Неизвестный тип источника.');
         if (kind === 'image' && !args.path) throw new CommandError('Укажите путь к изображению.');
+        if (kind === 'video' && !args.path) throw new CommandError('Укажите путь к видеофайлу.');
         const sceneId = args.sceneId ?? store.project.activeSceneId;
         return { id: store.addSource(sceneId, { ...args, kind }) };
       }
