@@ -20,6 +20,8 @@ export class CommandError extends Error {
  */
 export async function dispatch(ctx, type, args = {}) {
   const { store, engine } = ctx;
+  // The encoder and the file name both depend on the format; reject unknown ones here.
+  if ('format' in args && !['mp4', 'mkv', 'webm'].includes(args.format)) throw new CommandError(`Неизвестный формат записи: ${args.format}.`, 'bad-format');
   const p = store.project;
   try {
     switch (type) {

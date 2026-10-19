@@ -13,6 +13,13 @@
     <button id="btn-redo" title="Повторить (Ctrl+Shift+Z)">↷ Повторить</button>
     <button id="btn-save" title="Сохранить проект (Ctrl+S)">Сохранить</button>
     <span class="spacer"></span>
+    <label class="inline">Формат
+      <select id="rec-format" aria-label="Формат записи">
+        <option value="mp4">MP4 (H.264)</option>
+        <option value="mkv">MKV (H.264)</option>
+        <option value="webm">WebM (VP9)</option>
+      </select>
+    </label>
     <button id="btn-record" class="danger" aria-pressed="false" title="Запись (Ctrl+R)">● Запись</button>
     <label class="inline">Стрим RTMP
       <input id="stream-url" type="url" placeholder="rtmp://host/app/key" aria-describedby="stream-help">

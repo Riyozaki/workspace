@@ -44,7 +44,9 @@ export function buildFfmpegArgs(cfg) {
       '-maxrate', br, '-bufsize', `${(cfg.bitrateKbps ?? 4000) * 2}k`, '-g', String(fps * 2), '-pix_fmt', 'yuv420p');
     if (format === 'mp4') args.push('-movflags', '+faststart');
   }
-  args.push('-f', format === 'flv' ? 'flv' : format === 'webm' ? 'webm' : format, '-y', output);
+  // ffmpeg muxer names differ from file extensions: mkv is the 'matroska' muxer.
+  const muxer = { flv: 'flv', mkv: 'matroska', mp4: 'mp4', webm: 'webm' }[format];
+  args.push('-f', muxer, '-y', output);
   return args;
 }
 

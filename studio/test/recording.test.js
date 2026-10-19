@@ -93,3 +93,13 @@ test('a burst that exceeds the queue is dropped and counted, not buffered foreve
   assert.ok(res.framesDropped > 0, 'expected drops under a burst');
   assert.equal(res.framesWritten + res.framesDropped, 40);
 });
+
+test('mkv (H.264) recording is finalised and decodable', { skip }, async () => {
+  const dir = await mkdtemp(join(tmpdir(), 'studio-rec-'));
+  const out = join(dir, 'd.mkv');
+  const res = await encode('mkv', out);
+  assert.equal(res.framesWritten, 15);
+  const p = probe(out);
+  assert.equal(p.codec, 'h264');
+  assert.equal(p.frames, 15);
+});

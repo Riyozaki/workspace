@@ -188,7 +188,7 @@ $('#btn-undo').addEventListener('click', () => call('edit.undo'));
 $('#btn-redo').addEventListener('click', () => call('edit.redo'));
 $('#btn-save').addEventListener('click', async () => { const r = await call('project.save'); if (r) { state.dirty = false; say('Проект сохранён.'); } });
 $('#btn-record').addEventListener('click', async () => {
-  const r = await call('record.toggle', { format: 'mp4' });
+  const r = await call('record.toggle', { format: $('#rec-format').value });
   if (r?.result) say(`Запись сохранена: ${r.result.output} (кадров: ${r.result.framesWritten}, пропущено: ${r.result.framesDropped})`);
   else if (r?.output) say(`Идёт запись: ${r.output}`);
 });

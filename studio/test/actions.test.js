@@ -101,3 +101,10 @@ test('status reports whether ffmpeg is available so the UI can disable record/st
   assert.equal(st.ffmpeg.available, false);
   await ctx.engine.shutdown();
 });
+
+test('record.start rejects an unknown container format before touching ffmpeg', async () => {
+  const { ctx } = await setup();
+  await assert.rejects(dispatch(ctx, 'record.start', { format: 'avi' }), (e) => e.code === 'bad-format');
+  assert.equal(ctx.engine.recorder, null);
+  await ctx.engine.shutdown();
+});

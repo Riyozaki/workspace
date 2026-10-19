@@ -28,3 +28,8 @@ test('RTMP output uses flv with bitrate and keyframe interval of 2 seconds', () 
 test('odd dimensions fail early with a clear error code', () => {
   assert.throws(() => buildFfmpegArgs({ ...base, width: 1281 }), (e) => e.code === 'bad-size');
 });
+
+test('mkv uses the matroska muxer name (not the file extension)', () => {
+  const a = buildFfmpegArgs({ ...base, format: 'mkv', output: '/tmp/x.mkv' });
+  assert.equal(a[a.indexOf('-f', a.length - 4) + 1], 'matroska');
+});
