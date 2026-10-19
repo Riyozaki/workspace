@@ -116,3 +116,10 @@ test('adding an image or video that does not exist fails at once with a readable
   assert.equal(ctx.store.activeScene().items.length, 0, 'nothing may be added');
   await ctx.engine.shutdown();
 });
+
+test('model validation errors carry the code "invalid"', async () => {
+  const { ctx } = await setup();
+  const id = ctx.store.addSource(ctx.store.activeScene().id, { kind: 'color' });
+  await assert.rejects(dispatch(ctx, 'source.update', { sceneId: ctx.store.activeScene().id, sourceId: id, patch: { w: '' } }), (e) => e.code === 'invalid');
+  await ctx.engine.shutdown();
+});

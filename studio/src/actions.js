@@ -106,7 +106,9 @@ export async function dispatch(ctx, type, args = {}) {
     }
   } catch (err) {
     if (err instanceof ModelError || err instanceof EncoderError || err instanceof CommandError) {
-      throw new CommandError(err.message, /** @type {any} */ (err).code ?? 'error');
+      // Model errors are validation failures; the others carry their own code.
+      const code = err instanceof ModelError ? 'invalid' : /** @type {any} */ (err).code ?? 'error';
+      throw new CommandError(err.message, code);
     }
     throw err;
   }
