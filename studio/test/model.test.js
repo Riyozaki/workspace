@@ -76,3 +76,12 @@ test('cannot remove the last scene', () => {
   const store = new ProjectStore(createDefaultProject());
   assert.throws(() => store.removeScene(store.project.scenes[0].id), /последнюю/);
 });
+
+test('updateSource rejects a non-numeric coordinate instead of setting it to 0', () => {
+  const store = new ProjectStore(createDefaultProject());
+  const sid = store.project.scenes[0].id;
+  const id = store.addSource(sid, { kind: 'color', x: 50 });
+  assert.throws(() => store.updateSource(sid, id, { x: NaN }), (e) => e instanceof ModelError && /числом/.test(e.message));
+  assert.throws(() => store.updateSource(sid, id, { w: '' }), ModelError);
+  assert.equal(store.project.scenes[0].items[0].x, 50, 'the source must keep its value');
+});

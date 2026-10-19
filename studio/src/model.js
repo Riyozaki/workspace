@@ -243,6 +243,12 @@ export class ProjectStore {
    * @param {string} sceneId @param {string} sourceId @param {Partial<Source>} patch
    */
   updateSource(sceneId, sourceId, patch) {
+    for (const key of /** @type {const} */ (['x', 'y', 'w', 'h'])) {
+      if (key in patch && (patch[key] === '' || patch[key] === null || !Number.isFinite(Number(patch[key])))) {
+        // An empty or non-numeric field must not silently become 0.
+        throw new ModelError(`Поле «${key}» должно быть числом.`);
+      }
+    }
     this.update((p) => {
       const scene = p.scenes.find((s) => s.id === sceneId);
       const item = scene?.items.find((x) => x.id === sourceId);
