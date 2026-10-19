@@ -108,3 +108,11 @@ test('record.start rejects an unknown container format before touching ffmpeg', 
   assert.equal(ctx.engine.recorder, null);
   await ctx.engine.shutdown();
 });
+
+test('adding an image or video that does not exist fails at once with a readable message', async () => {
+  const { ctx } = await setup();
+  await assert.rejects(dispatch(ctx, 'source.add', { kind: 'image', path: '/no/such/logo.png' }), (e) => e.code === 'file-not-found' && /не найден/.test(e.message));
+  await assert.rejects(dispatch(ctx, 'source.add', { kind: 'video', path: '/no/such/clip.mp4' }), (e) => e.code === 'file-not-found');
+  assert.equal(ctx.store.activeScene().items.length, 0, 'nothing may be added');
+  await ctx.engine.shutdown();
+});

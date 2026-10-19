@@ -6,6 +6,17 @@
 import { ModelError } from './model.js';
 import { EncoderError } from './encoder.js';
 import { loadProject, saveProject } from './persistence.js';
+import { access } from 'node:fs/promises';
+
+/** @param {string} path */
+async function fileExists(path) {
+  try {
+    await access(path);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 export class CommandError extends Error {
   /** @param {string} message @param {string} [code] */
@@ -37,6 +48,9 @@ export async function dispatch(ctx, type, args = {}) {
         if (!['color', 'image', 'text', 'video'].includes(kind)) throw new CommandError('Неизвестный тип источника.');
         if (kind === 'image' && !args.path) throw new CommandError('Укажите путь к изображению.');
         if (kind === 'video' && !args.path) throw new CommandError('Укажите путь к видеофайлу.');
+        if ((kind === 'image' || kind === 'video') && !(await fileExists(String(args.path)))) {
+          throw new CommandError(`Файл не найден: ${args.path}. Проверьте путь.`, 'file-not-found');
+        }
         const sceneId = args.sceneId ?? store.project.activeSceneId;
         return { id: store.addSource(sceneId, { ...args, kind }) };
       }
