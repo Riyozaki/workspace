@@ -153,6 +153,7 @@ export class Compositor {
   }
 
   /** Drops cached layers that no longer correspond to any source (bounded memory). */
+  /** @param {Scene[]} scenes */
   pruneLayers(scenes) {
     const live = new Set();
     for (const s of scenes) for (const it of s.items) live.add(Compositor.signature(it));

@@ -1,0 +1,75 @@
+// Engine tests with the real ffmpeg binary (skipped when it is unavailable).
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtemp, readdir } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { ProjectStore, createDefaultProject } from '../src/model.js';
+import { Engine } from '../src/engine.js';
+import { resolveFfmpeg } from '../src/ffmpeg.js';
+
+const ffmpeg = await resolveFfmpeg(process.env.STUDIO_FFMPEG);
+const skip = ffmpeg ? false : 'ffmpeg not available';
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function makeEngine(canvas = {}) {
+  const dir = await mkdtemp(join(tmpdir(), 'studio-engine-'));
+  const project = createDefaultProject();
+  project.canvas = { ...project.canvas, width: 320, height: 180, fps: 30, ...canvas };
+  const store = new ProjectStore(project);
+  const engine = new Engine({ store, ffmpegPath: ffmpeg, outputDir: dir });
+  return { engine, store, dir };
+}
+
+test('recording through the frame clock writes a playable file and counts frames', { skip }, async (t) => {
+  const { engine, dir } = await makeEngine();
+  t.after(() => engine.shutdown());
+  const output = engine.startRecording('mp4');
+  await sleep(1000);
+  const res = await engine.stopRecording();
+  assert.equal(res.output, output);
+  assert.ok(res.framesWritten >= 20 && res.framesWritten <= 36, `frames written: ${res.framesWritten}`);
+  assert.ok((await readdir(dir)).some((f) => f.endsWith('.mp4')));
+  assert.ok(engine.stats.frames > 0);
+});
+
+test('a second recording while one runs is refused', { skip }, async (t) => {
+  const { engine } = await makeEngine();
+  t.after(() => engine.shutdown());
+  engine.startRecording('mp4');
+  assert.throws(() => engine.startRecording('mp4'), (e) => e.code === 'busy');
+  await engine.stopRecording();
+});
+
+test('RTMP to a closed port fails with a message in status, and the clock keeps running', { skip }, async (t) => {
+  const { engine } = await makeEngine();
+  t.after(() => engine.shutdown());
+  engine.startStream('rtmp://127.0.0.1:1/live/test', 500);
+  // ffmpeg fails to connect quickly; the error must surface, not hang.
+  for (let i = 0; i < 100 && !engine.lastError; i++) await sleep(100);
+  assert.ok(engine.lastError, 'expected a connection error');
+  assert.ok(engine.running, 'frame clock must keep running for the preview');
+  assert.equal(engine.stream, null);
+});
+
+test('recording a scene with a colour source produces the right colour in frames', { skip }, async (t) => {
+  const { engine, store } = await makeEngine();
+  t.after(() => engine.shutdown());
+  const sid = store.activeScene().id;
+  store.addSource(sid, { kind: 'color', color: '#00ff00', x: 0, y: 0, w: 320, h: 180 });
+  await engine.prepareActiveScene();
+  engine.start();
+  await sleep(150);
+  const rgba = engine.readRgba(engine.ensureCompositor());
+  assert.deepEqual([rgba[0], rgba[1], rgba[2]], [0, 255, 0]);
+});
+
+test('status exposes fps and frame timing after running', { skip }, async (t) => {
+  const { engine } = await makeEngine();
+  t.after(() => engine.shutdown());
+  engine.start();
+  await sleep(1100);
+  const st = engine.status();
+  assert.ok(st.fps > 10, `fps ${st.fps}`);
+  assert.ok(st.renderMsAvg >= 0);
+});

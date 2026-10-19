@@ -5,6 +5,7 @@ import { extname, join, normalize, sep } from 'node:path';
 import { dispatch, CommandError } from './actions.js';
 import { DEFAULT_BINDINGS } from './hotkeys.js';
 
+/** @type {Record<string, string>} */
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8' };
 const MAX_BODY = 1024 * 1024;
 
@@ -38,6 +39,10 @@ export function createAppServer({ ctx, publicDir }) {
           if (err instanceof CommandError) return sendJson(res, 422, { error: err.message, code: err.code });
           throw err;
         }
+      }
+      if (req.method === 'GET' && url.pathname === '/shared/hotkeys.js') {
+        // One implementation of key normalisation for server and browser.
+        return serveFile(new URL('./hotkeys.js', import.meta.url).pathname, res);
       }
       if (req.method === 'GET' || req.method === 'HEAD') return serveStatic(url.pathname, publicDir, res);
       res.writeHead(405); res.end();
@@ -73,6 +78,17 @@ function readJson(req) {
     });
     req.on('error', reject);
   });
+}
+
+/** @param {string} file @param {import('node:http').ServerResponse} res */
+async function serveFile(file, res) {
+  try {
+    const data = await readFile(file);
+    res.writeHead(200, { 'Content-Type': MIME['.js'] });
+    res.end(data);
+  } catch {
+    res.writeHead(404); res.end();
+  }
 }
 
 /**

@@ -4,13 +4,25 @@
   "description": "Небольшая студия для сцен, источников и записи/трансляции на основе ffmpeg",
   "type": "module",
   "private": true,
-  "bin": { "studio": "bin/studio.js" },
+  "bin": {
+    "studio": "bin/studio.js"
+  },
   "scripts": {
     "start": "node bin/studio.js",
     "test": "node --test test/*.test.js",
     "bench": "node bench/bench.mjs",
-    "check": "node --check src/*.js bin/*.js public/app.js"
+    "check": "npm run typecheck && npm test",
+    "typecheck": "tsc -p tsconfig.json",
+    "test:coverage": "node --test --experimental-test-coverage test/*.test.js"
   },
-  "engines": { "node": ">=18" },
-  "dependencies": { "@napi-rs/canvas": "^1.0.11" }
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^1.0.11"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
 }

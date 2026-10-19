@@ -35,8 +35,12 @@ export class Engine {
     this.preview = null;
     this.previewAt = 0;
     this.running = false;
+    /** Frame clock state: absolute schedule, see scheduleNext(). */
+    this.t0 = 0;
+    this.tickIndex = 0;
+    this.intervalMs = 1000 / 30;
     this.timer = /** @type {NodeJS.Timeout|null} */ (null);
-    this.stats = { frames: 0, late: 0, renderMsTotal: 0, renderMsLast: 0, fps: 0 };
+    this.stats = { frames: 0, late: 0, renderMsTotal: 0, renderMsLast: 0, fps: 0, errors: 0 };
     this.fpsWindow = { start: 0, frames: 0 };
     /** @type {string[]} */
     this.warnings = [];
@@ -109,7 +113,7 @@ export class Engine {
     this.intervalMs = 1000 / fps;
     this.t0 = performance.now();
     this.tickIndex = 0;
-    this.stats = { frames: 0, late: 0, renderMsTotal: 0, renderMsLast: 0, fps: 0 };
+    this.stats = { frames: 0, late: 0, renderMsTotal: 0, renderMsLast: 0, fps: 0, errors: 0 };
     this.fpsWindow = { start: this.t0, frames: 0 };
     this.scheduleNext();
   }
@@ -122,7 +126,7 @@ export class Engine {
       // A failing frame must not stop the clock: record the error and keep going.
       this.tick(due).catch((err) => {
         this.lastError = `Ошибка при отрисовке кадра: ${/** @type {Error} */ (err).message}`;
-        this.stats.errors = (this.stats.errors ?? 0) + 1;
+        this.stats.errors += 1;
         this.scheduleNext();
       });
     }, wait);
@@ -182,6 +186,25 @@ export class Engine {
     await this.stopStream().catch(() => {});
   }
 
+  /**
+   * Detects an output that dies on its own and makes the UI honest about it:
+   * the reference is cleared (so status stops saying "recording") and the reason is kept.
+   * @param {FrameEncoder} enc @param {'recorder'|'stream'} slot
+   */
+  watchOutput(enc, slot) {
+    enc.done.then(() => {
+      const failure = enc.failureMessage();
+      if (failure && this[slot] === enc) {
+        this[slot] = null;
+        this.lastError = slot === 'stream' ? `Трансляция остановлена: ${failure}` : `Запись остановлена: ${failure}`;
+      }
+    }, (err) => {
+      // Spawn failures (e.g. ffmpeg not found) reject instead of resolving.
+      if (this[slot] === enc) this[slot] = null;
+      this.lastError = err.message;
+    });
+  }
+
   /** Starts a file recording. @param {'mp4'|'webm'|'mkv'} format */
   startRecording(format = 'mp4') {
     if (this.recorder) throw new EncoderError('Запись уже идёт.', { code: 'busy' });
@@ -190,7 +213,7 @@ export class Engine {
     const output = `${this.outputDir}/recording-${stamp}.${format}`;
     this.recorder = new FrameEncoder({ ffmpegPath: this.ffmpegPath, width, height, fps, output, format });
     this.recorder.start();
-    this.recorder.done.catch((err) => { this.lastError = err.message; this.recorder = null; });
+    this.watchOutput(this.recorder, 'recorder');
     this.start();
     return output;
   }
@@ -211,7 +234,7 @@ export class Engine {
     const { width, height, fps } = this.store.project.canvas;
     this.stream = new FrameEncoder({ ffmpegPath: this.ffmpegPath, width, height, fps, output: url, format: 'flv', bitrateKbps });
     this.stream.start();
-    this.stream.done.catch((err) => { this.lastError = err.message; this.stream = null; });
+    this.watchOutput(this.stream, 'stream');
     this.start();
   }
 
@@ -228,6 +251,7 @@ export class Engine {
     const s = this.stats;
     return {
       running: this.running,
+      dirty: this.store.dirty,
       recording: this.recorder ? this.recorder.cfg.output : null,
       streaming: this.stream ? 'rtmp' : null,
       fps: Math.round(s.fps * 10) / 10,

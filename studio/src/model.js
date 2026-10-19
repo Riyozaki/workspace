@@ -3,7 +3,7 @@
  * Project model: scenes, sources and their placement. Pure data + operations,
  * no I/O, so it is unit-testable and reusable from the server and the CLI.
  *
- * @typedef {'color'|'image'|'text'} SourceKind
+ * @typedef {'color'|'image'|'text'|'video'} SourceKind
  * @typedef {{ id: string, kind: SourceKind, name: string, visible: boolean,
  *            x: number, y: number, w: number, h: number,
  *            color?: string, path?: string, text?: string, fontSize?: number }} Source
@@ -60,14 +60,14 @@ export function validateProject(raw) {
   if (!Array.isArray(o.scenes) || o.scenes.length === 0) {
     throw new ModelError('В проекте нет ни одной сцены.');
   }
-  const scenes = o.scenes.map((/** @type {any} */ s, i) => {
-    const items = Array.isArray(s?.items) ? s.items.map(normalizeSource) : [];
+  const scenes = o.scenes.map((/** @type {any} */ s, /** @type {number} */ i) => {
+    const items = Array.isArray(s?.items) ? s.items.map((/** @type {unknown} */ it) => normalizeSource(it)) : [];
     if (items.length > MAX_SOURCES_PER_SCENE) {
       throw new ModelError(`В сцене «${s?.name ?? i}» больше ${MAX_SOURCES_PER_SCENE} источников.`);
     }
     return { id: String(s?.id ?? newId('scene-')), name: String(s?.name ?? `Сцена ${i + 1}`), items };
   });
-  const ids = new Set(scenes.map((s) => s.id));
+  const ids = new Set(scenes.map((/** @type {{id: string}} */ s) => s.id));
   if (ids.size !== scenes.length) throw new ModelError('В проекте есть сцены с одинаковым id.');
   const activeSceneId = ids.has(o.activeSceneId) ? o.activeSceneId : scenes[0].id;
   return { version: SCHEMA_VERSION, canvas: { width, height, fps }, scenes, activeSceneId };

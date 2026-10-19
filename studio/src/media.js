@@ -19,13 +19,16 @@ export class VideoDecoder {
     this.fps = fps;
     this.frameSize = width * height * 4;
     /** @type {Buffer|null} */
+    /** @type {import('node:buffer').Buffer<ArrayBufferLike>|null} */
     this.latest = null;
     /** Increments whenever a new frame arrives, so callers can skip redundant uploads. */
     this.seq = 0;
     /** @type {string|null} */
     this.error = null;
     this.proc = /** @type {import('node:child_process').ChildProcess|null} */ (null);
+    /** @type {import('node:buffer').Buffer<ArrayBufferLike>} */
     this.pending = Buffer.alloc(0);
+    /** @type {string[]} */
     this.stderrTail = [];
     this.stopped = false;
   }
@@ -60,6 +63,7 @@ export class VideoDecoder {
   }
 
   /** @param {Buffer} chunk */
+  /** @param {import('node:buffer').Buffer<ArrayBufferLike>} chunk */
   onData(chunk) {
     this.pending = this.pending.length ? Buffer.concat([this.pending, chunk]) : chunk;
     while (this.pending.length >= this.frameSize) {

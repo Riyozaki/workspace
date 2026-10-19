@@ -40,6 +40,15 @@ engine.start();
 await engine.prepareActiveScene();
 
 const server = createAppServer({ ctx, publicDir: join(here, '..', 'public') });
+server.on('error', (err) => {
+  const e = /** @type {NodeJS.ErrnoException} */ (err);
+  if (e.code === 'EADDRINUSE') {
+    console.error(`Порт ${port} уже занят. Закройте другой процесс или запустите с --port=<номер>.`);
+  } else {
+    console.error(`Не удалось открыть порт ${port}: ${e.message}`);
+  }
+  process.exit(1);
+});
 server.listen(port, '0.0.0.0', () => {
   console.log(`Studio: http://localhost:${port}  (проект: ${projectPath}, запись: ${outputDir})`);
 });

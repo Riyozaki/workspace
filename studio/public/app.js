@@ -1,4 +1,5 @@
 // Browser UI. Talks to the JSON API only; no business rules live here.
+import { bindingFromEvent } from '/shared/hotkeys.js';
 const $ = (sel) => document.querySelector(sel);
 const state = { project: null, selectedId: null, status: null, bindings: {}, busy: false };
 
@@ -154,6 +155,7 @@ async function pollStatus() {
     const body = await res.json();
     if (body.ok) {
       state.status = body.result.status;
+      state.dirty = body.result.status.dirty;
       renderButtons();
       if (state.status.lastError) say(state.status.lastError, true);
     }
@@ -174,7 +176,7 @@ function pollPreview() {
 // ----- actions & forms -----
 $('#btn-undo').addEventListener('click', () => call('edit.undo'));
 $('#btn-redo').addEventListener('click', () => call('edit.redo'));
-$('#btn-save').addEventListener('click', async () => { const r = await call('project.save'); if (r) say('Проект сохранён.'); });
+$('#btn-save').addEventListener('click', async () => { const r = await call('project.save'); if (r) { state.dirty = false; say('Проект сохранён.'); } });
 $('#btn-record').addEventListener('click', async () => {
   const r = await call('record.toggle', { format: 'mp4' });
   if (r?.result) say(`Запись сохранена: ${r.result.output} (кадров: ${r.result.framesWritten}, пропущено: ${r.result.framesDropped})`);
@@ -219,18 +221,6 @@ function switchByIndex(i) {
   if (s) call('scene.switch', { sceneId: s.id });
 }
 
-/** Mirrors hotkeys.js bindingFromEvent so the browser and server agree on names. */
-function bindingFromEvent(ev) {
-  if (['Control', 'Alt', 'Shift', 'Meta'].includes(ev.key)) return null;
-  const mods = [];
-  if (ev.ctrlKey) mods.push('Ctrl');
-  if (ev.altKey) mods.push('Alt');
-  if (ev.shiftKey) mods.push('Shift');
-  if (ev.metaKey) mods.push('Meta');
-  const key = ev.key.length === 1 ? ev.key.toUpperCase() : ev.key;
-  return [...mods, key].join('+');
-}
-
 document.addEventListener('keydown', (e) => {
   if (e.target.matches('input, textarea, select')) {
     // Let text fields keep their own shortcuts (Ctrl+Z inside a field).
@@ -242,6 +232,11 @@ document.addEventListener('keydown', (e) => {
   if (!action || !HOTKEY_ACTIONS[action]) return;
   e.preventDefault();
   HOTKEY_ACTIONS[action]();
+});
+
+// Warn before leaving with unsaved edits (data-loss protection).
+window.addEventListener('beforeunload', (e) => {
+  if (state.dirty) { e.preventDefault(); e.returnValue = ''; }
 });
 
 async function init() {

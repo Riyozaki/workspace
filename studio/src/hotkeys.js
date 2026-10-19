@@ -6,6 +6,7 @@
  */
 
 const MODIFIER_ORDER = ['Ctrl', 'Alt', 'Shift', 'Meta'];
+/** @type {Record<string, string>} */
 const ALIASES = { control: 'Ctrl', ctrl: 'Ctrl', alt: 'Alt', option: 'Alt', shift: 'Shift', meta: 'Meta', cmd: 'Meta', command: 'Meta' };
 
 export class HotkeyError extends Error {

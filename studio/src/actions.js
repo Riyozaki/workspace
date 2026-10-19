@@ -44,13 +44,17 @@ export async function dispatch(ctx, type, args = {}) {
       case 'edit.undo': return { changed: store.undo() };
       case 'edit.redo': return { changed: store.redo() };
       case 'record.start': return { output: engine.startRecording(args.format ?? 'mp4') };
-      case 'record.stop': return { result: await engine.stopRecording() };
+      case 'record.stop':
+        if (!engine.recorder) throw new CommandError('Запись сейчас не идёт.', 'not-recording');
+        return { result: await engine.stopRecording() };
       case 'record.toggle': {
         if (engine.recorder) return { result: await engine.stopRecording() };
         return { output: engine.startRecording(args.format ?? 'mp4') };
       }
       case 'stream.start': engine.startStream(String(args.url ?? ''), Number(args.bitrateKbps) || 3000); return {};
-      case 'stream.stop': return { result: await engine.stopStream() };
+      case 'stream.stop':
+        if (!engine.stream) throw new CommandError('Трансляция сейчас не идёт.', 'not-streaming');
+        return { result: await engine.stopStream() };
       case 'stream.toggle': {
         if (engine.stream) return { result: await engine.stopStream() };
         engine.startStream(String(args.url ?? ''), Number(args.bitrateKbps) || 3000);

@@ -66,8 +66,8 @@ export class FrameEncoder {
     /** @type {string[]} */
     this.stderrTail = [];
     this.exited = false;
-    /** @type {Promise<void>|null} */
-    this.drain = null;
+    /** Set by stop(); distinguishes a requested finish from a crash. */
+    this.stopRequested = false;
     /** @type {import('node:child_process').ChildProcess|null} */
     this.proc = null;
     /** @type {Promise<{code:number|null}>} */
@@ -110,6 +110,11 @@ export class FrameEncoder {
         this.exited = true;
         resolve({ code });
       });
+      // Also settle on a crash: the 'error' event alone does not always fire.
+      proc.on('exit', (code) => {
+        this.exited = true;
+        resolve({ code });
+      });
     });
     // A spawn error must still surface through stop(); keep it from being unhandled.
     this.done.catch(() => {});
@@ -120,13 +125,13 @@ export class FrameEncoder {
    * @param {Buffer} rgba
    */
   writeFrame(rgba) {
-    if (!this.proc || this.exited || !this.proc.stdin.writable) return false;
+    if (!this.proc || this.exited || !this.proc.stdin?.writable) return false;
     if (this.pending >= this.maxPending) {
       this.framesDropped += 1;
       return false;
     }
     this.pending += 1;
-    this.proc.stdin.write(rgba, (err) => {
+    this.proc.stdin?.write(rgba, (err) => {
       this.pending -= 1;
       if (err) this.framesDropped += 1;
       else this.framesWritten += 1;
@@ -152,7 +157,8 @@ export class FrameEncoder {
   async stop() {
     if (!this.proc) throw new EncoderError('Запись не была запущена.', { code: 'not-started' });
     const proc = this.proc;
-    proc.stdin.end();
+    this.stopRequested = true;
+    proc.stdin?.end();
     const { code } = await this.done;
     if (code !== 0) {
       throw new EncoderError(
@@ -161,6 +167,13 @@ export class FrameEncoder {
       );
     }
     return { framesWritten: this.framesWritten, framesDropped: this.framesDropped };
+  }
+
+  /** Message for an unexpected exit (crash, dead RTMP server, full disk), or null. */
+  failureMessage() {
+    if (!this.exited || this.stopRequested) return null;
+    const tail = this.stderrTail.slice(-3).join(' ');
+    return `Вывод остановлен неожиданно (ffmpeg завершился). ${tail}`.trim();
   }
 
   /** Kill without finalising; used on shutdown. */

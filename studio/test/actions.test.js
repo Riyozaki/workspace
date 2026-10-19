@@ -80,3 +80,9 @@ test('a failing frame is reported and the clock keeps running', async () => {
   assert.match(eng.lastError ?? '', /boom/);
   assert.ok(eng.stats.frames > 0, 'frames continued after the error');
 });
+
+test('stopping something that is not running is an explicit error', async () => {
+  const { ctx } = await setup();
+  await assert.rejects(dispatch(ctx, 'record.stop'), (e) => e.code === 'not-recording');
+  await assert.rejects(dispatch(ctx, 'stream.stop'), (e) => e.code === 'not-streaming');
+});
