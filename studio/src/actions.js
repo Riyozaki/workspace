@@ -64,6 +64,8 @@ export async function dispatch(ctx, type, args = {}) {
         const width = Number(args.width) || p.canvas.width;
         const height = Number(args.height) || p.canvas.height;
         const fps = Number(args.fps) || p.canvas.fps;
+        // Same rule as the encoder (yuv420p needs even sides), but rejected at the moment of the change.
+        if (width % 2 || height % 2) throw new CommandError(`Размер ${width}×${height} должен быть чётным (требование H.264/VP9).`, 'bad-size');
         store.update((d) => { d.canvas = { width, height, fps }; });
         return {};
       }

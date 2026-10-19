@@ -84,3 +84,12 @@ test('stopping something that is not running is an explicit error', async () => 
   await assert.rejects(dispatch(ctx, 'record.stop'), (e) => e.code === 'not-recording');
   await assert.rejects(dispatch(ctx, 'stream.stop'), (e) => e.code === 'not-streaming');
 });
+
+test('project.set-canvas changes resolution and fps and the compositor follows', async () => {
+  const { ctx } = await setup();
+  await dispatch(ctx, 'project.set-canvas', { width: 640, height: 360, fps: 15 });
+  assert.deepEqual(ctx.store.project.canvas, { width: 640, height: 360, fps: 15 });
+  assert.equal(ctx.engine.ensureCompositor().width, 640);
+  await assert.rejects(dispatch(ctx, 'project.set-canvas', { width: 641, height: 360 }), (e) => e.code === 'bad-size');
+  await ctx.engine.shutdown();
+});
