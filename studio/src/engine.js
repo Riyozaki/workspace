@@ -48,6 +48,11 @@ export class Engine {
     this.fpsWindow = { start: 0, frames: 0 };
     /** @type {string|null} */
     this.lastError = null;
+    /** Scene that was last shown; a change starts a transition. */
+    /** @type {string|null} */
+    this.shownSceneId = null;
+    /** @type {{ from: any, to: any, startedAt: number, durationMs: number }|null} */
+    this.transition = null;
   }
 
   /** Canvas-size-dependent objects are rebuilt when the canvas changes. */
@@ -148,7 +153,10 @@ export class Engine {
     }
     const t = performance.now();
     this.syncVideo(scene, comp);
+    if (this.shownSceneId !== null && this.shownSceneId !== scene.id) this.beginTransition(comp, now);
+    this.shownSceneId = scene.id;
     await comp.renderAsync(scene);
+    if (this.transition) this.applyTransition(comp, now);
     const renderMs = performance.now() - t;
     this.stats.renderMsLast = renderMs;
     this.stats.renderMsTotal += renderMs;
@@ -185,6 +193,40 @@ export class Engine {
     const g = this.previewCanvas.getContext('2d');
     g.drawImage(comp.out, 0, 0, w, h);
     return this.previewCanvas.toBuffer('image/jpeg', 75);
+  }
+
+  /**
+   * Keeps the last frame before a scene change, so it can fade out.
+   * @param {any} comp @param {number} now
+   */
+  beginTransition(comp, now) {
+    const { transition } = this.store.project;
+    if (transition.type !== 'fade' || transition.durationMs <= 0) return;
+    const { width, height } = comp;
+    const from = createCanvas(width, height);
+    from.getContext('2d').drawImage(comp.out, 0, 0);
+    this.transition = { from, to: createCanvas(width, height), startedAt: now, durationMs: transition.durationMs };
+  }
+
+  /**
+   * Cross-fades the previous frame into the freshly rendered one.
+   * @param {any} comp @param {number} now
+   */
+  applyTransition(comp, now) {
+    const t = this.transition;
+    if (!t) return;
+    const alpha = Math.min(1, (now - t.startedAt) / t.durationMs);
+    const g = comp.outCtx;
+    if (alpha >= 1) {
+      this.transition = null;
+      return;
+    }
+    t.to.getContext('2d').drawImage(comp.out, 0, 0);
+    g.globalAlpha = 1;
+    g.drawImage(t.from, 0, 0);
+    g.globalAlpha = alpha;
+    g.drawImage(t.to, 0, 0);
+    g.globalAlpha = 1;
   }
 
   /** @param {any} comp @returns {Buffer} */

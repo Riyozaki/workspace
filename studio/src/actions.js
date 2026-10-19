@@ -76,6 +76,15 @@ export async function dispatch(ctx, type, args = {}) {
         await engine.startStream(String(args.url ?? ''), Number(args.bitrateKbps) || 3000);
         return {};
       }
+      case 'project.set-transition': {
+        const type = args.type === 'cut' ? 'cut' : 'fade';
+        const durationMs = Math.round(Number(args.durationMs ?? p.transition.durationMs));
+        if (!Number.isFinite(durationMs) || durationMs < 0 || durationMs > 5000) {
+          throw new CommandError('Длительность перехода: от 0 до 5000 мс.', 'bad-duration');
+        }
+        store.update((d) => { d.transition = { type, durationMs }; });
+        return {};
+      }
       case 'project.set-canvas': {
         const width = Number(args.width) || p.canvas.width;
         const height = Number(args.height) || p.canvas.height;

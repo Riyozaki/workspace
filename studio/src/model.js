@@ -11,7 +11,8 @@
  *            rotation: number, opacity: number }} Source
  * @typedef {{ id: string, name: string, items: Source[] }} Scene
  * @typedef {{ version: number, canvas: {width:number,height:number,fps:number},
- *            scenes: Scene[], activeSceneId: string }} Project
+ *            scenes: Scene[], activeSceneId: string,
+ *            transition: {type: 'cut'|'fade', durationMs: number} }} Project
  */
 
 export const SCHEMA_VERSION = 2;
@@ -43,6 +44,7 @@ export function createDefaultProject() {
     canvas: { width: 1280, height: 720, fps: 30 },
     scenes: [scene],
     activeSceneId: scene.id,
+    transition: { type: 'fade', durationMs: 300 },
   };
 }
 
@@ -72,7 +74,13 @@ export function validateProject(raw) {
   const ids = new Set(scenes.map((/** @type {{id: string}} */ s) => s.id));
   if (ids.size !== scenes.length) throw new ModelError('В проекте есть сцены с одинаковым id.');
   const activeSceneId = ids.has(o.activeSceneId) ? o.activeSceneId : scenes[0].id;
-  return { version: SCHEMA_VERSION, canvas: { width, height, fps }, scenes, activeSceneId };
+  const t = o.transition ?? {};
+  /** @type {Project['transition']} */
+  const transition = {
+    type: t.type === 'cut' ? 'cut' : 'fade',
+    durationMs: clampInt(t.durationMs, 0, 5000, 300),
+  };
+  return { version: SCHEMA_VERSION, canvas: { width, height, fps }, scenes, activeSceneId, transition };
 }
 
 /** @param {unknown} v @param {number} lo @param {number} hi @param {number} dflt */

@@ -41,6 +41,12 @@ function selectedSource() {
 }
 
 function render() {
+  if (state.project) {
+    // Keep the transition controls in step with the project unless the user is editing them.
+    const tr = state.project.transition ?? { type: 'fade', durationMs: 300 };
+    if (document.activeElement?.id !== 'transition-type') $('#transition-type').value = tr.type;
+    if (document.activeElement?.id !== 'transition-ms') $('#transition-ms').value = String(tr.durationMs);
+  }
   renderScenes();
   renderSources();
   renderProps();
@@ -198,6 +204,8 @@ function pollPreview() {
 }
 
 // ----- actions & forms -----
+$('#transition-type').addEventListener('change', () => call('project.set-transition', { type: $('#transition-type').value, durationMs: Number($('#transition-ms').value) }));
+$('#transition-ms').addEventListener('change', () => call('project.set-transition', { type: $('#transition-type').value, durationMs: Number($('#transition-ms').value) }));
 $('#btn-undo').addEventListener('click', () => call('edit.undo'));
 $('#btn-redo').addEventListener('click', () => call('edit.redo'));
 $('#btn-save').addEventListener('click', async () => { const r = await call('project.save'); if (r) { state.dirty = false; say('Проект сохранён.'); } });

@@ -20,6 +20,15 @@
         <option value="webm">WebM (VP9)</option>
       </select>
     </label>
+    <label class="inline">Переход
+      <select id="transition-type" aria-label="Тип перехода между сценами">
+        <option value="fade">Затухание</option>
+        <option value="cut">Выход</option>
+      </select>
+    </label>
+    <label class="inline">мс
+      <input id="transition-ms" type="number" min="0" max="5000" step="50" aria-label="Длительность перехода, мс" style="width:5em">
+    </label>
     <button id="btn-record" class="danger" aria-pressed="false" title="Запись (Ctrl+R)">● Запись</button>
     <label class="inline">Стрим RTMP
       <input id="stream-url" type="url" placeholder="rtmp://host/app/key" aria-describedby="stream-help">

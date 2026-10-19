@@ -133,3 +133,12 @@ test('the canvas size cannot change while a recording is running (the encoder ha
   ctx.engine.recorder = null;
   await ctx.engine.shutdown();
 });
+
+test('project.set-transition stores a valid setting and rejects out-of-range durations', async () => {
+  const { ctx } = await setup();
+  await dispatch(ctx, 'project.set-transition', { type: 'cut', durationMs: 0 });
+  assert.deepEqual(ctx.store.project.transition, { type: 'cut', durationMs: 0 });
+  await assert.rejects(dispatch(ctx, 'project.set-transition', { durationMs: 6000 }), (e) => e instanceof CommandError && e.code === 'bad-duration');
+  await assert.rejects(dispatch(ctx, 'project.set-transition', { durationMs: -1 }), (e) => e instanceof CommandError && e.code === 'bad-duration');
+  assert.deepEqual(ctx.store.project.transition, { type: 'cut', durationMs: 0 }, 'a rejected change must not be applied');
+});
