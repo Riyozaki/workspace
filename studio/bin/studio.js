@@ -14,6 +14,9 @@ const args = parseArgs(process.argv.slice(2));
 const port = Number(args.port ?? process.env.PORT ?? 8080);
 const projectPath = resolve(args.project ?? process.env.STUDIO_PROJECT ?? join(here, '..', 'projects', 'default.json'));
 const outputDir = resolve(args.out ?? process.env.STUDIO_OUTPUT ?? join(here, '..', 'recordings'));
+// Local-only by default: the API can read any file path it is given, so it must
+// not be reachable from the network unless the user asks for it explicitly.
+const host = args.host ?? process.env.STUDIO_HOST ?? '127.0.0.1';
 
 const ffmpegPath = await resolveFfmpeg(process.env.STUDIO_FFMPEG);
 if (!ffmpegPath) {
@@ -49,8 +52,9 @@ server.on('error', (err) => {
   }
   process.exit(1);
 });
-server.listen(port, '0.0.0.0', () => {
-  console.log(`Studio: http://localhost:${port}  (проект: ${projectPath}, запись: ${outputDir})`);
+server.listen(port, host, () => {
+  console.log(`Studio: http://${host === '0.0.0.0' ? 'localhost' : host}:${port}  (проект: ${projectPath}, запись: ${outputDir})`);
+  if (host === '0.0.0.0') console.warn('Внимание: сервер доступен из сети без авторизации. Используйте только в доверенной сети.');
 });
 
 let closing = false;
