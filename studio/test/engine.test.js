@@ -81,3 +81,14 @@ test('a missing ffmpeg is reported immediately to the caller, not later through 
   assert.equal(engine.recorder, null, 'no half-started recorder may remain');
   await engine.shutdown();
 });
+
+test('preview is a JPEG downscaled to at most 640 px wide and keeps the aspect ratio', async (t) => {
+  const { engine } = await makeEngine({ width: 1280, height: 720 });
+  t.after(() => engine.shutdown());
+  const comp = engine.ensureCompositor();
+  comp.render(engine.store.activeScene());
+  const { loadImage } = await import('@napi-rs/canvas');
+  const img = await loadImage(engine.encodePreview(comp));
+  assert.equal(img.width, 640);
+  assert.equal(img.height, 360);
+});

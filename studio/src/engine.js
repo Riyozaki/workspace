@@ -33,6 +33,8 @@ export class Engine {
     this.decoders = new Map();
     /** @type {Buffer|null} */
     this.preview = null;
+    /** @type {any} */
+    this.previewCanvas = null;
     this.previewAt = 0;
     this.running = false;
     /** Frame clock state: absolute schedule, see scheduleNext(). */
@@ -158,7 +160,7 @@ export class Engine {
 
     if (now - this.previewAt >= this.previewIntervalMs) {
       this.previewAt = now;
-      this.preview = comp.encodeJpeg(75);
+      this.preview = this.encodePreview(comp);
     }
 
     this.fpsWindow.frames += 1;
@@ -167,6 +169,22 @@ export class Engine {
       this.fpsWindow = { start: now, frames: 0 };
     }
     this.scheduleNext();
+  }
+
+  /**
+   * The preview is shown at most 640 px wide, so encode a downscaled copy:
+   * about 2.4x cheaper than encoding the full frame (see bench/preview-bench.mjs).
+   * @param {any} comp @returns {Buffer}
+   */
+  encodePreview(comp) {
+    const w = Math.min(640, comp.width);
+    const h = Math.round((comp.height * w) / comp.width / 2) * 2;
+    if (!this.previewCanvas || this.previewCanvas.width !== w || this.previewCanvas.height !== h) {
+      this.previewCanvas = createCanvas(w, h);
+    }
+    const g = this.previewCanvas.getContext('2d');
+    g.drawImage(comp.out, 0, 0, w, h);
+    return this.previewCanvas.toBuffer('image/jpeg', 75);
   }
 
   /** @param {any} comp @returns {Buffer} */
