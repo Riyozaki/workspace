@@ -6,7 +6,7 @@
   "expectedFrames": 900,
   "lateFramesByClock": 0,
   "framesRendered": 931,
-  "renderMsAvg": 0.85,
+  "renderMsAvg": 0.79,
   "lastError": null,
   "fpsSamples": [
     30,
@@ -16,5 +16,5 @@
     30,
     30
   ],
-  "fileBytes": 624364
+  "fileBytes": 624044
 }
