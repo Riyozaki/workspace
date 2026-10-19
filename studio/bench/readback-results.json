@@ -1,0 +1,9 @@
+{
+  "n": 300,
+  "frame": "1280x720",
+  "getImageDataMsPerFrame": 1.669,
+  "canvasDataAvailable": true,
+  "canvasDataMsPerFrame": 1.591,
+  "speedup": 1.05,
+  "sameBytes": true
+}
