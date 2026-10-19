@@ -24,7 +24,7 @@ async function makeEngine(canvas = {}) {
 test('recording through the frame clock writes a playable file and counts frames', { skip }, async (t) => {
   const { engine, dir } = await makeEngine();
   t.after(() => engine.shutdown());
-  const output = engine.startRecording('mp4');
+  const output = await engine.startRecording('mp4');
   await sleep(1000);
   const res = await engine.stopRecording();
   assert.equal(res.output, output);
@@ -36,15 +36,15 @@ test('recording through the frame clock writes a playable file and counts frames
 test('a second recording while one runs is refused', { skip }, async (t) => {
   const { engine } = await makeEngine();
   t.after(() => engine.shutdown());
-  engine.startRecording('mp4');
-  assert.throws(() => engine.startRecording('mp4'), (e) => e.code === 'busy');
+  await engine.startRecording('mp4');
+  await assert.rejects(engine.startRecording('mp4'), (e) => e.code === 'busy');
   await engine.stopRecording();
 });
 
 test('RTMP to a closed port fails with a message in status, and the clock keeps running', { skip }, async (t) => {
   const { engine } = await makeEngine();
   t.after(() => engine.shutdown());
-  engine.startStream('rtmp://127.0.0.1:1/live/test', 500);
+  await engine.startStream('rtmp://127.0.0.1:1/live/test', 500);
   // ffmpeg fails to connect quickly; the error must surface, not hang.
   for (let i = 0; i < 100 && !engine.lastError; i++) await sleep(100);
   assert.ok(engine.lastError, 'expected a connection error');
@@ -72,4 +72,12 @@ test('status exposes fps and frame timing after running', { skip }, async (t) =>
   const st = engine.status();
   assert.ok(st.fps > 10, `fps ${st.fps}`);
   assert.ok(st.renderMsAvg >= 0);
+});
+
+test('a missing ffmpeg is reported immediately to the caller, not later through status', { skip: false }, async () => {
+  const { engine } = await makeEngine();
+  engine.ffmpegPath = '/definitely/not/here/ffmpeg';
+  await assert.rejects(engine.startRecording('mp4'), (e) => e.code === 'no-ffmpeg' && /не найден/.test(e.message));
+  assert.equal(engine.recorder, null, 'no half-started recorder may remain');
+  await engine.shutdown();
 });

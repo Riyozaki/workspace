@@ -52,12 +52,10 @@ test('stream rejects non-RTMP URLs before starting anything', async () => {
   assert.equal(ctx.engine.stream, null);
 });
 
-test('recording with a missing ffmpeg reports the error through status, not a crash', async () => {
+test('record.start with a missing ffmpeg fails the command with a readable message', async () => {
   const { ctx, dir } = await setup();
   ctx.engine.ffmpegPath = join(dir, 'no-such-ffmpeg');
-  ctx.engine.startRecording('mp4');
-  await new Promise((r) => setTimeout(r, 300));
-  assert.match(ctx.engine.lastError ?? '', /не найден/);
+  await assert.rejects(dispatch(ctx, 'record.start', { format: 'mp4' }), (e) => e.code === 'no-ffmpeg' && /не найден/.test(e.message));
   assert.equal(ctx.engine.recorder, null);
   await ctx.engine.shutdown();
 });

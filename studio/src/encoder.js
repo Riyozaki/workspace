@@ -74,7 +74,12 @@ export class FrameEncoder {
     this.done = Promise.resolve({ code: 0 });
   }
 
-  /** Starts ffmpeg. Throws EncoderError with a human-readable message on failure. */
+  /**
+   * Starts ffmpeg. Resolves once the process has actually been spawned, and
+   * rejects with an EncoderError (e.g. ffmpeg not found) so the caller can
+   * answer the user immediately instead of reporting success and failing later.
+   * @returns {Promise<void>}
+   */
   start() {
     const { ffmpegPath, output } = this.cfg;
     // Only local file outputs need a directory; rtmp:// URLs do not.
@@ -88,16 +93,25 @@ export class FrameEncoder {
     const args = buildFfmpegArgs(this.cfg);
     const proc = spawn(ffmpegPath, args, { stdio: ['pipe', 'ignore', 'pipe'] });
     this.proc = proc;
+    const spawnError = (/** @type {Error} */ err) => {
+      const code = /** @type {NodeJS.ErrnoException} */ (err).code;
+      return new EncoderError(
+        code === 'ENOENT'
+          ? `ffmpeg не найден по пути «${ffmpegPath}». Укажите путь переменной STUDIO_FFMPEG.`
+          : `Не удалось запустить ffmpeg: ${err.message}`,
+        { code: code === 'ENOENT' ? 'no-ffmpeg' : 'spawn' },
+      );
+    };
+    this.spawned = new Promise((resolve, reject) => {
+      proc.once('spawn', () => resolve(undefined));
+      proc.once('error', (err) => reject(spawnError(err)));
+    });
+    // Handled by the caller via start()'s promise; this copy only prevents an unhandled rejection.
+    this.spawned.catch(() => {});
     this.done = new Promise((resolve, reject) => {
       proc.on('error', (err) => {
         this.exited = true;
-        const code = /** @type {NodeJS.ErrnoException} */ (err).code;
-        reject(new EncoderError(
-          code === 'ENOENT'
-            ? `ffmpeg не найден по пути «${ffmpegPath}». Укажите путь переменной STUDIO_FFMPEG.`
-            : `Не удалось запустить ffmpeg: ${err.message}`,
-          { code: code === 'ENOENT' ? 'no-ffmpeg' : 'spawn' },
-        ));
+        reject(spawnError(err));
       });
       proc.stderr.on('data', (chunk) => {
         for (const line of String(chunk).split('\n')) {
@@ -118,6 +132,7 @@ export class FrameEncoder {
     });
     // A spawn error must still surface through stop(); keep it from being unhandled.
     this.done.catch(() => {});
+    return this.spawned;
   }
 
   /**

@@ -205,15 +205,27 @@ export class Engine {
     });
   }
 
-  /** Starts a file recording. @param {'mp4'|'webm'|'mkv'} format */
-  startRecording(format = 'mp4') {
+  /**
+   * Starts a file recording. Resolves with the output path once ffmpeg is running;
+   * rejects if it cannot start (so the command fails with a clear message).
+   * @param {'mp4'|'webm'|'mkv'} format
+   * @returns {Promise<string>}
+   */
+  async startRecording(format = 'mp4') {
     if (this.recorder) throw new EncoderError('Запись уже идёт.', { code: 'busy' });
     const { width, height, fps } = this.store.project.canvas;
     const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
     const output = `${this.outputDir}/recording-${stamp}.${format}`;
     this.recorder = new FrameEncoder({ ffmpegPath: this.ffmpegPath, width, height, fps, output, format });
-    this.recorder.start();
+    // start() creates the exit promise synchronously, so watch it before awaiting the spawn.
+    const starting = this.recorder.start();
     this.watchOutput(this.recorder, 'recorder');
+    try {
+      await starting;
+    } catch (err) {
+      this.recorder = null;
+      throw err;
+    }
     this.start();
     return output;
   }
@@ -227,14 +239,23 @@ export class Engine {
     return { output: rec.cfg.output, ...res };
   }
 
-  /** Starts an RTMP stream. @param {string} url rtmp://host/app/key @param {number} bitrateKbps */
-  startStream(url, bitrateKbps = 3000) {
+  /**
+   * Starts an RTMP stream. @param {string} url rtmp://host/app/key @param {number} bitrateKbps
+   * @returns {Promise<void>}
+   */
+  async startStream(url, bitrateKbps = 3000) {
     if (this.stream) throw new EncoderError('Трансляция уже идёт.', { code: 'busy' });
     if (!/^rtmps?:\/\//.test(url)) throw new EncoderError('Адрес должен начинаться с rtmp:// или rtmps://.', { code: 'bad-url' });
     const { width, height, fps } = this.store.project.canvas;
     this.stream = new FrameEncoder({ ffmpegPath: this.ffmpegPath, width, height, fps, output: url, format: 'flv', bitrateKbps });
-    this.stream.start();
+    const starting = this.stream.start();
     this.watchOutput(this.stream, 'stream');
+    try {
+      await starting;
+    } catch (err) {
+      this.stream = null;
+      throw err;
+    }
     this.start();
   }
 
