@@ -10,7 +10,7 @@ import { createCanvas, ImageData } from '@napi-rs/canvas';
  *
  * Timing: frames are scheduled against an absolute timeline (start + n*interval)
  * rather than "now + interval", so timer jitter does not accumulate as drift.
- * A tick that starts more than one interval late counts as a dropped frame.
+ * A tick that starts more than one interval late counts as a late frame.
  */
 export class Engine {
   /**
@@ -46,8 +46,6 @@ export class Engine {
     this.timer = /** @type {NodeJS.Timeout|null} */ (null);
     this.stats = { frames: 0, late: 0, renderMsTotal: 0, renderMsLast: 0, fps: 0, errors: 0 };
     this.fpsWindow = { start: 0, frames: 0 };
-    /** @type {string[]} */
-    this.warnings = [];
     /** @type {string|null} */
     this.lastError = null;
   }

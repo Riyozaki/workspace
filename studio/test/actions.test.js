@@ -123,3 +123,13 @@ test('model validation errors carry the code "invalid"', async () => {
   await assert.rejects(dispatch(ctx, 'source.update', { sceneId: ctx.store.activeScene().id, sourceId: id, patch: { w: '' } }), (e) => e.code === 'invalid');
   await ctx.engine.shutdown();
 });
+
+test('the canvas size cannot change while a recording is running (the encoder has a fixed frame size)', async () => {
+  const { ctx } = await setup();
+  // Simulate a running output without starting ffmpeg, so no process is left behind.
+  ctx.engine.recorder = { cfg: { output: 'x' } };
+  await assert.rejects(dispatch(ctx, 'project.set-canvas', { width: 640, height: 360 }), (e) => e.code === 'busy');
+  assert.equal(ctx.store.project.canvas.width, 1280);
+  ctx.engine.recorder = null;
+  await ctx.engine.shutdown();
+});
