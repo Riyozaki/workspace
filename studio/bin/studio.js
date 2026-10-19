@@ -37,7 +37,8 @@ if (existsSync(projectPath)) {
 }
 
 const store = new ProjectStore(project);
-const engine = new Engine({ store, ffmpegPath: ffmpegPath ?? 'ffmpeg', outputDir, baseline: process.env.STUDIO_BASELINE === '1' });
+const engine = new Engine({ store, ffmpegPath: ffmpegPath ?? process.env.STUDIO_FFMPEG ?? 'ffmpeg', outputDir, baseline: process.env.STUDIO_BASELINE === '1' });
+engine.ffmpegAvailable = ffmpegPath !== null;
 const ctx = { store, engine, projectPath };
 engine.start();
 await engine.prepareActiveScene();

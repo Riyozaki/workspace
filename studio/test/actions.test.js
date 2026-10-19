@@ -93,3 +93,11 @@ test('project.set-canvas changes resolution and fps and the compositor follows',
   await assert.rejects(dispatch(ctx, 'project.set-canvas', { width: 641, height: 360 }), (e) => e.code === 'bad-size');
   await ctx.engine.shutdown();
 });
+
+test('status reports whether ffmpeg is available so the UI can disable record/stream', async () => {
+  const { ctx } = await setup();
+  ctx.engine.ffmpegAvailable = false;
+  const st = (await dispatch(ctx, 'status')).status;
+  assert.equal(st.ffmpeg.available, false);
+  await ctx.engine.shutdown();
+});

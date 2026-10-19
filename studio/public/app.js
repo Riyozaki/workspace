@@ -130,6 +130,16 @@ function renderButtons() {
   const s = state.status;
   const rec = !!s?.recording;
   const stream = !!s?.streaming;
+  // Without ffmpeg, say why up front instead of failing after a click.
+  const noFfmpeg = s && s.ffmpeg && !s.ffmpeg.available;
+  const why = 'ffmpeg не найден. Укажите путь переменной STUDIO_FFMPEG и перезапустите Studio.';
+  for (const id of ['#btn-record', '#btn-stream']) {
+    const btn = $(id);
+    const active = btn.getAttribute('aria-pressed') === 'true';
+    // A running output can always be stopped; only starting is blocked.
+    btn.disabled = !!noFfmpeg && !active;
+    btn.title = noFfmpeg && !active ? why : btn.dataset.hint;
+  }
   const recBtn = $('#btn-record');
   recBtn.textContent = rec ? '■ Остановить запись' : '● Запись';
   recBtn.setAttribute('aria-pressed', String(rec));
@@ -240,6 +250,7 @@ window.addEventListener('beforeunload', (e) => {
 });
 
 async function init() {
+  for (const id of ['#btn-record', '#btn-stream']) $(id).dataset.hint = $(id).title;
   state.bindings = await (await fetch('/api/hotkeys')).json();
   $('#help-list').replaceChildren(...Object.entries(state.bindings).map(([a, b]) => {
     const li = document.createElement('li');

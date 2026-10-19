@@ -20,6 +20,8 @@ export class Engine {
   constructor({ store, ffmpegPath, outputDir, baseline = false, previewFps = 10 }) {
     this.store = store;
     this.ffmpegPath = ffmpegPath;
+    /** Set by the launcher after probing ffmpeg; drives the disabled-state of record/stream. */
+    this.ffmpegAvailable = true;
     this.outputDir = outputDir;
     this.baseline = baseline;
     this.previewIntervalMs = 1000 / previewFps;
@@ -291,6 +293,7 @@ export class Engine {
     return {
       running: this.running,
       dirty: this.store.dirty,
+      ffmpeg: { available: this.ffmpegAvailable, path: this.ffmpegPath },
       recording: this.recorder ? this.recorder.cfg.output : null,
       streaming: this.stream ? 'rtmp' : null,
       fps: Math.round(s.fps * 10) / 10,
