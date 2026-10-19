@@ -112,6 +112,14 @@ function renderProps() {
   if (it.kind === 'color') fields.push(['color', 'Цвет', 'color', it.color]);
   if (it.kind === 'text') fields.push(['text', 'Текст', 'text', it.text ?? ''], ['color', 'Цвет текста', 'color', it.color]);
   if (it.kind === 'image' || it.kind === 'video') fields.push(['path', 'Путь к файлу', 'text', it.path ?? '']);
+  fields.push(
+    ['rotation', 'Поворот, °', 'number', it.rotation],
+    ['opacity', 'Прозрачность, %', 'number', it.opacity],
+    ['crop.left', 'Обрезка слева, px', 'number', it.crop.left],
+    ['crop.top', 'Обрезка сверху, px', 'number', it.crop.top],
+    ['crop.right', 'Обрезка справа, px', 'number', it.crop.right],
+    ['crop.bottom', 'Обрезка снизу, px', 'number', it.crop.bottom],
+  );
   const nodes = fields.map(([key, label, type, value]) => {
     const l = document.createElement('label');
     l.textContent = label;
@@ -120,7 +128,11 @@ function renderProps() {
     if (type === 'number') { input.step = '1'; input.inputMode = 'numeric'; }
     input.addEventListener('change', () => {
       const v = type === 'number' ? Number(input.value) : input.value;
-      call('source.update', { sceneId: activeScene().id, sourceId: it.id, patch: { [key]: v } });
+      // Keys like "crop.left" patch one side of a nested object.
+      const patch = key.includes('.')
+        ? { crop: { ...it.crop, [key.split('.')[1]]: v } }
+        : { [key]: v };
+      call('source.update', { sceneId: activeScene().id, sourceId: it.id, patch });
     });
     l.append(input);
     return l;

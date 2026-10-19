@@ -6,7 +6,9 @@
  * @typedef {'color'|'image'|'text'|'video'} SourceKind
  * @typedef {{ id: string, kind: SourceKind, name: string, visible: boolean,
  *            x: number, y: number, w: number, h: number,
- *            color?: string, path?: string, text?: string, fontSize?: number }} Source
+ *            color?: string, path?: string, text?: string, fontSize?: number,
+ *            crop: {left:number,top:number,right:number,bottom:number},
+ *            rotation: number, opacity: number }} Source
  * @typedef {{ id: string, name: string, items: Source[] }} Scene
  * @typedef {{ version: number, canvas: {width:number,height:number,fps:number},
  *            scenes: Scene[], activeSceneId: string }} Project
@@ -95,7 +97,16 @@ function normalizeSource(s) {
     path: typeof s?.path === 'string' ? s.path : undefined,
     text: typeof s?.text === 'string' ? s.text : undefined,
     fontSize: Number(s?.fontSize) || 48,
+    crop: normalizeCrop(s?.crop),
+    rotation: Number.isFinite(Number(s?.rotation)) ? ((Number(s.rotation) % 360) + 360) % 360 : 0,
+    opacity: Number.isFinite(Number(s?.opacity)) ? Math.min(100, Math.max(0, Number(s.opacity))) : 100,
   };
+}
+
+/** @param {any} c @returns {{left:number,top:number,right:number,bottom:number}} */
+function normalizeCrop(c) {
+  const v = (/** @type {unknown} */ n) => Math.max(0, Math.round(Number.isFinite(Number(n)) ? Number(n) : 0));
+  return { left: v(c?.left), top: v(c?.top), right: v(c?.right), bottom: v(c?.bottom) };
 }
 
 /**
@@ -243,6 +254,15 @@ export class ProjectStore {
    * @param {string} sceneId @param {string} sourceId @param {Partial<Source>} patch
    */
   updateSource(sceneId, sourceId, patch) {
+    if ('opacity' in patch && !(Number(patch.opacity) >= 0 && Number(patch.opacity) <= 100)) {
+      throw new ModelError('Прозрачность должна быть от 0 до 100 %.');
+    }
+    if ('crop' in patch && patch.crop) {
+      for (const side of /** @type {const} */ (['left', 'top', 'right', 'bottom'])) {
+        const n = Number(patch.crop[side]);
+        if (!Number.isFinite(n) || n < 0) throw new ModelError(`Обрезка «${side}» должна быть неотрицательным числом.`);
+      }
+    }
     for (const key of /** @type {const} */ (['x', 'y', 'w', 'h'])) {
       /** @type {unknown} */
       const v = patch[key];

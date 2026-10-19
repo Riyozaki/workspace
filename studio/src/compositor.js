@@ -90,16 +90,20 @@ export class Compositor {
    * @param {any} g
    */
   drawItem(item, g) {
-    if (item.kind === 'video') {
-      const frame = this.videoFrames.get(item.id);
-      if (frame) g.drawImage(frame, item.x, item.y, item.w, item.h);
-      return;
-    }
+    const surface = this.surfaceFor(item);
+    if (surface) this.blit(item, surface, g);
+  }
+
+  /**
+   * The pixels a source contributes, before crop/rotation/opacity.
+   * @param {Source} item
+   * @returns {any} canvas or image, or null when there is nothing to draw
+   */
+  surfaceFor(item) {
+    if (item.kind === 'video') return this.videoFrames.get(item.id) ?? null;
     if (item.kind === 'image') {
       // In baseline mode the image was already decoded for this frame by renderAsync.
-      const img = this.cache ? this.images.get(item.path ?? '') : this.frameImages.get(item.path ?? '');
-      if (img) g.drawImage(img, item.x, item.y, item.w, item.h);
-      return;
+      return (this.cache ? this.images.get(item.path ?? '') : this.frameImages.get(item.path ?? '')) ?? null;
     }
     if (this.cache) {
       const sig = Compositor.signature(item);
@@ -108,10 +112,38 @@ export class Compositor {
         layer = this.rasterise(item);
         this.layers.set(sig, layer);
       }
-      g.drawImage(layer, item.x, item.y);
-    } else {
-      g.drawImage(this.rasterise(item), item.x, item.y);
+      return layer;
     }
+    return this.rasterise(item);
+  }
+
+  /**
+   * Draws a surface into the source's box. Crop removes pixels from the source
+   * before it is scaled to the box (OBS semantics); rotation is around the box
+   * centre; opacity is applied as global alpha.
+   * @param {Source} item @param {any} surface @param {any} g
+   */
+  blit(item, surface, g) {
+    const c = item.crop ?? { left: 0, top: 0, right: 0, bottom: 0 };
+    const sw = surface.width - c.left - c.right;
+    const sh = surface.height - c.top - c.bottom;
+    if (sw <= 0 || sh <= 0) return;
+    const rotation = item.rotation ?? 0;
+    const opacity = item.opacity ?? 100;
+    const transformed = rotation !== 0 || opacity !== 100;
+    if (transformed) {
+      g.save();
+      g.globalAlpha = opacity / 100;
+      if (rotation !== 0) {
+        const cx = item.x + item.w / 2;
+        const cy = item.y + item.h / 2;
+        g.translate(cx, cy);
+        g.rotate((rotation * Math.PI) / 180);
+        g.translate(-cx, -cy);
+      }
+    }
+    g.drawImage(surface, c.left, c.top, sw, sh, item.x, item.y, item.w, item.h);
+    if (transformed) g.restore();
   }
 
   /**
