@@ -94,7 +94,7 @@ projects/demo.json     пример проекта
 ## Тесты, типы, замеры
 
 ```bash
-STUDIO_FFMPEG=/путь/к/ffmpeg npm test          # 64 теста; часть использует реальный ffmpeg
+STUDIO_FFMPEG=/путь/к/ffmpeg npm test          # 70 тестов; часть использует реальный ffmpeg
 npm run test:coverage                          # покрытие
 npm run typecheck                              # tsc --checkJs --strict
 npm run bench                                  # до/после отрисовки и реальная запись 10 с
@@ -102,7 +102,7 @@ node bench/preview-bench.mjs                   # стоимость JPEG-пре�
 ```
 
 Без `STUDIO_FFMPEG` (и без `ffmpeg` в PATH) тесты с ffmpeg **пропускаются** и это видно в выводе
-(`# skipped`). Для полного прогона задайте переменную.
+(`# skipped`: 15 тестов). Для полного прогона задайте переменную.
 
 ## Ограничения
 

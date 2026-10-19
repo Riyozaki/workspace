@@ -3,27 +3,27 @@
     "node": "v22.22.3",
     "platform": "linux",
     "cpus": 2,
-    "imageBytes": 1702257
+    "imageBytes": 1706156
   },
   "frames": 300,
   "baseline": {
-    "meanMs": 39.03978844,
-    "p50Ms": 38.26062899999988,
-    "p95Ms": 45.707172999999784,
-    "sustainableFps": 25.614892906935022
+    "meanMs": 37.91173090999998,
+    "p50Ms": 37.46875699999964,
+    "p95Ms": 44.18930899999941,
+    "sustainableFps": 26.377059975814237
   },
   "cached": {
-    "meanMs": 8.099979523333289,
-    "p50Ms": 7.805248000000574,
-    "p95Ms": 8.986724000000322,
-    "sustainableFps": 123.45710222097966
+    "meanMs": 8.26413289666667,
+    "p50Ms": 8.051367999998547,
+    "p95Ms": 9.238837999999305,
+    "sustainableFps": 121.00483045273256
   },
-  "speedupMean": 4.819739152122501,
+  "speedupMean": 4.587502570934168,
   "encode": {
     "seconds": 10,
-    "wallSeconds": 10.005848866000003,
+    "wallSeconds": 10.005970827999999,
     "framesWritten": 300,
     "framesDropped": 0,
-    "outputBytes": 4745116
+    "outputBytes": 4724825
   }
 }
