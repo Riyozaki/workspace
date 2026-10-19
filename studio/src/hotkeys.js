@@ -92,6 +92,10 @@ export const DEFAULT_BINDINGS = {
   'edit.undo': 'Ctrl+Z',
   'edit.redo': 'Ctrl+Shift+Z',
   'source.delete': 'Delete',
+  'source.nudge-left': 'ArrowLeft', 'source.nudge-right': 'ArrowRight',
+  'source.nudge-up': 'ArrowUp', 'source.nudge-down': 'ArrowDown',
+  'source.nudge-left-fast': 'Shift+ArrowLeft', 'source.nudge-right-fast': 'Shift+ArrowRight',
+  'source.nudge-up-fast': 'Shift+ArrowUp', 'source.nudge-down-fast': 'Shift+ArrowDown',
   'project.save': 'Ctrl+S',
 };
 

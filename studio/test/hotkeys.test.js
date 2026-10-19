@@ -40,6 +40,6 @@ test('rebinding an action frees its old key', () => {
 
 test('default bindings have no conflicts', () => {
   const reg = createDefaultHotkeys();
-  assert.equal(reg.list().length, 11);
+  assert.equal(reg.list().length, 19);
   assert.equal(reg.resolve('Ctrl+Shift+Z'), 'edit.redo');
 });

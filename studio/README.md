@@ -54,6 +54,8 @@ STUDIO_FFMPEG=/путь/к/ffmpeg npm start -- --port=8080 --project=projects/de
 | Отменить / повторить | `Ctrl+Z` / `Ctrl+Shift+Z` |
 | Сохранить проект | `Ctrl+S` |
 | Удалить выбранный источник | `Delete` |
+| Сдвинуть выбранный источник на 1 px | `←` `→` `↑` `↓` |
+| Сдвинуть на 10 px | `Shift` + стрелка |
 
 Сочетания описаны в `src/hotkeys.js`. Реестр не даёт назначить одно сочетание двум действиям.
 Браузер и сервер используют один и тот же модуль (`/shared/hotkeys.js`).
@@ -92,7 +94,7 @@ projects/demo.json     пример проекта
 ## Тесты, типы, замеры
 
 ```bash
-STUDIO_FFMPEG=/путь/к/ffmpeg npm test          # 60 тестов; часть использует реальный ffmpeg
+STUDIO_FFMPEG=/путь/к/ffmpeg npm test          # 61 тест; часть использует реальный ffmpeg
 npm run test:coverage                          # покрытие
 npm run typecheck                              # tsc --checkJs --strict
 npm run bench                                  # до/после отрисовки и реальная запись 10 с

@@ -224,7 +224,18 @@ const HOTKEY_ACTIONS = {
   'edit.redo': () => call('edit.redo'),
   'project.save': () => $('#btn-save').click(),
   'source.delete': () => removeSelected(state.selectedId),
+  'source.nudge-left': () => nudge(-1, 0), 'source.nudge-right': () => nudge(1, 0),
+  'source.nudge-up': () => nudge(0, -1), 'source.nudge-down': () => nudge(0, 1),
+  'source.nudge-left-fast': () => nudge(-10, 0), 'source.nudge-right-fast': () => nudge(10, 0),
+  'source.nudge-up-fast': () => nudge(0, -10), 'source.nudge-down-fast': () => nudge(0, 10),
 };
+
+/** Moves the selected source; the server clamps it to the canvas. */
+function nudge(dx, dy) {
+  const it = selectedSource();
+  if (!it) return say('Сначала выберите источник в списке.', true);
+  call('source.update', { sceneId: activeScene().id, sourceId: it.id, patch: { x: it.x + dx, y: it.y + dy } });
+}
 
 function switchByIndex(i) {
   const s = state.project.scenes[i];
