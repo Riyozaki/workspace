@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "canvas": { "width": 1280, "height": 720, "fps": 30 },
+  "activeSceneId": "scene-main",
+  "scenes": [
+    {
+      "id": "scene-main",
+      "name": "Основная",
+      "items": [
+        { "id": "bg", "kind": "color", "name": "Фон", "visible": true, "x": 0, "y": 0, "w": 1280, "h": 720, "color": "#1b2a41" },
+        { "id": "logo", "kind": "image", "name": "Логотип", "visible": true, "x": 900, "y": 40, "w": 320, "h": 180, "path": "assets/logo.png" },
+        { "id": "title", "kind": "text", "name": "Заголовок", "visible": true, "x": 60, "y": 260, "w": 1000, "h": 120, "text": "Studio: сцены, запись, трансляция", "color": "#ffffff", "fontSize": 56 }
+      ]
+    },
+    {
+      "id": "scene-brb",
+      "name": "Скоро вернусь",
+      "items": [
+        { "id": "bg2", "kind": "color", "name": "Фон", "visible": true, "x": 0, "y": 0, "w": 1280, "h": 720, "color": "#222222" },
+        { "id": "t2", "kind": "text", "name": "Текст", "visible": true, "x": 0, "y": 280, "w": 1280, "h": 160, "text": "Скоро вернусь", "color": "#ffd23f", "fontSize": 72 }
+      ]
+    }
+  ]
+}

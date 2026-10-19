@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Studio — сцены и запись</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <a class="skip" href="#preview">Перейти к предпросмотру</a>
+  <header class="toolbar" role="toolbar" aria-label="Основные действия">
+    <button id="btn-undo" title="Отменить (Ctrl+Z)">↶ Отменить</button>
+    <button id="btn-redo" title="Повторить (Ctrl+Shift+Z)">↷ Повторить</button>
+    <button id="btn-save" title="Сохранить проект (Ctrl+S)">Сохранить</button>
+    <span class="spacer"></span>
+    <button id="btn-record" class="danger" aria-pressed="false" title="Запись (Ctrl+R)">● Запись</button>
+    <label class="inline">Стрим RTMP
+      <input id="stream-url" type="url" placeholder="rtmp://host/app/key" aria-describedby="stream-help">
+    </label>
+    <button id="btn-stream" aria-pressed="false" title="Трансляция (Ctrl+Shift+S)">Старт стрима</button>
+    <span id="stream-help" class="sr-only">Адрес сервера RTMP и ключ потока</span>
+  </header>
+
+  <main class="layout">
+    <section class="panel" aria-labelledby="h-scenes">
+      <h2 id="h-scenes">Сцены</h2>
+      <ol id="scenes" class="list" aria-label="Список сцен"></ol>
+      <button id="btn-scene-add">+ Сцена</button>
+      <p class="hint">Клавиши 1–5 переключают сцены.</p>
+    </section>
+
+    <section class="preview-wrap" aria-labelledby="h-preview">
+      <h2 id="h-preview">Предпросмотр <span id="fps" class="badge"></span></h2>
+      <img id="preview" alt="Предпросмотр активной сцены" width="1280" height="720">
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel" aria-labelledby="h-sources">
+      <h2 id="h-sources">Источники</h2>
+      <ul id="sources" class="list" aria-label="Источники активной сцены"></ul>
+      <form id="add-source" class="stack" aria-label="Добавить источник">
+        <label>Тип
+          <select id="src-kind" name="kind">
+            <option value="color">Цвет</option>
+            <option value="text">Текст</option>
+            <option value="image">Изображение (файл)</option>
+          </select>
+        </label>
+        <label>Название <input id="src-name" name="name" maxlength="60" placeholder="Например, Логотип"></label>
+        <label>Цвет или текст <input id="src-value" name="value" maxlength="500" placeholder="#336699 или текст"></label>
+        <label>Путь к файлу <input id="src-path" name="path" placeholder="/путь/к/картинке.png"></label>
+        <button type="submit">Добавить в сцену</button>
+      </form>
+    </section>
+
+    <section class="panel props" aria-labelledby="h-props">
+      <h2 id="h-props">Свойства</h2>
+      <form id="props" class="stack" aria-live="polite">
+        <p id="props-empty" class="hint">Выберите источник в списке.</p>
+      </form>
+    </section>
+  </main>
+
+  <details class="help">
+    <summary>Горячие клавиши</summary>
+    <ul id="help-list"></ul>
+  </details>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "studio",
+  "version": "0.1.0",
+  "description": "Небольшая студия для сцен, источников и записи/трансляции на основе ffmpeg",
+  "type": "module",
+  "private": true,
+  "bin": { "studio": "bin/studio.js" },
+  "scripts": {
+    "start": "node bin/studio.js",
+    "test": "node --test test/",
+    "bench": "node bench/bench.mjs",
+    "check": "node --check src/*.js bin/*.js public/app.js"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": { "@napi-rs/canvas": "^1.0.11" }
+}
